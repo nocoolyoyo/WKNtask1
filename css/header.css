@@ -1,0 +1,28 @@
+header {
+    height: 6rem;
+    background-color: #2F1D13;
+    /*background-color:black;*/
+    /*filter:alpha(opacity=70);*/
+    /*-moz-opacity:0.7;*/
+    /*opacity: 0.7;*/
+}
+
+nav > span {
+    padding: 0.75rem;
+}
+nav span {
+    display: inline-block;
+    float: left;
+
+    /*margin: 12.5px;*/
+}
+nav img {
+    height: 4.5rem;
+}
+#logo-name{
+    padding-left: 0.75rem;
+    color: white;
+    font-size: 2.4rem;
+    line-height: 4.5rem;
+    /*margin: 12.5px;*/
+}

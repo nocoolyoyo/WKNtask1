@@ -1,0 +1,76 @@
+.box1 {
+    text-align: center;
+    background:url("../img/body-div1.png") no-repeat;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.box1-bottom {
+    height: 5rem;
+    overflow:hidden;
+}
+.box1 ul {
+    padding: 0;
+}
+.box1 h2:first-child {
+    padding-top: 4rem;
+}
+.box1 h2 {
+    color: #686868;
+    font-weight: normal;
+    font-size: 2.4rem;
+}
+
+
+.box1-content li a{
+    color: #783b1e;
+    font-size: 1.4rem;
+}
+.flip li{
+    position:relative;transition:0.6s;transform-style:preserve-3d;
+}
+.flip li:hover {
+    transform:rotateY(360deg);
+}
+/*
+ *屏幕宽度小于768样式表
+ */
+@media only screen and (max-width: 768px) {
+    .box1-content li {
+        font-weight: bold;
+        padding: 1rem;
+        line-height: 2rem;
+    }
+}
+/*
+ *屏幕宽度大于768样式表
+ */
+@media only screen and (min-width: 768px) {
+    .box1-content li {
+        font-weight: bold;
+        padding: 0 1rem;
+        line-height: 2rem;
+    }
+}
+/*
+ *屏幕宽度大于992样式表
+ */
+@media only screen and (min-width: 992px) {
+    .box1-content li {
+        font-weight: bold;
+        padding: 1rem 2rem;
+        line-height: 2rem;
+    }
+}
+/*
+ *屏幕宽度大于1200样式表
+ */
+@media only screen and (min-width: 1200px) {
+    .box1-content li {
+        font-weight: bold;
+        padding: 4rem 4rem;
+        line-height: 2rem;
+    }
+}
