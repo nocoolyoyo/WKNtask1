@@ -1,4 +1,7 @@
-.box1 {
+.board-box {
+    width: 60rem;
+    height: 85rem;
+    margin: 0 auto;
     text-align: center;
     background:url("../img/body-div1.png") no-repeat;
     -moz-background-size: 100% 100%;
@@ -6,25 +9,30 @@
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
 }
+/*.hbox-5rem {*/
+    /*height: 5rem;*/
+    /*overflow:hidden;*/
+/*}*/
 
-.box1-bottom {
-    height: 5rem;
-    overflow:hidden;
-}
-.box1 ul {
+.board-box ul {
     padding: 0;
 }
-.box1 h2:first-child {
-    padding-top: 4rem;
-}
-.box1 h2 {
+
+.board-box h2 {
+    vertical-align: middle;
+    display: inline-block;
     color: #686868;
     font-weight: normal;
-    font-size: 2.4rem;
 }
+.board-title b{
 
-
-.box1-content li a{
+    background: #9c9c9c;
+    display: inline-block;
+    height: 1px;
+    overflow: hidden;
+    /*vertical-align: middle;*/
+}
+.board li a{
     color: #783b1e;
     font-size: 1.4rem;
 }
@@ -38,9 +46,26 @@
  *屏幕宽度小于768样式表
  */
 @media only screen and (max-width: 768px) {
-    .box1-content li {
+    .board-box {
+        width: 48rem;
+        height: 78rem
+    }
+    .board-box h2 {
+        font-size: 2.4rem;
+    }
+    .board-title:first-child{
+        margin-top: 6rem;
+    }
+    .board-title {
+        margin-top: 3rem;
+    }
+    .board-title b{
+        width: 18rem;
+        height: 1px;
+    }
+    .board li {
         font-weight: bold;
-        padding: 1rem;
+        padding: 2rem 3rem;
         line-height: 2rem;
     }
 }
@@ -48,9 +73,26 @@
  *屏幕宽度大于768样式表
  */
 @media only screen and (min-width: 768px) {
-    .box1-content li {
+    .board-box {
+        width:  55rem;
+        height: 85rem
+    }
+    .board-box h2 {
+        font-size: 2.4rem;
+    }
+    .board-title:first-child{
+        margin-top: 6rem;
+    }
+    .board-title {
+        margin-top: 3rem;
+    }
+    .board-title b{
+        width: 20rem;
+        height: 1px;
+    }
+    .board li {
         font-weight: bold;
-        padding: 0 1rem;
+        padding: 4rem 4rem;
         line-height: 2rem;
     }
 }
@@ -58,9 +100,26 @@
  *屏幕宽度大于992样式表
  */
 @media only screen and (min-width: 992px) {
-    .box1-content li {
+    .board-box {
+        width: 48rem;
+        height: 78rem
+    }
+    .board-box h2 {
+        font-size: 2.4rem;
+    }
+    .board-title:first-child{
+        margin-top: 6rem;
+    }
+    .board-title {
+        margin-top: 3rem;
+    }
+    .board-title b{
+        width: 18rem;
+        height: 1px;
+    }
+    .board li {
         font-weight: bold;
-        padding: 1rem 2rem;
+        padding: 2rem 3rem;
         line-height: 2rem;
     }
 }
@@ -68,7 +127,24 @@
  *屏幕宽度大于1200样式表
  */
 @media only screen and (min-width: 1200px) {
-    .box1-content li {
+    .board-box {
+        width:  55rem;
+        height: 85rem
+    }
+    .board-box h2 {
+        font-size: 2.4rem;
+    }
+    .board-title:first-child{
+        margin-top: 6rem;
+    }
+    .board-title {
+        margin-top: 3rem;
+    }
+    .board-title b{
+        width: 20rem;
+        height: 1px;
+    }
+    .board li {
         font-weight: bold;
         padding: 4rem 4rem;
         line-height: 2rem;
