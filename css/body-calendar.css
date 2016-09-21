@@ -89,7 +89,7 @@ a em{
     _zoom:1
 }
 /*修改资料*/
-.calendar-box {
+#calendar-box {
     width: 60rem;
     height: 50rem;
     margin: 0 auto;
@@ -660,14 +660,14 @@ a em{
     height: 425px;
     z-index: 0
 }
-#mohe-rili .mh-rili-foot .mh-rili-holiday{
-    border: 1px solid #d2d2d2;
-    border-top: 0;
-    padding:8px 10px 8px;
-    color:#666;
-    line-height:21px;
-    background-color:#fafafa
-}
+/*#mohe-rili .mh-rili-foot .mh-rili-holiday{*/
+    /*border: 1px solid #d2d2d2;*/
+    /*border-top: 0;*/
+    /*padding:8px 10px 8px;*/
+    /*color:#666;*/
+    /*line-height:21px;*/
+    /*background-color:#fafafa*/
+/*}*/
 #mohe-rili .mh-rili-holiday span{
     color:#3eaf0e
 }
@@ -844,22 +844,31 @@ a em{
     cursor:pointer
 }
 
-/*日历标题栏当前时间栏样式*/
+/*日历当前时间栏样式*/
 #mohe-rili .mh-rili-widget .mh-time-panel{
-    float:right;
-    padding-top:13px;
-    width:125px;
-    height:40px;
-    color:#999
+    /*float:right;*/
+    margin: 0 auto;
+    padding-top:1rem;
+    width: 10rem;
+    height:3rem;
+    color:black;
+}
+/*日历生日栏样式*/
+.mh-almanac-birthday {
+    padding-top:1rem;
+    color: #CC0000;
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 
 #mohe-rili .mh-rili-widget .mh-time-panel .mh-time-monitor-title,
 #mohe-rili .mh-rili-widget .mh-time-panel .mh-time-monitor{
-    float:left
+    /*float:left;*/
+    font-size: 2.2rem;
 }
-#mohe-rili .mh-rili-widget .mh-time-panel .mh-time-monitor-title{
-    margin-right:5px
-}
+/*#mohe-rili .mh-rili-widget .mh-time-panel .mh-time-monitor-title{*/
+    /*margin-right:5px*/
+/*}*/
 
 
 #mohe-rili .mh-rili-widget .mh-control-bar .mh-list{
@@ -1124,7 +1133,7 @@ a em{
 #mohe-rili .mh-rili-widget .mh-dates-bd li.mh-spe-item .mh-spe-des,#mohe-rili .mh-rili-widget .mh-dates-bd li.mh-spe-item .mh-spe-cover-des{
     position:absolute;
     bottom: 0;
-    left: 20;
+    /*left: 20;*/
     text-align:center;
     background:#b04343;
     color:#fff;
@@ -1178,7 +1187,7 @@ a em{
  *屏幕宽度小于768样式表
  */
 @media only screen and (max-width: 768px) {
-    .calendar-box {
+    #calendar-box {
         width: 50rem;
         height: 48rem;
     }
@@ -1199,11 +1208,11 @@ a em{
         clear:both
     }
     #mohe-rili .mh-rili-widget .mh-cal-main:after{
-        content:"\0020";
-        display:block;
-        height:0;
-        clear:both;
-        visibility:hidden
+        content: "\0020";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden
     }
     #mohe-rili .mh-rili-widget .mh-cal-main .mh-col-1{
         width: 28.3rem;
@@ -1252,9 +1261,9 @@ a em{
     }
     /*日历标题栏当前时间栏样式*/
     #mohe-rili .mh-rili-widget .mh-time-panel{
-        padding-top:1.3rem;
-        width: 9rem;
-        height:4rem;
+        /*padding-top:1.3rem;*/
+        /*width: 9rem;*/
+        /*height:4rem;*/
     }
 
     /*日历月星期头样式*/
@@ -1280,7 +1289,7 @@ a em{
         height:33rem;
     }
     #mohe-rili .mh-rili-widget .mh-almanac-base{
-        width:12.8rem;
+        width: 12.8rem;
         height: 18rem;
     }
 }
@@ -1288,7 +1297,7 @@ a em{
  *屏幕宽度大于768样式表
  */
 @media only screen and (min-width: 768px) {
-    .calendar-box {
+    #calendar-box {
         width: 58rem;
         height: 50rem;
     }
@@ -1361,9 +1370,9 @@ a em{
     }
     /*日历标题栏当前时间栏样式*/
     #mohe-rili .mh-rili-widget .mh-time-panel{
-        padding-top:1.3rem;
-        width: 9rem;
-        height:4rem;
+        /*padding-top:1.3rem;*/
+        /*width: 9rem;*/
+        /*height:4rem;*/
     }
 
     /*日历月星期头样式*/
@@ -1397,7 +1406,7 @@ a em{
  *屏幕宽度大于992样式表
  */
 @media only screen and (min-width: 992px) {
-    .calendar-box {
+    #calendar-box {
         width: 50rem;
         height: 48rem;
     }
@@ -1471,9 +1480,9 @@ a em{
     }
     /*日历标题栏当前时间栏样式*/
     #mohe-rili .mh-rili-widget .mh-time-panel{
-        padding-top:1.3rem;
-        width: 9rem;
-        height:4rem;
+        /*padding-top:1.3rem;*/
+        /*width: 9rem;*/
+        /*height:4rem;*/
     }
 
     /*日历月星期头样式*/
@@ -1507,7 +1516,7 @@ a em{
  *屏幕宽度大于1200样式表
  */
 @media only screen and (min-width: 1200px) {
-    .calendar-box {
+    #calendar-box {
         width: 58rem;
         height: 50rem;
     }
@@ -1580,9 +1589,9 @@ a em{
     }
     /*日历标题栏当前时间栏样式*/
     #mohe-rili .mh-rili-widget .mh-time-panel{
-        padding-top:1.3rem;
-        width: 9rem;
-        height:4rem;
+        /*padding-top:1.3rem;*/
+        /*width: 9rem;*/
+        /*height:4rem;*/
     }
 
     /*日历月星期头样式*/
