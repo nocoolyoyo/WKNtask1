@@ -1,35 +1,44 @@
+/*
+ *描述：页面初始化
+ *页面：*.html
+ */
 @import "header.css";
 @import "body.css";
 @import "footer.css";
-
 html,
 body {
     margin: 0;
     padding: 0;
     /*clear: both;*/
-    font-size: 10px;
+    font-size: 16px;!important;
     background-image: url("../img/background.jpg");
 }
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
 dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, input, p {
+    margin: 0;
+    padding: 0;
     list-style-type: none;
 }
-
-a {
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
     text-decoration: none;
 }
-/*.left {*/
-    /*float: left;*/
-/*}*/
 
-/*.right {*/
-    /*float: right;*/
-/*}*/
 
-/*.container {*/
-    /*margin: 0 auto;*/
-    /*max-width: 1280px;*/
-    /*width: 53%;*/
-/*}*/
 
 
 

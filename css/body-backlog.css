@@ -1,36 +1,38 @@
+/*
+ *描述：主页待办事项板
+ *页面：index.html
+ */
 #backlog-box {
-    width: 58rem;
     margin: 0 auto;
     text-align: center;
-    background:url("../img/body-div3.png") no-repeat;
-    -moz-background-size: 100% 100%;
-    -webkit-background-size: 100% 100%;
-    -o-background-size: 100% 100%;
-    background-size: 100% 100%;
+    /*background:url("../img/backlog.png") no-repeat;*/
+    /*-moz-background-size: 100% 100%;*/
+    /*-webkit-background-size: 100% 100%;*/
+    /*-o-background-size: 100% 100%;*/
+    /*background-size: 100% 100%;*/
 }
-
 
 @media only screen and (max-width: 768px) {
     #backlog-box {
-        width: 50rem;
+        width: 500px;
         height: auto;
     }
 }
 @media only screen and (min-width: 768px) {
     #backlog-box {
-        width: 58rem;
+        width: 580px;
         height: auto;
     }
 }
 @media only screen and (min-width: 992px) {
     #backlog-box {
-        width: 50rem;
+        width: 500px;
         height: auto;
     }
 }
 @media only screen and (min-width: 1200px) {
     #backlog-box {
-        width: 58rem;
+        width: 580px;
         height: auto;
     }
 }

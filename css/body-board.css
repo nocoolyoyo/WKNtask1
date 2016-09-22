@@ -1,9 +1,12 @@
+/*
+ *描述：主页菜单板
+ *页面：index.html
+ */
+
 #board-box {
-    width: 60rem;
-    height: 85rem;
     margin: 0 auto;
     text-align: center;
-    background:url("../img/body-div1.png") no-repeat;
+    background:url("../img/board.png") no-repeat;
     -moz-background-size: 100% 100%;
     -webkit-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -13,7 +16,9 @@
     /*height: 5rem;*/
     /*overflow:hidden;*/
 /*}*/
-
+#board-box i {
+    display: block;
+}
 #board-box ul {
     padding: 0;
 }
@@ -26,7 +31,7 @@
 }
 .board-title b{
 
-    background: #9c9c9c;
+    background: #b8b8b8;
     display: inline-block;
     height: 1px;
     overflow: hidden;
@@ -36,10 +41,21 @@
     color: #783b1e;
     font-size: 1.4rem;
 }
-.flip li{
-    position:relative;transition:0.6s;transform-style:preserve-3d;
+#board li a,
+#board li a:link,
+#board li a:visited,
+#board li a:hover,
+#board li a:active{
+
+    text-decoration: none;
 }
-.flip li:hover {
+.flip li a{
+    display: block;
+    position:relative;
+    transition:0.6s;
+    transform-style:preserve-3d;
+}
+.flip li a:hover {
     transform:rotateY(360deg);
 }
 /*
@@ -47,26 +63,29 @@
  */
 @media only screen and (max-width: 768px) {
     #board-box {
-        width: 48rem;
-        height: 78rem
+        width: 480px;
+        height: 780px
+    }
+    #board-box i {
+        font-size: 40px;
     }
     #board-box h2 {
-        font-size: 2.4rem;
+        font-size: 24px;
     }
     .board-title:first-child{
-        margin-top: 6rem;
+        margin-top: 60px;
     }
     .board-title {
-        margin-top: 3rem;
+        margin-top: 30px;
     }
     .board-title b{
-        width: 18rem;
+        width: 180px;
         height: 1px;
     }
     #board li {
         font-weight: bold;
-        padding: 2rem 3rem;
-        line-height: 2rem;
+        padding: 20px 30px;
+        line-height: 20px;
     }
 }
 /*
@@ -74,26 +93,29 @@
  */
 @media only screen and (min-width: 768px) {
     #board-box {
-        width:  55rem;
-        height: 85rem
+        width:  550px;
+        height: 850px
+    }
+    #board-box i {
+        font-size: 50px;
     }
     #board-box h2 {
-        font-size: 2.4rem;
+        font-size: 24px;
     }
     .board-title:first-child{
-        margin-top: 6rem;
+        margin-top: 60px;
     }
     .board-title {
-        margin-top: 3rem;
+        margin-top: 30px;
     }
     .board-title b{
-        width: 20rem;
+        width: 200px;
         height: 1px;
     }
     #board li {
         font-weight: bold;
-        padding: 4rem 4rem;
-        line-height: 2rem;
+        padding: 40px;
+        line-height: 20px;
     }
 }
 /*
@@ -101,26 +123,29 @@
  */
 @media only screen and (min-width: 992px) {
     #board-box {
-        width: 48rem;
-        height: 78rem
+        width: 480px;
+        height: 780px
+    }
+    #board-box i {
+        font-size: 40px;
     }
     #board-box h2 {
-        font-size: 2.4rem;
+        font-size: 24px;
     }
     .board-title:first-child{
-        margin-top: 6rem;
+        margin-top: 60px;
     }
     .board-title {
-        margin-top: 3rem;
+        margin-top: 30px;
     }
     .board-title b{
-        width: 18rem;
+        width: 180px;
         height: 1px;
     }
     #board li {
         font-weight: bold;
-        padding: 2rem 3rem;
-        line-height: 2rem;
+        padding: 20px 30px;
+        line-height: 20px;
     }
 }
 /*
@@ -128,25 +153,28 @@
  */
 @media only screen and (min-width: 1200px) {
     #board-box {
-        width:  55rem;
-        height: 85rem
+        width:  550px;
+        height: 850px
+    }
+    #board-box i {
+        font-size: 50px;
     }
     #board-box h2 {
-        font-size: 2.4rem;
+        font-size: 24px;
     }
     .board-title:first-child {
-        margin-top: 6rem;
+        margin-top: 60px;
     }
     .board-title {
-        margin-top: 3rem;
+        margin-top: 30px;
     }
     .board-title b{
-        width: 20rem;
+        width: 200px;
         height: 1px;
     }
     #board li {
         font-weight: bold;
-        padding: 4rem 4rem;
-        line-height: 2rem;
+        padding: 40px;
+        line-height: 20px;
     }
 }

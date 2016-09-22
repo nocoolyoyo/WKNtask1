@@ -1,3 +1,7 @@
+/*
+ *描述：头部导航条
+ *页面：*.html
+ */
 header {
     height: 6rem;
     background-color: #2F1D13;
@@ -10,15 +14,17 @@ header {
 nav > span {
     padding: 0.75rem;
 }
+
 nav span {
     display: inline-block;
     float: left;
-
     /*margin: 12.5px;*/
 }
+
 nav img {
     height: 4.5rem;
 }
+
 #logo-name{
     padding-left: 0.75rem;
     color: white;

@@ -1,6 +1,11 @@
+/*
+ *描述：内容区域
+ *页面：*.html
+ */
 @import "body-board.css";
 @import "body-calendar.css";
 @import "body-backlog.css";
+@import "body-content.css";
 main {
     margin: 5rem 0;
     padding: 5rem 0;
@@ -9,12 +14,6 @@ main {
 main img {
     width: 100%;
     height: auto;
-}
-.left {
-    float: left;
-}
-.right {
-    float: right;
 }
 
 
