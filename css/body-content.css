@@ -27,8 +27,9 @@
 #content-navbar a{
    color: grey;
 }
+
 #content-navbar a:hover,
-#content-navbar a:active{
+#content-navbar .active{
     color: #783B1E;
 }
 #content-navbar i {
