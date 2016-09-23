@@ -1,9 +1,10 @@
 /*
  *描述：内容页面
- *页面：occupation.html,
+ *页面：*.html
  */
 #content{
     background-color: #f9f9f9;
+    height: auto;
     width: auto;
     border:1px solid #a1a1a1;
     overflow: hidden;
@@ -43,28 +44,34 @@
     border-left: 1px solid #b3b3b3;
     border-right: 1px solid #b3b3b3;
 }
-#content-sidebar {
-    background-color: #eeeeee;
-    border-right:1px solid #cbcbcb;
-}
+/*#content-sidebar {*/
+    /*background-color: #eeeeee;*/
+    /*border-right:1px solid #cbcbcb;*/
+/*}*/
 #content-navbar li {
+    text-align: center;
     color: white;
     display: inline-block;
-}
-#content-navbar-daily li:hover {
-    /*background-color: blue;*/
-    color: blue;
 }
 #content-navbar li img {
     margin: 0 auto;
     display: block;
 }
-#content-navbar-daily li{
-    text-align: center;
+/*#content-navbar-daily li{*/
+    /*text-align: center;*/
+/*}*/
+/*
+ *描述：会员页面
+ *页面：occupation.html
+ */
+#content-sidebar .list-group,
+#content-sidebar .list-group-item:first-child,
+#content-sidebar .list-group-item:last-child {
+    border-radius: 0;
 }
+
 @media only screen and (max-width: 768px) {
     #content{
-        height: 600px;
         border-radius: 10px;
     }
     /*#content-navbar-home {*/
@@ -88,7 +95,6 @@
 }
 @media only screen and (min-width: 768px) {
     #content{
-        height: 600px;
         border-radius: 10px;
     }
     #content-navbar i {
@@ -115,7 +121,6 @@
 }
 @media only screen and (min-width: 992px) {
     #content{
-        height: 600px;
         border-radius: 10px;
     }
     #content-navbar i {
@@ -141,8 +146,7 @@
     }
 }
 @media only screen and (min-width: 1200px) {
-    #content{
-        height: 600px;
+    #content {
         border-radius: 10px;
     }
     #content-navbar i {
@@ -162,6 +166,9 @@
     }
     #content-sidebar {
         height: 600px
+    }
+    #content-sidebar .list-group{
+        width: 179px;
     }
     #content-area {
         height: 600px
