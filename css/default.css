@@ -31,6 +31,9 @@ body {
     margin: 0 auto;
     text-align: center;
 }
+.kaiti {
+    font-family: Kaiti, STKaiti;
+}
 dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, input, p {
     margin: 0;
     padding: 0;

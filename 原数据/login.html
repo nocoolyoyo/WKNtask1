@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/SHANGHUI/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/SHANGHUI/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <script type="text/javascript" src="js/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="/SHANGHUI/css/H-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/SHANGHUI/css/H-ui.login.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/SHANGHUI/js/third/third_jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="/SHANGHUI/js/third/third-jquery-ui-1.10.3.js"></script>
+    <script type="text/javascript" src="/SHANGHUI/js/public/public_jquery.nicescroll.min.js"></script>
+    <!--[if IE 6]>
+    <script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>后台登录 - 商会云移动信息化管理平台</title>
+    <meta name="keywords" content="商会云 移动信息化管理平台">
+    <meta name="description" content="商会云 移动信息化管理平台">
+    <STYLE type="text/css">
+        .tipbg{
+            height:35px;
+            line-height:35px;
+            width:100%;
+            background:#fbffde;
+            position:absolute;
+            z-index:1050;
+            border-bottom:2px solid #fba567;
+            display:none;
+            color:#055283;
+            left:0;
+            top:0;
+            font-size:12px;
+        }
+        .tipbg.sbg1{
+            background:#A4C7DA;
+            color:#fff;
+        }
+        .tipbg.sbg1 a{
+            color:#fff;
+        }
+        .tipbg a.tipclose{
+            display:block;
+            width:42px;
+            height:14px;
+            line-height:14px;
+            padding:0 0 0 16px;
+            background:url(images/tip_close.png) no-repeat left center;
+            position:absolute;
+            top:10px;
+            right:10px;
+        }
+        .llqtip{
+            width:578px;
+            height:35px;
+            background:url(images/top_tip.png) no-repeat center center;
+            margin:0 auto;
+            position:relative;
+        }
+        .llqtip p{
+            font-size:14px;
+            line-height:35px;
+            padding:0 0 0 50px;
+            width:400px;
+        }
+        .llqtip a{
+            display:block;
+            width:98px;
+            height:24px;
+            background:none;
+            position:absolute;
+            top:6px;
+            right:3px;
+            z-index:1055;
+        }
+    </STYLE>
+    <script type="text/javascript">
+        function login(){
+            var username = $("#username").val();
+            if(username == null || username == ""){
+                if($("#userpwd").val() == null || $("#userpwd").val() ==""){
+                    alert("请输入用户名和密码");
+                }else{
+                    alert("请输入用户名");
+                }
+            }else{
+                if($("#userpwd").val() == null || $("#userpwd").val() ==""){
+                    alert("请输入密码");
+                }else{
+                    document.loginform.submit();
+                }
+            }
+        }
+
+    </script>
+</head>
+<body onkeypress="if (event.keyCode == 13) login();">
+<div class="tipbg">
+    <a class="tipclose"  href="javascript:void(0)" title="关闭" onclick="updiv()">关闭</a>
+    <div class="llqtip">
+        <p>建议使用谷歌浏览器访问此站点！</p>
+        <a title="立即下载谷歌浏览器" href="ChromeSetup/ChromeSetup.exe" ></a>
+    </div>
+</div>
+<input type="hidden" id="TenantId" name="TenantId" value="" />
+<div class="header"></div>
+<div class="loginWraper">
+    <div id="loginform" class="loginBox">
+        <div align="center" style="color: red">
+
+        </div>
+        <form action="LoginBySecretaryAction.action?loginBySecretary" method="post" name="loginform">
+            <div class="formRow user">
+                <input id="username" name="secretary.username" type="text" placeholder="账户" value="" class="input_text input-big" >
+            </div>
+            <div class="formRow password">
+                <input id="userpwd" name="secretary.password" type="password" placeholder="密码" class="input_text input-big" >
+            </div>
+            <!--
+            <div class="formRow yzm">
+              <input class="input_text input-big" type="text" placeholder="验证码" onblur="if(this.value==''){this.value='验证码'}" onclick="if(this.value=='验证码:'){this.value='';}" value="验证码:" style="width:150px;">
+              <img src="/SHANGHUI/images/VerifyCode.aspx.png"> <a id="kanbuq" href="javascript:;">看不清，换一张</a>
+            </div>
+
+            <div class="formRow">
+              <label for="online">
+                <input type="checkbox" name="online" id="online" >
+                使我保持登录状态</label>
+            </div>-->
+            <div class="formRow" style="text-align: center; padding: 0;">
+                <input style="margin-right: 50px;" name="" type="button" class="btn radius btn-success btn-big" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;" onclick="login();">
+                <input name="" type="reset" class="btn radius btn-default btn-big" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="footer" style="text-align: center; font-size: 16px">商会云移动信息化管理平台&nbsp;&nbsp;&nbsp;&nbsp;Copyright &copy; 2016 &nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.wingkeen.com/" target="view_window" style="color: #FFFFFF">福州永杰网络科技股份有限公司</a></div>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        var isChrome = navigator.userAgent.toLowerCase().match(/chrome/) != null;
+        if(!isChrome){
+            downdiv();
+        }
+    })
+    function downdiv(){
+        $(".tipbg").slideDown(500,function(){
+            $(this).hover(function(){$(this).addClass("sbg1");
+            },function(){$(this).removeClass("sbg1");})
+        });
+    }
+    function updiv(){
+        $(".tipbg").slideUp()
+    }
+</script>
+</body>
+</html>

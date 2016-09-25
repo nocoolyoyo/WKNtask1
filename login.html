@@ -5,6 +5,7 @@
         <title>商会云移动信息化管理平台</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="img/Logo_25x25.png" rel="shortcut icon">
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
         <link href="css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -12,98 +13,38 @@
         <!–[if IE]>
         <script src="js/html5.min.js"></script>
         <![endif]–>
-        <script src="js/jquery1.12.4.min.js"></script>
+        <script src="js/jquery-1.12.4.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/calendar-init.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/login.js"></script>
     </head>
     <body>
-        <!--<div id="login" class="box">-->
-            <!--<div class="login-box">-->
-                <!--<div class="login-title text-center">-->
-                    <!--<span><img src="img/Logo.png"  alt="商会云"></span>-->
-                    <!--<span id="logo-name">商会云移动信息化管理平台</span>-->
-                <!--</div>-->
-                <!--<div class="login-content">-->
-                    <!--<div class="form">-->
-                        <!--<form action="#" method="post">-->
-                            <!--<div class="form-group">-->
-                                <!--<div class="col-xs-12  ">-->
-                                    <!--<div class="input-group">-->
-                                        <!--<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>-->
-                                        <!--<input type="text" id="username" name="username" class="form-control" placeholder="用户名">-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="form-group">-->
-                                <!--<div class="col-xs-12  ">-->
-                                    <!--<div class="input-group">-->
-                                        <!--<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>-->
-                                        <!--<input type="text" id="password" name="password" class="form-control" placeholder="密码">-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="form-group form-actions">-->
-                                <!--<div class="col-xs-4 col-xs-offset-4 ">-->
-                                    <!--<button type="submit" class="btn btn-sm btn-info"><i class="fa fa-power-off"></i>登录</button>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                            <!--<div class="form-group">-->
-                                <!--<div class="col-xs-6 link">-->
-                                    <!--<p class="text-center remove-margin"><small>忘记密码？</small> <a href="javascript:void(0)" ><small>找回</small></a>-->
-                                    <!--</p>-->
-                                <!--</div>-->
-                                <!--<div class="col-xs-6 link">-->
-                                    <!--<p class="text-center remove-margin"><small>还没注册?</small> <a href="javascript:void(0)" ><small>注册</small></a>-->
-                                    <!--</p>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</form>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="login-footer">-->
-                    <!--<div>商会云移动信息化管理平台</div>-->
-                    <!--<div>Copyright © 2016 <a href="http://www.wingkeen.com">福州永杰网络科技股份有限公司</a></div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
         <div id="login">
-            <div id="login-header">
-                <div class="center">
-                    <span><img src="img/Logo.png" alt="商会云"></span>
-                    <span id="logo-name">商会云移动信息化管理平台</span>
-                </div>
+            <div id="login-header" class="center">
+                <div><img src="img/Logo_100x100.png" alt="商会云"></div>
+                <div class="kaiti">商会云移动信息化管理平台</div>
             </div>
-            <div id="login-body center">
+            <div id="login-body" class="center">
                 <div class="form">
                     <form action="#" method="post">
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-user"></span>
-                                    </span>
-                                    <input type="text" id="username" name="username" class="form-control" placeholder="用户名">
-                                </div>
-                            </div>
+                        <div class="col-xs-12 input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </span>
+                            <input id="login-username" type="text"  name="username" class="form-control" placeholder="请输入用户名">
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-lock"></span>
-                                    </span>
-                                    <input type="text" id="password" name="password" class="form-control" placeholder="密码">
-                                </div>
-                            </div>
+                        <div class="col-xs-12 input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock"></span>
+                            </span>
+                            <input id="login-password" type="password"  name="password" class="form-control" placeholder="请输入密码">
                         </div>
-                        <div class="form-group form-actions">
-                            <div class="col-xs-4 col-xs-offset-2 ">
-                                <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-power-off"></i>登录</button>
+                        <div class="form-actions center">
+                            <div class="col-xs-6">
+                                <button id="login-submit" type="submit" class="btn btn-block btn-success" disabled="disabled">登录</button>
                             </div>
-                            <div class="col-xs-4">
-                                <button type="submit" class="btn btn-sm btn-info"><i class="fa fa-power-off"></i>注册</button>
+                            <div class="col-xs-6">
+                                <button id="login-reset" type="reset" class="btn  btn-block btn-danger">重置</button>
                             </div>
                         </div>
                         <!--<div class="form-group">-->
@@ -119,10 +60,10 @@
                     </form>
                 </div>
             </div>
-            <div id="login-footer center">
-                <div>商会云移动信息化管理平台</div>
+            <div id="login-footer" class="center">
+                <div></div>
                 <div>Copyright © 2016 福州永杰网络科技股份有限公司</div>
             </div>
         </div>
-    </body>
+   </body>
 </html>
