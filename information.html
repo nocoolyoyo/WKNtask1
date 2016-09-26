@@ -40,6 +40,14 @@
                         <button type="button" class="btn btn-primary">发资讯</button>
                         <button type="button" class="btn btn-primary">草稿箱</button>
                     </div>
+                    <div class="form-group">
+                        <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="16" type="text" value="" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <input type="hidden" id="dtp_input2" value="" /><br/>
+                    </div>
                     <div class="form-group right">
                         <!--<div class="form-group">-->
                             <!--<div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">-->
@@ -49,15 +57,15 @@
                             <!--</div>-->
                             <!--<input type="hidden" id="dtp_input1" placeholder="开始时间" /><br/>-->
                         <!--</div>-->
-                        <!--<div class="form-group">-->
+
                             <!--<div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">-->
                                 <!--<input class="form-control" size="16" type="text" value="" readonly>-->
                                 <!--<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>-->
                                 <!--<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>-->
                             <!--</div>-->
-                            <!--<input type="hidden" id="dtp_input2" placeholder="结束时间" /><br/>-->
-                        <!--</div>-->
-                        <!--<input type="text" value="2012-05-15 21:05" id="datetimepicker">-->
+
+                            <!--<input type="hidden" id="dtp_input2" placeholder="结束时间">-->
+
                         <input  class="form-control" type="text"  name="search"  placeholder="标签/发布人">
                         <select class="form-control">
                             <option>筛选</option>
@@ -196,9 +204,8 @@
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-datetimepicker.min.js"></script>
-    <script src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
     <script src="js/menuData.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/occupation.js"></script>
+    <script src="js/information.js"></script>
 </body>
 </html>
