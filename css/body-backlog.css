@@ -19,19 +19,67 @@
 @media only screen and (max-width: 768px) {
     #backlog-box {
         width: 500px;
-        height: auto;
+        height: 265px;
+    }
+    #backlog {
+        position: absolute;
+        margin: 100px 0 0 60px;
+        width: 380px;
+        height: 150px;
+
+    }
+    #backlog-plus {
+        margin-top: 40px;
+        margin-right: 65px;
+        float: right;
+    }
+    #backlog i{
+        font-size: 20px;
+        float: right;
     }
 }
 @media only screen and (min-width: 768px) {
     #backlog-box {
         width: 580px;
-        height: auto;
+        height: 300px;
+    }
+    #backlog {
+        position: absolute;
+        margin: 100px 0 0 60px;
+        width: 450px;
+        height: 150px;
+
+    }
+    #backlog-plus {
+        margin-top: 45px;
+        margin-right: 72px;
+        float: right;
+    }
+    #backlog i{
+        font-size: 20px;
+        float: right;
     }
 }
 @media only screen and (min-width: 992px) {
     #backlog-box {
         width: 500px;
-        height: auto;
+        height: 265px;
+    }
+    #backlog {
+        position: absolute;
+        margin: 100px 0 0 60px;
+        width: 380px;
+        height: 150px;
+
+    }
+    #backlog-plus {
+        margin-top: 40px;
+        margin-right: 65px;
+        float: right;
+    }
+    #backlog i{
+        font-size: 20px;
+        float: right;
     }
 }
 @media only screen and (min-width: 1200px) {
@@ -46,7 +94,13 @@
         height: 150px;
 
     }
-    #backlog table {
-
+    #backlog-plus {
+        margin-top: 45px;
+        margin-right: 72px;
+        float: right;
+    }
+    #backlog i{
+        font-size: 20px;
+        float: right;
     }
 }

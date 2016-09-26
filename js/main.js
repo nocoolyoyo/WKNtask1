@@ -1,6 +1,5 @@
 (function() {
     $(function(){
-
         /*
          *  功能：功能页菜单内容填充
          *  页面：*.html
@@ -8,32 +7,60 @@
          */
         var menu_daily_urls = [];
         var menu_manage_urls = [];
-        var $menu = $("#content-navbar-menu ul");
         var current_url = window.location.pathname;
-        // var current_url = 'occupation';
-        console.log(current_url);
-
-        for (var i = 0; i < Menu.daily.length; i++) {
-            menu_daily_urls[i] = Menu.daily[i].url;
-            $menu.append('<li><a href="' + Menu.daily[i].url + '.html" role="button">' + '<i class="fa ' + Menu.daily[i].icon + '"></i>' + Menu.daily[i].name + '</a></li>');
-            if (current_url.match(menu_daily_urls[i])) {
-                // $menu_li.eq(i).addClass('active disabled');
-                $("#content-navbar-menu li a").eq(i).addClass('active disabled');
+        var $menu = $('#content-navbar-menu ul');
+        var mark;
+        var $switch = $('#content-navbar-switch');
+        $switch.click(function () {
+            $menu = $('#content-navbar-menu ul');
+            if (mark == 'daily') {
+                mark = 'manage';
+                $menu.children().remove();
+                renderMenu();
+            }else if(mark == 'manage') {
+                mark = 'daily';
+                $menu.children().remove();
+                renderMenu();
+            }
+        });
+        //菜单数据加载
+        function loadMenu() {
+            for (var i = 0; i < Menu.daily.length; i++) {
+                menu_daily_urls[i] = Menu.daily[i].url;
+                if (current_url.match(menu_daily_urls[i])) {
+                    mark = 'daily';
+                    console.log(menu_daily_urls[i]);
+                }
+            }
+            for (var j = 0; j < Menu.manage.length; j++) {
+                menu_manage_urls[j] = Menu.manage[j].url;
+                if(current_url.match(menu_manage_urls[j])){
+                    mark = 'manage';
+                    console.log(menu_manage_urls[j]);
+                }
             }
 
         }
-
-        /*
-         *  功能：页面菜单内容填充
-         *  页面：index.html
-         *  Created by nocoolyoyo 2016/9/25.
-         */
-
-        // console.log($url);
-        // $('#content-navbar-switch').click(function (){
-        //     $menu_daily.toggle();
-        //     $menu_manage.toggle();
-        // })
+        //菜单节点填充渲染
+        function renderMenu() {
+            if (mark == 'daily') {
+                for (var m = 0; m < Menu.daily.length; m++) {
+                    $menu.append('<li><a href="' + Menu.daily[m].url + '.html" role="button">' + '<i class="fa ' + Menu.daily[m].icon + '"></i>' + Menu.daily[m].name + '</a></li>');
+                    if (current_url.match(menu_daily_urls[m])) {
+                        $("#content-navbar-menu li a").eq(m).addClass('active disabled');
+                    }
+                }
+            }else if(mark == 'manage') {
+                for (var m = 0; m < Menu.manage.length; m++) {
+                    $menu.append('<li><a href="' + Menu.manage[m].url + '.html" role="button">' + '<i class="fa ' + Menu.manage[m].icon + '"></i>' + Menu.manage[m].name + '</a></li>');
+                    if (current_url.match(menu_manage_urls[m])) {
+                        $("#content-navbar-menu li a").eq(m).addClass('active disabled');
+                    }
+                }
+            }
+        }
+        loadMenu();
+        renderMenu();
 
     });
 }());

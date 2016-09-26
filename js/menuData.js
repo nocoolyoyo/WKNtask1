@@ -23,4 +23,4 @@ var Menu = {
         {"name": "签到抽奖", "url": "queryActivities","icon": "fa-gift"},
         {"name": "焦点位",   "url": "motifaction",    "icon": "fa-compass"}
     ]
-}
+};
