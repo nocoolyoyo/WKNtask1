@@ -54,7 +54,7 @@
 
         // create particles
         circles = [];
-        for(var x = 0; x < 25; x++) {
+        for(var x = 0; x < 50; x++) {
             var c = new Circle();
             circles.push(c);
         }
