@@ -21,16 +21,19 @@
     </head>
     <body>
         <header>
-            <nav class="container">
-                <span class="nav left">
-                    <span><img src="img/Logo_100x100.png"  alt="商会云"></span>
-                    <span id="logo-name" class="kaiti">商会云体验中心</span>
+            <nav class="navbar container">
+                <span class="left">
+                    <span class="navbar-img"><img src="img/Logo_100x100.png" alt="商会云"></span>
+                    <span class="navbar-brand kaiti">商会云体验中心</span>
                 </span>
-                <span class="nav right">
-                    <!--<span class="logo-info"></span>-->
+                <span class="right">
+                    <span class="navbar-brand navbar-welcome kaiti">您好！登录人员</span>
+                    <button id="user-setting" type="reset" class="navbar-btn btn btn-success"><i class="fa fa-cog" aria-hidden="true"></i></button>
+                    <button id="login-out" type="reset" class="navbar-btn btn btn-danger"><i class="fa fa-power-off" aria-hidden="true"></i></button>
                 </span>
             </nav>
         </header>
+
         <main class="container">
             <div id="content">
                 <ul id="content-navbar" class="row">
@@ -73,7 +76,7 @@
                                 <select class="form-control">
                                     <option>筛选</option>
                                 </select>
-                                <button type="button" class="btn btn-primary">查找</button>
+                                <button type="button" class="btn btn-primary"><i class="fa fa-search button-text-icon"></i>查找</button>
                             </div>
                         </form>
                     <table class="content-area-tableList table table-bordered table-hover">

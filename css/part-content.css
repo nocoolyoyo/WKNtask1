@@ -5,7 +5,10 @@
     border:1px solid #a1a1a1;
     overflow: hidden;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 12px 12px 6px rgba(34, 25, 25, 0.4);
+    -moz-box-shadow: 0 12px 12px 6px rgba(34, 25, 25, 0.4);
+    -webkit-box-shadow: 0 12px 12px 6px rgba(34, 25, 25, 0.4);
 }
 #content-navbar a,
 #content-navbar a:link,
@@ -16,11 +19,14 @@
 }
 #content-navbar {
     background-color: #d8d8d8;
-    border-bottom:1px solid #cbcbcb;
+    /*border-bottom: 1px solid #b3b3b3;*/
     margin: 0;
     padding: 0;
     width: auto;
     height: auto;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.8);
+    -moz-box-shadow: 0 1px 2px rgba(34, 25, 25, 0.8);
+    -webkit-box-shadow: 0 1px 2px rgba(34, 25, 25, 0.8);
 }
 #content-navbar a{
     color: grey;
@@ -33,9 +39,7 @@
 #content-navbar i {
     display: block;
 }
-#content-navbar img{
-    width: auto;
-}
+
 #content-navbar-menu{
     border-left: 1px solid #b3b3b3;
     border-right: 1px solid #b3b3b3;
@@ -45,9 +49,9 @@
     color: white;
     display: inline-block;
 }
-#content-navbar li img {
-    margin: 0 auto;
-    display: block;
+
+.button-text-icon {
+    margin-right: 5px;
 }
 /*
  *描述：会员页面
