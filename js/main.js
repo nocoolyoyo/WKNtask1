@@ -5,6 +5,7 @@
          *  页面：*.html
          *  Created by nocoolyoyo 2016/9/25.
          */
+
         var menu_daily_urls = [];
         var menu_manage_urls = [];
         var current_url = window.location.pathname;
@@ -61,7 +62,6 @@
         }
         loadMenu();
         renderMenu();
-
     });
 }());
 

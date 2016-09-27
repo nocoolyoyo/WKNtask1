@@ -2,11 +2,6 @@
  *描述：内容区域
  *页面：*.html
  */
-@import "body-login.css";
-@import "body-board.css";
-@import "body-calendar.css";
-@import "body-backlog.css";
-@import "body-content.css";
 main {
     margin: 20px 0;
     padding: 20px 0;

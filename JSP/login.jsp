@@ -2,20 +2,12 @@
 <html lang="zh_cn">
     <head>
         <title>商会云移动信息化管理平台</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link href="img/Logo_25x25.png" rel="shortcut icon">
-        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-        <link href="css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/login.css" type="text/css" rel="stylesheet">
-        <!–[if IE]>
-        <script src="js/html5.min.js"></script>
-        <![endif]–>
-        <script src="js/jquery-1.12.4.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
 
+        <%@ include file="meta.jsp"%>
+        <%@ include file="link.jsp"%>
+        <%@ include file="script.jsp"%>
+
+        <link href="css/login.css" type="text/css" rel="stylesheet">
     </head>
     <body>
         <div id="login-box">

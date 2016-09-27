@@ -1,39 +1,26 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="zh_cn">
 <head>
-    <meta charset="UTF-8">
     <title>菜单-商会云</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="img/Logo_25x25.png" rel="shortcut icon">
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <%@ include file="meta.jsp"%>
+    <%@ include file="link.jsp"%>
+    <%@ include file="script.jsp"%>
+
     <link href="css/desktop.css" type="text/css" rel="stylesheet">
-    <!–[if IE]>
-    <script src="js/html5.min.js"></script>
-    <![endif]–>
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/menuData.js"></script>
     <script src="js/calendar-init.js"></script>
     <script src="js/calendar-birthday.js"></script>
     <script src="js/desktop.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar container">
-            <span class="left">
-                <span class="navbar-img"><img src="img/Logo_100x100.png" alt="商会云"></span>
-                <span class="navbar-brand kaiti">商会云体验中心</span>
-            </span>
-            <span class="right">
-                <span class="navbar-brand navbar-welcome kaiti">您好！登录人员</span>
-                <button id="user-setting" type="reset" class="navbar-btn btn btn-success"><i class="fa fa-cog" aria-hidden="true"></i></button>
-                <button id="login-out" type="reset" class="navbar-btn btn btn-danger"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-            </span>
-        </nav>
-    </header>
+
+    <%@ include file="header.jsp"%>
+
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-md-6 left">
@@ -122,13 +109,7 @@
                                                     </div>
                                                     <div class="mh-almanac-base mh-almanac-main"></div>
                                                     <div class="mh-almanac-birthday">生日</div>
-                                                    <ul id="birthday-list">
-
-                                                        <button class="btn btn-xs   "><li>成某某<i class="fa fa-birthday-cake"></i></button></li>
-                                                        <li>成某某</li>
-                                                        <li>成某某</li>
-                                                        <li>成某某</li>
-                                                    </ul>
+                                                    <div class="birthday-list"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -170,12 +151,8 @@
             </div>
         </div>
     </main>
-    <footer class="container">
-        <span>永杰科技 光越传媒 新浪闽商</span>
-        <span>客服电话：0591-62751898</span>
-        <span>技术支持：福州永杰网络科技股份有限公司</span>
-        <div>(c) 2015-2020 商会+ . All Right Reserved . 永杰科技 版权所有</div>
-    </footer>
+
+    <%@ include file="footer.jsp"%>
 
     </body>
 </html>

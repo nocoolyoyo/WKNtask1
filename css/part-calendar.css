@@ -1609,4 +1609,16 @@ a em{
         width: 128px;
         height: 180px
     }
+
+    /*日历生日面板*/
+    .mh-almanac-birthday {
+        font-size: 16px;
+    }
+    #birthday-list li{
+        font-size: 14px;
+    }
+    #birthday-list i{
+        color: red;
+        font-size: 14px;
+    }
 }

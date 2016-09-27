@@ -1,36 +1,26 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <!DOCTYPE html>
 <html lang="zh_cn">
     <head>
         <meta charset="UTF-8">
         <title>会员-商会云</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-        <link href="css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
+
+        <%@ include file="meta.jsp"%>
+        <%@ include file="link.jsp"%>
+        <%@ include file="script.jsp"%>
+
         <link href="css/function.css" type="text/css" rel="stylesheet">
-        <!--<script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>-->
-        <!–[if IE]>
-        <script src="js/html5.min.js"></script>
-        <![endif]–>
-        <!--<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>-->
-        <script src="js/jquery-1.12.4.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/menuData.js"></script>
         <script src="js/main.js"></script>
     </head>
     <body>
-        <header>
-            <nav class="container">
-                <span class="nav left">
-                    <span><img src="img/Logo_100x100.png"  alt="商会云"></span>
-                    <span id="logo-name" class="kaiti">商会云体验中心</span>
-                </span>
-                <span class="nav right">
-                    <!--<span class="logo-info"></span>-->
-                </span>
-            </nav>
-        </header>
+
+        <%@ include file="header.jsp"%>
+
         <main class="container">
             <div id="content">
                 <ul id="content-navbar" class="row">
@@ -43,23 +33,24 @@
                 </ul>
                 <div id="content-area-left">
                     <div id="content-siderbar-menuList" class="list-group">
-                        <a href="#" class="list-group-item active">会员信息</a>
-                        <div class="content-siderbar-innerList list-group"><a href="#" class="list-group-item">名会</a>
-                            <a href="#" class="list-group-item">会长</a>
-                            <a href="#" class="list-group-item">副会长</a>
-                            <a href="#" class="list-group-item">秘书长</a>
-                            <a href="#" class="list-group-item">理事长</a>
-                            <a href="#" class="list-group-item">会员</a>
-                            <a href="#" class="list-group-item">秘书</a>
-                            <a href="#" class="list-group-item">工商联</a>
-                            <a href="#" class="list-group-item">荣誉会员</a>
-                            <a href="#" class="list-group-item">商会云客服</a>
+                            <a href="#" class="list-group-item active">会员信息</a>
+                            <div class="content-siderbar-innerList list-group">
+                                <a href="#" class="list-group-item">名会</a>
+                                <a href="#" class="list-group-item">会长</a>
+                                <a href="#" class="list-group-item">副会长</a>
+                                <a href="#" class="list-group-item">秘书长</a>
+                                <a href="#" class="list-group-item">理事长</a>
+                                <a href="#" class="list-group-item">会员</a>
+                                <a href="#" class="list-group-item">秘书</a>
+                                <a href="#" class="list-group-item">工商联</a>
+                                <a href="#" class="list-group-item">荣誉会员</a>
+                                <a href="#" class="list-group-item">商会云客服</a>
+                            </div>
+                            <a href="#" class="list-group-item">职务管理</a>
+                            <a href="#" class="list-group-item">群聊管理</a>
+                            <a href="#" class="list-group-item">未激活</a>
+                            <a href="#" class="list-group-item">群管理</a>
                         </div>
-                        <a href="#" class="list-group-item">职务管理</a>
-                        <a href="#" class="list-group-item">群聊管理</a>
-                        <a href="#" class="list-group-item">未激活</a>
-                        <a href="#" class="list-group-item">群管理</a>
-                    </div>
                 </div>
                 <div id="content-area-right">
                     <form class="content-area-actionList form-inline action-bar" role="form">
@@ -180,13 +171,8 @@
                 </div>
             </div>
         </main>
-        <footer class="container">
-            <!--<div class="bottom">-->
-            <span>永杰科技 光越传媒 新浪闽商</span>
-            <span>客服电话：0591-62751898</span>
-            <span>技术支持：福州永杰网络科技股份有限公司</span>
-            <div>(c) 2015-2020 商会+ . All Right Reserved.   永杰科技 版权所有</div>
-            <!--</div>-->
-        </footer>
+
+        <%@ include file="footer.jsp"%>
+
     </body>
 </html>

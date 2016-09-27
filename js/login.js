@@ -43,7 +43,7 @@
         canvas.height = height;
         ctx = canvas.getContext('2d');
 
-        // create particles
+        // 创建元素数量
         circles = [];
         for(var x = 0; x < 50; x++) {
             var c = new Circle();
@@ -75,11 +75,10 @@
         requestAnimationFrame(animate);
     }
 
-    // Canvas manipulation
+    // 绘图
     function Circle() {
         var _this = this;
-
-        // constructor
+        // 创建
         (function() {
             _this.pos = {};
             init();

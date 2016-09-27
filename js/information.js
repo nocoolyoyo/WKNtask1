@@ -1,7 +1,7 @@
 (function() {
     $(function(){
         /*
-         *  功能：日期悬着器API
+         *  功能：日期选择器API
          *  页面：*.html
          *  Created by nocoolyoyo 2016/9/26.
          */

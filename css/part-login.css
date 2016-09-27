@@ -20,9 +20,6 @@
     overflow: hidden;
     z-index: 99;
 }
-#login-header {
-    /*padding-top: 30px;*/
-}
 #login-header img{
     width: 70px
 }
@@ -31,34 +28,33 @@
     font-size: 24px;
     color: white;
 }
-#login-body {
+#login-body{
     width: 300px;
     height: 200px;
 }
-
+.login-form{
+    width: 300px;
+    height: 160px;
+}
+.login-input {
+    margin: 10px 0;!important;
+}
 #login-body form > div{
-
     padding:5px 0;
 }
-.input-group {
-    width: 300px;
-    margin: 10px 0 !important;
+
+#login-message {
+    color: red;
 }
 #login-footer {
-
     color: white;
+    margin: 0 auto;
 }
 #login-footer div{
-    /*margin-top: 10px;*/
     font-size: 14px;
     color: #d6d6d6;
 }
-/* Header */
-#login-box{
-
-}
 #bubble-box {
-    /*background-image: url('../img/demo-2-bg.jpg');*/
     background-position: center bottom;
     position: relative;
     width: 100%;
