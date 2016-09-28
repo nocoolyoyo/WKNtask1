@@ -94,14 +94,15 @@
     }
     #backlog-plus {
         margin-top: 45px;
-        margin-right: 67px;
+        margin-right: 69px;
         float: right;
     }
     #backlog i{
-        font-size: 20px;
+        margin-top: 5px;
+        font-size: 15px;
     }
     #backlog-modal textarea {
-        height: 380px !important;
+        height: 390px !important;
     }
     #backlog-modal .modal-body {
         height: 420px !important;
