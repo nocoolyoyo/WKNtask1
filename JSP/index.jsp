@@ -127,27 +127,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
                 <div id="backlog-box">
-                    <a id="backlog-plus" href="#"><i class="fa fa-plus fa-2x"></i></a>
+                    <button id="backlog-plus" type="button" class="button button-raised button-normal button-green button-circle right" data-toggle="modal" data-target="#backlog-modal">
+                        <i class="fa fa-plus"></i>
+                    </button>
                     <div id="backlog">
                         <table class="table">
                             <tbody>
                                 <tr>
                                     <th>待办事项1</th>
-                                    <th><a href="#"><i class="fa fa-minus-circle"></i></a></th>
+                                    <th>
+                                        <button type="button" class="button button-raised button-caution button-circle button-tiny right">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </th>
                                 </tr>
                                 <tr>
-                                    <th>待办事项2</th>
-                                    <th><a href="#"><i class="fa fa-minus-circle"></i></a></th>
+                                    <th>待办事项1</th>
+                                    <th>
+                                        <button type="button" class="button button-caution button-circle button-tiny right">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </th>
                                 </tr>
                                 <tr>
-                                    <th>待办事项3</th>
-                                    <th><a href="#"><i class="fa fa-minus-circle"></i></a></th>
+                                    <th>待办事项1</th>
+                                    <th>
+                                        <button type="button" class="button button-caution button-circle button-tiny right">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
+                <!-- 弹出框 -->
+                <div id="backlog-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form role="form">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">待办事项</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <textarea class="form-control">代办事项代办事项代办事项代办事项代办事项代办事代办事项代办事项代办事项代办事项代办事项代办事代办事项代办事项代办事项代办事项代办事项代办事</textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn button button-primary button-rounded">保存</button>
+                                    <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
