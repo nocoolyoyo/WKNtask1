@@ -15,7 +15,11 @@
     margin: auto;
     overflow: auto;
 }
-
+#backlog-modal textarea {
+    resize: none;
+    overflow-y: auto;
+    -ms-overflow-y: auto;
+}
 @media only screen and (max-width: 768px) {
     #backlog-box {
         width: 500px;
@@ -31,10 +35,6 @@
     #backlog-plus {
         margin-top: 40px;
         margin-right: 65px;
-        float: right;
-    }
-    #backlog i{
-        font-size: 20px;
         float: right;
     }
 }
@@ -57,7 +57,6 @@
     }
     #backlog i{
         font-size: 20px;
-        float: right;
     }
 }
 @media only screen and (min-width: 992px) {
@@ -79,7 +78,6 @@
     }
     #backlog i{
         font-size: 20px;
-        float: right;
     }
 }
 @media only screen and (min-width: 1200px) {
@@ -96,11 +94,16 @@
     }
     #backlog-plus {
         margin-top: 45px;
-        margin-right: 72px;
+        margin-right: 67px;
         float: right;
     }
     #backlog i{
         font-size: 20px;
-        float: right;
+    }
+    #backlog-modal textarea {
+        height: 380px !important;
+    }
+    #backlog-modal .modal-body {
+        height: 420px !important;
     }
 }

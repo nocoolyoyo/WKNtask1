@@ -2,7 +2,7 @@
     $(function(){
         /*
          *  功能：功能页菜单内容填充
-         *  页面：*.html
+         *  页面：*
          *  Created by nocoolyoyo 2016/9/25.
          */
 
@@ -62,6 +62,9 @@
         }
         loadMenu();
         renderMenu();
+
+
+
     });
 }());
 
