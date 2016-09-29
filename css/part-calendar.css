@@ -109,45 +109,6 @@ a em{
     z-index: 10
 }
 
-/*#dialog .dialog{*/
-    /*position: fixed;*/
-    /*z-index: 3001;*/
-    /*background: #fff;*/
-    /*left: 50%;*/
-    /*top: 210px;*/
-    /*padding-left: 45px;*/
-    /*font-size: 14px;*/
-    /*color: #333;*/
-    /*font-family: 'Microsoft YaHei';*/
-/*}*/
-/*#dialog .dialog01{*/
-    /*width: 377px;*/
-    /*height: 353px;*/
-    /*margin-left: -212px;*/
-    /*border: 1px solid #CECCCD;*/
-/*}*/
-/*#dialog .mask{*/
-    /*background: #000;*/
-    /*filter: alpha(opacity=20);*/
-    /*opacity: .2;*/
-    /*left: 0;*/
-    /*top: 0;*/
-    /*position: fixed;*/
-    /*_position: absolute;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*overflow: hidden;*/
-    /*z-index: 3000;*/
-    /*zoom: 1;*/
-/*}*/
-/*#dialog .dialog .close,*/
-/*#tantan_list .updateUserInfo,*/
-/*.userInfo .updateUserInfo,*/
-/*#container .userInfo .arrowUp,*/
-/*#dialog .dialog03 .icon,*/
-/*#mytantan .tantan_like .updateUserInfo{*/
-    /*background: url(https://p.ssl.qhimg.com/d/inn/e165d985/update_info_bg.png);*/
-/*}*/
 #tantan_list .updateUserInfo,.userInfo .updateUserInfo{
     background-position: 0px 1px;
     float: right;
@@ -587,36 +548,18 @@ a em{
     height: 94px;
 }
 
-/*#so-pdr-guide{*/
-	/*display:block;*/
-    /*width:590px;*/
-    /*height:25px;*/
-    /*line-height:22px;*/
-	/*font-size:14px;padding-left:15px;*/
-	/*background:url(https://p.ssl.qhimg.com/t01e99d1b782b81cb01.png) no-repeat 2px 5px;*/
-	/**position:relative;*z-index:0;*/
-/*}*/
 #so-pdr-guide dt{color:#666666;float:left;}
 #so-pdr-guide dd{float:left;}
 #so-pdr-guide .so-pdr-bd{width:390px;height:22px;float:left;display:block;overflow:hidden;position:relative;}
 #so-pdr-guide .so-pdr-bd a{color:#cc0000;margin:0 6px;white-space:nowrap;word-break:keep-all;}
 #so-pdr-guide .so-pdr-box{position:relative;top:0;left:0;}
-/*#so-pdr-guide .ac-change{*/
-	/*color:#666666;text-decoration:none;float:left;line-height:24px;*/
-	/*visibility:hidden;padding-left:15px;font-size:13px;*/
-	/*background:url(https://p.ssl.qhimg.com/t01e99d1b782b81cb01.png) no-repeat 0 -17px;*/
-/*}*/
+
 #mohe-rili{
     position: relative;
     zoom: 1;
     overflow: hidden
 }
-/*#mohe-rili .mh-content{*/
-    /*padding-left: 74px;*/
-    /*min-height: 64px;*/
-    /*font-size: 14px;*/
-    /*background: url(https://p.ssl.qhimg.com/t019ae924a2aaaebcc5.png) left top no-repeat*/
-/*}*/
+
 #mohe-rili .mh-content p{
     padding-bottom: 5px
 }
@@ -625,15 +568,7 @@ a em{
     height: 16px;
     line-height: 15px
 }
-/*#mohe-rili .mh-op a{*/
-    /*display: inline-block;*/
-    /*height: 16px;*/
-    /*line-height: 15px;*/
-    /*padding-left: 18px;*/
-    /*font-size: 13px;*/
-    /*text-decoration: none;*/
-    /*background: url(https://p.ssl.qhimg.com/t019ae924a2aaaebcc5.png) 0 -126px no-repeat*/
-/*}*/
+
 #mohe-rili .mh-op a.mh-op-fold{
     display: none;
     background-position:0 -89px
@@ -661,14 +596,7 @@ a em{
     height: 425px;
     z-index: 0
 }
-/*#mohe-rili .mh-rili-foot .mh-rili-holiday{*/
-    /*border: 1px solid #d2d2d2;*/
-    /*border-top: 0;*/
-    /*padding:8px 10px 8px;*/
-    /*color:#666;*/
-    /*line-height:21px;*/
-    /*background-color:#fafafa*/
-/*}*/
+
 #mohe-rili .mh-rili-holiday span{
     color:#3eaf0e
 }
@@ -861,17 +789,31 @@ a em{
     font-size: 14px;
     font-weight: bold;
 }
+.birthday-more {
+    font-size: 12px;
+    color: red!important;
+}
+.birthday-group {
+    text-align: center;
+}
+/*#birthday-modal {*/
+    /*width: 200px;*/
+/*}*/
+
+#birthday-modal .modal-header {
+    color: white;
+    background-color: #FF7680;
+}
+.birthday-bless i{
+   padding-left: 20px;
+    color: red;
+}
 
 #mohe-rili .mh-rili-widget .mh-time-panel .mh-time-monitor-title,
 #mohe-rili .mh-rili-widget .mh-time-panel .mh-time-monitor{
     /*float:left;*/
     font-size: 22px;
 }
-/*#mohe-rili .mh-rili-widget .mh-time-panel .mh-time-monitor-title{*/
-    /*margin-right:5px*/
-/*}*/
-
-
 #mohe-rili .mh-rili-widget .mh-control-bar .mh-list{
     position:absolute;
     top:20px;
@@ -915,9 +857,6 @@ a em{
     color:#fff
 }
 
-/*#mohe-rili .mh-rili-widget .mh-goupiao-dates{*/
-    /*height:479px*/
-/*}*/
 #mohe-rili .mh-rili-widget .mh-dates .mh-last{
     border-right:0
 }
@@ -1081,20 +1020,7 @@ a em{
 #mohe-rili .mh-rili-widget .mh-label-his a{
     color:#999
 }
-/*#mohe-rili .mh-rili-widget .mh-linktail-goupiao{*/
-    /*position:absolute;*/
-    /*bottom:0;*/
-    /*margin:0;*/
-    /*padding:0;*/
-    /*width:100%;*/
-    /*height:38px;*/
-    /*line-height:38px;*/
-    /*background:#f6f6f6;*/
-    /*text-align:center*/
-/*}*/
-/*#mohe-rili .mh-rili-widget .mh-linktail-goupiao a{*/
-    /*color:#3eaf0e*/
-/*}*/
+
 /*日历主面板星期头样式*/
 #mohe-rili .mh-rili-widget .mh-days-title{
     float: left;
@@ -1293,6 +1219,24 @@ a em{
         width: 128px;
         height: 180px
     }
+    /*日历生日面板*/
+    .mh-almanac-birthday {
+        font-size: 16px;
+    }
+    #birthday-list {
+        margin-top: 5px;
+        margin-left: 20px;
+        text-align: left;
+        width: 85px;
+    }
+    #birthday-list li{
+        font-size: 12px;
+    }
+    #birthday-list i{
+        float: right;
+        color: red;
+        font-size: 12px;
+    }
 }
 /*
  *屏幕宽度大于768样式表
@@ -1397,6 +1341,25 @@ a em{
     #mohe-rili .mh-rili-widget .mh-almanac-base{
         width: 128px;
         height: 180px
+    }
+    /*日历生日面板*/
+    .mh-almanac-birthday {
+        font-size: 16px;
+    }
+    #birthday-list {
+        margin-top: 10px;
+        margin-left: 20px;
+        text-align: left;
+        width: 85px;
+    }
+    #birthday-list li{
+        padding: 1px 0;
+        font-size: 14px;
+    }
+    #birthday-list i{
+        float: right;
+        color: red;
+        font-size: 14px;
     }
 }
 /*
@@ -1503,6 +1466,25 @@ a em{
     #mohe-rili .mh-rili-widget .mh-almanac-base{
         width: 128px;
         height: 180px
+    }
+    /*日历生日面板*/
+    .mh-almanac-birthday {
+        font-size: 16px;
+    }
+    #birthday-list {
+        margin-top: 5px;
+        margin-left: 20px;
+        text-align: left;
+        width: 85px;
+    }
+    #birthday-list li{
+        font-size: 12px;
+        padding: 0;
+    }
+    #birthday-list i{
+        float: right;
+        color: red;
+        font-size: 12px;
     }
 }
 /*
@@ -1614,10 +1596,18 @@ a em{
     .mh-almanac-birthday {
         font-size: 16px;
     }
+    #birthday-list {
+        margin-top: 10px;
+        margin-left: 20px;
+        text-align: left;
+        width: 85px;
+    }
     #birthday-list li{
+        padding: 1px 0;
         font-size: 14px;
     }
     #birthday-list i{
+        float: right;
         color: red;
         font-size: 14px;
     }

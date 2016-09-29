@@ -63,7 +63,7 @@ _loader.use("jquery, rili-widget", function(){
                 node.day = el[0].substr(6 , 2);
                 holiHash[el[1]] = node;
             }
-        };
+        }
 
         RiLi.action = "festival";
 

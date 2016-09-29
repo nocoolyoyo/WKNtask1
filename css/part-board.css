@@ -12,10 +12,6 @@
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-/*.hbox-5rem {*/
-    /*height: 5rem;*/
-    /*overflow:hidden;*/
-/*}*/
 #board-box i {
     display: block;
 }
@@ -34,7 +30,6 @@
     display: inline-block;
     height: 1px;
     overflow: hidden;
-    /*vertical-align: middle;*/
 }
 #board li a{
     color: #783b1e;
@@ -48,13 +43,13 @@
 
     text-decoration: none;
 }
-.flip li a{
+.flip li a span{
     display: block;
-    position:relative;
-    transition:0.6s;
-    transform-style:preserve-3d;
+    position: relative;
+    transition: 1s;
+    transform-style: preserve-3d;
 }
-.flip li a:hover {
+.flip li a span:hover {
     transform:rotateY(360deg);
 }
 /*

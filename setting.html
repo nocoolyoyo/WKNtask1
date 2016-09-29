@@ -1,10 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_cn">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>设置-商会云</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/function.css" type="text/css" rel="stylesheet">
+    <!–[if IE]>
+    <script src="js/html5.min.js"></script>
+    <![endif]–>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
+<header>
+    <nav class="navbar container">
+                <span class="left">
+                    <span class="navbar-img"><img src="img/Logo_100x100.png" alt="商会云"></span>
+                    <span class="navbar-brand kaiti">商会云体验中心</span>
+                </span>
+        <span class="right">
+                    <span class="navbar-brand navbar-welcome kaiti">您好！登录人员</span>
+                    <button id="user-setting" type="reset" class="navbar-btn btn btn-success"><i class="fa fa-cog" aria-hidden="true"></i></button>
+                    <button id="login-out" type="reset" class="navbar-btn btn btn-danger"><i class="fa fa-power-off" aria-hidden="true"></i></button>
+                </span>
+    </nav>
+</header>
 
+<main class="container">
+    <div id="setting">
+        <ul id="content-navbar" class="row">
+            <li id="content-navbar-home"><a href="index.html"><i class="fa fa-desktop"></i>桌面</a></li>
+            <li id="content-navbar-menu">
+                <ul>
+                </ul>
+            </li>
+            <li id="content-navbar-switch" ><a href="#"><i class="fa fa-columns"></i>切换</a></li>
+        </ul>
+        <div id="content-area">
+            <div class="content-area-box">
+                <form class="content-area-actionList form-inline" role="form">
+                    <div class="form-group left">
+                        <button type="button" class="btn button button-primary button-rounded">发资讯</button>
+                        <button type="button" class="btn button button-primary button-rounded">草稿箱</button>
+                    </div>
+                    <div class="form-group right">
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="9" type="text" value="" placeholder="开始日期" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        </div>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="9" type="text" value="" placeholder="结束日期" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        </div>
+                        <input  class="form-control" type="search"  name="search"  placeholder="标签/发布人">
+                        <select class="form-control">
+                            <option>筛选</option>
+                        </select>
+                        <button type="button" class="btn button button-primary button-rounded"><i class="fa fa-search button-text-icon"></i>查找</button>
+                    </div>
+                </form>
+                <table class="content-area-tableList table table-bordered table-hover table-condensed">
+                    <thead>
+                    <tr class="active">
+                        <th>ID</th>
+                        <th>标题</th>
+                        <th>发布时间</th>
+                        <th>发布人</th>
+                        <th>查看次数</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    <tr>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                        <th>待办事项1</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="content-area-pagination pagination">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">上一页</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">下一页</a></li>
+                <li><a href="#">尾页</a></li>
+            </ul>
+        </div>
+    </div>
+</main>
+<footer class="container">
+    <!--<div class="bottom">-->
+    <span>永杰科技 光越传媒 新浪闽商</span>
+    <span>客服电话：0591-62751898</span>
+    <span>技术支持：福州永杰网络科技股份有限公司</span>
+    <div>(c) 2015-2020 商会+ . All Right Reserved.   永杰科技 版权所有</div>
+    <!--</div>-->
+</footer>
 </body>
 </html>

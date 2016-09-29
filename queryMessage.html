@@ -69,6 +69,7 @@
             </div>
         </div>
         <div id="content-area-right">
+            <div class="content-area-right-box">
             <form class="content-area-actionList form-inline action-bar" role="form">
                 <div class="form-group left">
                     <button type="button" class="btn button button-primary button-rounded">录入会员</button>
@@ -76,14 +77,14 @@
                     <button type="button" class="btn button button-primary button-rounded">导出会员</button>
                 </div>
                 <div class="form-group right">
-                    <input  class="form-control" type="text"  name="search"  placeholder="名字/账号/单位">
+                    <input  class="form-control" type="search"  name="search"  placeholder="名字/单位">
                     <select class="form-control">
                         <option>筛选</option>
                     </select>
                     <button type="button" class="btn button button-primary button-rounded"><i class="fa fa-search button-text-icon"></i>查找</button>
                 </div>
             </form>
-            <table class="content-area-tableList table table-bordered table-hover">
+            <table class="content-area-tableList table table-bordered table-hover table-condensed">
                 <thead>
                 <tr>
                     <th>姓名</th>
@@ -173,6 +174,7 @@
                 </tr>
                 </tbody>
             </table>
+            </div>
             <ul class="content-area-pagination pagination">
                 <li><a href="#">首页</a></li>
                 <li><a href="#">上一页</a></li>

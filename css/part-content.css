@@ -19,7 +19,6 @@
 }
 #content-navbar {
     background-color: #d8d8d8;
-    /*border-bottom: 1px solid #b3b3b3;*/
     margin: 0;
     padding: 0;
     width: auto;
@@ -53,6 +52,10 @@
 .button-text-icon {
     margin-right: 5px;
 }
+
+/*input[type=search] {*/
+    /*width: 124px !important;*/
+/*}*/
 /*
  *描述：会员页面
  *页面：occupation.html
@@ -85,11 +88,37 @@
     #content-navbar-manage li {
         width: 50px
     }
+    #content-area {
+        width: 718px;
+        height: 600px
+    }
     #content-area-left {
         height: 600px
     }
+    #content-area-left .list-group{
+        width: 139px;
+    }
+    .content-siderbar-innerList {
+        height: 380px;
+        color: #D8D8D8;
+        overflow: auto;
+    }
     #content-area-right {
+        width: 559px;
         height: 600px
+    }
+    .content-area-right-box {
+        width: 579px;
+        height: 530px
+    }
+    #content-area-right .content-area-tableList {
+        width: 559px;
+    }
+    #content-area .content-area-tableList {
+        width: 758px;
+    }
+    .content-area-pagination ul{
+        margin: 0 auto;
     }
 }
 @media only screen and (min-width: 768px) {
@@ -111,11 +140,44 @@
     #content-navbar-menu li{
         width: 72px
     }
+    #content-area {
+        width: 718px;
+        height: 600px
+    }
     #content-area-left {
         height: 600px
     }
+    #content-area-left .list-group{
+        width: 139px;
+    }
+    .content-siderbar-innerList {
+        height: 380px;
+        color: #D8D8D8;
+        overflow: auto;
+    }
     #content-area-right {
+        width: 559px;
         height: 600px
+    }
+    .content-area-right-box {
+        width: 579px;
+        height: 530px
+    }
+    .content-area-box {
+        width: 718px;
+        height: 530px
+    }
+    #content-area-right .content-area-tableList {
+        width: 559px;
+    }
+    #content-area .content-area-tableList {
+        width: 698px;
+    }
+    .content-area-pagination ul{
+        margin: 0 auto;
+    }
+    input[type=search] {
+    width: 100px !important;
     }
 }
 @media only screen and (min-width: 992px) {
@@ -137,11 +199,44 @@
     #content-navbar-menu li{
         width: 85px
     }
+    #content-area {
+        width: 938px;
+        height: 600px
+    }
     #content-area-left {
-        height: 500px
+        height: 600px
+    }
+    #content-area-left .list-group{
+        width: 159px;
+    }
+    .content-siderbar-innerList {
+        height: 380px;
+        color: #D8D8D8;
+        overflow: auto;
     }
     #content-area-right {
-        height: 500px
+        width: 759px;
+        height: 600px
+    }
+    .content-area-right-box {
+        width: 779px;
+        height: 530px
+    }
+    .content-area-box {
+        width: 938px;
+        height: 530px
+    }
+    #content-area-right .content-area-tableList {
+        width: 759px;
+    }
+    #content-area .content-area-tableList {
+        width: 918px;
+    }
+    .content-area-pagination ul{
+        margin: 0 auto;
+    }
+    input[type=search] {
+        width: 120px !important;
     }
 }
 @media only screen and (min-width: 1200px) {
@@ -182,20 +277,24 @@
         width: 959px;
         height: 600px
     }
+    .content-area-right-box {
+        width: 959px;
+        height: 530px
+    }
+    .content-area-box {
+        width: 1138px;
+        height: 530px
+    }
     #content-area-right .content-area-tableList {
         width: 939px;
     }
     #content-area .content-area-tableList {
         width: 1118px;
     }
-    .content-area-pagination {
-        margin-top: 5px;
+    .content-area-pagination ul{
+        margin: 0 auto;
     }
-    /*
-     *描述：memberli
-     *页面：occupation.html
-     */
-    /*#search-input {*/
-        /*height: 20px;*/
-    /*}*/
+    input[type=search] {
+        width: 140px !important;
+    }
 }

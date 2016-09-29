@@ -56,6 +56,16 @@ a:active{
     padding-left: 0;
 }
 
+.modal,
+.modal-dialog,
+.modal-content {
+    overflow: hidden;
+}
+.modal-header {
+    font-size: 20px;
+    overflow: hidden;
+}
+
 ::-webkit-scrollbar-track-piece {
     background-color:#f5f5f5;
     border-left:1px solid #d2d2d2;
@@ -73,6 +83,14 @@ a:active{
 ::-webkit-scrollbar-thumb:hover {
     border:1px solid #636363;
     background-color:#929292;
+}
+table th{
+    word-wrap:break-word;
+    text-overflow:ellipsis;
+}
+table {
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 

@@ -134,34 +134,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th>待办事项1</th>
-                                    <th>
-                                        <button type="button" class="button button-raised button-caution button-circle button-tiny right">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </th>
+                                    <th><a href="#" data-toggle="modal" data-target="#backlog-modal">待办事项1</a></th>
+                                    <th><button type="button" class="button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
                                 </tr>
                                 <tr>
-                                    <th>待办事项1</th>
-                                    <th>
-                                        <button type="button" class="button button-caution button-circle button-tiny right">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </th>
+                                    <th><a href="#" data-toggle="modal" data-target="#backlog-modal">待办事项1</a></th>
+                                    <th><button type="button" class="button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
                                 </tr>
                                 <tr>
-                                    <th>待办事项1</th>
-                                    <th>
-                                        <button type="button" class="button button-caution button-circle button-tiny right">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </th>
+                                    <th><a href="#" data-toggle="modal" data-target="#backlog-modal">待办事项1</a></th>
+                                    <th><button type="button" class="button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <!-- 弹出框 -->
+                        <!-- 弹出框 -->
                 <div id="backlog-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">

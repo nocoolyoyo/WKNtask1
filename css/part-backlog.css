@@ -20,6 +20,22 @@
     overflow-y: auto;
     -ms-overflow-y: auto;
 }
+.list-group-item-transparent{
+    color: #797979;
+    background-color: transparent;
+}
+a.list-group-item-transparent.active,
+button.list-group-item-transparent.active,
+a.list-group-item-transparent.active:hover,
+button.list-group-item-transparent.active:hover,
+a.list-group-item-transparent.active:focus,
+button.list-group-item-transparent.active:focus {
+    color: #8a8a8a;
+    background-color: #ececec;
+    border-color: #313131;
+}
+
+
 @media only screen and (max-width: 768px) {
     #backlog-box {
         width: 500px;
@@ -32,10 +48,19 @@
         height: 150px;
 
     }
-    #backlog-plus {
+    #backlog-add {
         margin-top: 40px;
         margin-right: 65px;
         float: right;
+    }
+    #backlog i{
+        font-size: 20px;
+    }
+    #backlog-modal textarea {
+        height: 370px !important;
+    }
+    #backlog-modal .modal-body {
+        height: 400px !important;
     }
 }
 @media only screen and (min-width: 768px) {
@@ -50,13 +75,19 @@
         height: 150px;
 
     }
-    #backlog-plus {
+    #backlog-add {
         margin-top: 45px;
         margin-right: 72px;
         float: right;
     }
     #backlog i{
         font-size: 20px;
+    }
+    #backlog-modal textarea {
+        height: 370px !important;
+    }
+    #backlog-modal .modal-body {
+        height: 400px !important;
     }
 }
 @media only screen and (min-width: 992px) {
@@ -71,13 +102,19 @@
         height: 150px;
 
     }
-    #backlog-plus {
+    #backlog-add {
         margin-top: 40px;
         margin-right: 65px;
         float: right;
     }
     #backlog i{
         font-size: 20px;
+    }
+    #backlog-modal textarea {
+        height: 370px !important;
+    }
+    #backlog-modal .modal-body {
+        height: 400px !important;
     }
 }
 @media only screen and (min-width: 1200px) {
@@ -92,7 +129,7 @@
         height: 150px;
 
     }
-    #backlog-plus {
+    #backlog-add {
         margin-top: 45px;
         margin-right: 69px;
         float: right;
