@@ -23,7 +23,7 @@ _loader.use("jquery",function(){function l(){t.slideDown(),r.slideDown(),i=="1"&
  */
 
 _loader.remove && _loader.remove("rili-widget");
-_loader.add("rili-widget", "./js/calendar.js");//上述JS文件们已让我压缩成calendar.js
+_loader.add("rili-widget", "./js/desktop/calendar.js");//上述JS文件们已让我压缩成calendar.js
 _loader.use("jquery, rili-widget", function(){
     var RiLi = window.OB.RiLi;
     var gMsg = RiLi.msg_config,

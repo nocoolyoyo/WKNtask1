@@ -2,9 +2,9 @@
  *描述：页面初始化
  *页面：*.html
  */
-@import "part-header.css";
-@import "part-body.css";
-@import "part-footer.css";
+@import "parts/header.css";
+@import "parts/body.css";
+@import "parts/footer.css";
 html,
 body {
     margin: 0;

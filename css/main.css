@@ -1,6 +1,5 @@
 @import "public/bootstrap.min.css";
 @import "public/font-awesome.min.css";
+@import "public/bootstrap-datetimepicker.min.css";
 @import "default.css";
-@import "parts/board.css";
-@import "parts/calendar.css";
-@import "parts/backlog.css";
+@import "parts/content.css";
