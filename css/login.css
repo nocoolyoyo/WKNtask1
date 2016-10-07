@@ -69,3 +69,133 @@
     background-position: center center;
     z-index: 0;
 }
+
+.btn-green,
+.btn-red {
+    color: #fff;
+    /*text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);*/
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.btn-green:active,
+.btn-red:active,
+.btn-green.active,
+.btn-red.active {
+    color: #fff;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.btn-green.disabled,
+.btn-red.disabled,
+.btn-green[disabled],
+.btn-red[disabled],
+fieldset[disabled] .btn-green,
+fieldset[disabled] .btn-red {
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-green .badge,
+.btn-red .badge {
+    text-shadow: none;
+}
+.btn:active,
+.btn.active {
+    color: #fff;
+    background-image: none;
+}
+
+.btn-green {
+    color: #fff;
+    background-image: -webkit-linear-gradient(top, #5cb85c 0%, #419641 100%);
+    background-image:      -o-linear-gradient(top, #5cb85c 0%, #419641 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5cb85c), to(#419641));
+    background-image:         linear-gradient(to bottom, #5cb85c 0%, #419641 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff419641', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-color: #3e8f3e;
+}
+.btn-green:hover,
+.btn-green:focus {
+    color: #fff;
+    background-color: #419641;
+    background-position: 0 -15px;
+}
+.btn-green:active,
+.btn-green.active {
+    color: #fff;
+    background-color: #419641;
+    border-color: #3e8f3e;
+}
+.btn-green.disabled,
+.btn-green[disabled],
+fieldset[disabled] .btn-green,
+.btn-green.disabled:hover,
+.btn-green[disabled]:hover,
+fieldset[disabled] .btn-green:hover,
+.btn-green.disabled:focus,
+.btn-green[disabled]:focus,
+fieldset[disabled] .btn-green:focus,
+.btn-green.disabled.focus,
+.btn-green[disabled].focus,
+fieldset[disabled] .btn-green.focus,
+.btn-green.disabled:active,
+.btn-green[disabled]:active,
+fieldset[disabled] .btn-green:active,
+.btn-green.disabled.active,
+.btn-green[disabled].active,
+fieldset[disabled] .btn-green.active {
+    color: #fff;
+    background-color: #419641;
+    background-image: none;
+}
+
+.btn-red {
+    color: #fff;
+    background-image: -webkit-linear-gradient(top, #d9534f 0%, #c12e2a 100%);
+    background-image:      -o-linear-gradient(top, #d9534f 0%, #c12e2a 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#d9534f), to(#c12e2a));
+    background-image:         linear-gradient(to bottom, #d9534f 0%, #c12e2a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9534f', endColorstr='#ffc12e2a', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    background-repeat: repeat-x;
+    border-color: #b92c28;
+}
+.btn-red:hover,
+.btn-red:focus {
+    color: #fff;
+    background-color: #c12e2a;
+    background-position: 0 -15px;
+}
+.btn-red:active,
+.btn-red.active {
+    color: #fff;
+    background-color: #c12e2a;
+    border-color: #b92c28;
+}
+.btn-red.disabled,
+.btn-red[disabled],
+fieldset[disabled] .btn-red,
+.btn-red.disabled:hover,
+.btn-red[disabled]:hover,
+fieldset[disabled] .btn-red:hover,
+.btn-red.disabled:focus,
+.btn-red[disabled]:focus,
+fieldset[disabled] .btn-red:focus,
+.btn-red.disabled.focus,
+.btn-red[disabled].focus,
+fieldset[disabled] .btn-red.focus,
+.btn-red.disabled:active,
+.btn-red[disabled]:active,
+fieldset[disabled] .btn-red:active,
+.btn-red.disabled.active,
+.btn-red[disabled].active,
+fieldset[disabled] .btn-red.active {
+    color: #fff;
+    background-color: #c12e2a;
+    background-image: none;
+}

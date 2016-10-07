@@ -1,5 +1,8 @@
 @import "public/bootstrap.min.css";
+@import "public/smt-bootstrap.css";
+@import "public/bootstrap-table.min.css";
 @import "public/font-awesome.min.css";
 @import "public/bootstrap-datetimepicker.min.css";
+@import "public/bootstrap-editable.css";
 @import "default.css";
 @import "parts/content.css";

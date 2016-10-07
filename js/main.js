@@ -60,8 +60,29 @@
                 }
             }
         }
+
+        /*
+         *  功能：侧边栏初始化
+         *  Created by nocoolyoyo 2016/9/28.
+         */
+        function initSidebar(){
+            $('#sidebar-switch').on('click touchstart',function() {
+                $('#sidebar-left').toggleClass('active');
+            });
+
+            $('.sidebar-overlay').on('click touchstart',function() {
+                $('.sidebar,.sidebar-container').removeClass('active');
+            });
+        }
+
+
+
         loadMenu();
         renderMenu();
+        initSidebar();
+
+
+
     });
 }());
 
