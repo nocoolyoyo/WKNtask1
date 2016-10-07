@@ -2,27 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4285115-6475-4758-893d-36e86dd679ec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/clear.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/public/bootstrap-editable.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/public/bootstrap-table.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/public/smt-bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/occupation.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/occupation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/bootstrap-editable.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/bootstrap-table-editable.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/bootstrap-table.min.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/public/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/background.jpg" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/image.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/occupation-profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/default.css" afterPath="$PROJECT_DIR$/css/default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/desktop.css" afterPath="$PROJECT_DIR$/css/desktop.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/login.css" afterPath="$PROJECT_DIR$/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/content.css" afterPath="$PROJECT_DIR$/css/parts/content.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.html" afterPath="$PROJECT_DIR$/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/occupation.js" afterPath="$PROJECT_DIR$/js/occupation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/occupation.html" afterPath="$PROJECT_DIR$/occupation.html" />
     </list>
     <ignored path="mission1.iws" />
@@ -44,14 +28,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="occupation.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="occupation.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/occupation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="97" column="16" selection-start-line="97" selection-start-column="16" selection-end-line="109" selection-end-column="26" />
+            <state relative-caret-position="396">
+              <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="136" />
               <folding>
-                <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="occupation-profile.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/occupation-profile.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="811">
+              <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,7 +53,7 @@
       <file leaf-file-name="desktop.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/desktop.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-110">
+            <state relative-caret-position="22">
               <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
               <folding />
             </state>
@@ -79,8 +73,8 @@
       <file leaf-file-name="content.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/parts/content.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+            <state relative-caret-position="461">
+              <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -101,7 +95,7 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
+            <state relative-caret-position="247">
               <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding />
             </state>
@@ -118,21 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="occupation.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="occupation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/occupation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2108">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="70" selection-end-column="15" />
+            <state relative-caret-position="264">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -153,10 +137,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="tsconfig.json" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -166,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/queryActivity.html" />
         <option value="$PROJECT_DIR$/原数据/js/tsconfig.json" />
         <option value="$PROJECT_DIR$/js/tsconfig.json" />
         <option value="$PROJECT_DIR$/js/menuList.json" />
@@ -212,11 +195,12 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/public/smt-bootstrap.css" />
         <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/css/parts/content.css" />
         <option value="$PROJECT_DIR$/css/default.css" />
         <option value="$PROJECT_DIR$/data/occupation.json" />
         <option value="$PROJECT_DIR$/js/occupation.js" />
         <option value="$PROJECT_DIR$/occupation.html" />
+        <option value="$PROJECT_DIR$/css/parts/content.css" />
+        <option value="$PROJECT_DIR$/occupation-profile.html" />
       </list>
     </option>
   </component>
@@ -261,6 +245,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -392,7 +377,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -405,18 +389,18 @@
     <property name="js-jscs-nodeInterpreter" value="F:\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Project\WKNtask1\css\public" />
-      <recent name="D:\Project\WKNtask1\img" />
-      <recent name="D:\Project\WKNtask1\js\public" />
-      <recent name="D:\Project\WKNtask1" />
-      <recent name="D:\Project\WKNtask1\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Project\WKNtask1\img" />
       <recent name="D:\Project\WKNtask1\js\public" />
       <recent name="D:\Project\WKNtask1\css\parts" />
       <recent name="D:\Project\WKNtask1\css" />
+      <recent name="D:\Project\WKNtask1\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Project\WKNtask1\img" />
+      <recent name="D:\Project\WKNtask1\css\public" />
+      <recent name="D:\Project\WKNtask1\js\public" />
+      <recent name="D:\Project\WKNtask1" />
       <recent name="D:\Project\WKNtask1\js" />
     </key>
   </component>
@@ -523,11 +507,12 @@
       <workItem from="1475751989856" duration="593000" />
       <workItem from="1475764852320" duration="23064000" />
       <workItem from="1475828448952" duration="2393000" />
+      <workItem from="1475846905238" duration="4616000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261789000" />
+    <option name="totallyTimeSpent" value="266405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -570,7 +555,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/bootstrap-datetimepicker.js" />
     <entry file="file://$PROJECT_DIR$/js/bootstrap-datetimepicker.zh-CN.js" />
     <entry file="file://$PROJECT_DIR$/js/information.js" />
     <entry file="file://$PROJECT_DIR$/js/bootstrap-datetimepicker.min.js" />
@@ -805,6 +789,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/occupation-profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="811">
+          <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/occupation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/parts/header.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -813,17 +813,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/occupation.json">
+    <entry file="file://$PROJECT_DIR$/css/login.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="71" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
+        <state relative-caret-position="832">
+          <caret line="200" column="1" selection-start-line="200" selection-start-column="1" selection-end-line="200" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
+        <state relative-caret-position="247">
           <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
           <folding />
         </state>
@@ -841,23 +841,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/parts/content.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        <state relative-caret-position="461">
+          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/login.css">
+    <entry file="file://$PROJECT_DIR$/data/occupation.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="200" column="1" selection-start-line="200" selection-start-column="1" selection-end-line="200" selection-end-column="1" />
+        <state relative-caret-position="22">
+          <caret line="1" column="71" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/desktop.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
+        <state relative-caret-position="22">
           <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
           <folding />
         </state>
@@ -865,19 +865,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/occupation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="97" column="16" selection-start-line="97" selection-start-column="16" selection-end-line="109" selection-end-column="26" />
+        <state relative-caret-position="396">
+          <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="136" />
           <folding>
-            <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/occupation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2108">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

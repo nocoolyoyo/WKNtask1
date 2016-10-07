@@ -17,7 +17,7 @@
                 idField: "id",
                 // pagination: true,
                 // sidePagination: "server",
-                toolbar: "#table-occupation-toolbar",
+                toolbar: "#table-toolbar",
                 showColumns: true,
                 showToggle: true,
                 detailView: true,

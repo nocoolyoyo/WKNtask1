@@ -60,22 +60,17 @@
  *描述：会员页面
  *页面：occupation.html
  */
-#content-area-left .list-group,
-#content-area-left .list-group-item:first-child,
-#content-area-left .list-group-item:last-child {
-    text-align: center;
-    border-radius: 0;
-}
-#content-area,
-#content-area-left,
-#content-area-right,
-#content-siderbar-menuList {
+
+#content-area {
 
     float: left;
     margin: 0 auto;
 }
-.content-area-actionList{
+#table-toolbar{
     height: 35px;
+}
+#occupation-profile {
+    margin: 10px 0;
 }
 /*.content-area-actionList,*/
 /*.content-area-tableList,*/
@@ -272,25 +267,6 @@
         width: 1138px;
         height: 600px
     }
-    /*#content-area-left {*/
-        /*height: 600px*/
-    /*}*/
-    /*#content-area-left .list-group{*/
-        /*width: 179px;*/
-    /*}*/
-    /*.content-siderbar-innerList {*/
-        /*height: 380px;*/
-        /*color: #D8D8D8;*/
-        /*overflow: auto;*/
-    /*}*/
-    /*#content-area-right {*/
-        /*width: 959px;*/
-        /*height: 600px*/
-    /*}*/
-    /*.content-area-right-box {*/
-        /*width: 959px;*/
-        /*height: 530px*/
-    /*}*/
     .content-area-box {
         width: 1138px;
         height: 530px
