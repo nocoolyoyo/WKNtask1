@@ -1,0 +1,43 @@
+/*
+ *描述：头部导航条
+ *页面：*.html
+ */
+header {
+    height: 60px;
+    background-color: rgba(0, 0, 0, .6);
+    border: 1px solid rgba(0,0,0,.2);
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -moz-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
+    margin: 0 auto;
+}
+nav {
+    height: 58px;
+    margin: 0 auto;
+}
+
+nav span {
+    display: inline-block;
+    float: left;
+    color: white;
+}
+.navbar-brand {
+    font-size: 24px;
+}
+.navbar-welcome {
+    font-size: 18px;
+}
+.nav span {
+    font-size: 20px;
+}
+.nav button {
+    height: 40px;
+    width: 40px;
+}
+nav img {
+    margin-top:5px;
+    height: 45px;
+}

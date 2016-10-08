@@ -294,20 +294,7 @@
     .content-area-pagination ul{
         margin: 0 auto;
     }
-    .table-small {
-        width: 939px;
-    }
-    .table-normal{
-        width: 1118px;
-        margin: 0 auto;
-        overflow: auto;
-    }
     input[type=search] {
         width: 140px !important;
-    }
-
-    .content-occupation-add {
-        margin: 10px auto;
-        width: 800px;
     }
 }

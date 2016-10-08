@@ -1,0 +1,147 @@
+/*
+ *描述：主页待办事项板
+ *页面：index.html
+ */
+#backlog-box {
+    margin: 0 auto;
+    text-align: center;
+    background:url("../img/backlog.png") no-repeat;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+#backlog {
+    margin: auto;
+    overflow: auto;
+}
+#backlog-modal textarea {
+    resize: none;
+    overflow-y: auto;
+    -ms-overflow-y: auto;
+}
+.list-group-item-transparent{
+    color: #797979;
+    background-color: transparent;
+}
+a.list-group-item-transparent.active,
+button.list-group-item-transparent.active,
+a.list-group-item-transparent.active:hover,
+button.list-group-item-transparent.active:hover,
+a.list-group-item-transparent.active:focus,
+button.list-group-item-transparent.active:focus {
+    color: #8a8a8a;
+    background-color: #ececec;
+    border-color: #313131;
+}
+
+
+@media only screen and (max-width: 768px) {
+    #backlog-box {
+        width: 500px;
+        height: 265px;
+    }
+    #backlog {
+        position: absolute;
+        margin: 100px 0 0 60px;
+        width: 380px;
+        height: 150px;
+
+    }
+    #backlog-add {
+        margin-top: 40px;
+        margin-right: 65px;
+        float: right;
+    }
+    #backlog i{
+        font-size: 20px;
+    }
+    #backlog-modal textarea {
+        height: 370px !important;
+    }
+    #backlog-modal .modal-body {
+        height: 400px !important;
+    }
+}
+@media only screen and (min-width: 768px) {
+    #backlog-box {
+        width: 580px;
+        height: 300px;
+    }
+    #backlog {
+        position: absolute;
+        margin: 100px 0 0 60px;
+        width: 450px;
+        height: 150px;
+
+    }
+    #backlog-add {
+        margin-top: 45px;
+        margin-right: 72px;
+        float: right;
+    }
+    #backlog i{
+        font-size: 20px;
+    }
+    #backlog-modal textarea {
+        height: 370px !important;
+    }
+    #backlog-modal .modal-body {
+        height: 400px !important;
+    }
+}
+@media only screen and (min-width: 992px) {
+    #backlog-box {
+        width: 500px;
+        height: 265px;
+    }
+    #backlog {
+        position: absolute;
+        margin: 100px 0 0 60px;
+        width: 380px;
+        height: 150px;
+
+    }
+    #backlog-add {
+        margin-top: 40px;
+        margin-right: 65px;
+        float: right;
+    }
+    #backlog i{
+        font-size: 20px;
+    }
+    #backlog-modal textarea {
+        height: 370px !important;
+    }
+    #backlog-modal .modal-body {
+        height: 400px !important;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    #backlog-box {
+        width: 580px;
+        height: 300px;
+    }
+    #backlog {
+        position: absolute;
+        margin: 100px 0 0 60px;
+        width: 450px;
+        height: 150px;
+
+    }
+    #backlog-add {
+        margin-top: 45px;
+        margin-right: 69px;
+        float: right;
+    }
+    #backlog i{
+        margin-top: 5px;
+        font-size: 15px;
+    }
+    #backlog-modal textarea {
+        height: 390px !important;
+    }
+    #backlog-modal .modal-body {
+        height: 420px !important;
+    }
+}

@@ -62,6 +62,166 @@
         }
         loadMenu();
         renderMenu();
+
+
+
+
+
+        $('#table-information').bootstrapTable({
+            columns: [ {
+                field: 'state',
+                checkbox: true
+
+            },{
+                field: 'id',
+                sortable: true,
+                title: '姓名'
+            },{
+                field: 'phone',
+                sortable: true,
+                title: '手机号'
+            }, {
+                field: 'company',
+                sortable: true,
+                title: '所在单位',
+                editable: {
+                    type: 'text',
+                    title: '所在单位',
+                    validate: function (value) {
+                        value = $.trim(value);
+                        if (!value) {
+                            return 'This field is required';
+                        }
+                        if (!/^\$/.test(value)) {
+                            return 'This field needs to start width $.'
+                        }
+                        var data = $table.bootstrapTable('getData'),
+                            index = $(this).parents('tr').data('index');
+                        console.log(data[index]);
+                        return '';
+                    }
+                }
+            },  {
+                field: 'position',
+                sortable: true,
+                title: '单位职务'
+            }, {
+                field: 'position_shanghui',
+                sortable: true,
+                title: '商会职务'
+            }],
+            data: [{
+                id: 1,
+
+                phone: 'Item 1wwwwwwwww',
+                company: '$1wwwwwwwwwwwwwwwww',
+                position: '哈哈wwwwwww',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }, {
+                id: 1,
+                phone: 'Item 1',
+                company: '$1',
+                position: '哈哈',
+                position_shanghui: '呵呵'
+            }],
+            pageNumber: 1,
+            pageSize: 10,
+            pagination: true,
+            pageList: [10, 25, 50, 100, "所有"],
+            smartDisplay: true,
+            detailView: true,
+            search: true
+        });
     });
 }());
 

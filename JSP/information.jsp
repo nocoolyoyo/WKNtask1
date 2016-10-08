@@ -15,9 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <%@ include file="script.jsp"%>
 
         <link href="<%=basePath%>css/function.css" type="text/css" rel="stylesheet">
-        <script src="<%=basePath%>js/datetimepicker.min.js"></script>
-        <script src="<%=basePath%>js/datetimepicker-init.js"></script>
-        <script src="<%=basePath%>js/main.js"></script>
+
     </head>
     <body>
     <%@ include file="header.jsp"%>
@@ -174,6 +172,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </main>
 
         <%@ include file="footer.jsp"%>
+        <script src="<%=basePath%>js/datetimepicker.min.js"></script>
+                <script src="<%=basePath%>js/datetimepicker-init.js"></script>
+                <script src="<%=basePath%>js/main.js"></script>
 
     </body>
 </html>

@@ -1,0 +1,171 @@
+/*
+ *描述：主页菜单板
+ *页面：index.html
+ */
+
+#board-box {
+    margin: 0 auto;
+    text-align: center;
+    background:url("../img/board.png") no-repeat;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+#board-box i {
+    display: block;
+}
+#board-box ul {
+    padding: 0;
+}
+
+#board-box h2 {
+    vertical-align: middle;
+    display: inline-block;
+    color: #686868;
+    font-weight: normal;
+}
+.board-title b{
+    background: #b8b8b8;
+    display: inline-block;
+    height: 1px;
+    overflow: hidden;
+}
+#board li a{
+    color: #783b1e;
+    font-size: 14px;
+}
+#board li a,
+#board li a:link,
+#board li a:visited,
+#board li a:hover,
+#board li a:active{
+
+    text-decoration: none;
+}
+.flip li a span{
+    display: block;
+    position: relative;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+.flip li a span:hover {
+    transform:rotateY(360deg);
+}
+/*
+ *屏幕宽度小于768样式表
+ */
+@media only screen and (max-width: 768px) {
+    #board-box {
+        width: 480px;
+        height: 650px
+    }
+    #board-box i {
+        font-size: 40px;
+    }
+    #board-box h2 {
+        font-size: 24px;
+    }
+    .board-title:first-child{
+        margin-top: 60px;
+    }
+    .board-title {
+        margin-top: 30px;
+    }
+    .board-title b{
+        width: 180px;
+    }
+    #board li {
+        font-weight: bold;
+        padding: 20px 30px;
+        line-height: 20px;
+    }
+}
+/*
+ *屏幕宽度大于768样式表
+ */
+@media only screen and (min-width: 768px) {
+    #board-box {
+        width:  550px;
+        height: 850px
+    }
+    #board-box i {
+        font-size: 50px;
+    }
+    #board-box h2 {
+        font-size: 24px;
+    }
+    .board-title:first-child{
+        margin-top: 60px;
+    }
+    .board-title {
+        margin-top: 30px;
+    }
+    .board-title b{
+        width: 200px;
+    }
+    #board li {
+        font-weight: bold;
+        padding: 38px;
+        line-height: 20px;
+    }
+}
+/*
+ *屏幕宽度大于992样式表
+ */
+@media only screen and (min-width: 992px) {
+    #board-box {
+        width: 480px;
+        height: 780px
+    }
+    #board-box i {
+        font-size: 40px;
+    }
+    #board-box h2 {
+        font-size: 24px;
+    }
+    .board-title:first-child{
+        margin-top: 60px;
+    }
+    .board-title {
+        margin-top: 30px;
+    }
+    .board-title b{
+        width: 180px;
+    }
+    #board li {
+        font-weight: bold;
+        padding: 20px 30px;
+        line-height: 20px;
+    }
+}
+/*
+ *屏幕宽度大于1200样式表
+ */
+@media only screen and (min-width: 1200px) {
+    #board-box {
+        width:  550px;
+        height: 840px
+    }
+    #board-box i {
+        font-size: 50px;
+    }
+    #board-box h2 {
+        font-size: 24px;
+    }
+    .board-title:first-child {
+        margin-top: 60px;
+    }
+    .board-title {
+        margin-top: 30px;
+    }
+    .board-title b{
+        width: 200px;
+    }
+    #board li {
+        font-weight: bold;
+        padding: 38px;
+        line-height: 20px;
+    }
+
+}

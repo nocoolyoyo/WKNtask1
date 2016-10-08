@@ -84,9 +84,13 @@ a:active{
     border:1px solid #636363;
     background-color:#929292;
 }
-
+table th{
+    word-wrap:break-word;
+    text-overflow:ellipsis;
+}
 table {
-    overflow-y: auto;
+    white-space:nowrap;
+    overflow:hidden;
 }
 
 
