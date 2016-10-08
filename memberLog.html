@@ -3,21 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>会员日志-商会云</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" type="text/css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/function.css" type="text/css" rel="stylesheet">
+    <link href="img/Logo_25x25.png" rel="shortcut icon">
 
-    <!–[if IE]>
-    <script src="js/html5.min.js"></script>
-    <![endif]–>
-
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/menuData.js"></script>
-    <script src="js/main.js"></script>
+    <link href="css/main.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -36,7 +27,6 @@
 
 <main class="container">
     <div id="content">
-
         <ul id="content-navbar" class="row">
             <li id="content-navbar-home"><a href="index.html"><i class="fa fa-desktop"></i>桌面</a></li>
             <li id="content-navbar-menu">
@@ -45,106 +35,13 @@
             </li>
             <li id="content-navbar-switch" ><a href="#"><i class="fa fa-columns"></i>切换</a></li>
         </ul>
-        <div id="content-area">
-            <div class="content-area-box">
-            <table class="content-area-tableList table table-bordered table-hover table-condensed">
-                <thead>
-                <tr>
-                    <th>用户账号</th>
-                    <th>用户名称</th>
-                    <th>修改时间</th>
-                    <th>修改内容</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                </tbody>
-            </table>
+
+            <div id="content-area">
+                <div class="content-area-box">
+                    <table id="table"></table>
+                </div>
+            </div>
         </div>
-            <ul class="content-area-pagination pagination">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">上一页</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">下一页</a></li>
-                <li><a href="#">尾页</a></li>
-            </ul>
-        </div>
-    </div>
 </main>
 
 <footer class="container">
@@ -155,5 +52,21 @@
     <div>(c) 2015-2020 商会+ . All Right Reserved.   永杰科技 版权所有</div>
     <!--</div>-->
 </footer>
+<!–[if IE]>
+<script src="js/public/html5.min.js"></script>
+<![endif]–>
+
+<script src="js/public/jquery-1.12.4.min.js"></script>
+<script src="js/public/bootstrap.min.js"></script>
+<script src="js/public/menuData.js"></script>
+
+
+<script src="js/public/bootstrap-table.min.js"></script>
+<script src="js/public/bootstrap-table-zh-CN.js"></script>
+<script src="js/public/bootstrap-table-editable.min.js"></script>
+<script src="js/public/bootstrap-editable.min.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/memberLog.js"></script>
 </body>
 </html>

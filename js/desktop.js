@@ -114,19 +114,32 @@
          *  页面：*
          *  Created by nocoolyoyo 2016/9/29.
          */
+
         function showBacklogDetail() {
+
+            // console.log(getIndexOfBacklog())
             console.log("详细备忘录");
         }
         $('#backlog-modal').on('show.bs.modal', showBacklogDetail);
-        /*
-         *  功能：备忘录添加
-         *  页面：*
-         *  Created by nocoolyoyo 2016/9/29.
-         */
+
+
+
+    /*
+     *  功能：备忘录添加
+     *  页面：*
+     *  Created by nocoolyoyo 2016/9/29.
+     */
         function addBacklog() {
             console.log("添加备忘录");
         }
-        $('#backlog-add-submit').on('click', addBacklog);
+        $('#backlog-add').on('click', addBacklog);
+
+
+
+        function addBacklog() {
+            console.log("添加备忘录");
+        }
+
 
         /*
          *  功能：备忘录删除
@@ -140,6 +153,11 @@
         $('.backlog-delete').on('click', deleteBacklog);
     });
 }());
+
+
+
+
+
 
 
 

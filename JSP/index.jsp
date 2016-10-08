@@ -1,25 +1,82 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <!DOCTYPE html>
 <html lang="zh_cn">
 <head>
     <title>菜单-商会云</title>
-
     <%@ include file="meta.jsp"%>
-    <%@ include file="link.jsp"%>
-    <%@ include file="script.jsp"%>
 
-    <link href="css/desktop.css" type="text/css" rel="stylesheet">
-    <script src="js/calendar-init.js"></script>
-    <script src="js/calendar-birthday.js"></script>
-    <script src="js/desktop.js"></script>
+    <link href="<%=basePath%>css/desktop.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+    	$(function(){
+    		$.ajax({
+    			url:'<%=basePath%>admin/todo/findMemor.shtml',
+    			type:'post',
+    			dataType:'json',
+    			success:function(ret){
+    				if(ret.STATUS =="0"){
+    					var name="";
+    					for (var int = 0; int < ret.ACTIVITY.length; int++) {
+							name +="<tr><th  style='display:none;'>"+ret.ACTIVITY[int].MEMORID+"</th><th onclick='updatebeiwang("+ret.ACTIVITY[int].MEMORID+");'>"+ret.ACTIVITY[int].CONTENT+"</th><th><a href='#' onclick='deletebeiwang("+ret.ACTIVITY[int].MEMORID+",this)'><i class='fa fa-minus-circle'></i></a></th></tr>";
+						}
+    					$("#todo").append(name);
+    				}
+    			}
+    		});
+    	});
+    	//点击弹出框
+    	function updatebeiwang(memorId){
+    		alert(memorId);
+    	}
+    	//删除备忘
+    	function deletebeiwang(memorId,tr){
+    		$.ajax({
+    			url:'<%=basePath%>admin/todo/deleteMemor.shtml?MEMORID='+memorId,
+    			type:'post',
+    			dataType:'json',
+    			success:function(ret){
+    				if(ret.STATUS =="0"){
+    					alert("删除成功!");
+    					$(tr).parent().parent().remove();
+    				}
+    			}
+    		});
+    	}
+    	//祝福
+    	function blessingSMS(usid){
+	    	if(confirm("确认祝福")) {
+	    		$.ajax({
+					url: '<%=basePath%>admin/menu/blessingSMS.shtml',
+					dataType: 'json',
+					type: 'post',
+					data:{
+						"USID":usid
+					},
+					success:function(data){
+						if(data.status != "0"){
+							alert("祝福失败");
+						}else{
+							alert("祝福成功");
+						}
+						return;
+					},
+					error: function(msg){
+						alert("祝福失败");
+					}
+				});
+			} else {
+
+			}
+    	}
+    </script>
 </head>
 <body>
 
-    <%@ include file="header.jsp"%>
+	<%@ include file="header.jsp"%>
 
     <main class="container">
         <div class="row">
@@ -42,8 +99,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="col-xs-12 col-md-6 right">
                 <div id="calendar-box">
                     <div id="calendar">
-                        <!--<div id="so_top">-->
-                        <!--</div>-->
                         <ul id="m-result" class="result">
                             <li id="first" class="res-list">
                             <div id="mohe-rili" class="g-mohe"  data-mohe-type="rili">
@@ -109,25 +164,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                     </div>
                                                     <div class="mh-almanac-base mh-almanac-main"></div>
                                                     <div class="mh-almanac-birthday">生日</div>
-                                                    <div class="birthday-list"></div>
+
+                                                     <ul id="birthday-list">
+                                                        <li>成某某<a href="#" class="birthday-bless"><i class="fa fa-birthday-cake"></i></a></li>
+                                                        <li>成某某<a href="#" class="birthday-bless"><i class="fa fa-birthday-cake"></i></a></li>
+                                                        <li>成某<a href="#" class="birthday-bless"><i class="fa fa-birthday-cake"></i></a></li>
+                                                        <li class="center"><a href="#" class="birthday-more" data-toggle="modal" data-target="#birthday-modal">查看更多</a></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <span id="mh-date-y" style="display:none;">2016</span>
-                                        <script src="js/calendar-dateFestival.js">/*2016节假日清单，一年一改*/</script>
+
                                     </div>
                                 </div>
                                 <div class="mh-rili-foot" style="display:none;">
                                 </div>
                             </div>
-                            <script src="js/calendar-run.js"></script>
+
                         </li>
                         </ul>
                     </div>
                 </div>
-                <div id="backlog-box">
-                    <button id="backlog-plus" type="button" class="button button-raised button-normal button-green button-circle right" data-toggle="modal" data-target="#backlog-modal">
+                 <div id="backlog-box">
+                    <button id="backlog-add" type="button" class="button button-raised button-normal button-green button-circle right" data-toggle="modal" data-target="#backlog-modal">
                         <i class="fa fa-plus"></i>
                     </button>
                     <div id="backlog">
@@ -135,18 +196,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <tbody>
                                 <tr>
                                     <th><a href="#" data-toggle="modal" data-target="#backlog-modal">待办事项1</a></th>
-                                    <th><button type="button" class="button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
+                                    <th><button type="button" class="backlog-delete button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
                                 </tr>
                                 <tr>
                                     <th><a href="#" data-toggle="modal" data-target="#backlog-modal">待办事项1</a></th>
-                                    <th><button type="button" class="button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
+                                    <th><button type="button" class="backlog-delete button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
                                 </tr>
                                 <tr>
                                     <th><a href="#" data-toggle="modal" data-target="#backlog-modal">待办事项1</a></th>
-                                    <th><button type="button" class="button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
+                                    <th><button type="button" class="backlog-delete button button-raised button-caution button-circle button-tiny right"><i class="fa fa-minus"></i></button></th>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                 <!-- 生日信息弹出框 -->
+                <div id="birthday-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header panel">
+                                <h4 class="modal-title">今天生日</h4>
+                            </div>
+                            <div class="modal-body">
+                                <li>成某某<a href="#" class="birthday-bless" data-container="body" data-toggle="popover" data-placement="top" title="<p class='center'>确定？</p>" data-content="<button class='birthday-bless-sure btn button button-primary button-rounded'>是的</button><button id='birthday-bless-cancel' class='btn button button-rounded'>取消</button>"><i class="fa fa-birthday-cake"></i></a></li>
+                                <li>成某某<a href="#" class="birthday-bless" data-container="body" data-toggle="popover" data-placement="top" title="<p class='center'>确定？</p>" data-content="<button class='birthday-bless-sure btn button button-primary button-rounded'>是的</button><button id='birthday-bless-cancel' class='btn button button-rounded'>取消</button>"><i class="fa fa-birthday-cake"></i></a></li>
+                                <li>成某某<a href="#" class="birthday-bless" data-container="body" data-toggle="popover" data-placement="top" title="<p class='center'>确定？</p>" data-content="<button class='birthday-bless-sure btn button button-primary button-rounded'>是的</button><button id='birthday-bless-cancel' class='btn button button-rounded'>取消</button>"><i class="fa fa-birthday-cake"></i></a></li>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                         <!-- 弹出框 -->
@@ -174,8 +253,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     </main>
-
     <%@ include file="footer.jsp"%>
-
+    <%@ include file="script.jsp"%>
+    <script src="<%=basePath%>js/desktop/calendar-init.js"></script>
+    <script src="<%=basePath%>js/desktop/calendar-dateFestival.js"></script>
+    <script src="<%=basePath%>js/desktop/calendar-run.js"></script>
+    <script src="<%=basePath%>js/desktop.js"></script>
     </body>
 </html>

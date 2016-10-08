@@ -95,7 +95,7 @@ a em{
 #calendar-box {
     margin: 0 auto;
     text-align: center;
-    background:url("../img/calendar.png") no-repeat;
+    background:url("../../img/calendar.png") no-repeat;
     -moz-background-size: 100% 100%;
     -webkit-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -636,7 +636,7 @@ a em{
     font-size:0;
     line-height:32px;
     vertical-align:middle;
-    background:url(../img/calendar-loading.gif) no-repeat left top
+    background:url(../../img/calendar-loading.gif) no-repeat left top
 }
 #mohe-rili .mh-rili-ticket,
 #mohe-rili .mh-rili-ticket .mh-rili-widget{
@@ -682,7 +682,7 @@ a em{
     float:left;
     height:20px;
     position:relative;
-    background:url(../img/calendar-widge.gif) repeat-x;
+    background:url(../../img/calendar-widge.gif) repeat-x;
     border:1px solid #c9cccf;
     margin-right:5px
 }
@@ -724,7 +724,7 @@ a em{
 
 
 #mohe-rili .mh-rili-widget .mh-prev,#mohe-rili .mh-rili-widget .mh-next,#mohe-rili .mh-rili-widget .mh-trigger{
-    background:url(../img/calendar-arrow.gif) no-repeat
+    background:url(../../img/calendar-arrow.gif) no-repeat
 }
 #mohe-rili .mh-rili-widget .mh-next{
     background-position:0 -25px
@@ -768,7 +768,7 @@ a em{
     float:left;
     width:60px;
     height:20px;
-    background:url(../img/calendar-widge.gif) repeat-x;border:1px solid #c9cccf;
+    background:url(../../img/calendar-widge.gif) repeat-x;border:1px solid #c9cccf;
     text-align:center;
     cursor:pointer
 }
@@ -894,7 +894,7 @@ a em{
     width:15px;
     height:16px;
     overflow:hidden;
-    background-image:url(../img/calendar-break.gif);
+    background-image:url(../../img/calendar-break.gif);
     background-repeat:no-repeat
 }
 #mohe-rili .mh-rili-widget .mh-rest .mh-border{
@@ -1107,7 +1107,7 @@ a em{
     opacity:.6
 }
 #mohe-rili .mh-rili-widget .mh-dates-bd .mh-today{
-    background:url(../img/calendar-cursor.gif) no-repeat;
+    background:url(../../img/calendar-cursor.gif) no-repeat;
     background-position: top center
 }
 #mohe-rili .mh-rili-widget .mh-cal-main .mh-col-2{

@@ -6,7 +6,7 @@
 #board-box {
     margin: 0 auto;
     text-align: center;
-    background:url("../img/board.png") no-repeat;
+    background:url("../../img/board.png") no-repeat;
     -moz-background-size: 100% 100%;
     -webkit-background-size: 100% 100%;
     -o-background-size: 100% 100%;
