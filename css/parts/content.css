@@ -95,7 +95,9 @@
     overflow-y: auto;
     padding: 0 10px;
 }
-
+#single-toolbar {
+    margin: 12px auto;
+}
 
 /*.content-area-actionList {*/
     /*margin-bottom: 10px;*/
@@ -275,12 +277,12 @@
     }
     .content-area-box {
         width: 1138px;
-        height: 530px
+        height: 600px
     }
-    .content-area-pagination{
-        width: 1138px;
-        height: 70px
-    }
+    /*.content-area-pagination{*/
+        /*width: 1138px;*/
+        /*height: 70px*/
+    /*}*/
 
     /*#content-area-right table{*/
         /*width: 939px;*/

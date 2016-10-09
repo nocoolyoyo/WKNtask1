@@ -171,3 +171,89 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
     </body>
 </html>
+
+
+
+
+<script type="text/javascript">
+		/*$(function(){
+			var search = $("#search").val();
+			var type = $("#TYPE").val();
+			registration();//职务列表
+			allMember();//会员列表
+		});
+		//职务列表
+		function registration(){
+			$.ajax({
+        		url: '<%=basePath%>admin/member/memberRegistration.shtml',
+        		dataType: 'json',
+        		type: 'post',
+        		data:{
+
+        		},
+        		success:function(data){
+        			if(data.status == "0"){
+        				var li = "";
+        				var length = data.olist.length;
+        				for(var i=0; i<length; i++){
+        					li += "<a href='#' class='list-group-item'>"+data.olist[i].ONAME+"</a>";
+        				}
+        				if(length == 0){
+        					li += "无职务";
+        				}
+        				$(".content-siderbar-innerList").html(li);
+        				return;
+        			}
+        		},
+        		error: function(msg){
+        			$(".content-siderbar-innerList").html("错误");
+        		}
+        	});
+		}
+		//会员列表
+		function allMember(search,type){
+			$.ajax({
+        		url: '<%=basePath%>admin/member/serchAllMember.shtml',
+        		dataType: 'json',
+        		type: 'post',
+        		data:{
+        			VALUE:search,TYPE:type
+        		},
+        		success:function(data){
+        			if(data.status == "0"){
+        				var li = "";
+        				var length = data.list.length;
+        				for(var i=0; i<length; i++){
+        					li += "<tr><th><input type='checkbox'></th>"
+        						+"<th>"+data.list[i].REALNAME+"</th>"
+                                +"<th>"+data.list[i].MOBILE+"</th>"
+                                +"<th>"+data.list[i].COMPANY+"</th>"
+                                +"<th>"+data.list[i].ONAME+"</th>"
+                                +"<th>"+data.list[i].GRADE+"</th></tr>";
+        				}
+        				if(length == 0){
+        					li += "<tr>无会员信息</tr>";
+        				}
+        				$("#memberList").html(li);
+        				return;
+        			}
+        		},
+        		error: function(msg){
+        			$("#memberList").html("<tr>错误列表</tr>");
+        		}
+        	});
+		}*/
+		//会员新增
+		function occupationProfile(){
+			window.location.href = "<%=basePath%>admin/url/occupationProfile.shtml";
+		}
+		//导出会员列表
+		function querySendMemberExcel(){
+			window.location.href = "<%=basePath%>admin/member/querySendMemberExcel.shtml";
+		}
+		function searchMember(){
+			search = $("#search").val();
+			type = $("#TYPE").val();
+			allMember(search,type);
+		}
+	</script>
