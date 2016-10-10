@@ -102,6 +102,15 @@
 /*.content-area-actionList {*/
     /*margin-bottom: 10px;*/
 /*}*/
+
+
+/*
+ *描述：收支页面
+ *页面：incomeExport.html
+ */
+#modal-description {
+    height: 200px;
+}
 @media only screen and (max-width: 768px) {
     #content-navbar-daily li,
     #content-navbar-manage li {

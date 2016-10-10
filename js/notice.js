@@ -1,46 +1,41 @@
 (function(){
     $(function() {
         var $table,
-            pageNum = 0,
+            selections = [],
             $container; //默认进入页面下表，即occupation默认进入页面
 
-        $(document).on("click", "#menu > li", function() {
-            pageNum = $(this).index();
-            $container = $("#main-box");
-            switch (pageNum) {
-                case 0: $.ajax({
-                            url:"./data/queryMessage-GET.html",
-                            async: false,
-                            success:function(data)
-                            {
-                                $container.html(data);
-                            }
-                        });
-                        pjaxRefreshFunc(pageNum);   break;
-                case 1: $.ajax({
-                            url:"./data/queryMessage-SEND.html",
-                            async :false,
-                            success:function(data)
-                            {
-                                $container.html(data);
-                            }
-                        });
-                        pjaxRefreshFunc(pageNum);   break;
-            }
+        $(document).on("click", "#add", function() {
+            initNoticeCreate()
         });
 
-        $(document).on("click", "#write-queryMessage", function() {
+        $(document).on("click", "#drafts", function() {
+            initNoticeDrafts();
+        });
+
+
+        function initNoticeIndex(){
             $container = $("#main-box");
             $.ajax({
-                url:"./data/queryMessage-CREATE.html",
+                url: "./data/notice-index.html",
                 async: false,
-                success:function(data)
-                {
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (data) {
                     $container.html(data);
                 }
             });
-            initSidebar();
-            $('#newQueryMessage').summernote({
+            initTable1();
+        }
+        function initNoticeCreate(){
+            $container = $("#main-box");
+            $.ajax({
+                url: "./data/notice-create.html",
+                async: false,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (data) {
+                    $container.html(data);
+                }
+            });
+            $('#newNotice').summernote({
                 lang: 'zh-CN',
                 height: 400,
                 minHeight: 400,
@@ -57,51 +52,39 @@
                 ]
 
             });
-            $('#queryMessage-save').click(function () {
+            $('#notice-save').click(function () {
                 {
-                    var content = $('#newQueryMessage').summernote('code');
+                    var content = $('#newNotice').summernote('code');
                     console.log(content);
                 }
+            });
+            $('#back').click(function () {
+                initNoticeIndex();
             })
-
-
-        });
-
-        /*
-         *  功能：侧边栏初始化
-         *  Created by nocoolyoyo 2016/9/28.
-         */
-        function initSidebar(){
-            $('#sidebar-switch').on('click touchstart',function() {
-                $('#sidebar-left').toggleClass('active');
+        }
+        function initNoticeDrafts(){
+            $container = $("#main-box");
+            $.ajax({
+                url: "./data/notice-drafts.html",
+                async: false,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (data) {
+                    $container.html(data);
+                }
             });
-
-            $('.sidebar-overlay').on('click touchstart',function() {
-                $('.sidebar,.sidebar-container').removeClass('active');
-            });
+            initTable2();
+            $('#back').click(function () {
+                initNoticeIndex();
+            })
         }
 
-        selections = [];
-        initSidebar();
         initTable1();
 
 
         /*
-         *  功能：会员页内部导航
+         *  功能：表格初始化
          *  Created by nocoolyoyo 2016/9/28.
          */
-        function pjaxRefreshFunc(){
-            switch(pageNum) {
-                case 0: initTable1(); initSidebar();  break;
-                case 1: initTable2(); initSidebar();  break;
-            }
-        }
-
-        /*
-         *  功能：会员页表格初始化
-         *  Created by nocoolyoyo 2016/9/28.
-         */
-
         function initTable1() {
             $table = $('#table');
             $table.bootstrapTable({
