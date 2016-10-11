@@ -111,6 +111,18 @@
 #modal-description {
     height: 200px;
 }
+/*
+ *描述：短信页面
+ *页面：SMS.html
+ */
+
+.sms-progress {
+    width: 20px;
+    height: 20px;
+}
+
+
+
 @media only screen and (max-width: 768px) {
     #content-navbar-daily li,
     #content-navbar-manage li {

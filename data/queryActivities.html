@@ -2,7 +2,7 @@
 <html lang="zh_cn">
 <head>
     <meta charset="UTF-8">
-    <title>收支-商会云</title>
+    <title>签到抽奖-商会云</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -39,68 +39,54 @@
             <div id="content-area">
                 <div class="content-area-box">
                     <div id="table-toolbar" class="form-inline">
-                        <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
-                        <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#incomeExpense-modal">新增</button>
-                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                            <input class="form-control" size="9" type="text" value="" placeholder="开始日期" readonly>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                        </div>
-                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                            <input class="form-control" size="9" type="text" value="" placeholder="结束日期" readonly>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                        </div>
-                        <button id="export" type="button" class="btn btn-primary">导出</button>
+
+                        <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#queryActivities-modal">新增活动</button>
+
                     </div>
                     <table id="table"></table>
                 </div>
             </div>
         </div>
-        <div id="incomeExpense-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div id="queryActivities-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form id="form" class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form">
                         <div class="modal-header">
-                            <h4 class="modal-title">添加收支</h4>
+                            <h4 class="modal-title">新增活动</h4>
                         </div>
-                        <div class="modal-body">
-
+                        <div class="modal-body both-25">
                             <div class="form-group">
-                                <label for="incomeName" class="col-sm-2  control-label">名称：</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="incomeName" name="incomeName" placeholder="请输入名称">
-                                </div>
-                                <label for="incomeMoney" class="col-sm-2 control-label">金额：</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="incomeMoney" name="incomeMoney"  placeholder="请输入金额">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">描述：</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control"></textarea>
+                                <div class="input-group">
+                                    <div class="input-group-addon">标题</div>
+                                    <input class="form-control" type="text" placeholder="填写标题">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="incomeTime" class="col-sm-2 control-label">时间：</label>
-                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">内容</div>
+                                        <input class="form-control" type="text" placeholder="内容">
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">提示内容</div>
+                                    <input class="form-control" type="text" placeholder="提示内容">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+
                                     <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                                        <input id="incomeTime" class="form-control" size="2" type="text" value="" placeholder="日期" readonly>
+                                        <span class="input-group-addon">开始时间</span>
+                                        <input class="form-control" size="100" type="text" value="" placeholder="日期" readonly>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                                     </div>
                                 </div>
-                                <label for="incomeSelect" class="col-sm-2 control-label">类型：</label>
-                                <div class="col-sm-4">
-                                    <select class="form-control" id="incomeSelect">
-                                        <option value="1">收入</option>
-                                        <option value="2">支出</option>
-                                    </select>
-                                </div>
                             </div>
-
                         </div>
                         <div class="modal-footer">
-                            <button id="backlog-add-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled" >保存</button>
+                            <button id="submit" type="submit" class="btn button button-primary button-rounded"  data-dismiss="modal">保存</button>
                             <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
                         </div>
                     </form>
@@ -130,9 +116,8 @@
 <script src="js/public/bootstrap-table-editable.min.js"></script>
 <script src="js/public/bootstrap-editable.min.js"></script>
 <script src="js/public/datetimepicker.min.js"></script>
-<script src="js/public/bootstrapValidator.min.js"></script>
 
 <script src="js/main.js"></script>
-<script src="js/incomeExpense.js"></script>
+<script src="js/queryActivities.js"></script>
 </body>
 </html>

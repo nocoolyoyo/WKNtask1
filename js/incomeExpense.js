@@ -4,8 +4,53 @@
         var $delete;
 
 
+
+
+
         initTable();
         initTimepicker();
+        /*
+         *  功能：表单验证
+         *  Created by nocoolyoyo 2016/9/28.
+         */
+        $('#form').bootstrapValidator({
+            message: '所有值不能为空',
+            excluded: [':disabled'],
+            fields: {
+                incomeName: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入收支名称！'
+                        }
+                    }
+                },
+                incomeMoney: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入金额！'
+                        },
+                        regexp: {
+                            regexp: /^[0-9]+(.[0-9]{2})?$/,
+                            message: '请输入正确的金额！'
+                        }
+                    }
+                },
+                incomeTime: {
+                    validators: {
+                        notEmpty: {
+                            message: '请选择收支时间！'
+                        }
+                    }
+                },
+                datetimePicker: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The date is required and cannot be empty'
+                        }
+                    }
+                }
+            }
+        });
         /*
          *  功能：表格初始化
          *  Created by nocoolyoyo 2016/9/28.

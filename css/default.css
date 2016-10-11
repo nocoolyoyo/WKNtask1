@@ -36,6 +36,18 @@ body {
 .top-10 {
     margin-top: 10px;
 }
+.both-10 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.both-25 {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.both-50 {
+    margin-left: 50px;
+    margin-right: 50px;
+}
 .bottom-10 {
     margin-bottom: 10px;
 }
@@ -123,6 +135,17 @@ table {
     /*overflow:hidden;*/
 /*}*/
 
+
+/*表单验证*/
+.bv-form .help-block {
+    margin-bottom: 0;
+}
+.nav-tabs li.bv-tab-success > a {
+    color: #3c763d;
+}
+.nav-tabs li.bv-tab-error > a {
+    color: #a94442;
+}
 
 
 

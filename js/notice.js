@@ -37,9 +37,9 @@
             });
             $('#newNotice').summernote({
                 lang: 'zh-CN',
-                height: 400,
-                minHeight: 400,
-                maxHeight: 400,
+                height: 330,
+                minHeight: 330,
+                maxHeight: 330,
                 toolbar: [
                     // [groupName, [list of button]]
                     ['style', ['bold', 'italic', 'underline', 'color', 'clear']],
@@ -77,7 +77,6 @@
                 initNoticeIndex();
             })
         }
-
         initTable1();
 
 

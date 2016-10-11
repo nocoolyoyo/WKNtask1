@@ -3,22 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>短信-商会云</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="img/Logo_25x25.png" rel="shortcut icon">
+
     <link href="css/main.css" type="text/css" rel="stylesheet">
-
-    <!–[if IE]>
-    <script src="js/html5.min.js"></script>
-    <![endif]–>
-
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/menuData.js"></script>
-    <script src="js/datetimepicker.min.js"></script>
-    <script src="js/datetimepicker-init.js"></script>
-    <script src="js/main.js"></script>
 </head>
 <body>
 <header>
@@ -45,144 +35,33 @@
             </li>
             <li id="content-navbar-switch" ><a href="#"><i class="fa fa-columns"></i>切换</a></li>
         </ul>
-        <div id="content-area">
-            <div class="content-area-box">
-            <form class="content-area-actionList form-inline" role="form">
-                <div class="form-group left">
-                    <button type="button" class="btn button button-primary button-rounded">发资讯</button>
-                    <button type="button" class="btn button button-primary button-rounded">草稿箱</button>
-                </div>
-                <div class="form-group right">
-                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                        <input class="form-control" size="8" type="text" value="" placeholder="开始日期" readonly>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+        <div id="main-box">
+            <div id="content-area">
+                <div class="content-area-box">
+                    <div id="table-toolbar" class="form-inline">
+                        <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
+                        <button id="add" type="button" class="btn btn-success">发短信</button>
+                        <button id="reply" type="button" class="btn btn-primary">查看回复</button>
+                        <!--<div class="input-group">-->
+                        <div class="sms-progress progress input-group">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                60/100
+                            </div>
+                        </div>
+                        <!--</div>-->
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="9" type="text" value="" placeholder="开始日期" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                            <input class="form-control" size="9" type="text" value="" placeholder="结束日期" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <button id="search" type="button" class="btn btn-primary">查找</button>
                     </div>
-                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                        <input class="form-control" size="8" type="text" value="" placeholder="结束日期" readonly>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    </div>
-                    <input  class="form-control" type="search"  name="search"  placeholder="标签/发布人">
-                    <select class="form-control">
-                        <option>筛选</option>
-                    </select>
-                    <button type="button" class="btn button button-primary button-rounded"><i class="fa fa-search button-text-icon"></i>查找</button>
+                    <table id="table"></table>
                 </div>
-            </form>
-            <table class="content-area-tableList table table-bordered table-hover table-condensed">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>标题</th>
-                    <th>发布时间</th>
-                    <th>发布人</th>
-                    <th>查看次数</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                <tr>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                    <th>待办事项1</th>
-                </tr>
-                </tbody>
-            </table>
             </div>
-            <ul class="content-area-pagination pagination">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">上一页</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">下一页</a></li>
-                <li><a href="#">尾页</a></li>
-            </ul>
-
         </div>
     </div>
 </main>
@@ -195,5 +74,21 @@
     <div>(c) 2015-2020 商会+ . All Right Reserved.   永杰科技 版权所有</div>
     <!--</div>-->
 </footer>
+<!–[if IE]>
+<script src="js/public/html5.min.js"></script>
+<![endif]–>
+
+<script src="js/public/jquery-1.12.4.min.js"></script>
+<script src="js/public/bootstrap.min.js"></script>
+<script src="js/public/menuData.js"></script>
+<script src="js/public/bootstrap-table.min.js"></script>
+<script src="js/public/bootstrap-table-zh-CN.js"></script>
+<script src="js/public/bootstrap-table-editable.min.js"></script>
+<script src="js/public/bootstrap-editable.min.js"></script>
+<script src="js/public/datetimepicker.min.js"></script>
+
+
+<script src="js/main.js"></script>
+<script src="js/SMS.js"></script>
 </body>
 </html>
