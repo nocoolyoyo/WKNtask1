@@ -9,10 +9,26 @@
 
         initTable();
         initTimepicker();
+        initDate();
+        /*
+         *  功能：获取当前时间并对选择器赋值
+         *  Created by nocoolyoyo 2016/10/10.
+         */
+        function initDate(){
+
+            var mydate = new Date();
+            var todayDate = "" + mydate.getFullYear() + "-";
+            todayDate += (mydate.getMonth()+1) + "-";
+            todayDate += mydate.getDate();
+            $('#incomeTime').val(todayDate)
+        }
         /*
          *  功能：表单验证
          *  Created by nocoolyoyo 2016/9/28.
          */
+
+
+
         $('#form').bootstrapValidator({
             message: '所有值不能为空',
             excluded: [':disabled'],
@@ -45,7 +61,7 @@
                 datetimePicker: {
                     validators: {
                         notEmpty: {
-                            message: 'The date is required and cannot be empty'
+                            message: '时间不能为空'
                         }
                     }
                 }

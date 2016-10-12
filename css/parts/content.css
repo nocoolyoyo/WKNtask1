@@ -121,6 +121,31 @@
     height: 20px;
 }
 
+/*
+ *描述：反馈页面
+ *页面：questions-dialog.html
+ */
+#dialog-case {
+    height: 230px;
+    width: auto;
+    overflow-y: auto;
+}
+
+#questions-detail {
+    height: 120px;
+    overflow-y: auto;
+}
+/*
+ *描述：相册页面
+ *页面：album.html
+ */
+
+#album-box {
+    margin: 0 auto;
+    width: 1128px; ;
+    height: 500px;
+    overflow-y: auto;
+}
 
 
 @media only screen and (max-width: 768px) {

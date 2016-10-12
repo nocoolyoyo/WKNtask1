@@ -194,17 +194,30 @@
                     '</a>  '
                 ].join('');
             }
-            window.editEvents = {
-                'click .like': function (e, value, row, index) {
-                    alert('You click like action, row: ' + JSON.stringify(row));
-                },
-                'click .remove': function (e, value, row, index) {
-                    $table.bootstrapTable('remove', {
-                        field: 'id',
-                        values: [row.id]
-                    });
-                }
-            };
+            /*
+             *  功能：会员导入
+             *  Created by nocoolyoyo 2016/9/28.
+             */
+
+            $('#file-import').fileinput({
+                language: 'zh-CN', //设置语言
+                uploadUrl: "/FileUpload/Upload", //上传的地址
+                allowedFileExtensions : ['xls'],//接收的文件后缀,
+                maxFileCount: 1,
+                enctype: 'multipart/form-data',
+                showUpload: true, //是否显示上传按钮
+                showCaption: false,//是否显示标题
+                browseClass: "btn btn-primary", //按钮样式
+                msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+            });
+
+
+
+
+
+
+
+
         }
         function initTable2() {
             $table = $('#table');
