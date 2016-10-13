@@ -120,6 +120,14 @@
     width: 20px;
     height: 20px;
 }
+.left-box {
+    float: left;
+    width: 288px;
+}
+.right-box {
+    float: right;
+    width: 810px;
+}
 
 /*
  *描述：反馈页面
