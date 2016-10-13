@@ -24,7 +24,7 @@
         function initMotifactionCreate(){
             $container = $("#main-box");
             $.ajax({
-                url: "./data/motifaction-create.html",
+                url: "./data/motifaction-12.html",
                 async: false,
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                 success: function (data) {
@@ -41,11 +41,14 @@
                 initMotifactionIndex();
             });
 
-
             $('#upLoadImg').fileinput({
                 'language': 'zh-CN',
                 'showUpload':false,
-                'previewFileType':'any'
+                'previewFileType':'any',
+                allowedPreviewTypes: ['image'],
+                allowedFileTypes: ['image'],
+                allowedFileExtensions:  ['jpg', 'png'],
+                maxFileSize : 2000,
                     // language: 'zh-CN', //设置语言
                     // uploadUrl: uploadUrl, //上传的地址
                     // allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀
@@ -54,10 +57,6 @@
                     // browseClass: "btn btn-primary", //按钮样式
                     // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 });
-
-
-
-
         }
         initTable1();
         initTimepicker();
