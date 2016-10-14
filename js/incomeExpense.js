@@ -15,7 +15,6 @@
          *  Created by nocoolyoyo 2016/10/10.
          */
         function initDate(){
-
             var mydate = new Date();
             var todayDate = "" + mydate.getFullYear() + "-";
             todayDate += (mydate.getMonth()+1) + "-";

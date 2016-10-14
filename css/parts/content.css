@@ -122,11 +122,28 @@
 }
 .left-box {
     float: left;
-    width: 288px;
+    width: 238px;
+}
+.fixed-table-container .table-no-bordered {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    clear: both;
+    position: relative;
 }
 .right-box {
     float: right;
-    width: 810px;
+    width: 860px;
+}
+
+#SMS-content {
+    float: left;
+    margin-top: 10px;
+
+    height: 230px;
+}
+
+#footer-toolbar {
+    margin-top: 10px;
 }
 
 /*
