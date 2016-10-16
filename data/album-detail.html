@@ -1,39 +1,58 @@
 <div id="content-area">
     <div class="content-area-box">
         <div id="single-toolbar" class="form-inline">
-            <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#incomeExpense-modal">新增</button>
+            <button id="back" type="button" class="btn btn-primary">返回</button>
+            <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#upload-modal">上传图片</button>
         </div>
         <div id="album-box">
-            <div class="col-sm-3">
-                <div class="card card-link">
-                    <div class="card-image">
-                        <img src="img/image.png">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-header">某某某相册某某某相册某某某相册某某某相册某某某相册某某某相册某某某相册某某某相册</div>
-                    </div>
-                    <div class="card-extra card-content">
-                        <span><i class="fa fa-clone"></i>66</span>
-                        <span class="pull-right">2016-01-01</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card card-link">
-                    <div class="card-image">
-                        <img src="img/image.png">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-header">某某某相册</div>
-                    </div>
-                    <div class="card-extra card-content">
-                        <span><i class="fa fa-clone"></i>66</span>
-                        <span class="pull-right">2016-01-01</span>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="grid-item">-->
+                <!--<div class="card hoverable">-->
+                    <!--<a href="#">-->
+                        <!--<div class="card-image">-->
+                            <!--<img src="img/image.png">-->
+                        <!--</div>-->
+                    <!--</a>-->
+                    <!--<div class="card-content">-->
+                        <!--<div class="card-header">某某某相册</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <ul class="tiles-wrap animated" id="album-wall">
+                <!-- These are our grid blocks -->
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_1.jpg"><p>1</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_2.jpg"><p>2</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_3.jpg"><p>3</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_4.jpg"><p>4</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_5.jpg"><p>5</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_6.jpg"><p>6</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_7.jpg"><p>7</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_8.jpg"><p>8</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_9.jpg"><p>9</p></a></li>
+                <li class="hoverable"><a href="#"><img src="img/testImg/image_9.jpg"><p>9</p></a></li>
+            </ul>
 
+        </div>
+    </div>
+</div>
+<div id="upload-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form id="form" class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <h4 class="modal-title center">上传文件</h4>
+                </div>
+                <div class="modal-body  center both-25">
 
+                    <div class="form-group">
+                        <input id="file-upload" type="file" multiple="multiple">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <!--<button id="backlog-add-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled" >导入</button>-->
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

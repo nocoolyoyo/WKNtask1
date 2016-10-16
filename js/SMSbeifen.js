@@ -2,11 +2,14 @@
     $(function() {
         var $table,
             $container;
+
+
         /*页面index*/
         initSMSIndex();
         $(document).on("click", "#back", function() {
             initSMSIndex();
         });
+
 
         function initSMSIndex(){
             $container = $("#main-box");
@@ -134,45 +137,22 @@
                 }
             });
             //加载所有会员数据
-            var
+            var allMembers = [],
                 selections = [],
-                unSelected = [],
                 selected = [],
 
                 $tableMembers = $('#table-members'),
                 $tableSelected = $('#members-selected');
                 $.ajax({
                     url: "./data/occupation.json",
-                    async: false,
+                    async: true,
                     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                     success: function (data) {
-
-                        unSelected = data;
-
+                        allMembers = data;
                         // initTableMembers();
-                        // $tableMembers.bootstrapTable('load', data)
+                        $tableMembers.bootstrapTable('load', data)
                     }
                 }).done(function (data) {
-
-                    unSelected = data;
-
-                });
-
-            console.log(unSelected)
-                initClockpicker();
-                initTableMembers();
-                initMembersSelected();
-
-                $(document).on("click", "#clear", function() {
-
-                    console.log(selected)
-                    console.log(unSelected)
-                    unSelected = selected.concat(unSelected);
-                    $tableMembers.bootstrapTable('load', unSelected)
-                    $tableMembers.bootstrapTable( 'uncheckAll');
-                    selected = [];
-                    labelCreate();
-                    $tableSelected.bootstrapTable('load', selected)
 
                 });
                 $('#timer').click(function () {
@@ -185,12 +165,19 @@
                     }
                 });
 
-
+            initClockpicker();
+            initTableMembers();
+            initMembersSelected();
             /*模态框表格窗口修正*/
             $('#select-modal').on('shown.bs.modal', function () {
                 $tableMembers.bootstrapTable('resetView');
                 $tableSelected.bootstrapTable('resetView');
             });
+            /*主界面人员选择*/
+            // $.fn.select2.defaults.set( "theme", "bootstrap" );
+            // $(".select-person").select2({
+            //     minimumResultsForSearch: Infinity
+            // });
 
 
             function initClockpicker(){
@@ -205,68 +192,11 @@
                     forceParse: 0
                 });
             }
-            function labelCreate(){
-                function RndClassName(){
-                    var rnd = parseInt(6*Math.random());
-                    switch (rnd) {
-                        case 0:
-                            return 'label-default';
-                        case 1:
-                            return 'label-primary';
-                        case 2:
-                            return 'label-success';
-                        case 3:
-                            return 'label-warning';
-                        case 4:
-                            return 'label-danger';
-                        case 5:
-                            return 'label-info';
-                    }
-                }
-                var html='';
-                for (var j = 0; j < selected.length; j++) {
-                    html += '<span class="label both-2 '+RndClassName()+'">'
-                        + selected[j].REALNAME + '<a class="selectedRemove label-icon fa fa-times" data-id="'
-                        + selected[j].USID +'"></a></span>';
-                }
-                $('.select-person').html(html);
-            }
-            //移除已选数据对象组里的数据，同时返回原表格数据
-            $(document).on("click", ".selectedRemove", function() {
-                var removeSelect = [];
-                var tempID=  parseInt($(this).attr('data-id'));
-                removeSelect.push(tempID)
-                // selected = selected.concat(getRowSelections());
-                for(var i=0; i < selected.length; i++){
-                    if( removeSelect.join() == selected[i].USID) {
-
-                        $tableMembers.bootstrapTable('insertRow', {
-                            index: 0,
-                            row: selected[i]
-                        });
-                        selected.splice(selected.indexOf(selected[i]),1) ;
-                        $tableSelected.bootstrapTable('load', selected);
-                        if($(this).hasClass('label-icon')){
-                            $(this).closest('span').remove();
-                        }else{
-                            labelCreate(); // console.log($('.select-person').find('a').attr('data-id',tempID))
-                            // $('.label-icon').attr('data-id',$(this).attr('data-id')).closest('span')
-                            // $('.select-person').find('a').attr('data-id',$(this).attr('data-id')).closest('span').remove();
-                        }
-
-                        $tableMembers.bootstrapTable( 'uncheckAll');
-                    }
-                }
-                // $tableSelected.bootstrapTable('remove', {
-                //     field: 'USID',
-                //     values: removeSelect
-                // });
-            });
             function initTableMembers(){
                 var $add = $('#members-add');
                 $tableMembers.bootstrapTable({
                     // idField: "id",
-                    data: unSelected,
+                    data: allMembers,
                     pageSize: 9,
                     pageList: [12, 25, 50, 100],
                     sidePagination: 'client',
@@ -310,24 +240,60 @@
                         $add.hide();
                     }
                     selections  = getIdSelections();
+
+                    console.log(selections)
                 });
-                /*人员选择*/
+
                 //往已选数据对象组里填充添加的数据，同时移除表格数据
                 $add.click(function () {
+                    // console.log(selections)
+                    // var ids = selections;
+
                     selected = selected.concat(getRowSelections());
+                    // selected = selected.distinct();
                     $tableSelected.bootstrapTable('load', selected)
                     $tableMembers.bootstrapTable('remove', {
                         field: 'USID',
                         values: selections
                     });
                     $add.hide();
-                    console.log(selected)
-                    console.log(unSelected)
-
-                    labelCreate();
+                    $()
                 });
+                //移除已选数据对象组里的数据，同时返回原表格数据
+                $(document).on("click", ".selectedRemove", function() {
+                    var removeSelect = [];
+                    // console.log($removeID);
+                    // console.log(selected);
+                    // console.log(selected[0]);
+                    // selected.removeArr(0);
+                    // selected.splice
+                    // $.grep(selected, function(n,i){
+                    //     return n > 0;
+                    // });
+                    // console.log(selected.removeArr(0));
+                    // console.log(selected);
+                    removeSelect.push(parseInt($(this).attr('data-id')))
 
+                    console.log(removeSelect);
+                    selected = selected.concat(getRowSelections());
+                    $tableSelected.bootstrapTable('remove', {
+                        field: 'USID',
+                        values: removeSelect
+                    });
 
+                    for(var i=0; i < selected.length; i++){
+                        if( removeSelect.join() == selected[i].USID) {
+
+                            $tableMembers.bootstrapTable('insertRow', {
+                                index: 0,
+                                row: selected[i]
+                                });
+                            selected.splice(selected.indexOf(selected[i]),1) ;
+                            console.log(selected)
+                            $tableMembers.bootstrapTable( 'uncheckAll')
+                        }
+                    }
+                });
 
                 function getRowSelections() {
                     return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
@@ -383,6 +349,50 @@
 
             }
         }
+        /*
+         *  功能：文本框信息校验
+         *  Created by nocoolyoyo 2016/9/28.
+         */
+
+        // $('#form').bootstrapValidator({
+        //     message: '所有值不能为空',
+        //     excluded: [':disabled'],
+        //     fields: {
+        //         incomeName: {
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: '请输入收支名称！'
+        //                 }
+        //             }
+        //         },
+        //         incomeMoney: {
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: '请输入金额！'
+        //                 },
+        //                 regexp: {
+        //                     regexp: /^[0-9]+(.[0-9]{2})?$/,
+        //                     message: '请输入正确的金额！'
+        //                 }
+        //             }
+        //         },
+        //         incomeTime: {
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: '请选择收支时间！'
+        //                 }
+        //             }
+        //         },
+        //         datetimePicker: {
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: '时间不能为空'
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+
 
         function initSMSReply(){
             $container = $("#main-box");
@@ -477,6 +487,17 @@
             }
         }
 
+
+
+
+
+
+
+
+        /*
+         *  功能：表格初始化
+         *  Created by nocoolyoyo 2016/9/28.
+         */
 
 
     });

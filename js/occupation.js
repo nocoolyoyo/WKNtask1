@@ -202,13 +202,13 @@
             $('#file-import').fileinput({
                 language: 'zh-CN', //设置语言
                 uploadUrl: "/FileUpload/Upload", //上传的地址
-                allowedFileExtensions : ['xls'],//接收的文件后缀,
+                allowedFileExtensions : ['xls','xlsx'],//接收的文件后缀,
                 maxFileCount: 1,
                 enctype: 'multipart/form-data',
                 showUpload: true, //是否显示上传按钮
                 showCaption: false,//是否显示标题
                 browseClass: "btn btn-primary", //按钮样式
-                msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
             });
 
 

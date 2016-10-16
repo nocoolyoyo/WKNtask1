@@ -40,8 +40,7 @@
                 <div class="content-area-box">
                     <div id="table-toolbar" class="form-inline">
                         <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#queryActivities-modal">新增活动</button>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#queryWinner-modal">获奖</button>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#queryPartic-modal">参与</button>
+
                     </div>
                     <table id="table"></table>
                 </div>
@@ -93,14 +92,31 @@
                 </div>
             </div>
         </div>
-        <div id="queryWinner-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div id="queryQRCode-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <form class="form-horizontal" role="form">
+                        <div class="modal-header center">
+                            <h4 class="modal-title">二维码</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="img/testImg/qrcode.jpg">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="queryWinner-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <form class="form-horizontal" role="form">
-                        <div class="modal-header">
+                        <div class="modal-header center">
                             <h4 class="modal-title">获奖名单</h4>
                         </div>
-                        <div class="modal-body both-25">
+                        <div class="modal-body">
                             <table id="tableWinner"></table>
                         </div>
                         <div class="modal-footer">
@@ -110,11 +126,11 @@
                 </div>
             </div>
         </div>
-        <div id="queryPartic-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div id="queryPartic-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <form class="form-horizontal" role="form">
-                        <div class="modal-header">
+                        <div class="modal-header center">
                             <h4 class="modal-title">参与名单</h4>
                         </div>
                         <div class="modal-body both-25">
@@ -143,7 +159,7 @@
 <![endif]–>
 
 <script src="js/public/jquery-1.12.4.min.js"></script>
-<script src="js/public/bootstrap.min.js"></script>
+<script src="js/public/bootstrap.js"></script>
 <script src="js/public/menuData.js"></script>
 <script src="js/public/bootstrap-table.min.js"></script>
 <script src="js/public/bootstrap-table-zh-CN.js"></script>

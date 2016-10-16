@@ -92,11 +92,18 @@
 }
 .content-area-box {
     margin: 0 auto;
+    overflow-x: hidden;
     overflow-y: auto;
     padding: 0 10px;
+    position: relative;
 }
 #single-toolbar {
-    margin: 12px auto;
+    margin: 11px auto 0;
+    height: 35px;
+}
+#footer-toolbar {
+    margin: 11px auto 0;
+    height: 35px;
 }
 
 /*.content-area-actionList {*/
@@ -111,6 +118,40 @@
 #modal-description {
     height: 200px;
 }
+
+
+/*
+ *描述：人员选择弹窗
+ *页面：SMS.html
+ */
+.select-person {
+    width: 100%;
+    margin-top: 9px;
+    /*border-radius: 3px;*/
+    height: 200px;
+    overflow-y: auto;
+}
+.select-content {
+    position: relative;
+    /*width: 900px;*/
+    height: 480px;
+}
+.select-left{
+    /*display: inline-block;*/
+    float: left;
+    width: 250px;
+    position: relative;
+}
+
+.select-right {
+    /*display: inline-block;*/
+    float: right;
+    width: 600px;
+
+    position: relative;
+    /*width: 860px;*/
+}
+
 /*
  *描述：短信页面
  *页面：SMS.html
@@ -120,31 +161,14 @@
     width: 20px;
     height: 20px;
 }
-.left-box {
-    float: left;
-    width: 238px;
-}
-.fixed-table-container .table-no-bordered {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    clear: both;
-    position: relative;
-}
-.right-box {
-    float: right;
-    width: 860px;
-}
 
 #SMS-content {
     float: left;
     margin-top: 10px;
-
     height: 230px;
 }
 
-#footer-toolbar {
-    margin-top: 10px;
-}
+
 
 /*
  *描述：反馈页面
@@ -166,12 +190,172 @@
  */
 
 #album-box {
-    margin: 0 auto;
-    width: 1128px; ;
-    height: 500px;
+    margin: 10px -10px 0;
+    width: 1138px; ;
+    height: 520px;
+    position: relative;
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
+.grid-item {
+    width: 200px;
+}
+.grid-item img {
+    width: 100%;
+}
+
+
+
+
+/***********************************/
+/**
+ * Progress bar for imagesLoaded
+ */
+
+
+#album-wall {
+    position: relative;
+}
+
+
+/**
+ * Placerholder css
+ */
+.wookmark-placeholder {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #eee;
+    border: 1px solid #dedede;
+    z-index: -1;
+}
+
+/**
+ * Grid container
+ */
+.tiles-wrap {
+    position: relative; /** Needed to ensure items are laid out relative to this container **/
+    margin: 10px 0;
+    padding: 0;
+    list-style-type: none;
+    display: none;
+}
+/**
+ * Grid items
+ */
+.tiles-wrap li {
+    display: block;
+    opacity: 0;
+    text-align: center;
+    list-style-type: none;
+    background-color: #fff;
+    float: left;
+    cursor: pointer;
+    width: 200px;
+    padding: 4px;
+    border: 1px solid #dedede;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.tiles-wrap li img {
+    width: 100%
+}
+.tiles-wrap.wookmark-initialised.animated li {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.tiles-wrap.wookmark-initialised li {
+    opacity: 1;
+}
+
+.tiles-wrap li.wookmark-inactive {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.tiles-wrap li:hover {
+    background-color: #fafafa;
+}
+
+.tiles-wrap img {
+    display: block;
+}
+
+.tiles-wrap a {
+    color: #555;
+    text-align: center;
+     display: table-cell;
+    /*width: 200px;*/
+    /*height: 200px;*/
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.tile-loading:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #ddd;
+    content: "Loading\2026";
+    padding-top: 20px;
+    color: #999;
+}
+
+/**
+ * Filters
+ */
+#filters {
+    list-style-type: none;
+    text-align: center;
+    margin: 0 5% 0 5%;
+}
+
+#filters:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+#filters li {
+    font-size: 12px;
+    float: left;
+    padding: 6px 8px 4px;
+    cursor: pointer;
+    margin: 0 10px;
+    -webkit-transition: all 0.15s ease-out;
+    -moz-transition: all 0.15s ease-out;
+    -o-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#filters li:hover {
+    background: #4281f5;
+    color: #ffffff;
+}
+
+#filters li.active {
+    background: #4281f5;
+    color: #ffffff;
+}
+/**********************************/
 
 @media only screen and (max-width: 768px) {
     #content-navbar-daily li,
@@ -265,6 +449,7 @@
     input[type=search] {
     width: 100px !important;
     }
+
 }
 @media only screen and (min-width: 992px) {
     #content-navbar i {
@@ -322,6 +507,7 @@
     input[type=search] {
         width: 120px !important;
     }
+
 }
 @media only screen and (min-width: 1200px) {
     #content-navbar i {
@@ -344,11 +530,11 @@
     }
     #content-area {
         width: 1138px;
-        height: 600px
+        height: 602px
     }
     .content-area-box {
         width: 1138px;
-        height: 600px
+        height: 602px
     }
     /*.content-area-pagination{*/
         /*width: 1138px;*/
@@ -378,4 +564,5 @@
         margin: 10px auto;
         width: 800px;
     }
+
 }

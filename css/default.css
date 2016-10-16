@@ -36,6 +36,14 @@ body {
 .top-10 {
     margin-top: 10px;
 }
+.both-2 {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.both-5 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
 .both-10 {
     margin-left: 10px;
     margin-right: 10px;
@@ -67,6 +75,18 @@ body {
 .kaiti {
     font-family: Kaiti, STKaiti, sans-serif;
 }
+/*hover动画*/
+.hoverable {
+    transition: box-shadow .25s;
+    box-shadow: 0;
+}
+
+.hoverable:hover {
+    transition: box-shadow .25s;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
 .input-group{
     margin: 0;
 }
@@ -93,15 +113,7 @@ button{
 }
 input[type=checkbox]{position:relative;cursor:pointer}
 
-.modal,
-.modal-dialog,
-.modal-content {
-    overflow: hidden;
-}
-.modal-header {
-    font-size: 20px;
-    overflow: hidden;
-}
+
 textarea {
     resize:none;
     overflow-y: auto;

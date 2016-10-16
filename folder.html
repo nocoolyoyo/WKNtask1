@@ -9,7 +9,6 @@
     <link href="img/Logo_25x25.png" rel="shortcut icon">
 
     <link href="css/main.css" type="text/css" rel="stylesheet">
-
 </head>
 <body>
 <header>
@@ -52,7 +51,7 @@
                         <div id="table-toolbar" class="form-inline">
                             <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
                             <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
-                            <button id="add" type="button" class="btn btn-success">新增</button>
+                            <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#import-modal">上传</button>
                             <button type="button" class="btn btn-primary">下载</button>
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#folder-modal">文件夹管理</button>
                         </div>
@@ -67,6 +66,7 @@
                     <div class="modal-content">
                         <form class="form-horizontal" role="form">
                             <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <h4 class="modal-title">文件夹管理</h4>
                             </div>
                             <div class="modal-body both-25">
@@ -78,6 +78,28 @@
                             </div>
                             <div class="modal-footer">
                                 <button id="submit" type="submit" class="btn button button-primary button-rounded"  data-dismiss="modal">保存</button>
+                                <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="import-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form id="form" class="form-horizontal" role="form">
+                            <div class="modal-header">
+                                <h4 class="modal-title">上传文件</h4>
+                            </div>
+                            <div class="modal-body both-25">
+
+                                    <div class="form-group">
+                                        <input id="file-upload" type="file">
+                                    </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <!--<button id="backlog-add-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled" >导入</button>-->
                                 <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
                             </div>
                         </form>
@@ -102,7 +124,7 @@
 <![endif]–>
 
 <script src="js/public/jquery-1.12.4.min.js"></script>
-<script src="js/public/bootstrap.min.js"></script>
+<script src="js/public/bootstrap.js"></script>
 <script src="js/public/menuData.js"></script>
 
 
@@ -110,7 +132,8 @@
 <script src="js/public/bootstrap-table-zh-CN.js"></script>
 <script src="js/public/bootstrap-table-editable.min.js"></script>
 <script src="js/public/bootstrap-editable.min.js"></script>
-
+<script src="js/public/fileinput.min.js"></script>
+<script src="js/public/fileinput-zh-CN.js"></script>
 <script src="js/main.js"></script>
 <script src="js/folder.js"></script>
 </body>

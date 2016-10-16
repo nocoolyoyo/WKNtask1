@@ -1,5 +1,16 @@
 (function() {
     $(function() {
+        var $table = $('#table');
+        var $tableWinner = $('#tableWinner');
+        var $tablePartic = $('#tablePartic');
+        /*模态框表格窗口修正*/
+        $('#queryWinner-modal').on('shown.bs.modal', function () {
+            $tableWinner.bootstrapTable('resetView');
+        });
+        $('#queryPartic-modal').on('shown.bs.modal', function () {
+            $tablePartic.bootstrapTable('resetView');
+        });
+
 
         selections = [];
 
@@ -28,12 +39,11 @@
             });
         }
         function initTable1() {
-            var $table = $('#table'),
-                $delete = $('#delete');
+            var  $delete = $('#delete');
             $table.bootstrapTable({
                 url: 'data/memberLog.json',
                 idField: "id",
-                pageNumber: 10,
+                height: 601,
                 pageList: [10, 25, 50, 100],
                 sidePagination: 'client',
                 pagination: true,
@@ -73,14 +83,13 @@
 
             function operateFormatter(value, row){
                 return [
-                    '<a class="QRCode" href="#">',
-                    value.title,
+                    '<a class="QRCode both-5" href="#"  data-toggle="modal" data-target="#queryQRCode-modal">',
                     '二维码',
                     '</a>',
-                    '<a class="queryWinner" href="#">',
+                    '<a class="queryWinner both-5" href="#"  data-toggle="modal" data-target="#queryWinner-modal">',
                     '获奖名单',
-                    '</a>   ',
-                    '<a class="queryPartic" href="#">',
+                    '</a>',
+                    '<a class="queryPartic both-5" href="#"  data-toggle="modal" data-target="#queryPartic-modal">',
                     '参与名单',
                     '</a>'
                 ].join('')
@@ -138,19 +147,18 @@
 
 
         function initTableWinner() {
-            $('#queryWinner-modal').on('shown.bs.modal', function () {
-                var $tableWinner = $('#tableWinner');
+
                 $tableWinner.bootstrapTable({
                     url: 'data/memberLog.json',
-                    pageNumber: 10,
-                    pageList: [10, 25, 50, 100],
-                    sidePagination: 'client',
-                    pagination: true,
+                    // pageSize: 6,
+                    // pageList: [6, 12, 50],
+                    // sidePagination: 'client',
+                    // pagination: true,
+                    height: 450,
                     // sidePagination: "server",
                     toolbar: "#tableWinner-toolbar",
                     showColumns: true,
-                    showToggle: true,
-                    // detailFormatter: detailFormatter,
+                    // showToggle: true,
                     columns: [{
                         field: 'state',
                         checkbox: true
@@ -172,22 +180,21 @@
                         align: 'center'
                     }]
                 });
-            })
         }
         function initTablePartic() {
-            $('#queryPartic-modal').on('shown.bs.modal', function () {
-                var $tablePartic = $('#tablePartic');
+
                 $tablePartic.bootstrapTable({
                     url: 'data/memberLog.json',
-                    pageNumber: 10,
-                    pageList: [10, 25, 50, 100],
-                    sidePagination: 'client',
-                    pagination: true,
+
+                    // pageList: [10, 25, 50, 100],
+                    // sidePagination: 'client',
+                    // pagination: true,
+                    height: 450,
                     // sidePagination: "server",
                     toolbar: "#tableWinner-toolbar",
                     showColumns: true,
-                    showToggle: true,
-                    // detailFormatter: detailFormatter,
+                    // showToggle: true,
+
                     columns: [{
                         field: 'state',
                         checkbox: true
@@ -209,7 +216,6 @@
                         align: 'center'
                     }]
                 });
-            })
         }
 
     });

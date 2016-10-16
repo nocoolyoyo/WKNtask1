@@ -66,20 +66,52 @@
 
         loadMenu();
         renderMenu();
+
+
+        /**数组去重1，赋值对象去重*/
+        // Array.prototype.distinct = function(){
+        //     var res = [];
+        //     var json = {};
+        //     for(var i = 0; i < this.length; i++){
+        //         if(!json[this[i]]){
+        //             res.push(this[i]);
+        //             json[this[i]] = 1;
+        //         }
+        //     }
+        //     return res;
+        // }
+        /**数组去重2，排序去重*/
+        // Array.prototype.distinct = function(){
+        //     this.sort(); //先排序
+        //     var res = [this[0]];
+        //     for(var i = 1; i < this.length; i++){
+        //         if(this[i] !== res[res.length - 1]){
+        //             res.push(this[i]);
+        //         }
+        //     }
+        //     return res;
+        // }
         /*
-         *  功能：功能页模态框垂直居中
-         *  页面：*
-         *  Created by nocoolyoyo 2016/9/28.
+         *  删除数组元素:Array.removeArr(index)
          */
-        function centerModals() {
-            $('.modal').each(function(i) {
-                var $clone = $(this).clone().css('display', 'block').appendTo('body'); var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
-                top = top > 0 ? top : 0;
-                $clone.remove();
-                $(this).find('.modal-content').css("margin-top", top);
-            });
-        }
-        $('.modal').on('show.bs.modal', centerModals());
-        $(window).on('resize', centerModals());
+        // Array.prototype.removeArr = function (index) {
+        //     if (isNaN(index) || index>= this.length) { return false; }
+        //     this.splice(index, 1);
+        // }
+        /*
+         *  插入数组元素:Array.insertArr(dx)
+         */
+        Array.prototype.insertArr = function (index, item) {
+            this.splice(index, 0, item);
+        };
+        Array.prototype.indexOf = function(val) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == val) return i;
+            }
+            return -1;
+        };
+
+
+
     });
 }());

@@ -3,10 +3,6 @@
         var $table;
         var $delete;
 
-
-
-
-
         initTable();
         initTimepicker();
         initDate();
