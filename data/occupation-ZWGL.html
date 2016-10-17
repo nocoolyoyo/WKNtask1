@@ -1,26 +1,92 @@
-
-
-            <div id="sidebar-left" class="sidebar-container sidebar-push">
-                <div class="sidebar">
-                    <div class="sidebar-wrap">
-                        <ul id="occupation-menu">
-                            <li><a href="#">会员信息</a></li>
-                            <li><a href="#">职务管理</a></li>
-                            <li><a href="#">群聊管理</a></li>
-                            <li><a href="#">未激活</a></li>
-                            <li><a href="#">群管理</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="sidebar-overlay"></div>
-                <div id="content-area"  class="sidebar-dim">
-                    <div class="content-area-box">
-                        <div id="table-toolbar" class="form-inline">
-                            <div class="form-group">
-                                <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
-                            </div>
-                        </div>
-                        <table id="table"></table>
-                    </div>
-                </div>
+<div id="sidebar-left" class="sidebar-container sidebar-push">
+    <div class="sidebar">
+        <div class="sidebar-wrap">
+            <ul id="menu">
+                <li><a href="#">会员信息</a></li>
+                <li><a href="#">职务管理</a></li>
+                <li><a href="#">群聊管理</a></li>
+                <li><a href="#">未激活</a></li>
+                <li><a href="#">群管理</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar-overlay"></div>
+    <div id="content-area"  class="sidebar-dim">
+        <div class="content-area-box">
+            <div id="table-toolbar" class="form-inline">
+                <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manage-modal">职务管理</button>
             </div>
+            <table id="table"></table>
+        </div>
+    </div>
+</div>
+
+<div id="manage-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">职务管理</h4>
+                </div>
+                <div class="modal-body both-25">
+                    <div id="manage-toolbar" class="form-inline">
+                        <button id="folder-delete" type="button" class="btn btn-danger" style="display: none">删除</button>
+                        <button id="folder-add" type="button" class="btn btn-success"  data-toggle="modal" data-target="#add-modal">新增</button>
+                    </div>
+                    <table id="table-manage"></table>
+                </div>
+                <div class="modal-footer">
+                    <!--<button id="submit" type="submit" class="btn button button-primary button-rounded"  data-dismiss="modal">保存</button>-->
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="permission-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">权限管理</h4>
+                </div>
+                <div class="modal-body both-25">
+                    <!--<div id="permission-toolbar" class="form-inline">-->
+                        <!--<button id="folder-delete" type="button" class="btn btn-danger" style="display: none">删除</button>-->
+                        <!--<button id="folder-add" type="button" class="btn btn-success">新增</button>-->
+                    <!--</div>-->
+                    <table id="table-permission"></table>
+                </div>
+                <div class="modal-footer">
+                    <!--<button id="submit" type="submit" class="btn button button-primary button-rounded"  data-dismiss="modal">保存</button>-->
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="add-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <form class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">权限管理</h4>
+                </div>
+                <div class="modal-body both-25">
+                    <div class="input-group">
+                        <span class="input-group-addon">职务名</span>
+                        <input id="ONNAME" type="text" class="form-control" placeholder="职务名">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="add-submit" type="submit" class="btn button button-primary button-rounded">保存</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -2,69 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4285115-6475-4758-893d-36e86dd679ec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_10.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_10_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_1_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_2_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_3_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_4.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_4_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_5_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_6.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_6_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_7.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_7_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_8.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_8_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_9.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/image_9_big.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/testImg/qrcode.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/public/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/public/select2-bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/public/select2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/SMSbeifen.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/blocksit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/fileinput.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/masonry.pkgd.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/select2.full.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/select2.zh-CN.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/way.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/wookmark.min.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/public/fileinput.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/datetimepicker-init.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/locales.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/occupation-ZWGL-permission.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/occupation-checklist.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/occupation-select.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/occupation-zwgl.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/underscore-min.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/occupation-zhiwuguanli.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SMS.html" afterPath="$PROJECT_DIR$/SMS.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/album.html" afterPath="$PROJECT_DIR$/album.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/default.css" afterPath="$PROJECT_DIR$/css/default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/calendar.css" afterPath="$PROJECT_DIR$/css/parts/calendar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSP/JS/occupation.js" afterPath="$PROJECT_DIR$/JSP/JS/occupation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/content.css" afterPath="$PROJECT_DIR$/css/parts/content.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/footer.css" afterPath="$PROJECT_DIR$/css/parts/footer.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/SMS-add.html" afterPath="$PROJECT_DIR$/data/SMS-add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/SMS-index.html" afterPath="$PROJECT_DIR$/data/SMS-index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/album-detail.html" afterPath="$PROJECT_DIR$/data/album-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/album-index.html" afterPath="$PROJECT_DIR$/data/album-index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/public/bootstrap.css" afterPath="$PROJECT_DIR$/css/public/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation-HYXX.html" afterPath="$PROJECT_DIR$/data/occupation-HYXX.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation-ZWGL.html" afterPath="$PROJECT_DIR$/data/occupation-ZWGL.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation.json" afterPath="$PROJECT_DIR$/data/occupation.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/folder.html" afterPath="$PROJECT_DIR$/folder.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/incomeExpense.html" afterPath="$PROJECT_DIR$/incomeExpense.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/SMS.js" afterPath="$PROJECT_DIR$/js/SMS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/album.js" afterPath="$PROJECT_DIR$/js/album.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/desktop.js" afterPath="$PROJECT_DIR$/js/desktop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/folder.js" afterPath="$PROJECT_DIR$/js/folder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/incomeExpense.js" afterPath="$PROJECT_DIR$/js/incomeExpense.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/occupation.js" afterPath="$PROJECT_DIR$/js/occupation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/public/bootstrap-table-zh-CN.js" afterPath="$PROJECT_DIR$/js/public/bootstrap-table-zh-CN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/queryActivities.js" afterPath="$PROJECT_DIR$/js/queryActivities.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/occupation.html" afterPath="$PROJECT_DIR$/occupation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/queryActivities.html" afterPath="$PROJECT_DIR$/queryActivities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/table-template.html" afterPath="$PROJECT_DIR$/table-template.html" />
     </list>
     <ignored path="mission1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,105 +37,107 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="album-index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/album-index.html">
+      <file leaf-file-name="motifaction.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSP/JS/motifaction.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="32" />
+            <state relative-caret-position="-656">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="album-detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/album-detail.html">
+      <file leaf-file-name="SMS.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSP/JS/SMS.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="46" column="78" selection-start-line="46" selection-start-column="78" selection-end-line="46" selection-end-column="78" />
+            <state relative-caret-position="-992">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="folder.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/folder.js">
+      <file leaf-file-name="notice.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JSP/JS/notice.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="232" column="32" selection-start-line="232" selection-start-column="32" selection-end-line="232" selection-end-column="32" />
+            <state relative-caret-position="-573">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="album.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/album.js">
+      <file leaf-file-name="queryMessage-SEND.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/queryMessage-SEND.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="81" column="32" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SMS-detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/SMS-detail.html">
+      <file leaf-file-name="occupation-ZWGL.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/occupation-ZWGL.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-50">
-              <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SMS-add.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data/SMS-add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="33" column="144" selection-start-line="33" selection-start-column="144" selection-end-line="33" selection-end-column="144" />
+            <state relative-caret-position="700">
+              <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="42" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1476725475580" expanded="false" signature="2993:3006" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SMS.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/SMS.js">
+      <file leaf-file-name="occupation.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/occupation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3753">
-              <caret line="171" column="64" selection-start-line="171" selection-start-column="64" selection-end-line="171" selection-end-column="64" />
-              <folding />
+            <state relative-caret-position="-508">
+              <caret line="303" column="61" selection-start-line="303" selection-start-column="61" selection-end-line="303" selection-end-column="61" />
+              <folding>
+                <element signature="e#14880#16425#0" expanded="false" />
+                <element signature="e#16456#19883#0" expanded="false" />
+                <element signature="e#19914#23361#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="content.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/parts/content.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="103" column="7" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="occupation.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/occupation.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="information.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/information.html">
+      <file leaf-file-name="notice-index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/notice-index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notice-create.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/notice-create.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-225">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notice-detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/notice-detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="motifaction-index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/motifaction-index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -195,8 +149,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="tsconfig.json" />
         <option value="CSS File" />
+        <option value="tsconfig.json" />
         <option value="HTML File" />
       </list>
     </option>
@@ -207,33 +161,21 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/css/parts/board.css" />
-        <option value="$PROJECT_DIR$/css/parts/backlog.css" />
-        <option value="$PROJECT_DIR$/information.html" />
-        <option value="$PROJECT_DIR$/css/public/bootstrap-editable.css" />
-        <option value="$PROJECT_DIR$/css/public/bootspaper.min.css" />
-        <option value="$PROJECT_DIR$/css/public/bootflat.css" />
-        <option value="$PROJECT_DIR$/css/desktop.css" />
-        <option value="$PROJECT_DIR$/css/public/bootstrap-table.min.css" />
         <option value="$PROJECT_DIR$/login.html" />
         <option value="$PROJECT_DIR$/css/login.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/public/smt-bootstrap.css" />
         <option value="$PROJECT_DIR$/occupation-profile.html" />
-        <option value="$PROJECT_DIR$/css/public/bootstrap.css" />
         <option value="$PROJECT_DIR$/js/public/bootstrap.min.js" />
         <option value="$PROJECT_DIR$/js/desktop.js" />
         <option value="$PROJECT_DIR$/data/folder.json" />
-        <option value="$PROJECT_DIR$/js/occupation.js" />
         <option value="$PROJECT_DIR$/css/parts/calendar.css" />
-        <option value="$PROJECT_DIR$/occupation.html" />
         <option value="$PROJECT_DIR$/css/public/fileinput.css" />
         <option value="$PROJECT_DIR$/js/public/fileinput-zh-CN.js" />
         <option value="$PROJECT_DIR$/js/public/fileinput.js" />
         <option value="$PROJECT_DIR$/folder.html" />
         <option value="$PROJECT_DIR$/js/public/bootstrap-table-zh-CN.js" />
         <option value="$PROJECT_DIR$/js/public/bootstrap.js" />
-        <option value="$PROJECT_DIR$/js/folder.js" />
         <option value="$PROJECT_DIR$/css/parts/footer.css" />
         <option value="$PROJECT_DIR$/js/queryActivities.js" />
         <option value="$PROJECT_DIR$/data/SMS-index.html" />
@@ -244,7 +186,6 @@
         <option value="$PROJECT_DIR$/js/public/bootstrap-table.min.js" />
         <option value="$PROJECT_DIR$/css/main.css" />
         <option value="$PROJECT_DIR$/table-template.html" />
-        <option value="$PROJECT_DIR$/data/occupation.json" />
         <option value="$PROJECT_DIR$/SMS.html" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/css/default.css" />
@@ -256,8 +197,21 @@
         <option value="$PROJECT_DIR$/js/album.js" />
         <option value="$PROJECT_DIR$/data/album-detail.html" />
         <option value="$PROJECT_DIR$/js/SMS.js" />
-        <option value="$PROJECT_DIR$/css/parts/content.css" />
         <option value="$PROJECT_DIR$/data/SMS-add.html" />
+        <option value="$PROJECT_DIR$/JSP/JS/occupation.js" />
+        <option value="$PROJECT_DIR$/data/occu[ation-select.json" />
+        <option value="$PROJECT_DIR$/data/occupation.json" />
+        <option value="$PROJECT_DIR$/data/occupation-zhiwuguanli.json" />
+        <option value="$PROJECT_DIR$/data/occupation-zwgl.json" />
+        <option value="$PROJECT_DIR$/data/occupation-checklist.json" />
+        <option value="$PROJECT_DIR$/css/parts/content.css" />
+        <option value="$PROJECT_DIR$/css/public/bootstrap.css" />
+        <option value="$PROJECT_DIR$/data/occupation-ZWGL-permission.html" />
+        <option value="$PROJECT_DIR$/occupation.html" />
+        <option value="$PROJECT_DIR$/data/occupation-HYXX.html" />
+        <option value="$PROJECT_DIR$/js/folder.js" />
+        <option value="$PROJECT_DIR$/data/occupation-ZWGL.html" />
+        <option value="$PROJECT_DIR$/js/occupation.js" />
       </list>
     </option>
   </component>
@@ -302,7 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -318,6 +271,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WKNtask1" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WKNtask1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WKNtask1" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JSP" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JS" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -427,12 +398,31 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WKNtask1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WKNtask1" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="parts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -444,21 +434,22 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../bootstrap-datetimepicker" />
     <property name="js-jscs-nodeInterpreter" value="F:\nodejs\node.exe" />
+    <property name="nodejs_interpreter_path" value="F:/nodejs/node" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Project\WKNtask1\data" />
+      <recent name="D:\Project\WKNtask1\js\public" />
+      <recent name="D:\Project\WKNtask1\img\testImg" />
+      <recent name="D:\Project\WKNtask1\js" />
+      <recent name="D:\Project\WKNtask1\css\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Project\WKNtask1\img" />
       <recent name="D:\Project\WKNtask1\js\public" />
       <recent name="D:\Project\WKNtask1\css\parts" />
       <recent name="D:\Project\WKNtask1\css" />
       <recent name="D:\Project\WKNtask1\js" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Project\WKNtask1\js\public" />
-      <recent name="D:\Project\WKNtask1\img\testImg" />
-      <recent name="D:\Project\WKNtask1\data" />
-      <recent name="D:\Project\WKNtask1\js" />
-      <recent name="D:\Project\WKNtask1\css\public" />
     </key>
   </component>
   <component name="RunManager">
@@ -571,11 +562,12 @@
       <workItem from="1476456212557" duration="3818000" />
       <workItem from="1476495956398" duration="81409000" />
       <workItem from="1476632837135" duration="4169000" />
+      <workItem from="1476703757633" duration="20471000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="360211000" />
+    <option name="totallyTimeSpent" value="380682000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -618,293 +610,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/public/bootstrap-table-zh-CN.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/bootstrapValidator.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6997">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/datetimepicker.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4648">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/public/select2-bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/summernote.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="3" column="28096" selection-start-line="3" selection-start-column="28096" selection-end-line="3" selection-end-column="28096" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/summernote-zh-CN.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="22" selection-start-line="0" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/bootstrap-table.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="7" column="21415" selection-start-line="7" selection-start-column="21415" selection-end-line="7" selection-end-column="21415" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/fileinput.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="11" column="8159" selection-start-line="11" selection-start-column="8159" selection-end-line="11" selection-end-column="8159" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/fileinput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-74084">
-          <caret line="292" column="11" selection-start-line="292" selection-start-column="11" selection-end-line="292" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/public/fileinput.css" />
-    <entry file="file://$PROJECT_DIR$/js/public/fileinput-zh-CN.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="21" column="32" selection-start-line="0" selection-start-column="0" selection-end-line="72" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/select2.full.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="2" column="9589" selection-start-line="2" selection-start-column="9589" selection-end-line="2" selection-end-column="9589" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table-template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/public/fileinput.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="100" selection-start-line="9" selection-start-column="100" selection-end-line="9" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="39" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/select2.zh-CN.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/SMS-addbeifen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-784">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/public/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="2548" column="1" selection-start-line="2548" selection-start-column="1" selection-end-line="2548" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/way.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/SMSbeifen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/public/select2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="200" column="1" selection-start-line="200" selection-start-column="1" selection-end-line="200" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/occupation.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/desktop.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/masonry.pkgd.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SMS.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/default.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/desktop.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="91" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/information-index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/incomeExpense.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-235">
-          <caret line="69" column="92" selection-start-line="69" selection-start-column="92" selection-end-line="69" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/occupation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/wookmark.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/public/blocksit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/album.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/incomeExpense.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/queryActivities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/queryActivities.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2225">
-          <caret line="89" column="30" selection-start-line="89" selection-start-column="30" selection-end-line="89" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/folder.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2200">
-          <caret line="88" column="47" selection-start-line="88" selection-start-column="47" selection-end-line="88" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/queryMessage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -921,46 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/occupation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/folder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="232" column="32" selection-start-line="232" selection-start-column="32" selection-end-line="232" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/album.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="81" column="32" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/SMS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3753">
-          <caret line="171" column="64" selection-start-line="171" selection-start-column="64" selection-end-line="171" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/parts/content.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="103" column="7" selection-start-line="103" selection-start-column="7" selection-end-line="103" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/album-index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
@@ -971,15 +636,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/album-detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="46" column="78" selection-start-line="46" selection-start-column="78" selection-end-line="46" selection-end-column="78" />
+        <state relative-caret-position="625">
+          <caret line="25" column="78" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/SMS-detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-50">
+        <state relative-caret-position="25">
           <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
           <folding />
         </state>
@@ -987,12 +652,391 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/SMS-add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="33" column="144" selection-start-line="33" selection-start-column="144" selection-end-line="33" selection-end-column="144" />
+        <state relative-caret-position="550">
+          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation-QLGL.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-650">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/SMS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2013">
+          <caret line="166" column="64" selection-start-line="166" selection-start-column="64" selection-end-line="166" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/public/bootstrap-editable.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/album.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="81" column="32" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/SMS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9836">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1476703730355" expanded="true" signature="22663:22704" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/public/menuData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/occupation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9765">
+          <caret line="757" column="35" selection-start-line="757" selection-start-column="35" selection-end-line="757" selection-end-column="35" />
+          <folding>
+            <element signature="e#3786#4071#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation-checklist.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation-select.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/parts/footer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/parts/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/public/bootstrap-table-editable.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/public/underscore-min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/parts/body.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/parts/content.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="378" column="16" selection-start-line="378" selection-start-column="8" selection-end-line="378" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/queryActivities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-948">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/queryMessage-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folder.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="687">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/default.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="944" column="8" selection-start-line="944" selection-start-column="4" selection-end-line="944" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation-zwgl.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="90" selection-start-line="1" selection-start-column="90" selection-end-line="1" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/incomeExpense.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2166">
+          <caret line="244" column="41" selection-start-line="244" selection-start-column="41" selection-end-line="244" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/occupation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation-ZWGL-permission.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/public/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="5933" column="17" selection-start-line="5933" selection-start-column="17" selection-end-line="5933" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/folder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="745">
+          <caret line="160" column="25" selection-start-line="127" selection-start-column="20" selection-end-line="160" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/queryActivities.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1183">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/folder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5174">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/bootstrap-table.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation-HYXX.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="57" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#button#1;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation-QLGL.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/queryMessage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-751">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/notice-drafts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/notice-index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/notice-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/motifaction-index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/motifaction.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-656">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/SMS.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-992">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JSP/JS/notice.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-573">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/notice-create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/queryMessage-SEND.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/occupation-ZWGL.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="42" />
+          <folding>
+            <marker date="1476725475580" expanded="false" signature="2993:3006" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/occupation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-508">
+          <caret line="303" column="61" selection-start-line="303" selection-start-column="61" selection-end-line="303" selection-end-column="61" />
+          <folding>
+            <element signature="e#14880#16425#0" expanded="false" />
+            <element signature="e#16456#19883#0" expanded="false" />
+            <element signature="e#19914#23361#0" expanded="false" />
           </folding>
         </state>
       </provider>

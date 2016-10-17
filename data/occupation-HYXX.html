@@ -1,35 +1,58 @@
+<div id="sidebar-left" class="sidebar-container sidebar-push">
+    <div class="sidebar">
+        <div class="sidebar-wrap">
+            <ul id="menu">
+                <li><a href="#">会员信息</a></li>
+                <li><a href="#">职务管理</a></li>
+                <li><a href="#">群聊管理</a></li>
+                <li><a href="#">未激活</a></li>
+                <li><a href="#">群管理</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar-overlay"></div>
+    <div id="content-area"  class="sidebar-dim"><div class="content-area-box">
+    <div id="table-toolbar" class="form-inline">
+        <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
+        <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
+        <button id="add" type="button" class="btn btn-success">新增</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#import-modal">导入</button>
+        <button type="button" class="btn btn-primary">导出</button>
+    </div>
+    <table id="table"></table>
+</div>
+        </div>
+    </div>
 
-            <div id="sidebar-left" class="sidebar-container sidebar-push">
-                <div class="sidebar">
-                    <div class="sidebar-wrap">
-                        <ul id="occupation-menu">
-                            <li><a href="#">会员信息</a></li>
-                            <li><a href="#">职务管理</a></li>
-                            <li><a href="#">群聊管理</a></li>
-                            <li><a href="#">未激活</a></li>
-                            <li><a href="#">群管理</a></li>
+
+<div id="import-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="form" class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <h4 class="modal-title">导入会员</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row top-10">
+                        <button type="button" class="btn button button-primary button-rounded">填写说明下载</button>
+                        <button type="button" class="btn button button-primary button-rounded">表格模板下载</button>
+                    </div>
+                    <div class="row top-10">
+                        <input id="file-import" type="file">
+                    </div>
+                    <div class="row">
+                        <h5>操作规范：</h5>
+                        <ul>
+                            <li>1、请使用从系统下载的表格，且不要改动表格第一行的内容</li>
+                            <li> 2、从其他文件管理拷贝的数据，请务必检查原表格的格式是否被覆盖</li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="sidebar-overlay"></div>
-                <div id="content-area"  class="sidebar-dim">
-                    <div class="content-area-box">
-                        <div id="table-toolbar" class="form-inline">
-                            <div class="form-group">
-                                <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
-                                <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
-                                <button id="add" type="button" class="btn btn-success">新增</button>
-                                <button type="button" class="btn btn-primary">导入</button>
-                                <button type="button" class="btn btn-primary">导出</button>
-                            </div>
-                            <div class="form-group">
-                                <input name="search" class="form-control" type="text" placeholder="搜索">
-
-                                <button  type="submit" class="btn btn-default">搜索</button>
-                            </div>
-                        </div>
-                        <table id="table"></table>
-                    </div>
+                <div class="modal-footer">
+                    <button id="backlog-add-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled" >导入</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
                 </div>
-            </div>
+            </form>
+        </div>
+    </div>
+</div>

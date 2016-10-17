@@ -86,7 +86,7 @@
         function pjaxRefreshFunc(){
             switch(pageNum) {
                 case 0: initHYXX(); initSidebar(); break;
-                case 1: initZWGL(); initSidebar(); initTimepicker();break;
+                case 1: initZWGL(); initSidebar(); break;
                 case 2: initTable3(); initSidebar(); break;
                 case 3: initTable4(); initSidebar(); break;
                 case 4: initTable5(); initSidebar(); break;
@@ -134,6 +134,7 @@
 
         function initHYXX(){
             initTable1();
+            initTimepicker();
             function initTable1() {
                 $table = $('#table');
                 var $delete = $('#delete');
@@ -168,8 +169,6 @@
                     searchOnEnterKey: false,//回车搜索
                     showRefresh: true,//刷新按钮
                     showColumns: true,//列选择按钮
-
-
                     // detailFormatter: detailFormatter,
                     columns: [{
                         field: 'state',
@@ -281,13 +280,6 @@
                     });
                 }
 
-                function responseHandler(res) {
-                    $.each(res.rows, function (i, row) {
-                        row.state = $.inArray(row.id, selections) !== -1;
-                    });
-                    return res;
-                }
-
                 /*
                  *  功能：编辑框
                  *  Created by nocoolyoyo 2016/9/28.
@@ -300,20 +292,6 @@
                         '</a>  '
                     ].join('');
                 }
-
-                window.editEvents = {
-                    'click .edit': function (e, value, row, index) {
-                        //alert('You click like action, row: ' + JSON.stringify(row));
-                        //alert(row.USERNAME);
-                        window.location.href = basePath+"/admin/url/occupationProfile.shtml?USERNAME="+row.USERNAME;
-                    },
-                    'click .remove': function (e, value, row, index) {
-                        $table.bootstrapTable('remove', {
-                            field: 'id',
-                            values: [row.id]
-                        });
-                    }
-                };
 
 
                 /*

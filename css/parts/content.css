@@ -62,7 +62,7 @@
  */
 
 #content-area {
-    overflow: hidden;
+    /*overflow: hidden;*/
     float: left;
     margin: 0 auto;
 }
@@ -92,7 +92,7 @@
 }
 .content-area-box {
     margin: 0 auto;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     overflow-y: auto;
     padding: 0 10px;
     position: relative;
@@ -423,11 +423,11 @@
     #content-area-left .list-group{
         width: 139px;
     }
-    .content-siderbar-innerList {
-        height: 380px;
-        color: #D8D8D8;
-        overflow: auto;
-    }
+    /*.content-siderbar-innerList {*/
+        /*height: 380px;*/
+        /*color: #D8D8D8;*/
+        /*overflow: auto;*/
+    /*}*/
     #content-area-right {
         width: 559px;
         height: 600px
@@ -481,11 +481,11 @@
     #content-area-left .list-group{
         width: 159px;
     }
-    .content-siderbar-innerList {
-        height: 380px;
-        color: #D8D8D8;
-        overflow: auto;
-    }
+    /*.content-siderbar-innerList {*/
+        /*height: 380px;*/
+        /*color: #D8D8D8;*/
+        /*overflow: auto;*/
+    /*}*/
     #content-area-right {
         width: 759px;
         height: 600px
