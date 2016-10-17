@@ -2,48 +2,52 @@
     <div id="single-toolbar" class="form-inline">
         <div class="form-group">
             <button id="back" type="button" class="btn btn-primary">返回</button>
-            <button id="info-pre" type="button" class="btn btn-default">上一页</button>
-            <button id="info-next" type="button" class="btn btn-default">下一页</button>
+            <button id="info-pre" type="button" class="btn btn-default">上一条</button>
+            <button id="info-next" type="button" class="btn btn-default">下一条</button>
+            <a id="SMS-mag"></a>
         </div>
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading"><h4 class="center">短信详情</h4></div>
+        <div class="panel-heading center">
+            <span id="SMS-quantity">发送数量：</span>
+            <span>接收人：<a id="SMS-receive"  href="#" data-toggle="modal" data-target="#SMS-modal">0</a></span>
+            <span id="SMS-send">发送人：</span>
+            <span id="SMS-time">发布时间：</span>
+            <span>发送成功人数：<a id="SMS-success" href="#" data-toggle="modal" data-target="#SMS-modal">0</a></span>
+            <span>发送失败人数：<a id="SMS-fail"  href="#" data-toggle="modal" data-target="#SMS-modal">0</a></span>
+        </div>
         <div class="panel-body">
             <div class="center bottom-10">
 
-                <span id="SMS-quantity">发送数量：</span>
-                <span id="SMS-receive">接收人：</span>
-                <span id="SMS-send">发送人：</span>
-                <span id="SMS-Time">发布时间：</span>
-                <span id="SMS-Success">发送成功人数：</span>
-                <span id="SMS-Fail">发送失败人数：</span>
-
             </div>
             <div  id="SMSdetail" class="well">
-                <span class="label label-primary label-attached-top-left">问题描述</span>
+                <span class="label label-primary label-attached-top-left">短信内容</span>
                 <p class="text-indent-40">各位领导：南平在榕商会交流会——暨“商会云”平台使用情况月底评选颁奖将于今天（8月5日）下午15:30分在福州晋安区茶园路46号丹桂小院举行，届时请大家准时参会，我们恭候您的光临！</p>
             </div>
         </div>
     </div>
-    <div id="queryActivities-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="SMS-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form class="form-horizontal" role="form">
                     <div class="modal-header">
                         <h4 class="modal-title"></h4>
                     </div>
-                    <div class="modal-body both-25">
-                        <table></table>
+                    <div class="modal-body">
+
+                        <table id="SMS-table"></table>
                     </div>
                     <div class="modal-footer">
-                        <button id="submit" type="submit" class="btn button button-primary button-rounded"  data-dismiss="modal">保存</button>
-                        <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
+                        <button id="reSend" type="button" class="btn btn-success" style="display: none">重新发送</button>
+                        <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+
 </div>
 
 

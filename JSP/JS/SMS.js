@@ -9,6 +9,7 @@
         var basePath = local.protocol+"//"+local.host+"/"+contextPath;
 
         var SMSID;
+//        var SMSNAME;
 
         $(document).on("click", "#add", function() {
             initSMSAdd();
@@ -17,10 +18,12 @@
         $(document).on("click", "#reply", function() {
             initSMSReply();
             initTimepicker();
+            sySms();
         });
         $(document).on("click", "#back", function() {
             initSMSIndex();
             initTimepicker();
+            sySms();
         });
         //上一条
         $(document).on("click", "#info-pre", function() {
@@ -34,11 +37,7 @@
         $(document).on("click", ".SMSDetail", function() {
             initSMSDetail($(this).attr('data-id'));
             initTimepicker();
-        });
-
-        //短信发送
-        $(document).on("click", "#sure", function() {
-            alert(12);
+            sySms();
         });
 
         function initSMSAdd(){
@@ -53,8 +52,7 @@
                 }
             });
             //加载所有会员数据
-            var
-                selections = [],//临时选择数组
+            var selections = [],//临时选择数组
                 unSelected = [],//未选中人员数组
                 selected = [],//已选中人员数组
                 textCount = 0,//输入文本字数
@@ -69,9 +67,12 @@
                 dataType:"json",
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                 success: function (data) {
-                    unSelected = data.rows;
-                    $('.dropdown-menu').append()
 
+                    unSelected = data.rows;
+
+                    //$('.dropdown-menu').append()
+                    // initTableMembers();
+                    // $tableMembers.bootstrapTable('load', data)
                 }
             }).done(function (data) {
                 // unSelected = data;
@@ -127,6 +128,47 @@
                     console.log($('#timer-time').val())
                 }
 
+                var MEMBERIDS = "";
+                var MEMBERMOBILES = "";
+                var count = 0;
+                if(selected.length == 0){
+                    for(var i=0; unSelected.length > i; i++){
+                        MEMBERIDS += unSelected[i].USID + ",";
+                        MEMBERMOBILES += unSelected[i].MOBILE + ",";
+                        count = i+1;
+                    }
+                }else{
+                    for(var i=0; selected.length > i; i++){
+                        MEMBERIDS += selected[i].USID + ",";
+                        MEMBERMOBILES += selected[i].MOBILE + ",";
+                        count = i+1;
+                    }
+                }
+                MEMBERIDS = MEMBERIDS.substring(0,MEMBERIDS.length-1);
+                MEMBERMOBILES = MEMBERMOBILES.substring(0,MEMBERMOBILES.length-1);
+
+                if($('#SMS-content').val() == ""){
+                    alert("短信内容不能为空");
+                    return;
+                }
+                var content = $('#SMS-content').val();
+                $.ajax({
+                    url: basePath + '/admin/sms/sendSMS.shtml',
+                    dataType: 'json',
+                    type: 'post',
+                    data:{MEMBERIDS:MEMBERIDS,MEMBERMOBILES:MEMBERMOBILES,COUNT:count,SMSCONTENT:content,INFCOUNT:1,TASTTIME:$('#timer-time').val()},
+                    traditional: true,
+                    success:function(data){
+                        if(data.status == "0"){
+                            alert("发送成功！");
+                        }else{
+                            alert(data.errMsg);
+                        }
+                    },
+                    error: function(msg){
+                        alert("操作失败，请联系管理人员！");
+                    }
+                });
             });
             /*
              *  功能：获取当前时间并对选择器赋值
@@ -153,9 +195,6 @@
                 refreshPersonCount()
 
             });
-
-
-
 
             /*模态框表格窗口修正*/
             $('#select-modal').on('shown.bs.modal', function () {
@@ -352,6 +391,8 @@
             }
         }
 
+
+
         function initSMSDetail(id){
             console.log(id)
             $container = $("#main-box");
@@ -429,6 +470,7 @@
                 }
             });
         }
+
 
         function initSMSInfoPreOrNext(id,act){
             $container = $("#main-box");
@@ -553,30 +595,35 @@
             });
             initTable1();
             initTimepicker();
+            sySms();
         }
 
         //短信剩余条数
-        $.ajax({
-            url: basePath + '/admin/sms/smsFindByPropertyPage.shtml',
-            dataType: 'json',
-            type: 'post',
-            data:{},
-            traditional: true,
-            success:function(data){
-                if(data.status == "0"){
-                    var div = "<div class='progress-bar' role='progressbar' aria-valuenow='"+data.smsConfig.SMSUSEDCOUNTS+"' aria-valuemin='"+0+"' aria-valuemax='"+data.smsConfig.SMSALLCOUNTS+"' style='width: "+data.smsConfig.SMSUSEDCOUNTS+"%;'>"
-                        +data.smsConfig.SMSUSEDCOUNTS+"/"+data.smsConfig.SMSALLCOUNTS
-                        +"</div>";
-                    $(".progress-bar").html(div);
+        function sySms(){
+            $.ajax({
+                url: basePath + '/admin/sms/smsFindByPropertyPage.shtml',
+                dataType: 'json',
+                type: 'post',
+                data:{},
+                traditional: true,
+                success:function(data){
+                    if(data.status == "0"){
+//	                	SMSNAME = "【"+data.smsConfig.SMSNAME+"】";
+                        var div = "<div class='progress-bar' role='progressbar' aria-valuenow='"+data.smsConfig.SMSUSEDCOUNTS+"' aria-valuemin='"+0+"' aria-valuemax='"+data.smsConfig.SMSALLCOUNTS+"' style='width: "+data.smsConfig.SMSUSEDCOUNTS+"%;'>"
+                            +data.smsConfig.SMSUSEDCOUNTS+"/"+data.smsConfig.SMSALLCOUNTS
+                            +"</div>";
+                        $(".progress-bar").html(div);
+                    }
+                },
+                error: function(msg){
+                    alert("操作失败，请联系管理人员！");
                 }
-            },
-            error: function(msg){
-                alert("操作失败，请联系管理人员！");
-            }
-        });
+            });
+        }
 
         initTable1();
         initTimepicker();
+        sySms();
 
         function initTimepicker(){
             $('.form_date').datetimepicker({
@@ -724,6 +771,7 @@
             $("#checkSendStartTime").val(checkSendStartTime);
             $("#checkSendEndTime").val(checkSendEndTime);
             initTimepicker();
+            sySms();
         });
 
         function initTable2(checkSendStartTime,checkSendEndTime) {
@@ -843,6 +891,7 @@
             $("#checkSendStartTime").val(checkSendStartTime);
             $("#checkSendEndTime").val(checkSendEndTime);
             initTimepicker();
+            sySms();
         });
     });
 }());

@@ -1,46 +1,42 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <!DOCTYPE html>
 <html lang="zh_cn">
-<head>
-    <meta charset="UTF-8">
-    <title>签到抽奖-商会云</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="img/Logo_25x25.png" rel="shortcut icon">
+    <head>
+        <meta charset="UTF-8">
+        <title>签到抽奖-商会云</title>
 
-    <link href="css/main.css" type="text/css" rel="stylesheet">
-</head>
-<body>
-<header>
-    <nav class="navbar container">
-                <span class="left">
-                    <span class="navbar-img"><img src="img/Logo_100x100.png" alt="商会云"></span>
-                    <span class="navbar-brand kaiti">商会云体验中心</span>
-                </span>
-        <span class="right">
-                    <span class="navbar-brand navbar-welcome kaiti">您好！登录人员</span>
-                    <button id="user-setting" type="reset" class="navbar-btn btn btn-success"><i class="fa fa-cog" aria-hidden="true"></i></button>
-                    <button id="login-out" type="reset" class="navbar-btn btn btn-danger"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-                </span>
-    </nav>
-</header>
+        <%@ include file="meta.jsp"%>
+		
+
+        <link href="<%=basePath%>css/main.css" type="text/css" rel="stylesheet">
+
+       
+    </head>
+    <body>
+
+        <%@ include file="header.jsp"%>
 
 <main class="container">
     <div id="content">
         <ul id="content-navbar" class="row">
-            <li id="content-navbar-home"><a href="index.html"><i class="fa fa-desktop"></i>桌面</a></li>
+            <li id="content-navbar-home"><a href="<%=basePath%>admin/url/index.shtml"><i class="fa fa-desktop"></i>桌面</a></li>
             <li id="content-navbar-menu">
                 <ul>
                 </ul>
             </li>
             <li id="content-navbar-switch" ><a href="#"><i class="fa fa-columns"></i>切换</a></li>
         </ul>
-        <div id="main-box">
+		 <div id="main-box">
             <div id="content-area">
                 <div class="content-area-box">
                     <div id="table-toolbar" class="form-inline">
+                    	<button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
                         <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#queryActivities-modal">新增活动</button>
-
                     </div>
                     <table id="table"></table>
                 </div>
@@ -99,9 +95,10 @@
                                 <h4 class="modal-title">二维码</h4>
                             </div>
                             <div class="modal-body">
-                                <img src="img/testImg/qrcode.jpg">
+                                <img id="aurl" src="">
                             </div>
                             <div class="modal-footer">
+                                <button id="ORCodeUpload" type="button" class="btn button button-primary button-rounded" data-dismiss="modal">下载</button>
                                 <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
                             </div>
                         </form>
@@ -117,7 +114,7 @@
                             </div>
                             <div class="modal-body">
                                 <div id="queryWinner-toolbar" class="form-inline">
-                                    <button id="queryPartic-export" type="button" class="btn btn-success">导出</button>
+                                    <button id="queryWinner-export" type="button" class="btn btn-success">导出</button>
                                 </div>
                                 <table id="tableWinner"></table>
                             </div>
@@ -137,7 +134,10 @@
                             </div>
                             <div class="modal-body both-25">
                                 <div id="queryPartic-toolbar" class="form-inline">
+                                <button id="queryPartic-delete" type="button" class="btn btn-danger" style="display: none">删除</button>
                                     <button id="queryPartic-add" type="button" class="btn btn-success"  data-toggle="modal" data-target="#add-modal">新增人员</button>
+                                	<button id="queryPartic-export" type="button" class="btn btn-success">导出</button>
+                                	
                                 </div>
                                 <table id="tablePartic"></table>
                             </div>
@@ -149,52 +149,24 @@
                     </div>
                 </div>
             </div>
-            <div id="add-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form class="form-horizontal" role="form">
-                            <div class="modal-header center">
-                                <h4 class="modal-title">添加人员</h4>
-                            </div>
-                            <div class="modal-body both-25">
-                                <input class="form-control" type="text" id="input-person">
-                            </div>
-                            <div class="modal-footer">
-                                <button id="sure" type="button" class="btn button button-rounded" >确定</button>
-                                <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            
+            
         </div>
-
-
+        
+    
     </div>
 </main>
 
-<footer class="container">
-    <!--<div class="bottom">-->
-    <span>永杰科技 光越传媒 新浪闽商</span>
-    <span>客服电话：0591-62751898</span>
-    <span>技术支持：福州永杰网络科技股份有限公司</span>
-    <div>(c) 2015-2020 商会+ . All Right Reserved.   永杰科技 版权所有</div>
-    <!--</div>-->
-</footer>
-<!–[if IE]>
-<script src="js/public/html5.min.js"></script>
-<![endif]–>
-
-<script src="js/public/jquery-1.12.4.min.js"></script>
-<script src="js/public/bootstrap.js"></script>
-<script src="js/public/menuData.js"></script>
-<script src="js/public/bootstrap-table.min.js"></script>
-<script src="js/public/bootstrap-table-zh-CN.js"></script>
-<script src="js/public/bootstrap-table-editable.min.js"></script>
-<script src="js/public/bootstrap-editable.min.js"></script>
-<script src="js/public/datetimepicker.min.js"></script>
-
-<script src="js/main.js"></script>
-<script src="js/queryActivities.js"></script>
-</body>
+        <%@ include file="footer.jsp"%>
+         
+        <script src="<%=basePath%>js/public/bootstrap-table.min.js"></script>
+        <script src="<%=basePath%>js/public/bootstrap-table-zh-CN.js"></script>
+		<script src="<%=basePath%>js/public/bootstrap-table-editable.min.js"></script>
+		<script src="<%=basePath%>js/public/bootstrap-editable.min.js"></script>
+		<script src="<%=basePath%>js/public/datetimepicker.min.js"></script>
+		
+        <script src="<%=basePath%>js/main.js"></script> 	
+        <script src="<%=basePath%>js/queryActivities.js"></script>
+	
+    </body>
 </html>

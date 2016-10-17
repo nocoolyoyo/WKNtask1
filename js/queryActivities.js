@@ -156,7 +156,7 @@
                     // pagination: true,
                     height: 450,
                     // sidePagination: "server",
-                    toolbar: "#tableWinner-toolbar",
+                    //toolbar: "#tableWinner-toolbar",
                     showColumns: true,
                     // showToggle: true,
                     columns: [{
@@ -191,7 +191,7 @@
                     // pagination: true,
                     height: 450,
                     // sidePagination: "server",
-                    toolbar: "#tableWinner-toolbar",
+                    toolbar: "#queryPartic-toolbar",
                     showColumns: true,
                     // showToggle: true,
 

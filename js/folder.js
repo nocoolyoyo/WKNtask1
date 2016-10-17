@@ -89,7 +89,7 @@
                     field: 'FOLDERNAME',
                     title: '文件夹名',
                     sortable: true,
-                    align: 'center',
+                    align: 'center'
                 }]
             });
             /*
@@ -147,6 +147,7 @@
                     field: 'FILENAME',
                     title: '文件名',
                     sortable: true,
+
                     align: 'center'
                 }, {
                     field: 'UPLOADTIME',
@@ -158,11 +159,6 @@
                     title: '姓名',
                     sortable: true,
                     align: 'center'
-                }, {
-                    field: 'operate',
-                    title: '编辑',
-                    align: 'center',
-                    formatter: operateFormatter
                 }]
             });
             /*

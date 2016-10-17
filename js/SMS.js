@@ -141,21 +141,18 @@
 
                 $tableMembers = $('#table-members'),
                 $tableSelected = $('#members-selected');
+
                 $.ajax({
                     url: "./data/occupation.json",
                     async: false,
                     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                     success: function (data) {
-
                         unSelected = data;
-
                         // initTableMembers();
                         // $tableMembers.bootstrapTable('load', data)
                     }
                 }).done(function (data) {
-
-                    unSelected = data;
-
+                    // unSelected = data;
                 });
 
             console.log(unSelected)
@@ -163,10 +160,8 @@
                 initTableMembers();
                 initMembersSelected();
 
+                //清空操作
                 $(document).on("click", "#clear", function() {
-
-                    console.log(selected)
-                    console.log(unSelected)
                     unSelected = selected.concat(unSelected);
                     $tableMembers.bootstrapTable('load', unSelected)
                     $tableMembers.bootstrapTable( 'uncheckAll');
@@ -175,6 +170,7 @@
                     $tableSelected.bootstrapTable('load', selected)
 
                 });
+            //定时操作
                 $('#timer').click(function () {
                     if($(this).hasClass('active')){
                         $(this).removeClass('active');
@@ -191,8 +187,7 @@
                 $tableMembers.bootstrapTable('resetView');
                 $tableSelected.bootstrapTable('resetView');
             });
-
-
+            //时间选择初始化
             function initClockpicker(){
                 $('.form_date').datetimepicker({
                     pickerPosition: 'top-right',
@@ -201,7 +196,7 @@
                     autoclose: 1,
                     todayHighlight: 1,
                     startView: 2,
-                    minView: 2,
+                    minView: 0,
                     forceParse: 0
                 });
             }
@@ -315,7 +310,7 @@
                 //往已选数据对象组里填充添加的数据，同时移除表格数据
                 $add.click(function () {
                     selected = selected.concat(getRowSelections());
-                    $tableSelected.bootstrapTable('load', selected)
+                    $tableSelected.bootstrapTable('load', selected);
                     $tableMembers.bootstrapTable('remove', {
                         field: 'USID',
                         values: selections
@@ -326,8 +321,6 @@
 
                     labelCreate();
                 });
-
-
 
                 function getRowSelections() {
                     return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
@@ -363,10 +356,6 @@
                 function selectedFormatter(value, row) {
                     return [
 
-                        // '<div class="alert alert-dismissible alert-dark alert-success">',
-                        // '<button type="button" class="close" data-dismiss="alert">×</button>',
-                        // ' <strong>'+ row.REALNAME +'</strong>'+ row.MOBILE,
-                        // '</div>'
                         '<div class="pull-left">',
                         '<span>' + row.REALNAME +'   '+ '</span>',
                         '</div>',
@@ -476,8 +465,6 @@
                 }
             }
         }
-
-
 
     });
 }());
