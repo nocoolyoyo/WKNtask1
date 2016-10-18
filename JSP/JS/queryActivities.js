@@ -19,6 +19,10 @@
         initTimepicker();
         initDate();
 
+        //参与名单table
+        initTablePartic();
+        //获奖名单table
+        initTableWinner();
 
         $(document).on("click",".QRCode",function(){
             console.log($(this).attr('data-url'));
@@ -33,7 +37,24 @@
         //点击获取获奖名单
         $(document).on("click",".queryWinner",function(){
             tempId = $(this).attr('data-id');
-            initTableWinner(tempId);
+            $.ajax({
+                url: basePath + '/admin/signdraw/querywinning.shtml',
+                dataType: 'json',
+                type: 'post',
+                async :false,
+                data:{
+                    AID:tempId
+                },
+                success:function(data){
+                    if(data.status == "0"){
+                        console.log(data)
+                        //initTableWinner(tempId,data)
+                        $tableWinner.bootstrapTable('load',data);
+                    }
+                },
+                error: function(msg){
+                }
+            });
         });
         $('#queryWinner-modal').on('shown.bs.modal', function () {
             $tableWinner.bootstrapTable('resetView');
@@ -43,10 +64,23 @@
         //点击获取参与名单
         $(document).on("click",".queryPartic",function(){
             tempId = $(this).attr('data-id');
-            initTablePartic(tempId);
         })
         $('#queryPartic-modal').on('shown.bs.modal', function () {
-            $tablePartic.bootstrapTable('resetView');
+            $.ajax({
+                url: basePath + '/admin/signdraw/querywinning.shtml',
+                dataType: 'json',
+                type: 'post',
+                data:{
+                    AID:tempId
+                },
+                success:function(data){
+                    if(data.status == "0"){
+                        $tablePartic.bootstrapTable('load',data);
+                    }
+                },
+                error: function(msg){
+                }
+            });
         });
 
 
@@ -272,6 +306,7 @@
         function initTableWinner(id) {
             $tableWinner = $("#tableWinner");
             $tableWinner.bootstrapTable({
+                data: Wdata,
                 url: basePath + '/admin/signdraw/querywinning.shtml',
                 dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
                 pagination: true,//是否分页
@@ -335,14 +370,18 @@
                         align: 'center'
                     }]
             });
-        }
+            //导出获奖名单
+            $("#queryWinner-export").click(function(){
+                window.location.href = basePath+"/admin/signdraw/queryWinnerExport.shtml?AID="+tempId;
+            });
 
+        }
 
         //参与名单
         function initTablePartic(id) {
             $tablePartic = $("#tablePartic");
             $tablePartic.bootstrapTable({
-                url: basePath + '/admin/signdraw/queryparticipate.shtml',
+//                url: basePath + '/admin/signdraw/queryparticipate.shtml',
                 dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
                 pagination: true,//是否分页
                 height: 450,
@@ -397,6 +436,14 @@
                     align: 'center'
                 }]
             });
+
+            //导出参与名单
+            $('#queryPartic-export').click(function (){
+                window.location.href = basePath+"/admin/signdraw/queryParticExport.shtml?AID="+tempId;
+            });
+
+
+
         }
 
     });

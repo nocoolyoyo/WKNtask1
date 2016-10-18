@@ -15,6 +15,8 @@
          */
 
         $(document).on("click", "#side-menu > li", function() {
+
+            console.log($(this).index())
             switch ($(this).index()) {
                 case 0: initHYXX();initSidebar(); break;
                 case 1: initZWGL();initSidebar(); break;
@@ -62,6 +64,9 @@
          *  功能：会员页表格初始化
          *  Created by nocoolyoyo 2016/9/28.
          */
+
+
+
         function initHYXX(){
             $.ajax({
                 url: basePath + "/data/occupation-HYXX.html",
@@ -663,9 +668,8 @@
                     dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
                     search: true,//是否搜索
                     pagination: true,//是否分页
-                    pageSize: 12,//单页记录数
-                    height:601,
-                    pageList: [12, 20, 50],//分页步进值
+                    pageSize: 10,//单页记录数
+                    pageList: [5, 10, 20, 50],//分页步进值
                     sidePagination: "server",//服务端分页
                     contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
 
@@ -678,7 +682,7 @@
                     },
                     searchOnEnterKey: false,//回车搜索
                     showRefresh: true,//刷新按钮
-
+                    showColumns: true,//列选择按钮
 
 
                     columns: [{
@@ -765,8 +769,7 @@
                     url: basePath+'/admin/member/activationUserMember.shtml',
                     method: "post",
                     datatype: 'json',
-                    pageSize: 12,//单页记录数
-                    height:601,
+
                     toolbar: "#table-toolbar",
                     showColumns: true,
                     showToggle: true,
@@ -774,7 +777,7 @@
                     dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
                     search: true,//是否搜索
                     pagination: true,//是否分页
-
+                    pageSize: 10,//单页记录数
                     pageList: [5, 10, 20, 50],//分页步进值
                     sidePagination: "server",//服务端分页
                     contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
@@ -787,7 +790,7 @@
                     },
                     searchOnEnterKey: false,//回车搜索
                     showRefresh: true,//刷新按钮
-
+                    showColumns: true,//列选择按钮
 
                     columns: [{
                         field: 'state',
@@ -973,11 +976,11 @@
                     $container.html(data);
                 }
             });
-
             initTable5();
             function initTable5() {
                 $table = $('#table');
-                var $QGLDelete = $('#QGL-delete');
+                var $delete = $('#delete');
+                var $add = $('#add');
                 $table.bootstrapTable({
                     url: basePath+'/admin/member/queryGroup.shtml',
                     method: "post",
@@ -990,11 +993,12 @@
                     dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
                     search: true,//是否搜索
                     pagination: true,//是否分页
-                    pageSize: 12,//单页记录数
-                    height: 601,
-                    pageList: [12, 20, 50],//分页步进值
+                    pageSize: 10,//单页记录数
+                    pageList: [5, 10, 20, 50],//分页步进值
                     sidePagination: "server",//服务端分页
                     contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+
+
                     queryParamsType: "limit",//查询参数组织方式
                     queryParams: function getParams(params) {
                         //params obj
@@ -1003,7 +1007,7 @@
                     },
                     searchOnEnterKey: false,//回车搜索
                     showRefresh: true,//刷新按钮
-
+                    showColumns: true,//列选择按钮
 
                     columns: [{
                         field: 'state',
@@ -1012,7 +1016,7 @@
                         field: 'GROUPNAME',
                         title: '群名字',
                         sortable: true,
-                        formatter: groupFormatter,
+                        editable: false,
                         align: 'center'
                     }, {
                         field: 'DETAIL',
@@ -1028,106 +1032,26 @@
                         field: 'COUNT',
                         title: '群成员数',
                         sortable: true,
-                        formatter: membersFormatter,
                         align: 'center'
+                    }, {
+                        field: 'edit',
+                        title: '编辑',
+                        align: 'center',
+                        // events: editEvents,
+                        formatter: editFormatter
                     }]
                 });
-
-
-                function groupFormatter(value, row){
-                    return '<a href="#" class="groupDetail"  data-toggle="modal"  data-target="#QGL-edit-modal" data-id="' + row.AID + '">' + value + '</a>';
-                }
-                function membersFormatter(value, row){
-                    return '<a href="#" class="membersDetail"  data-id="' + row.AID + '">' + value + '</a>';
-                }
                 $table.on('check.bs.table uncheck.bs.table ' +
                     'check-all.bs.table uncheck-all.bs.table', function () {
                     if ($table.bootstrapTable('getSelections').length) {
-                        $QGLDelete.show();
+                        $delete.show();
                     } else {
-                        $QGLDelete.hide();
+                        $delete.hide();
                     }
                     selections = getIdSelections();
                 });
 
-                //添加群
-                $('#QGL-add').click(function (){
-
-
-                });
-                //添加群保存
-
-                $('#QGL-submit').click(function () {
-
-                });
-
-                //功能：输入框验证
-                $('#add-from').bootstrapValidator({
-                    message: '所有值不能为空',
-                    //excluded: [':disabled'],
-                    fields: {
-                        QGLName: {
-                            validators: {
-                                notEmpty: {
-                                    message: '请输入群名称！'
-                                }
-                            }
-                        }
-                    }
-                });
-
-
-                $('#QGLName').on('keyup', function(){
-                    var $submit = $("#QGL-submit");
-                    $('form :input').bind('input propertychange', function () {
-                        var $QGLName = $("#QGLName").val();
-                        if($QGLName !== ""){
-                            $submit.removeAttr('disabled');
-                        }if($QGLName == ""){
-                            $submit.attr('disabled', 'disabled');
-                        }
-                    });
-                });
-
-
-                //修改群
-                $(document).on('click', 'groupDetail',function(){
-                    //console.log($(this).index())
-
-                });
-                //修改保存
-                $('#editQGL-submit').click(function () {
-
-                });
-                //  功能：输入框验证
-                $('#edit-from').bootstrapValidator({
-                    message: '所有值不能为空',
-                    fields: {
-                        editQGLName: {
-                            validators: {
-                                notEmpty: {
-                                    message: '请输入群名称！'
-                                }
-                            }
-                        }
-                    }
-                });
-
-                $('#editQGLName').on('keyup', function(){
-                    var $editSubmit = $("#editQGL-submit");
-                    $('form :input').bind('input propertychange', function () {
-                        var $editQGLName = $("#editQGLName").val();
-                        if($editQGLName !== ""){
-                            $editSubmit.removeAttr('disabled');
-                        }if($editQGLName == ""){
-                            $editSubmit.attr('disabled', 'disabled');
-                        }
-                    });
-                });
-
-
-                //群管理删除
-                $QGLDelete.click(function () {
+                $delete.click(function () {
                     var ids = getIdSelections();
                     var id = ""+ids;
                     if(confirm("确认删除")) {
@@ -1140,7 +1064,7 @@
                             success:function(data){
                                 if(data.status == "0"){
                                     alert("删除成功!");
-                                    $QGLDelete.hide();
+                                    $delete.hide();
                                     $table.bootstrapTable('refresh');
                                 }else{
                                     alert(data.errMsg);
@@ -1151,18 +1075,11 @@
                             }
                         });
                     }
+//                $table.bootstrapTable('remove', {
+//                    field: 'id',
+//                    values: ids
+//                });
                 });
-
-                //修改群
-                $(document).on('click', '.groupDetail',function(){
-                    //console.log($(this).index())
-
-                });
-                function initQGLmembers(){
-                    var table
-                }
-
-
 
 
                 function getIdSelections() {
@@ -1170,333 +1087,13 @@
                         return row.GROUPID
                     });
                 }
-
-            }
-
-            //查看群成员
-            $(document).on('click', '.membersDetail',function(){
-                //console.log($(this).index())
-                initQGLMembers($(this).attr('data-id'))
-            });
-
-
-
-            function initQGLMembers(id){
-                console.log(id)
-                groupId = id;
-                $.ajax({
-                    url: basePath + "/data/occupation-QGL-members.html",
-                    async :false,
-                    success:function(data)
-                    {
-                        $container.html(data);
-                    }
-                });
-                $(document).on('click', '#back',function(){
-                    initQGL();
-                    initSidebar();
-                });
-
-                initTableMembers();
-                function initTableMembers() {
-
-                    $tableMembers = $('#tableMembers');
-                    var $membersDelete = $('#QGL-members-delete');
-                    $tableMembers.bootstrapTable({
-                        url: basePath+'/admin/member/queryGoupMember.shtml',
-                        method: "post",
-                        datatype: 'json',
-                        idField: "id",
-                        toolbar: "#table-toolbar",
-                        showColumns: true,
-                        showToggle: true,
-                        dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
-                        search: true,//是否搜索
-                        pagination: true,//是否分页
-                        pageSize: 12,//单页记录数
-                        height: 601,
-                        pageList: [12, 20, 50],//分页步进值
-                        sidePagination: "server",//服务端分页
-                        contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
-                        queryParamsType: "limit",//查询参数组织方式
-                        queryParams: function getParams(params) {
-                            //params obj
-                            params.GROUPID = groupId;
-                            return params;
-                        },
-                        searchOnEnterKey: false,//回车搜索
-                        showRefresh: true,//刷新按钮
-                        columns: [{
-                            field: 'state',
-                            checkbox: true
-                        }, {
-                            field: 'MOBILE',
-                            title: '成员账号',
-                            sortable: true,
-                            align: 'center'
-                        }, {
-                            field: 'REALNAME',
-                            title: '成员姓名',
-                            sortable: true,
-                            align: 'center'
-                        }, {
-                            field: 'BIRTHDAY',
-                            title: '成员生日',
-                            sortable: true,
-                            align: 'center'
-                        }]
-                    });
-                    $tableMembers.on('check.bs.table uncheck.bs.table ' +
-                        'check-all.bs.table uncheck-all.bs.table', function () {
-                        if ($tableMembers.bootstrapTable('getSelections').length) {
-                            $membersDelete.show();
-                        } else {
-                            $membersDelete.hide();
-                        }
-                        selections = getMembersSelections();
-                    });
-
-                    function getMembersSelections() {
-                        return $.map($table.bootstrapTable('getSelections'), function (row) {
-                            return row.GROUPID
-                        });
-                    }
-
-                    initMembersAdd()
-
-                    function initMembersAdd(){
-                        //页面初始化
-
-
-                        //加载所有会员数据
-                        var
-                            selections = [],//临时选择数组
-                            unSelected = [],//未选中人员数组
-                            selected = [],//已选中人员数组
-                            $tableMembers = $('#table-members'),
-                            $tableSelected = $('#members-selected');
-                        enableSubmit();
-                        $("#select-sure").click(function () {
-                            var mySelect = "";
-                            console.log(selected);
-                            for(var k=0; k < selected.length; k++){
-                                mySelect += selected[k].USID + ';' +  selected[k].USERNAME + ',';
-                            }
-                            mySelect=mySelect.substring(0,mySelect.length-1);
-                            console.log(mySelect);
-//                            if(confirm("确认添加")){
-//                                $.ajax({
-//                                    url: basePath + '/admin/member/addMemberOfGroup.shtml',
-//                                    dataType: 'json',
-//                                    type: 'post',
-//                                    data:{GROUPID:groupId,"chkinfo":id},
-//                                    traditional: true,
-//                                    success:function(data){
-//                                        if(data.status == "0"){
-//                                            alert("删除成功!");
-//                                            $delete.hide();
-//                                            $table.bootstrapTable('refresh');
-//                                        }else{
-//                                            alert("操作失败，请联系管理人员！");
-//                                        }
-//                                    },
-//                                    error: function(msg){
-//                                        alert("操作失败，请联系管理人员！");
-//                                    }
-//                                });
-//                            }
-                        });
-                        function enableSubmit(){
-                            var $selectSubmit = $("#select-sure");
-                            if(selected.length != 0){
-                                $selectSubmit.removeAttr('disabled');
-                            }else if(selected.length == 0){
-                                $selectSubmit.attr('disabled', 'disabled');
-                            }
-                        }
-                        $.ajax({
-                            url: basePath + "/admin/member/serchAllMember.shtml",
-                            async: false,
-                            dataType:"json",
-                            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                            success: function (data) {
-                                unSelected = data.rows;
-                                $('.dropdown-menu').append()
-                            }
-                        }).done(function (data) {
-                            // unSelected = data;
-                        });
-                        initTableMembers();
-                        initMembersSelected();
-
-
-                        //确认操作
-
-                        $('#sure').click(function() {
-                            console.log(selected)
-                        });
-
-                        //清空操作
-                        $(document).on("click", ".clear", function() {
-                            unSelected = selected.concat(unSelected);
-                            $tableMembers.bootstrapTable('load', unSelected);
-                            $tableMembers.bootstrapTable( 'uncheckAll');
-                            selected = [];
-                            $tableSelected.bootstrapTable('load', selected);
-                            enableSubmit()
-
-                        });
-
-
-                        /*模态框表格窗口修正*/
-                        $('#select-modal').on('shown.bs.modal', function () {
-                            $tableMembers.bootstrapTable('resetView');
-                            $tableSelected.bootstrapTable('resetView');
-                        });
-
-
-                        //移除已选数据对象组里的数据，同时返回原表格数据
-                        $(document).on("click", ".selectedRemove", function() {
-                            var removeSelect = [];
-                            var tempID=  parseInt($(this).attr('data-id'));
-                            removeSelect.push(tempID)
-                            // selected = selected.concat(getRowSelections());
-                            for(var i=0; i < selected.length; i++){
-                                if( removeSelect.join() == selected[i].USID) {
-
-                                    $tableMembers.bootstrapTable('insertRow', {
-                                        index: 0,
-                                        row: selected[i]
-                                    });
-                                    selected.splice(selected.indexOf(selected[i]),1) ;
-                                    $tableSelected.bootstrapTable('load', selected);
-
-                                    $tableMembers.bootstrapTable( 'uncheckAll');
-                                    enableSubmit()
-                                }
-                            }
-
-                        });
-                        function initTableMembers(){
-                            var $add = $('#members-add');
-                            $tableMembers.bootstrapTable({
-                                // idField: "id",
-                                data: unSelected,
-                                pageSize: 9,
-                                pageList: [12, 25, 50, 100],
-                                sidePagination: 'client',
-                                pagination: true,
-                                toolbar: "#select-toolbar",
-                                search: true,
-                                // sidePagination: "server",
-                                showColumns: true,
-                                height: 490,
-                                columns: [{
-                                    field: 'state',
-                                    checkbox: true
-
-                                },{
-                                    field: 'REALNAME',
-                                    title: '姓名',
-                                    sortable: true,
-                                    align: 'center'
-                                }, {
-                                    field: 'MOBILE',
-                                    title: '手机号',
-                                    sortable: true,
-                                    align: 'center'
-                                }, {
-                                    field: 'COMPANY',
-                                    title: '所在单位',
-                                    sortable: true,
-                                    align: 'center'
-                                }]
-                            });
-
-                            /*
-                             *  功能：获取选择框信息
-                             *  Created by nocoolyoyo 2016/9/28.
-                             */
-
-                            $tableMembers.on('check.bs.table uncheck.bs.table ' +
-                                'check-all.bs.table uncheck-all.bs.table', function () {
-                                if ($tableMembers.bootstrapTable('getSelections').length) {
-                                    $add.show();
-                                } else {
-                                    $add.hide();
-                                }
-                                selections  = getIdSelections();
-                            });
-                            /*人员选择*/
-                            //往已选数据对象组里填充添加的数据，同时移除表格数据
-                            $add.click(function () {
-                                selected = selected.concat(getRowSelections());
-                                $tableSelected.bootstrapTable('load', selected);
-                                $tableMembers.bootstrapTable('remove', {
-                                    field: 'USID',
-                                    values: selections
-                                });
-                                $add.hide();
-                                enableSubmit()
-                            });
-
-
-
-                            function getRowSelections() {
-                                return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
-                                    return row
-                                });
-                            }
-                            function getIdSelections() {
-                                return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
-                                    return row.USID
-                                });
-                            }
-                        }
-
-                        function initMembersSelected(){
-                            $tableSelected.bootstrapTable({
-                                data: selected,
-                                height: 475,
-                                search: true,
-                                showHeader:false,
-                                toolbar: "#left-toolbar",
-
-                                columns: [{
-                                    field: 'SELECTED',
-                                    title: '已选人员',
-                                    sortable: true,
-                                    formatter: selectedFormatter,
-                                    align: 'center'
-                                }]
-                            });
-                            function selectedFormatter(value, row) {
-                                return [
-
-                                    '<div class="pull-left">',
-                                    '<span>' + row.REALNAME +'   '+ '</span>',
-                                    '</div>',
-                                    '<div class="pull-left">',
-                                    '<span>' + row.MOBILE + '</span>',
-                                    '</div>',
-                                    '<div class="pull-right">',
-                                    '<a class="selectedRemove close" href="javascript:void(0)"  data-id="' + row.USID +'" title="移除">',
-                                    '<i class="glyphicon glyphicon-remove"></i>',
-                                    '</a> ',
-                                    '</div>'
-                                ].join('');
-                            }
-
-                        }
-                    }
-
-                }
-
+                /*
+                 *  功能：编辑框
+                 *  Created by nocoolyoyo 2016/9/28.
+                 */
 
             }
         }
-
-
 
     });
 }());

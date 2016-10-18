@@ -1,27 +1,90 @@
 
-    <div id="sidebar-left" class="sidebar-container sidebar-push">
-        <div class="sidebar">
-            <div class="sidebar-wrap">
-                <ul id="occupation-menu">
-                    <li><a href="#">会员信息</a></li>
-                    <li><a href="#">职务管理</a></li>
-                    <li><a href="#">群聊管理</a></li>
-                    <li><a href="#">未激活</a></li>
-                    <li><a href="#">群管理</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="sidebar-overlay"></div>
-        <div id="content-area"  class="sidebar-dim">
-            <div class="content-area-box">
-                <div id="table-toolbar" class="form-inline">
-                    <div class="form-group">
-                        <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
-                        <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
-                        <button id="add" type="button" class="btn btn-success">新增</button>
-                    </div>
-                </div>
-                <table id="table"></table>
-            </div>
+<div id="sidebar-left" class="sidebar-container sidebar-push">
+    <div class="sidebar">
+        <div class="sidebar-wrap">
+            <ul id="side-menu">
+                <li><a href="#">会员信息</a></li>
+                <li><a href="#">职务管理</a></li>
+                <li><a href="#">群聊管理</a></li>
+                <li><a href="#">未激活</a></li>
+                <li><a href="#">群管理</a></li>
+            </ul>
         </div>
     </div>
+    <div class="sidebar-overlay"></div>
+    <div id="content-area"  class="sidebar-dim">
+        <div class="content-area-box">
+            <div id="table-toolbar" class="form-inline">
+                <div class="form-group">
+                    <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
+                    <button id="QGL-delete" type="button" class="btn btn-danger" style="display: none">删除</button>
+                    <button id="QGL-add" type="button" class="btn btn-success"  data-toggle="modal" data-target="#QGL-add-modal">创建群</button>
+                </div>
+            </div>
+            <table id="table"></table>
+        </div>
+    </div>
+</div>
+<div id="QGL-add-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="add-from" class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">创建群</h4>
+                </div>
+                <div class="modal-body both-25">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">群名称</span>
+                            <input id="QGLName" name="QGLName" type="text" class="form-control" placeholder="群名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="input-group top-10">
+                            <span class="input-group-addon">群描述</span>
+                            <input id="QGLDescription"  name="QGLDescription" type="text" class="form-control" placeholder="群描述">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="QGL-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled">保存</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="QGL-edit-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="edit-from" class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">修改群</h4>
+                </div>
+                <div class="modal-body both-25">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">群名称</span>
+                            <input id="editQGLName" name="editQGLName" type="text" class="form-control" placeholder="群名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="input-group top-10">
+                            <span class="input-group-addon">群描述</span>
+                            <input id="editQGLDescription"  name="QGLDescription" type="text" class="form-control" placeholder="群描述">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="editQGL-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled">保存</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,78 +1,77 @@
 
-    <div id="content-area">
-        <div class="content-area-box">
-            <div id="single-toolbar">
-                <button id="back" type="button" class="btn btn-primary">返回</button>
-                <div class="pull-right">
-                    <div class="dropdown" style="display: inline-block">
-                        <button id="fast-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
-                    <button id="exact-add" type="button" class="btn btn-default"  data-toggle="modal" data-target="#select-modal">精确添加</button>
-                    <button id="clear" type="button" class="btn btn-default">清空</button>
+<div id="content-area">
+    <div class="content-area-box">
+        <div id="single-toolbar">
+            <button id="back" type="button" class="btn btn-primary">返回</button>
+            <div class="pull-right">
+                <div class="dropdown" style="display: inline-block">
+                    <button id="fast-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
                 </div>
+                <button id="exact-add" type="button" class="btn btn-default"  data-toggle="modal" data-target="#select-modal">精确添加</button>
+                <button type="button" class="clear btn btn-default">清空</button>
             </div>
-            <div class="select-person form-control">
+        </div>
+        <div class="select-person form-control">
+        </div>
+        <textarea id="SMS-content" class="form-control"></textarea>
+
+
+        <span>您已输入<span id="text-count">0</span>/491个字，选中<span id="person-count">0</span>人，合计短信<span id="SMS-count">0</span>条</span>
+        <div id="footer-toolbar" class="form-inline right">
+
+            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-format="yyyy-mm-dd hh:ii" style="display: none">
+                <input id="timer-time" class="form-control" size="16" type="text" value="" placeholder="时间">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
-                <textarea id="SMS-content" class="form-control"></textarea>
 
+            <button id="timer" type="button" class="btn btn-warning">定时</button>
+            <button id="sure" type="submit" class="btn btn-primary">确定</button>
+            <button id="cancel" type="submit" class="btn btn-default">取消</button>
+        </div>
 
-            <span>您已输入<span id="text-count">0</span>/491个字，选中<span id="person-count">0</span>人，合计短信<span id="SMS-count">0</span>条</span>
-
-            <div id="footer-toolbar" class="form-inline right">
-
-                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-format="yyyy-mm-dd hh:ii" style="display: none">
-                        <input class="form-control" size="16" type="text" value="" placeholder="时间">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        <div id="select-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header center">
+                        <h4 class="modal-title">人员选择</h4>
                     </div>
-
-
-                    <button id="timer" type="button" class="btn btn-warning">定时</button>
-                    <button id="sure" type="submit" class="btn btn-primary">确定</button>
-                    <button id="cancel" type="submit" class="btn btn-default">取消</button>
-                </div>
-
-            <div id="select-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header center">
-                            <h4 class="modal-title">人员选择</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="select-content">
-                                <div class="select-left">
-                                    <div id="left-toolbar" class="form-inline">
-                                    </div>
-                                    <table id="members-selected"></table>
+                    <div class="modal-body">
+                        <div class="select-content">
+                            <div class="select-left">
+                                <div id="left-toolbar" class="form-inline">
+                                    <button type="button" class="clear btn btn-default">清空</button>
                                 </div>
-                                <div class="select-right">
-                                    <div id="table-toolbar" class="form-inline">
-                                        <button id="members-add" type="button" class="btn btn-success" style="display: none">添加</button>
-                                        <div class="dropdown" style="display: inline-block">
-                                            <button id="group-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">1</a></li>
-                                                <li><a href="#">阿斯顿</a></li>
-                                                <li><a href="#">说的</a></li>
-                                                <li><a href="#">阿斯顿k</a></li>
-                                            </ul>
-                                        </div>
+                                <table id="members-selected"></table>
+                            </div>
+                            <div class="select-right">
+                                <div id="table-toolbar" class="form-inline">
+                                    <button id="members-add" type="button" class="btn btn-success" style="display: none">添加</button>
+                                    <div class="dropdown" style="display: inline-block">
+                                        <button id="group-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">阿斯顿</a></li>
+                                            <li><a href="#">说的</a></li>
+                                            <li><a href="#">阿斯顿k</a></li>
+                                        </ul>
                                     </div>
-                                    <table id="table-members"></table>
                                 </div>
+                                <table id="table-members"></table>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 

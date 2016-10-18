@@ -1,413 +1,445 @@
-(function(){
+(function() {
     $(function() {
-        var $table;
-        pageNum = 0;//默认进入页面下表，即occupation默认进入页面
-        var local = window.location;
-    	var contextPath = local.pathname.split("/")[1];
-    	var basePath = local.protocol+"//"+local.host+"/"+contextPath;
-    	var $container;
-        $(document).on("click", "#menu > li", function() {
-            pageNum = $(this).index();
-            switch (pageNum) {
-                case 0: initQueryMessageGet(); break;
-                case 1: initQueryMessageSend();  break;
-            }
-        });
-        
-        
-        $(document).on('click', ".queryMessage-getDetail", function(){
-        	console.log($(this).attr('data-id'))
-        	 initQueryMessageGetDetail($(this).attr('data-id'));
-            
-        })
-         $(document).on('click', ".queryMessage-sendDetail", function(){
-        	console.log($(this).attr('data-id'))
-        	 initQueryMessageSendDetail($(this).attr('data-id'));
-            
-        })
-        
-        
-        
-        $(document).on("click", "#write-queryMessage", function() {
-        	initQueryMessageCreate();
-          //发送消息保存
-            $("#queryMessage-save").click(function(){
-            	var queryMTitle = $("#queryMTitle").val();
-                var content = $('#newQueryMessage').summernote('code');
-                console.log(content);
-            	console.log(queryMTitle);
-            	$.ajax({
-            		url: basePath+'/admin/commercial/sendMsg.shtml',
-            		dataType: 'json',
-            		type: 'post',
-            		data:{
-            			TITLE:queryMTitle,CONTENT:content
-            		},
-            		success:function(data){
-            			if(data.STATUS == "0"){
-            					alert("新增成功");
-            			}else{
-            				alert(data.ERRMSG);
-            			}
-            		},
-            		error: function(msg){
-            		}
-            	});
-            })
-        });
-        
-        /*
-         *  功能：工商联新建
-         *  Created by nocoolyoyo 2016/9/28.
-         */
-        function initQueryMessageCreate(){
-        	$container = $("#main-box");
-            $.ajax({
-                url:basePath+"/data/queryMessage-CREATE.html",
-                async: false,
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                success:function(data)
-                {
-                    $container.html(data);
-                }
-            });
-            initSidebar();
-            $('#newQueryMessage').summernote({
-                lang: 'zh-CN',
-                disableDragAndDrop: true,
-                height: 450,
-                minHeight: 450,
-                maxHeight: 450,
-                toolbar: [
-                          // [groupName, [list of button]]
-                          ['style', ['bold', 'italic', 'underline', 'color', 'clear']],
-                          ['font', ['strikethrough', 'superscript', 'subscript','fontsize','height','fontname']],
-                          ['para', ['ul', 'ol', 'paragraph']],
-                          ['table', ['table']],
-                          ['picture', ['picture']],
-                          ['undo', ['undo']],
-                          ['redo', ['redo']]
-                      ]
-            });
-        }
-        
-        /*
-         *  功能：工商联详细页
-         *  Created by nocoolyoyo 2016/9/28.
-         */
-        function initQueryMessageGetDetail(id){
-        	 $container = $("#main-box");
-             $.ajax({
-                 url:basePath+"/data/queryMessage-getDetail.html",
-                 async: false,
-                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                 success:function(data)
-                 {
-                     $container.html(data);
-                 }
-             });
-             $.ajax({
-         		url: basePath+'/admin/commercial/msgdatil.shtml',
-         		dataType: 'json',
-         		type: 'post',
-         		data:{
-         			INSID:id,TYPE:"1"
-         		},
-         		success:function(data){
-         			if(data.STATUS == "0"){
-         					$("h4").text(data.RECIVEDATIL.TITLE+"");
-         					$("#queryMessage-Time").text(data.RECIVEDATIL.SENDTIME+"");
-         					$("#queryMessageAuthor").text("发布人："+data.RECIVEDATIL.SENDNAME+"");
-         					$("#queryMessage-recevier").text("发布方："+data.RECIVEDATIL.CANAME+"");
-         					$("article").text(data.RECIVEDATIL.CONTENT+"");
-         					if (data.SH[1]==null && data.SH[0]==null ) {
-         						$("#queryMessage-sender").text("接收方：无");
-							}else{
-								$this = $('<span>接收方：</span><a role="button" data-toggle="collapse" href="#SendUsers" aria-expanded="false" aria-controls="collapseExample">查看详情</a>'
-										+'<div class="collapse" id="SendUsers">'
-											+'<div class="well" style="margin-bottom: 0;">'
-											+'</div>'
-										+'</div>');
-										if(data.SH[0] !=null && data.SH[0].CANAME != null){
-											$this.find('.well').append('<div>工商联：'+data.SH[0].CANAME+'</div>');
-										}
-										if(data.SH[1] !=null && data.SH[1].CANAME != null){
-											$this.find('.well').append('<div>商会：'+data.SH[1].CANAME+'</div>');
-										}
-								$("#queryMessage-sender").append($this);
-							}
-         			}else{
-         				alert(data.ERRMSG);
-         			}
-         		},
-         		error: function(msg){
-         		}
-         	});
-             initSidebar();
-             $('#back').click(function () {
-            	 initQueryMessageGet();
-             })
-        }
-        //发送消息详情
-        function initQueryMessageSendDetail(id){
-       	 $container = $("#main-box");
-            $.ajax({
-                url:basePath+"/data/queryMessage-sendDetail.html",
-                async: false,
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                success:function(data)
-                {
-                    $container.html(data);
-                }
-            });
-            $.ajax({
-         		url: basePath+'/admin/commercial/msgdatil.shtml',
-         		dataType: 'json',
-         		type: 'post',
-         		data:{
-         			INSID:id,TYPE:"2"
-         		},
-         		success:function(data){
-         			if(data.STATUS == "0"){
-         				$("h4").text(data.SENDDATIL.TITLE+"");
-     					$("#queryMessage-Time").text(data.SENDDATIL.SENDTIME+"");
-     					$("#queryMessageAuthor").text("发布人："+data.SENDDATIL.SHNAME+"");
-     					$("#queryMessage-recevier").text("发布方："+data.SENDDATIL.SENDNAME+"");
-     					$("article").text(data.SENDDATIL.CONTENT+"");
-     					if (data.SENDDATIL.RECIVENAME=="") {
-     						$("#queryMessage-sender").text("接收方：无");
-						}else{
-							$this = $('<span>接收方：</span><a role="button" data-toggle="collapse" href="#SendUsers" aria-expanded="false" aria-controls="collapseExample">查看详情</a>'
-									+'<div class="collapse" id="SendUsers">'
-										+'<div class="well" style="margin-bottom: 0;">'
-											+'<div>工商联：'+data.SENDDATIL.RECIVENAME+'</div>'
-										+'</div>'
-									+'</div>');
-							$("#queryMessage-sender").append($this);
-						}
-         			}else{
-         				alert(data.ERRMSG);
-         			}
-         		},
-         		error: function(msg){
-         		}
-         	});
-            initSidebar();
-            $('#back').click(function () {
-           	 initQueryMessageGet();
-            })
-       }
-        
-        /*
-         *  功能：主页面初始化
-         *  Created by nocoolyoyo 2016/10/13.
-         */
-        function initQueryMessageGet(){
-        	 $container = $("#main-box");
-        	$.ajax({
-                url: basePath+"/data/queryMessage-GET.html",
-                async: false,
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                success:function(data)
-                {
-                    $container.html(data);
-                }
-            });
-        	initTable1();
-        	initSidebar();
-        }
-        function initQueryMessageSend(){
-        	$container = $("#main-box");
-        	$.ajax({
-                url: basePath+"/data/queryMessage-SEND.html",
-                async: false,
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                success:function(data)
-                {
-                    $container.html(data);
-                }
-            });
-        	initTable2();
-        	initSidebar();
-        }
-        
-        /*
-         *  功能：侧边栏初始化
-         *  Created by nocoolyoyo 2016/9/28.
-         */
-        function initSidebar(){
-            $('#sidebar-switch').on('click touchstart',function() {
-                $('#sidebar-left').toggleClass('active');
-            });
-
-            $('.sidebar-overlay').on('click touchstart',function() {
-                $('.sidebar,.sidebar-container').removeClass('active');
-            });
-        }
-
+        var $table = $('#table'),
+            $delete = $('#delete');
+        $tableWinner = $("#tableWinner");
+        $tablePartic = $("#tablePartic");
         selections = [];
-        initSidebar();
+        var local = window.location;
+        var contextPath = local.pathname.split("/")[1];
+        var basePath = local.protocol+"//"+local.host+"/"+contextPath;
+        /*模态框表格窗口修正*/
+//        $('#queryWinner-modal').on('shown.bs.modal', function () {
+//            $tableWinner.bootstrapTable('resetView');
+//        });
+//        $('#queryPartic-modal').on('shown.bs.modal', function () {
+//            $tablePartic.bootstrapTable('resetView');
+//        });
         initTable1();
+        initTimepicker();
+        initDate();
 
+        //参与名单table
+        initTablePartic();
+        //获奖名单table
+        initTableWinner();
 
-
-        /*
-         *  功能：会员页内部导航
-         *  Created by nocoolyoyo 2016/9/28.
-         */
-  
-       
-        /*
-         *  功能：接收消息列表
-         *  Created by nocoolyoyo 2016/9/28.
-         */
-
-        function initTable1() {
-            $table = $('#table');
-            $table.bootstrapTable({
-                url:  basePath+'/admin/commercial/receiveOrSendMsg.shtml?TYPE=1',
-                dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
-                pagination: true,//是否分页
-                pageSize: 10,//单页记录数
-                height: 600,
-                pageList: [10, 25, 50, 100],
-                sidePagination: "server",//服务端分页
-                contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
-                dataType: "json",//期待返回数据类型
-                method: "post",//请求方式
-                searchAlign: "left",//查询框对齐方式
-                queryParamsType: "limit",//查询参数组织方式
-                queryParams: function getParams(params) {
-                    //params obj
-                	//params.other = "otherInfo";
-                    return params;
+        $(document).on("click",".QRCode",function(){
+            console.log($(this).attr('data-url'));
+            tempUrl = $(this).attr('data-url');
+            $("#aurl").attr('src',$(this).attr('data-url'));
+        })
+        //下载二维码
+        $("#ORCodeUpload").click(function(){
+            var src = tempUrl;
+            location = "http://www.shanghuiadmin.com:8080/SHANGHUI/DownImageServlet?fileUrl=" + src;
+        });
+        //点击获取获奖名单
+        $(document).on("click",".queryWinner",function(){
+            tempId = $(this).attr('data-id');
+        });
+        $('#queryWinner-modal').on('shown.bs.modal', function () {
+            $.ajax({
+                url: basePath + '/admin/signdraw/querywinning.shtml',
+                dataType: 'json',
+                type: 'post',
+                data:{
+                    AID:tempId
                 },
-                // sidePagination: "server",
-                toolbar: "#table-toolbar",
-                showColumns: true,
-                showToggle: true,
-//                detailView: true,
-                search: true,
-                searchAlign: "right",//查询框对齐方式
-                columns: [
-//                {
-//                    field: 'state',
-//                    checkbox: true
-//
-//                },
-                {
-                    field: 'INSID',
-                    title: 'ID',
-                    sortable: true,
-                    align: 'center',
-                    visible: false
-                },{
-                    field: 'ISRED',
-                    title: '状态',
-                    sortable: true,
-                    align: 'center',
-                    formatter:function(value){
-                    	if (value==1) {
-    						return "已读";
-    					}else{
-    						return "<h style='color:red'>未读</h>";
-    					}
+                success:function(data){
+                    if(data.status == "0"){
+                        $tableWinner.bootstrapTable('load',data);
                     }
-                }, {
-                    field: 'TITLE',
-                    title: '标题',
-                    sortable: true,
-                    formatter: queryMessageGetDetail,
-                    align: 'center'
-                },{
-                    field: 'CANAME',
-                    title: '发布方',
-                    sortable: true,
-                    align: 'center'
-                },{
-                    field: 'SENDTIME',
-                    title: '发布时间',
-                    sortable: true,
-                    align: 'center'
-                }]
+                },
+                error: function(msg){
+                }
             });
+        });
 
+        //点击获取参与名单
+        $(document).on("click",".queryPartic",function(){
+            tempId = $(this).attr('data-id');
+        })
+        $('#queryPartic-modal').on('shown.bs.modal', function () {
+            $.ajax({
+                url: basePath + '/admin/signdraw/querywinning.shtml',
+                dataType: 'json',
+                type: 'post',
+                data:{
+                    AID:tempId
+                },
+                success:function(data){
+                    if(data.status == "0"){
+                        $tablePartic.bootstrapTable('load',data);
+                    }
+                },
+                error: function(msg){
+                }
+            });
+        });
+
+
+
+
+        /*
+         *  功能：获取当前时间并对选择器赋值
+         *  Created by nocoolyoyo 2016/10/10.
+         */
+        function initDate(){
+
+            var mydate = new Date();
+            var todayDate = "" + mydate.getFullYear() + "-";
+            todayDate += (mydate.getMonth()+1) + "-";
+            todayDate += mydate.getDate();
+            $('#activity-time').val(todayDate);
         }
-        
-        
-        //消息详情页面
-        function queryMessageGetDetail(value, row){
-           	return '<a href="#" class="queryMessage-getDetail" data-id="' + row.INSID + '">' + value + '</a>';      
+        /*
+         *  功能：会员页表格初始化
+         *  Created by nocoolyoyo 2016/9/28.
+         */
+        /*
+         *  功能：日期选择器API
+         *  页面：*.html
+         *  Created by nocoolyoyo 2016/9/26.
+         */
+        function initTimepicker(){
+            $('.form_date').datetimepicker({
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
         }
-        
-        
-        //发送消息列表
-        function initTable2() {
-        	$table = $('#table');
+        function initTable1() {
+            $table = $('#table'),
+                $delete = $('#delete');
             $table.bootstrapTable({
-                url:  basePath+'/admin/commercial/receiveOrSendMsg.shtml?TYPE=2',
+                url: basePath+'/admin/signdraw/queryActivityList.shtml',
                 dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
                 pagination: true,//是否分页
-                height: 600,
                 pageSize: 10,//单页记录数
                 pageList: [10, 25, 50, 100],
                 sidePagination: "server",//服务端分页
                 contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
                 dataType: "json",//期待返回数据类型
                 method: "post",//请求方式
-                searchAlign: "left",//查询框对齐方式
+                searchAlign: "right",//查询框对齐方式
                 queryParamsType: "limit",//查询参数组织方式
+                search: true,
                 queryParams: function getParams(params) {
                     //params obj
-                	//params.other = "otherInfo";
+                    //params.other = "otherInfo";
                     return params;
                 },
                 // sidePagination: "server",
                 toolbar: "#table-toolbar",
-                showColumns: true,
-                showToggle: true,
-//                detailView: true,
+                //showRefresh: true,//刷新按钮
+                //showColumns: true,
+
+                // detailFormatter: detailFormatter,
+                columns: [
+                    {
+                        field: 'state',
+                        checkbox: true
+
+                    }, {
+                        field: 'AID',
+                        title: '主键ID',
+                        sortable: true,
+                        align: 'center',
+                        visible: false
+                    }, {
+                        field: 'AURL',
+                        title: '二维码URL',
+                        sortable: true,
+                        align: 'center',
+                        visible: false
+                    }, {
+                        field: 'ATITLE',
+                        title: '标题',
+                        sortable: true,
+                        formatter: actionDetail,
+                        align: 'center'
+                    }, {
+                        field: 'ACREATETIME',
+                        title: '发布时间',
+                        sortable: true,
+                        align: 'center'
+                    },{
+                        field: 'operate',
+                        title: '操作',
+                        align: 'center',
+                        formatter: operateFormatter
+                    }]
+            });
+            /*
+             *  功能：获取选择框信息
+             *  Created by nocoolyoyo 2016/9/28.
+             */
+            $table.on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', function () {
+                if ($table.bootstrapTable('getSelections').length) {
+                    $delete.show();
+                } else {
+                    $delete.hide();
+                }
+                selections = getIdSelections();
+            });
+
+            // $delete.click(function () {
+            //     var ids = getIdSelections();
+            //     $table.bootstrapTable('remove', {
+            //         field: 'id',
+            //         values: ids
+            //     });
+            //     $delete.hide();
+            // });
+            //跳转详情
+            function getIdSelections() {
+                return $.map($table.bootstrapTable('getSelections'), function (row) {
+                    return row.AID
+                });
+            }
+
+
+            function actionDetail(value, row){
+                return '<a href="#" class="actionDetail"  data-toggle="modal"  data-id="' + row.AID + '">' + value + '</a>';
+            }
+            $(document).on("click", ".actionDetail", function() {
+                window.open(basePath+"/admin/signdraw/gotoactiondetail.shtml?AID="+$(this).attr('data-id'));
+            });
+            /*
+             *删除
+             */
+            $delete.on('click', function(){
+                var ids = getIdSelections();
+                var str="";
+                for (var i = 0; i < ids.length; i++) {
+                    str += ids[i] + ",";
+                }
+                $delete.hide();
+                //去掉最后一个逗号(如果不需要去掉，就不用写)
+                if (str.length > 0) {
+                    str = str.substr(0, str.length - 1);
+                }
+                console.log(str)
+                if(confirm('确认删除吗？')){
+                    $.ajax({
+                        url: basePath+'/admin/signdraw/deleteActivity.shtml',
+                        dataType: 'json',
+                        type: 'post',
+                        data:{
+                            CHECKBOXID:str
+                        },
+                        success:function(data){
+                            if(data.STATUS == "0"){
+                                alert("删除成功");
+                                $table.bootstrapTable('refresh');
+                            }
+                        },
+                        error: function(msg){
+                        }
+                    });
+                }
+            });
+            /*
+             *  功能：操作框
+             *  Created by nocoolyoyo 2016/9/28.
+             */
+
+            function operateFormatter(value, row){
+                return [
+                    '<a class="QRCode" href="#"  data-url="'+ row.AURL +'" data-toggle="modal" data-target="#queryQRCode-modal">',
+                    '二维码',
+                    '</a>',
+                    '&nbsp',
+                    '<a class="queryWinner" href="#" data-id="'+ row.AID +'"  data-toggle="modal" data-target="#queryWinner-modal">',
+                    '获奖名单',
+                    '</a>',
+                    '&nbsp;',
+                    '<a class="queryPartic" href="#"  data-id="'+ row.AID +'" data-toggle="modal" data-target="#queryPartic-modal">',
+                    '参与名单',
+                    '</a>'
+                ].join('')
+            }
+            //二维码显示
+            var tempUrl="";
+            var tempId="";
+
+
+            //新增活动保存
+            $("#submit").on('click',function(){
+                var time = $("#activity-time").val();//时间
+                var ts =   $("#activity-ts").val();//提示内容
+                var content = $("#activity-content").val();//内容
+                var title = $("#activity-title").val();//标题
+                $.ajax({
+                    url: basePath+'/admin/signdraw/insertActivity.shtml',
+                    dataType: 'json',
+                    type: 'post',
+                    data:{
+                        ATITLE:title,ACONTENT:content,ASTARTTIME:time,AOPTINTCONTENT:-ts
+                    },
+                    success:function(data){
+                        if(data.STATUS == "0"){
+                            alert("新增成功");
+                            $table.bootstrapTable('refresh');
+                        }else{
+                            alert(data.ERRMSG);
+                        }
+                    },
+                    error: function(msg){
+                    }
+                });
+            })
+        }
+
+        //获奖名单
+        function initTableWinner(id) {
+            $tableWinner = $("#tableWinner");
+            $tableWinner.bootstrapTable({
+//                url: basePath + '/admin/signdraw/querywinning.shtml',
+                dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
+                pagination: true,//是否分页
+                height: 450,
+                pageSize: 8,//单页记录数
+                pageList: [8, 16, 24],
+                toolbar: "#queryWinner-toolbar",
+                sidePagination: "server",//服务端分页
+                contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+                dataType: "json",//期待返回数据类型
+                method: "post",//请求方式
                 search: true,
                 searchAlign: "right",//查询框对齐方式
+                queryParamsType: "limit",//查询参数组织方式
+                queryParams: function getParams(params) {
+                    //params obj
+                    //params.other = "otherInfo";
+                    params.AID = id;
+                    return params;
+                },
+
+//                showColumns: true,
+//                showToggle: true,
+                // showToggle: true,
                 columns: [
-//                {
-//                    field: 'state',
-//                    checkbox: true
-//
-//                },
-                {
-                    field: 'INSID',
+                    {
+                        field: 'state',
+                        checkbox: true
+
+                    },
+                    {
+                        field: 'USID',
+                        title: 'ID',
+                        sortable: true,
+                        align: 'center',
+                        visible:false
+                    }, {
+                        field: 'REALNAME',
+                        title: '名称',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'MOBILE',
+                        title: '手机号码',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'POSITION',
+                        title: '职业',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'COMPANY',
+                        title: '公司',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'AWNAME',
+                        title: '奖项',
+                        sortable: true,
+                        align: 'center'
+                    }]
+            });
+            //导出获奖名单
+            $("#queryWinner-export").click(function(){
+                window.location.href = basePath+"/admin/signdraw/queryWinnerExport.shtml?AID="+tempId;
+            });
+
+        }
+
+
+        //参与名单
+        function initTablePartic(id) {
+            $tablePartic = $("#tablePartic");
+            $tablePartic.bootstrapTable({
+//                url: basePath + '/admin/signdraw/queryparticipate.shtml',
+                dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
+                pagination: true,//是否分页
+                height: 450,
+                pageSize: 8,//单页记录数
+                pageList: [8, 16, 24],
+                toolbar: "#queryPartic-toolbar",
+                sidePagination: "server",//服务端分页
+                contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+                dataType: "json",//期待返回数据类型
+                method: "post",//请求方式
+                search: true,
+                searchAlign: "right",//查询框对齐方式
+                queryParamsType: "limit",//查询参数组织方式
+                queryParams: function getParams(params) {
+                    //params obj
+                    //params.other = "otherInfo";
+                    params.AID = id;
+                    return params;
+                },
+//                showColumns: true,
+//                showToggle: true,
+                // showToggle: true,
+                columns: [{
+                    field: 'state',
+                    checkbox: true
+
+                },{
+                    field: 'USID',
                     title: 'ID',
                     sortable: true,
                     align: 'center',
-                    visible: false
-                },{
-                    field: 'TITLE',
-                    title: '标题',
-                    sortable: true,
-                    formatter: queryMessageSendDetail,
-                    align: 'center'
-                },{
-                    field: 'CANAME',
-                    title: '发布人',
+                    visible:false
+                }, {
+                    field: 'REALNAME',
+                    title: '名称',
                     sortable: true,
                     align: 'center'
-                },{
-                    field: 'SENDTIME',
-                    title: '发布时间',
+                }, {
+                    field: 'MOBILE',
+                    title: '手机号码',
+                    sortable: true,
+                    align: 'center'
+                }, {
+                    field: 'POSITION',
+                    title: '职业',
+                    sortable: true,
+                    align: 'center'
+                }, {
+                    field: 'COMPANY',
+                    title: '公司',
                     sortable: true,
                     align: 'center'
                 }]
             });
-            
-            
-            //消息详情页面
-            function queryMessageSendDetail(value, row){
-               	return '<a href="#" class="queryMessage-sendDetail" data-id="' + row.INSID + '">' + value + '</a>';      
-            }
-            
+
+            //导出参与名单
+            $('#queryPartic-export').click(function (){
+                window.location.href = basePath+"/admin/signdraw/queryParticExport.shtml?AID="+tempId;
+            });
+
+
+
         }
+
     });
 }());
-
-

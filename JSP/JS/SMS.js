@@ -52,7 +52,8 @@
                 }
             });
             //加载所有会员数据
-            var selections = [],//临时选择数组
+            var
+                selections = [],//临时选择数组
                 unSelected = [],//未选中人员数组
                 selected = [],//已选中人员数组
                 textCount = 0,//输入文本字数
@@ -70,7 +71,7 @@
 
                     unSelected = data.rows;
 
-                    //$('.dropdown-menu').append()
+                    $('.dropdown-menu').append()
                     // initTableMembers();
                     // $tableMembers.bootstrapTable('load', data)
                 }
@@ -88,23 +89,17 @@
             $('#SMS-content').on('keyup', function(){
                 textCount = $(this).val().length;
                 $('#text-count').text(textCount)
-                refreshSMSCount()
+
+                SMSCount = parseInt(textCount/56)+1
+
+                $('#SMS-count').text(SMSCount)
             });
 
             function refreshPersonCount(){
                 personCount = selected.length;
                 $('#person-count').text(selected.length)
-                refreshSMSCount()
             }
-            function refreshSMSCount(){
-                if (textCount <= 491){
-                    SMSCount = personCount
-                }else{
-                    SMSCount = parseInt(textCount/491)*personCount
-                }
-                $('#SMS-count').text(SMSCount)
 
-            }
             //定时操作
             $('#timer').click(function () {
                 if($(this).hasClass('active')){
@@ -122,6 +117,7 @@
             $('#sure').click(function() {
                 console.log(selected)
                 console.log(textCount)
+                console.log(SMSCount)//短信条数
                 console.log(personCount)
                 console.log($('#SMS-content').val())//短信内容
                 if($('#timer').hasClass('active')){
@@ -156,7 +152,7 @@
                     url: basePath + '/admin/sms/sendSMS.shtml',
                     dataType: 'json',
                     type: 'post',
-                    data:{MEMBERIDS:MEMBERIDS,MEMBERMOBILES:MEMBERMOBILES,COUNT:count,SMSCONTENT:content,INFCOUNT:1,TASTTIME:$('#timer-time').val()},
+                    data:{MEMBERIDS:MEMBERIDS,MEMBERMOBILES:MEMBERMOBILES,COUNT:count,SMSCONTENT:content,INFCOUNT:SMSCount,TASTTIME:$('#timer-time').val()},
                     traditional: true,
                     success:function(data){
                         if(data.status == "0"){
@@ -195,6 +191,9 @@
                 refreshPersonCount()
 
             });
+
+
+
 
             /*模态框表格窗口修正*/
             $('#select-modal').on('shown.bs.modal', function () {
@@ -257,6 +256,8 @@
                         });
                         selected.splice(selected.indexOf(selected[i]),1) ;
                         $tableSelected.bootstrapTable('load', selected);
+
+                        refreshPersonCount();
                         if($(this).hasClass('label-icon')){
                             $(this).closest('span').remove();
                         }else{
