@@ -88,6 +88,17 @@
         }
         $('.modal').on('show.bs.modal', centerModals());
         $(window).on('resize', centerModals());*/
-     
+        //数组去重
+        Array.prototype.duplicate = function(){
+            var res = [];
+            var json = {};
+            for(var i = 0; i < this.length; i++){
+                if(!json[this[i]]){
+                    res.push(this[i]);
+                    json[this[i]] = 1;
+                }
+            }
+            return res;
+        }
     });
 }());

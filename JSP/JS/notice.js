@@ -7,6 +7,8 @@
         var contextPath = local.pathname.split("/")[1];
         var basePath = local.protocol+"//"+local.host+"/"+contextPath;
 
+        var NID;
+
         initNoticeIndex()
 
         $(document).on("click", "#add", function() {
@@ -21,6 +23,268 @@
         $(document).on("click", ".noticeDetail", function() {
             initNoticeDetail($(this).attr('data-id'));
         });
+        //上一条
+        $(document).on("click", "#info-pre", function() {
+            initInfoPreOrNext(NID,"FRONT");
+        });
+        //下一条
+        $(document).on("click", "#info-next", function() {
+            initInfoPreOrNext(NID,"BEHIND");
+        });
+
+        function initInfoPreOrNext(id,act){
+            $('#notice-modal').on('shown.bs.modal', function () {
+                $tableDetail.bootstrapTable('resetView');
+            });
+            console.log(id)
+            $container = $("#main-box");
+            $.ajax({
+                url: basePath + "/data/notice-detail.html",
+                async: false,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (data) {
+                    $container.html(data);
+                }
+            });
+
+            $.ajax({
+                url: basePath + '/admin/notice/findFirstOrNext.shtml',
+                async: false,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data:{NID:id,ACT:act},
+                dataType:"json",
+                success: function (data) {
+                    if(data.status == 0){
+
+                        $("#notice-mag").html(data.msg);
+                        NID = data.map.NID;
+                        var signUp = data.map.SIGN_UP;//是否报名
+                        if(signUp == 0){//否
+                            $("#notice-entered").hide();//已查看已报名
+                            $("#notice-entered-main").hide();
+                            $("#notice-unknown").hide();//已查看未报名
+                            $("#notice-unknown-main").hide();
+                            $("#notice-unenter").hide();//已查看不报名
+                            $("#notice-unenter-main").hide();
+                            $("#notice-isvive").show();//已查看
+                            $("#notice-isvive-main").show();
+                            $("#notice-isvive").html(data.viewpeople);
+
+                            $("#notice-starttime").hide();
+                            $("#notice-endtime").hide();
+                            $("#notice-place").hide();
+                            $("#notice-contactor").hide();
+                            $("#notice-contactormobile").hide();
+                            $("#notice-activitystatus").hide();
+                        }else{
+                            $("#notice-entered").show();//已查看已报名
+                            $("#notice-entered-main").show();
+                            $("#notice-unknown").show();//已查看未报名
+                            $("#notice-unknown-main").show();
+                            $("#notice-unenter").show();//已查看不报名
+                            $("#notice-unenter-main").show();
+                            $("#notice-entered").html(data.isSignUpIsView);
+                            $("#notice-unknown").html(data.isView);
+                            $("#notice-unenter").html(data.isViewnoSignUp);
+                            $("#notice-isvive").hide();
+                            $("#notice-isvive-main").hide();
+
+                            $("#notice-starttime").show();
+                            $("#notice-endtime").show();
+                            $("#notice-place").show();
+                            $("#notice-contactor").show();
+                            $("#notice-contactormobile").show();
+                            $("#notice-activitystatus").show();
+                            $("#notice-starttime").html("活动开始时间："+data.map.STARTDATE);
+                            $("#notice-endtime").html("活动结束时间："+data.map.ENDDATE);
+                            $("#notice-place").html("活动地点："+data.map.PLACE);
+                            $("#notice-contactor").html("联系人："+data.map.CONTACTOR);
+                            $("#notice-contactormobile").html("联系人电话："+data.map.CONTACTORMOBILE);
+                            $("#notice-activitystatus").html("活动状态："+data.map.ACTIVITYSTATUSRNAME);
+                        }
+                        $("#title").html(data.map.TITLE);
+                        $("#notice-unnotice").html(data.noIsview);//未查看
+                        var isPublic = data.map.ISPUBLIC;//是否公开
+                        var allcount = 0;
+                        if(isPublic == 1){//公开
+                            $("#notice-persons").html(data.allMember);//通知人数
+                            allcount = data.allMember;
+                        }else if(isPublic == 2){
+                            $("#notice-persons").html(data.map.ALLCOUNTS);
+                            allcount = data.map.ALLCOUNTS;
+                        }
+                        $("#notice-send").html("发送人："+data.map.AUTHOR);
+                        $("#notice-time").html("发布时间："+data.map.PUBLISHDATE);
+                        $("#contents").html(data.map.CONTENT);
+
+                        if (data.map.VOTE == 1) {
+                            var votehtml = '<div id="vote-all">'
+                                +'<div><span>通知总人数：</span><a>'+allcount+'</a>人</div>'
+                                +'<div><span>已投票总人数：</span>'+data.votecount+'人</div>'
+                                +'<div><span>投票截止时间：</span>'+data.voteTime+'</div>';
+                            for (var i=0; i<data.delvotelist.length; i++) {
+                                if (data.delvotelist[i].TYPE == 1) {
+                                    var votetype = '单选';
+                                } else {
+                                    var votetype = '多选';
+                                }
+                                votehtml += '<div class="vote-one">'
+                                    +'<div>投票'+(i+1)+'</div>'
+                                    +'<div>'
+                                    +'<div>'
+                                    +'<span>投票主题：</span>'+data.delvotelist[i].SUBJECT
+                                    +'</div>'
+                                    +'<div>'
+                                    +'<span>投票类型：</span>'+votetype
+                                    +'</div>'
+                                    +'<div>';
+                                for (var j=0; j<data.delvotelist[i].VOTELIST.length; j++) {
+                                    votehtml += '<div>'
+                                        +'<span>选项'+(j+1)+'：</span>'+data.delvotelist[i].VOTELIST[j].OPTIONNAME
+                                        +'</div>';
+                                }
+                                votehtml += '</div>'
+                                    +'</div>'
+                                    +'</div>';
+                            }
+                            votehtml += '</div>';
+                            $("#notice-modal").before(votehtml);
+                        }
+                    }
+                }
+            });
+
+            initTableDetail();
+
+            //调出已报名
+            $('#notice-entered').click( function() {
+                $.ajax({
+                    url: basePath + "/admin/notice/memberByMidsByPage.shtml",//获取已报名数据
+                    async: true,
+                    data:{NID:id,ACT:"NOTICEVIEW",ISVIEW:1,ISSIGNUP:1},
+                    dataType: 'json',
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    success: function (data) {
+                        $tableDetail.bootstrapTable('load', data);
+                        $tableDetail.bootstrapTable('hideColumn', 'state');
+                    }
+                });
+            });
+            //调出未报名
+            $('#notice-unknown').click( function() {
+                $.ajax({
+                    url: basePath + "/data/notice-detail.html",//获取已报名数据
+                    async: true,
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    success: function (data) {
+                        $tableDetail.bootstrapTable('load', data);
+                        $tableDetail.bootstrapTable('hideColumn', 'state');
+                    }
+                });
+            });
+
+            //调出不报名
+            $('#notice-unenter').click( function() {
+                $.ajax({
+                    url: basePath + "/data/notice-detail.html",//获取已报名数据
+                    async: true,
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    success: function (data) {
+                        $tableDetail.bootstrapTable('load', data);
+                        $tableDetail.bootstrapTable('hideColumn', 'state');
+                    }
+                });
+            });
+            //调出未查看
+            $('#notice-unnotice').click( function() {
+                $.ajax({
+                    url: basePath + "/data/notice-detail.html",//获取已报名数据
+                    async: true,
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    success: function (data) {
+                        $tableDetail.bootstrapTable('load', data);
+                        $tableDetail.bootstrapTable('showColumn', 'state');
+
+                    }
+                });
+            });
+            //调出通知人数
+            $('#notice-persons').click( function() {
+                $.ajax({
+                    url: basePath + "/data/notice-detail.html",//获取已报名数据
+                    async: true,
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    success: function (data) {
+                        $tableDetail.bootstrapTable('load', data);
+                        $tableDetail.bootstrapTable('hideColumn', 'state');
+                    }
+                });
+            });
+            //人数表格模板
+            function initTableDetail(){
+                $tableDetail = $('#notice-table');
+                $send = $('#send');
+                $tableDetail.bootstrapTable({
+                    //url: basePath+'/admin/notice/noticeFindPage.shtml',
+                    method: "post",
+                    datatype: 'json',
+                    height: 400,
+                    dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
+                    pagination: true,//是否分页
+                    pageSize: 12,//单页记录数
+                    pageList: [12, 25, 50, 100],//分页步进值
+                    sidePagination: "server",//服务端分页
+                    contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+                    columns: [{
+                        field: 'state',
+                        checkbox: true,
+                        visiable: false
+                    }, {
+                        field: 'NID',
+                        title: 'ID',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'TITLE',
+                        title: '通知主题',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'PUBLISHTIME',
+                        title: '发布时间',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'edit',
+                        title: '操作',
+                        sortable: true,
+                        align: 'center'
+                    }]
+                });
+
+                $tableDetail.on('check.bs.table uncheck.bs.table ' +
+                    'check-all.bs.table uncheck-all.bs.table', function () {
+                    if ($tableDetail.bootstrapTable('getSelections').length) {
+                        $send .show();
+                    } else {
+                        $send .hide();
+                    }
+                    selections = getIdSelections();
+                    console.log(selections)
+                });
+
+                $send.click(function () {
+                    console.log('1111')
+
+                });
+
+                function getIdSelections() {
+                    return $.map($tableDetail.bootstrapTable('getSelections'), function (row) {
+                        return row.NID
+                    });
+                }
+            }
+        }
 
         function initNoticeDetail(id){
             $('#notice-modal').on('shown.bs.modal', function () {
@@ -36,6 +300,113 @@
                     $container.html(data);
                 }
             });
+
+            $.ajax({
+                url: basePath + '/admin/notice/queryNoticeFind.shtml',
+                async: false,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data:{NID:id},
+                dataType:"json",
+                success: function (data) {
+                    if(data.status == 0){
+
+                        NID = data.map.NID;
+                        var signUp = data.map.SIGN_UP;//是否报名
+                        if(signUp == 0){//否
+                            $("#notice-entered").hide();//已查看已报名
+                            $("#notice-entered-main").hide();
+                            $("#notice-unknown").hide();//已查看未报名
+                            $("#notice-unknown-main").hide();
+                            $("#notice-unenter").hide();//已查看不报名
+                            $("#notice-unenter-main").hide();
+                            $("#notice-isvive").show();//已查看
+                            $("#notice-isvive-main").show();
+                            $("#notice-isvive").html(data.viewpeople);
+
+                            $("#notice-starttime").hide();
+                            $("#notice-endtime").hide();
+                            $("#notice-place").hide();
+                            $("#notice-contactor").hide();
+                            $("#notice-contactormobile").hide();
+                            $("#notice-activitystatus").hide();
+                        }else{
+                            $("#notice-entered").show();//已查看已报名
+                            $("#notice-entered-main").show();
+                            $("#notice-unknown").show();//已查看未报名
+                            $("#notice-unknown-main").show();
+                            $("#notice-unenter").show();//已查看不报名
+                            $("#notice-unenter-main").show();
+                            $("#notice-entered").html(data.isSignUpIsView);
+                            $("#notice-unknown").html(data.isView);
+                            $("#notice-unenter").html(data.isViewnoSignUp);
+                            $("#notice-isvive").hide();
+                            $("#notice-isvive-main").hide();
+
+                            $("#notice-starttime").show();
+                            $("#notice-endtime").show();
+                            $("#notice-place").show();
+                            $("#notice-contactor").show();
+                            $("#notice-contactormobile").show();
+                            $("#notice-activitystatus").show();
+                            $("#notice-starttime").html("活动开始时间："+data.map.STARTDATE);
+                            $("#notice-endtime").html("活动结束时间："+data.map.ENDDATE);
+                            $("#notice-place").html("活动地点："+data.map.PLACE);
+                            $("#notice-contactor").html("联系人："+data.map.CONTACTOR);
+                            $("#notice-contactormobile").html("联系人电话："+data.map.CONTACTORMOBILE);
+                            $("#notice-activitystatus").html("活动状态："+data.map.ACTIVITYSTATUSRNAME);
+                        }
+                        $("#title").html(data.map.TITLE);
+                        $("#notice-unnotice").html(data.noIsview);//未查看
+                        var isPublic = data.map.ISPUBLIC;//是否公开
+                        var allcount = 0;
+                        if(isPublic == 1){//公开
+                            $("#notice-persons").html(data.allMember);//通知人数
+                            allcount = data.allMember;
+                        }else{
+                            $("#notice-persons").html(data.map.ALLCOUNTS);
+                            allcount = data.map.ALLCOUNTS;
+                        }
+                        $("#notice-send").html("发送人："+data.map.AUTHOR);
+                        $("#notice-time").html("发布时间："+data.map.PUBLISHDATE);
+                        $("#contents").html(data.map.CONTENT);
+
+                        if (data.map.VOTE == 1) {
+                            var votehtml = '<div id="vote-all">'
+                                +'<div><span>通知总人数：</span><a>'+allcount+'</a>人</div>'
+                                +'<div><span>已投票总人数：</span>'+data.votecount+'人</div>'
+                                +'<div><span>投票截止时间：</span>'+data.voteTime+'</div>';
+                            for (var i=0; i<data.delvotelist.length; i++) {
+                                if (data.delvotelist[i].TYPE == 1) {
+                                    var votetype = '单选';
+                                } else {
+                                    var votetype = '多选';
+                                }
+                                votehtml += '<div class="vote-one">'
+                                    +'<div>投票'+(i+1)+'</div>'
+                                    +'<div>'
+                                    +'<div>'
+                                    +'<span>投票主题：</span>'+data.delvotelist[i].SUBJECT
+                                    +'</div>'
+                                    +'<div>'
+                                    +'<span>投票类型：</span>'+votetype
+                                    +'</div>'
+                                    +'<div>';
+                                for (var j=0; j<data.delvotelist[i].VOTELIST.length; j++) {
+                                    votehtml += '<div>'
+                                        +'<span>选项'+(j+1)+'：</span>'+data.delvotelist[i].VOTELIST[j].OPTIONNAME
+                                        +'</div>';
+                                }
+                                votehtml += '</div>'
+                                    +'</div>'
+                                    +'</div>';
+                            }
+                            votehtml += '</div>';
+                            $("#notice-modal").before(votehtml);
+                        }
+                    }
+                }
+            });
+
             initTableDetail();
 
             //调出已报名
@@ -103,71 +474,69 @@
             });
             //人数表格模板
             function initTableDetail(){
-                    $tableDetail = $('#notice-table');
-                    $send = $('#send');
-                    $tableDetail.bootstrapTable({
-                        //url: basePath+'/admin/notice/noticeFindPage.shtml',
-                        method: "post",
-                        datatype: 'json',
-                        height: 400,
-                        dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
-                        pagination: true,//是否分页
-                        pageSize: 12,//单页记录数
-                        pageList: [12, 25, 50, 100],//分页步进值
-                        sidePagination: "server",//服务端分页
-                        contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
-                        columns: [{
-                            field: 'state',
-                            checkbox: true,
-                            visiable: false
-                        }, {
-                            field: 'NID',
-                            title: 'ID',
-                            sortable: true,
-                            align: 'center'
-                        }, {
-                            field: 'TITLE',
-                            title: '通知主题',
-                            sortable: true,
-                            align: 'center'
-                        }, {
-                            field: 'PUBLISHTIME',
-                            title: '发布时间',
-                            sortable: true,
-                            align: 'center'
-                        }, {
-                            field: 'edit',
-                            title: '操作',
-                            sortable: true,
-                            align: 'center'
-                        }]
-                    });
+                $tableDetail = $('#notice-table');
+                $send = $('#send');
+                $tableDetail.bootstrapTable({
+                    //url: basePath+'/admin/notice/noticeFindPage.shtml',
+                    method: "post",
+                    datatype: 'json',
+                    height: 400,
+                    dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
+                    pagination: true,//是否分页
+                    pageSize: 12,//单页记录数
+                    pageList: [12, 25, 50, 100],//分页步进值
+                    sidePagination: "server",//服务端分页
+                    contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+                    columns: [{
+                        field: 'state',
+                        checkbox: true,
+                        visiable: false
+                    }, {
+                        field: 'NID',
+                        title: 'ID',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'TITLE',
+                        title: '通知主题',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'PUBLISHTIME',
+                        title: '发布时间',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'edit',
+                        title: '操作',
+                        sortable: true,
+                        align: 'center'
+                    }]
+                });
 
                 $tableDetail.on('check.bs.table uncheck.bs.table ' +
-                        'check-all.bs.table uncheck-all.bs.table', function () {
-                        if ($tableDetail.bootstrapTable('getSelections').length) {
-                            $send .show();
-                        } else {
-                            $send .hide();
-                        }
-                        selections = getIdSelections();
-                        console.log(selections)
-                    });
+                    'check-all.bs.table uncheck-all.bs.table', function () {
+                    if ($tableDetail.bootstrapTable('getSelections').length) {
+                        $send .show();
+                    } else {
+                        $send .hide();
+                    }
+                    selections = getIdSelections();
+                    console.log(selections)
+                });
 
                 $send.click(function () {
-                  console.log('1111')
+                    console.log('1111')
 
                 });
 
-                    function getIdSelections() {
-                        return $.map($tableDetail.bootstrapTable('getSelections'), function (row) {
-                            return row.NID
-                        });
-                    }
+                function getIdSelections() {
+                    return $.map($tableDetail.bootstrapTable('getSelections'), function (row) {
+                        return row.NID
+                    });
+                }
             }
         }
-
-
 
         function initNoticeIndex(){
             $container = $("#main-box");
@@ -203,7 +572,7 @@
                     datatype: 'json',
                     toolbar: "#table-toolbar",
                     showColumns: true,
-                    height: 601,
+                    height: 600,
                     showToggle: true,
                     detailView: false,
                     dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
@@ -223,7 +592,6 @@
                     },
                     searchOnEnterKey: false,//回车搜索
                     showRefresh: true,//刷新按钮
-                    showColumns: true,//列选择按钮
                     columns: [{
                         field: 'state',
                         checkbox: true
@@ -249,7 +617,7 @@
 
 
                 function showDetail(value, row){
-                    return '<a href="#" class="noticeDetail" data-id="' + row.INID + '">' + value + '</a>';
+                    return '<a href="#" class="noticeDetail" data-id="' + row.NID + '">' + value + '</a>';
                 }
                 //草稿箱个数
                 $.ajax({
@@ -359,166 +727,102 @@
                 ]
 
             });
+
+
+            //发送操作
             $('#notice-save').click(function () {
                 {
                     var content = $('#newNotice').summernote('code');
                     console.log(content);
-
+                    console.log(selected)
                 }
             });
 
-            //加载所有会员数据
-            var selections = [],//临时选择数组
-                unSelected = [],//未选中人员数组
-                selected = [],//已选中人员数组
-                textCount = 0,//输入文本字数
-                personCount = 0,//已选中人员数量
-                SMSCount = 0,//短信数量
-                $tableMembers = $('#table-members'),
-                $tableSelected = $('#members-selected');
 
-            $.ajax({
-                url: basePath + "/admin/member/serchAllMember.shtml",
-                async: false,
-                dataType:"json",
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                success: function (data) {
-
-                    unSelected = data.rows;
-
-                    //$('.dropdown-menu').append()
-                    // initTableMembers();
-                    // $tableMembers.bootstrapTable('load', data)
-                }
-            }).done(function (data) {
-                // unSelected = data;
-            });
-
-            //console.log(unSelected)
-            initClockpicker();
-            initTableMembers();
-            initMembersSelected();
-
-            //短信信息条填充
-
-            $('#SMS-content').on('keyup', function(){
-                textCount = $(this).val().length;
-                $('#text-count').text(textCount)
-                refreshSMSCount()
-            });
-
-            function refreshPersonCount(){
-                personCount = selected.length;
-                $('#person-count').text(selected.length)
-                refreshSMSCount()
-            }
-            function refreshSMSCount(){
-                if (textCount <= 491){
-                    SMSCount = personCount
-                }else{
-                    SMSCount = parseInt(textCount/491)*personCount
-                }
-                $('#SMS-count').text(SMSCount)
-
-            }
-            //定时操作
-            $('#timer').click(function () {
-                if($(this).hasClass('active')){
-                    $(this).removeClass('active');
-                    $('.date').fadeOut()
-                }else {
-                    $(this).addClass('active');
-                    $('.date').fadeIn()
-                    initDate()
-                }
-            });
-
-            //确认操作
-
+            //保存草稿
             $('#sure').click(function() {
                 console.log(selected)
-                console.log(textCount)
-                console.log(personCount)
+                //console.log(personCount)
                 console.log($('#SMS-content').val())//短信内容
                 if($('#timer').hasClass('active')){
                     console.log($('#timer-time').val())
                 }
-
-                var MEMBERIDS = "";
-                var MEMBERMOBILES = "";
-                var count = 0;
-                if(selected.length == 0){
-                    for(var i=0; unSelected.length > i; i++){
-                        MEMBERIDS += unSelected[i].USID + ",";
-                        MEMBERMOBILES += unSelected[i].MOBILE + ",";
-                        count = i+1;
-                    }
-                }else{
-                    for(var i=0; selected.length > i; i++){
-                        MEMBERIDS += selected[i].USID + ",";
-                        MEMBERMOBILES += selected[i].MOBILE + ",";
-                        count = i+1;
-                    }
-                }
-                MEMBERIDS = MEMBERIDS.substring(0,MEMBERIDS.length-1);
-                MEMBERMOBILES = MEMBERMOBILES.substring(0,MEMBERMOBILES.length-1);
-
-                if($('#SMS-content').val() == ""){
-                    alert("短信内容不能为空");
-                    return;
-                }
-                var content = $('#SMS-content').val();
-                $.ajax({
-                    url: basePath + '/admin/sms/sendSMS.shtml',
-                    dataType: 'json',
-                    type: 'post',
-                    data:{MEMBERIDS:MEMBERIDS,MEMBERMOBILES:MEMBERMOBILES,COUNT:count,SMSCONTENT:content,INFCOUNT:1,TASTTIME:$('#timer-time').val()},
-                    traditional: true,
-                    success:function(data){
-                        if(data.status == "0"){
-                            alert("发送成功！");
-                        }else{
-                            alert(data.errMsg);
-                        }
-                    },
-                    error: function(msg){
-                        alert("操作失败，请联系管理人员！");
-                    }
-                });
             });
-            /*
-             *  功能：获取当前时间并对选择器赋值
-             *  Created by nocoolyoyo 2016/10/10.
-             */
-            function initDate(){
-                var mydate = new Date();
-                var todayDate = "" + mydate.getFullYear() + "-";
-                todayDate += (mydate.getMonth()+1) + "-";
-                todayDate += mydate.getDate()+ " ";
-                todayDate += mydate.getHours()+ ":";
-                todayDate += mydate.getMinutes();
-                $('#timer-time').val(todayDate);
+
+            //投票添加删除操作
+            voteOprate();
+            function voteOprate(){
+                $('#voteSelections-add').click( function(){
+                    var voteNum = $('#voteSelectionsGroup li').length +1;
+                    console.log(voteNum)
+                    $('#vote-body').append(
+                        '<div class="vote panel panel-default">'+
+                        '<div class="panel-heading center">'+'投票'+1+'<button type="button" class="close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>'+
+                        '<div class="panel-body">'+
+                        '<div class="form-group">'+
+                        '<label for="voteName" class="col-sm-3  control-label">投票主题：</label>'+
+                        '<div class="col-sm-8">'+
+                        '<input type="text" class="form-control" id="voteName" name="incomeName" placeholder="请输入名称">'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="form-group">'+
+                        '<label for="voteType" class="col-sm-3 control-label">投票类型：</label>'+
+                        '<div class="col-sm-8" id="voteType">'+
+                        '<label class="radio-inline">'+
+                        '<input type="radio" name="radio'+ 1+'" value="option1"> 单选'+
+                        '</label>'+
+                        '<label class="radio-inline">'+
+                        '<input type="radio" name="radio1'+1+'" value="option2"> 多选'+
+                        '</label>'+
+                        '</div>'+
+                        '</div>'+
+                        '<ul class="voteSelectionsGroup">'+
+                        '<li class="form-group">'+
+                        '<label  class="col-sm-3  control-label">选项1：</label>'+
+                        '<div class="col-sm-8">'+
+                        '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">'+
+                        '</div>'+
+                        '</li>'+
+                        '<li class="form-group">'+
+                        '<label  class="col-sm-3  control-label">选项2：</label>'+
+                        '<div class="col-sm-8">'+
+                        '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">'+
+                        '</div>'+
+                        '</li>'+
+                        '</ul>'+
+                        '<button class="voteSelections-add" type="button" class="col-sm-offset-5 btn button-green button-rounded">新增选项</button>'+
+                        '</div>'+
+                        '</div>'
+                    )
+                });
             }
 
-            //清空操作
-            $(document).on("click", ".clear", function() {
-                unSelected = selected.concat(unSelected);
-                $tableMembers.bootstrapTable('load', unSelected);
-                $tableMembers.bootstrapTable( 'uncheckAll');
-                selected = [];
-                labelCreate();
-                $tableSelected.bootstrapTable('load', selected);
-                refreshPersonCount()
+            //投票选项添加删除操作
+            voteSelectionOprate();
+            function voteSelectionOprate(){
+                $(document).on('click','.voteSelections-add', function () {
+                    var listNum = $('.voteSelectionsGroup li').length +1;
+                    console.log(listNum)
+                    $('.voteSelectionsGroup').append('<li class="form-group">' +
+                        '<label  class="col-sm-3 control-label">选项'+ listNum +'：</label>' +
+                        '<div class="col-sm-8">' +
+                        '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">' +
+                        '</div>' +
+                        '<button type="button" class="li-delete col-sm-1 close" style="margin-top: 5px;"><span aria-hidden="true" style="margin-right: 4px;">&times;</span><span class="sr-only" style="margin-right: 4px;">Close</span></button>'+
+                        '</li>')
+                });
+                $(document).on('click','.li-delete', function () {
+                    $(this).closest('li').remove()
+                })
+            }
 
+
+            //报名操作
+            $('#signed').click( function(){
+                //报名
             });
-
-            /*模态框表格窗口修正*/
-            $('#select-modal').on('shown.bs.modal', function () {
-                $tableMembers.bootstrapTable('resetView');
-                $tableSelected.bootstrapTable('resetView');
-            });
-
             //时间选择初始化
+            initClockpicker();
             function initClockpicker(){
                 $('.form_date').datetimepicker({
                     pickerPosition: 'top-right',
@@ -531,179 +835,243 @@
                     forceParse: 0
                 });
             }
-            function labelCreate(){
-                function RndClassName(){
-                    var rnd = parseInt(6*Math.random());
-                    switch (rnd) {
-                        case 0:
-                            return 'label-default';
-                        case 1:
-                            return 'label-primary';
-                        case 2:
-                            return 'label-success';
-                        case 3:
-                            return 'label-warning';
-                        case 4:
-                            return 'label-danger';
-                        case 5:
-                            return 'label-info';
+
+
+            //人员选择页
+            membersAdd();
+            function membersAdd() {
+                //加载所有会员数据
+                var selections = [],//临时选择数组
+                    unSelected = [],//未选中人员数组
+                    selected = [],//已选中人员数组
+                    //personCount = 0,//已选中人员数量
+                    $tableMembers = $('#table-members'),
+                    $tableSelected = $('#members-selected');
+
+                $.ajax({
+                    url: basePath + "/admin/member/serchAllMember.shtml",
+                    async: false,
+                    dataType:"json",
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    success: function (data) {
+                        unSelected = data.rows;
+                        $('.dropdown-menu').append()
+                        // initTableMembers();
+                        // $tableMembers.bootstrapTable('load', data)
                     }
-                }
-                var html='';
-                for (var j = 0; j < selected.length; j++) {
-                    html += '<span class="label both-2 '+RndClassName()+'">'
-                        + selected[j].REALNAME + '<a class="selectedRemove label-icon fa fa-times" data-id="'
-                        + selected[j].USID +'"></a></span>';
-                }
-                $('.select-person').html(html);
-                refreshPersonCount();
-            }
-            //移除已选数据对象组里的数据，同时返回原表格数据
-            $(document).on("click", ".selectedRemove", function() {
-                var removeSelect = [];
-                var tempID=  parseInt($(this).attr('data-id'));
-                removeSelect.push(tempID)
-                // selected = selected.concat(getRowSelections());
-                for(var i=0; i < selected.length; i++){
-                    if( removeSelect.join() == selected[i].USID) {
-
-                        $tableMembers.bootstrapTable('insertRow', {
-                            index: 0,
-                            row: selected[i]
-                        });
-                        selected.splice(selected.indexOf(selected[i]),1) ;
-                        $tableSelected.bootstrapTable('load', selected);
-                        if($(this).hasClass('label-icon')){
-                            $(this).closest('span').remove();
-                        }else{
-                            labelCreate(); // console.log($('.select-person').find('a').attr('data-id',tempID))
-                            // $('.label-icon').attr('data-id',$(this).attr('data-id')).closest('span')
-                            // $('.select-person').find('a').attr('data-id',$(this).attr('data-id')).closest('span').remove();
-                        }
-
-                        $tableMembers.bootstrapTable( 'uncheckAll');
-                    }
-                }
-                // $tableSelected.bootstrapTable('remove', {
-                //     field: 'USID',
-                //     values: removeSelect
-                // });
-            });
-            function initTableMembers(){
-                var $add = $('#members-add');
-                $tableMembers.bootstrapTable({
-                    // idField: "id",
-                    data: unSelected,
-                    pageSize: 9,
-                    pageList: [12, 25, 50, 100],
-                    sidePagination: 'client',
-                    pagination: true,
-                    toolbar: "#table-toolbar",
-                    search: true,
-                    // sidePagination: "server",
-                    showColumns: true,
-                    height: 490,
-                    columns: [{
-                        field: 'state',
-                        checkbox: true
-
-                    },{
-                        field: 'REALNAME',
-                        title: '姓名',
-                        sortable: true,
-                        align: 'center'
-                    }, {
-                        field: 'MOBILE',
-                        title: '手机号',
-                        sortable: true,
-                        align: 'center'
-                    }, {
-                        field: 'COMPANY',
-                        title: '所在单位',
-                        sortable: true,
-                        align: 'center'
-                    }]
+                }).done(function (data) {
+                    // unSelected = data;
                 });
+                initTableMembers();
+                initMembersSelected();
+                //人数统计
+                // function refreshPersonCount(){
+                //   personCount = selected.length;
+                // $('#person-count').text(selected.length)
+                //}
+                //定时操作
+                // $('#timer').click(function () {
+                //     if($(this).hasClass('active')){
+                //         $(this).removeClass('active');
+                //         $('.date').fadeOut()
+                //     }else {
+                //         $(this).addClass('active');
+                //         $('.date').fadeIn()
+                //         initDate()
+                //     }
+                // });
+
+                //确认操作
+
 
                 /*
-                 *  功能：获取选择框信息
-                 *  Created by nocoolyoyo 2016/9/28.
+                 *  功能：获取当前时间并对选择器赋值
+                 *  Created by nocoolyoyo 2016/10/10.
                  */
+                // initClockpicker()
+                // function initDate(){
+                //     var mydate = new Date();
+                //     var todayDate = "" + mydate.getFullYear() + "-";
+                //     todayDate += (mydate.getMonth()+1) + "-";
+                //     todayDate += mydate.getDate()+ " ";
+                //     todayDate += mydate.getHours()+ ":";
+                //     todayDate += mydate.getMinutes();
+                //     $('#timer-time').val(todayDate);
+                // }
 
-                $tableMembers.on('check.bs.table uncheck.bs.table ' +
-                    'check-all.bs.table uncheck-all.bs.table', function () {
-                    if ($tableMembers.bootstrapTable('getSelections').length) {
-                        console.log('hahah')
-                        $add.show();
-                    } else {
-                        $add.hide();
-                    }
-                    selections  = getIdSelections();
-                });
-                /*人员选择*/
-                //往已选数据对象组里填充添加的数据，同时移除表格数据
-                $add.click(function () {
-                    selected = selected.concat(getRowSelections());
-                    $tableSelected.bootstrapTable('load', selected);
-                    $tableMembers.bootstrapTable('remove', {
-                        field: 'USID',
-                        values: selections
-                    });
-                    $add.hide();
-
+                //清空操作
+                $(document).on("click", ".clear", function() {
+                    unSelected = selected.concat(unSelected);
+                    $tableMembers.bootstrapTable('load', unSelected);
+                    $tableMembers.bootstrapTable( 'uncheckAll');
+                    selected = [];
                     labelCreate();
+                    $tableSelected.bootstrapTable('load', selected);
+                    //refreshPersonCount()
                 });
 
-
-
-                function getRowSelections() {
-                    return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
-                        return row
-                    });
-                }
-
-                function getIdSelections() {
-                    return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
-                        return row.USID
-                    });
-                }
-            }
-
-            function initMembersSelected(){
-                $tableSelected.bootstrapTable({
-                    data: selected,
-
-                    height: 475,
-
-                    search: true,
-                    showHeader:false,
-                    toolbar: "#left-toolbar",
-
-                    columns: [{
-                        field: 'SELECTED',
-                        title: '已选人员',
-                        sortable: true,
-                        formatter: selectedFormatter,
-                        align: 'center'
-                    }]
+                /*模态框表格窗口修正*/
+                $('#select-modal').on('shown.bs.modal', function () {
+                    $tableMembers.bootstrapTable('resetView');
+                    $tableSelected.bootstrapTable('resetView');
                 });
-                function selectedFormatter(value, row) {
-                    return [
 
-                        '<div class="pull-left">',
-                        '<span>' + row.REALNAME +'   '+ '</span>',
-                        '</div>',
-                        '<div class="pull-left">',
-                        '<span>' + row.MOBILE + '</span>',
-                        '</div>',
-                        '<div class="pull-right">',
-                        '<a class="selectedRemove close" href="javascript:void(0)"  data-id="' + row.USID +'" title="移除">',
-                        '<i class="glyphicon glyphicon-remove"></i>',
-                        '</a> ',
-                        '</div>'
-                    ].join('');
+                function labelCreate(){
+                    function RndClassName(){
+                        var rnd = parseInt(6*Math.random());
+                        switch (rnd) {
+                            case 0:
+                                return 'label-default';
+                            case 1:
+                                return 'label-primary';
+                            case 2:
+                                return 'label-success';
+                            case 3:
+                                return 'label-warning';
+                            case 4:
+                                return 'label-danger';
+                            case 5:
+                                return 'label-info';
+                        }
+                    }
+                    var html='';
+                    for (var j = 0; j < selected.length; j++) {
+                        html += '<span class="label both-2 '+RndClassName()+'">'
+                            + selected[j].REALNAME + '<a class="selectedRemove label-icon fa fa-times" data-id="'
+                            + selected[j].USID +'"></a></span>';
+                    }
+                    $('.select-person').html(html);
+                    //refreshPersonCount();
+                }
+                //移除已选数据对象组里的数据，同时返回原表格数据
+                $(document).on("click", ".selectedRemove", function() {
+                    var removeSelect = [];
+                    var tempID=  parseInt($(this).attr('data-id'));
+                    removeSelect.push(tempID)
+                    // selected = selected.concat(getRowSelections());
+                    for(var i=0; i < selected.length; i++){
+                        if( removeSelect.join() == selected[i].USID) {
+
+                            $tableMembers.bootstrapTable('insertRow', {
+                                index: 0,
+                                row: selected[i]
+                            });
+                            selected.splice(selected.indexOf(selected[i]),1) ;
+                            $tableSelected.bootstrapTable('load', selected);
+                            //refreshPersonCount();
+                            if($(this).hasClass('label-icon')){
+                                $(this).closest('span').remove();
+                            }else{
+                                labelCreate(); // console.log($('.select-person').find('a').attr('data-id',tempID))
+                                // $('.label-icon').attr('data-id',$(this).attr('data-id')).closest('span')
+                                // $('.select-person').find('a').attr('data-id',$(this).attr('data-id')).closest('span').remove();
+                            }
+                            $tableMembers.bootstrapTable( 'uncheckAll');
+                        }
+                    }
+                });
+                function initTableMembers(){
+                    var $add = $('#members-add');
+                    $tableMembers.bootstrapTable({
+                        data: unSelected,
+                        pageSize: 9,
+                        pageList: [12, 25, 50, 100],
+                        sidePagination: 'client',
+                        pagination: true,
+                        toolbar: "#table-toolbar",
+                        search: true,
+                        showColumns: true,
+                        height: 490,
+                        columns: [{
+                            field: 'state',
+                            checkbox: true
+
+                        },{
+                            field: 'REALNAME',
+                            title: '姓名',
+                            sortable: true,
+                            align: 'center'
+                        }, {
+                            field: 'MOBILE',
+                            title: '手机号',
+                            sortable: true,
+                            align: 'center'
+                        }, {
+                            field: 'COMPANY',
+                            title: '所在单位',
+                            sortable: true,
+                            align: 'center'
+                        }]
+                    });
+                    /*
+                     *  功能：获取选择框信息
+                     *  Created by nocoolyoyo 2016/9/28.
+                     */
+                    $tableMembers.on('check.bs.table uncheck.bs.table ' +
+                        'check-all.bs.table uncheck-all.bs.table', function () {
+                        if ($tableMembers.bootstrapTable('getSelections').length) {
+                            $add.show();
+                        } else {
+                            $add.hide();
+                        }
+                        selections  = getIdSelections();
+                    });
+                    /*人员选择*/
+                    //往已选数据对象组里填充添加的数据，同时移除表格数据
+                    $add.click(function () {
+                        selected = selected.concat(getRowSelections());
+                        $tableSelected.bootstrapTable('load', selected);
+                        $tableMembers.bootstrapTable('remove', {
+                            field: 'USID',
+                            values: selections
+                        });
+                        $add.hide();
+                        labelCreate();
+                    });
+
+                    function getRowSelections() {
+                        return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
+                            return row
+                        });
+                    }
+                    function getIdSelections() {
+                        return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
+                            return row.USID
+                        });
+                    }
                 }
 
+                function initMembersSelected(){
+                    $tableSelected.bootstrapTable({
+                        data: selected,
+                        height: 475,
+                        search: true,
+                        showHeader:false,
+                        toolbar: "#left-toolbar",
+                        columns: [{
+                            field: 'SELECTED',
+                            title: '已选人员',
+                            sortable: true,
+                            formatter: selectedFormatter,
+                            align: 'center'
+                        }]
+                    });
+                    function selectedFormatter(value, row) {
+                        return [
+                            '<div class="pull-left">',
+                            '<span>' + row.REALNAME +'   '+ '</span>',
+                            '</div>',
+                            '<div class="pull-left">',
+                            '<span>' + row.MOBILE + '</span>',
+                            '</div>',
+                            '<div class="pull-right">',
+                            '<a class="selectedRemove close" href="javascript:void(0)"  data-id="' + row.USID +'" title="移除">',
+                            '<i class="glyphicon glyphicon-remove"></i>',
+                            '</a> ',
+                            '</div>'
+                        ].join('');
+                    }
+                }
             }
 
         }
@@ -747,7 +1115,6 @@
                     },
                     searchOnEnterKey: false,//回车搜索
                     showRefresh: true,//刷新按钮
-                    showColumns: true,//列选择按钮
                     columns: [{
                         field: 'state',
                         checkbox: true

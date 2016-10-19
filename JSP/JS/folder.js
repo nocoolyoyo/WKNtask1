@@ -6,6 +6,7 @@
         var contextPath = local.pathname.split("/")[1];
         var basePath = local.protocol+"//"+local.host+"/"+contextPath;
         var selections = [];
+        var currentFolderID;
         /*
          *  功能：入口初始化
          */
@@ -23,6 +24,7 @@
                 success:function(data)
                 {
                     var $menu = $('#menu');
+                    $menu.html("");
                     var $folderBelong = $('#folderBelong');
                     var list = "";
                     var option =";"
@@ -34,7 +36,7 @@
                         option += '<option value="'+ data.FOLDERLIST[i].FOLDERID+ '" data-id="'+ data.FOLDERLIST[i].FOLDERID+ '">'+data.FOLDERLIST[i].FOLDERNAME +'</option>';
                     }
 
-                    $menu.append(list);
+                    $menu.html(list);
                     $folderBelong.append(option);
 
 
@@ -43,6 +45,7 @@
         }
         //点击文件夹刷新列表
         $(document).on("click", "#menu > li > a", function() {
+            currentFolderID = $(this).attr('data-id');
             var id = $(this).attr('data-id');
             console.log($(this).attr('data-id'))
             $.ajax({
@@ -136,6 +139,7 @@
                             if (!value) {
                                 return '文件夹名不能为空';
                             }
+
 //                            var data = $tableFolderManage.bootstrapTable('getData'),
 //                            index = $(this).parents('tr').data('index');
 //                        	console.log(data[index]);
@@ -149,6 +153,7 @@
                                 success:function(data){
                                     if(data.STATUS == "0"){
                                         alert("新增成功");
+                                        $tableFolderManage.bootstrapTable('refresh');
                                         initFolderList();
                                     }else{
                                         alert(data.ERRMSG);
@@ -162,33 +167,34 @@
                     }
                 }]
             });
-                /*
-                 *  功能：获取选择框信息
-                 *  Created by nocoolyoyo 2016/9/28.
-                 */
-                $tableFolderManage.on('check.bs.table uncheck.bs.table ' + 'check-all.bs.table uncheck-all.bs.table', function () {
-                    if ($tableFolderManage.bootstrapTable('getSelections').length) {
-                        $folderDelete.show();
-                    } else {
-                        $folderDelete.hide();
-                    }
-                    selections = getFolderIdSelections();
-
-                });
-                $folderDelete.click(function () {
-                    var ids = getFolderIdSelections();
-                    $tableFolderManage.bootstrapTable('remove', {
-                        field: 'FOLDERID',
-                        values: ids
-                    });
-
+            /*
+             *  功能：获取选择框信息
+             *  Created by nocoolyoyo 2016/9/28.
+             */
+            $tableFolderManage.on('check.bs.table uncheck.bs.table '
+                + 'check-all.bs.table uncheck-all.bs.table', function () {
+                if ($tableFolderManage.bootstrapTable('getSelections').length) {
+                    $folderDelete.show();
+                } else {
                     $folderDelete.hide();
+                }
+                selections = getFolderIdSelections();
+
+            });
+            $folderDelete.click(function () {
+                var ids = getFolderIdSelections();
+                $tableFolderManage.bootstrapTable('remove', {
+                    field: 'id',
+                    values: ids
                 });
-                function getFolderIdSelections() {
-                    return $.map($tableFolderManage.bootstrapTable('getSelections'), function (row) {
-                        console.log(row.FOLDERID);
-                        return row.FOLDERID;
-                    });
+
+                $folderDelete.hide();
+            });
+            function getFolderIdSelections() {
+                return $.map($tableFolderManage.bootstrapTable('getSelections'), function (row) {
+                    console.log(row.FOLDERID);
+                    return row.FOLDERID;
+                });
             }
 
             /*
@@ -213,6 +219,7 @@
              */
             $("#folder-delete").click(function(){
                 var ids = getFolderIdSelections();
+                console.log(ids);
                 var str="";
                 for (var i = 0; i < ids.length; i++) {
                     str += ids[i] + ",";
@@ -234,6 +241,7 @@
                             if(data.STATUS == "0"){
                                 alert("删除成功");
                                 $tableFolderManage.bootstrapTable('refresh');
+                                initFolderList();
                             }else{
                                 alert(data.ERRMSG);
                             }
@@ -482,22 +490,36 @@
                     }
                 });
             }
-            $('#file-upload').fileinput({
-                language: 'zh-CN', //设置语言
-                uploadUrl: "/FileUpload/Upload", //上传的地址
-                // allowedFileExtensions : [''],//接收的文件后缀,
-                fileType: "any",
-                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-                maxFileCount: 1,
-                enctype: 'multipart/form-data',
-                showUpload: true, //是否显示上传按钮
-                showCaption: false,//是否显示标题
-                fileActionSettings: {
-                    showZoom: false
-                },
-                browseClass: "btn btn-primary", //按钮样式
-                msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
-            });
+            //上传功能
+            initFileUpload()
+            function initFileUpload(){
+                var batch = currentFolderID;
+                $('#file-upload').on('filepreajax', function(event, previewId, index) {
+                    batch = {"batchNo": currentFolderID};
+                });
+
+                $('#file-upload').fileinput({  //需要传入folderid
+                    language: 'zh-CN', //设置语言
+                    uploadUrl: basePath + "/data/FolderfileUp.jsp?folderid="+batch, //上传的地址
+                    // allowedFileExtensions : [''],//接收的文件后缀,
+                    uploadExtraData:function() {
+                        return batch;
+                    },
+                    fileType: "any",
+                    previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                    maxFileCount: 1,
+                    accept: 'application/html',
+                    enctype: 'multipart/form-data',
+                    showUpload: true, //是否显示上传按钮
+                    showCaption: false,//是否显示标题
+                    fileActionSettings: {
+                        showZoom: false
+                    },
+                    browseClass: "btn btn-primary", //按钮样式
+                    msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
+                });
+            }
+
 
             /*
              *删除

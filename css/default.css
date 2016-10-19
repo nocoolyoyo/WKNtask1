@@ -28,6 +28,9 @@ body {
 .hide {
     display: none;
 }
+.inline-box {
+    display: inline-block;
+}
 .center {
     margin: 0 auto;
     text-align: center;

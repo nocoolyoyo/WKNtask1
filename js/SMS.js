@@ -109,6 +109,7 @@
                 }
             }
         }
+
         function initTimepicker(){
             $('.form_date').datetimepicker({
                 pickerPosition: 'top-right',
@@ -154,6 +155,7 @@
                 }).done(function (data) {
                     // unSelected = data;
                 });
+
 
             console.log(unSelected)
                 initClockpicker();

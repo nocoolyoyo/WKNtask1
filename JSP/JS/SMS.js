@@ -56,11 +56,13 @@
                 selections = [],//临时选择数组
                 unSelected = [],//未选中人员数组
                 selected = [],//已选中人员数组
+                fastGroup = [],
                 textCount = 0,//输入文本字数
                 personCount = 0,//已选中人员数量
                 SMSCount = 0,//短信数量
                 $tableMembers = $('#table-members'),
                 $tableSelected = $('#members-selected');
+            $fasterFlier = $('#fast-fliter');
 
             $.ajax({
                 url: basePath + "/admin/member/serchAllMember.shtml",
@@ -70,14 +72,34 @@
                 success: function (data) {
 
                     unSelected = data.rows;
+                    for(var i=0; i < unSelected.length; i++){
+                        if(unSelected[i].ONAME != ''){
+                            fastGroup[i] = unSelected[i].ONAME;
+                        }else {
+                            fastGroup[i] = '职务为空';
+                        }
+                    }
 
-                    $('.dropdown-menu').append()
+                    fastGroup = fastGroup.duplicate();
+                    console.log(fastGroup);
+                    for(var j=0; j < fastGroup.length; j++){
+                        $fasterFlier.append('<li><a href="#">' + fastGroup[j] + '</a></li>');
+                    }
+
+
+                    // $('#fast-fliter')
+                    // $(document).on('click', '#fast-fliter > li',function () {
+                    //     console.log($(this).attr('data-id'))
+                    // })
+
+                    // $('.dropdown-menu').append()
                     // initTableMembers();
                     // $tableMembers.bootstrapTable('load', data)
                 }
             }).done(function (data) {
                 // unSelected = data;
             });
+
 
             //console.log(unSelected)
             initClockpicker();
@@ -191,9 +213,6 @@
                 refreshPersonCount()
 
             });
-
-
-
 
             /*模态框表格窗口修正*/
             $('#select-modal').on('shown.bs.modal', function () {
@@ -325,7 +344,7 @@
                     }
                     selections  = getIdSelections();
                 });
-                /*人员选择*/
+                /*精确添加中的人员选择添加*/
                 //往已选数据对象组里填充添加的数据，同时移除表格数据
                 $add.click(function () {
                     selected = selected.concat(getRowSelections());
@@ -334,11 +353,29 @@
                         field: 'USID',
                         values: selections
                     });
+                    console.log(selections)
                     $add.hide();
-
                     labelCreate();
                 });
-
+                /*快速添加中的人员选择添加*/
+                $(document).on('click', '#fast-fliter > li a', function(){
+                    var tempONAME = $(this).text();
+                    console.log(unSelected);
+                    for(var n=0; n < unSelected.length; n++){
+                        if(unSelected[n].ONAME == tempONAME){
+                            selected = selected.concat(unSelected[n]);
+                        }
+                    }
+                    console.log(selections)
+                    console.log(unSelected);
+                    console.log(selected);
+                    $tableSelected.bootstrapTable('load', selected);
+                    $tableMembers.bootstrapTable('remove', {
+                        field: 'USID',
+                        values: selections
+                    });
+                    labelCreate();
+                });
 
 
                 function getRowSelections() {
@@ -702,7 +739,6 @@
 
             function SMSFormatter(value, row){
                 return '<a href="#" class="SMSDetail" data-id="' + row.SMSID + '">' + value + '</a>';
-
             }
 
             /*
@@ -803,7 +839,6 @@
                 },
                 searchOnEnterKey: false,//回车搜索
                 showRefresh: true,//刷新按钮
-                showColumns: true,//列选择按钮
                 columns: [{
                     field: 'state',
                     checkbox: true

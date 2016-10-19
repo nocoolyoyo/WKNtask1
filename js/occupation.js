@@ -24,8 +24,6 @@
             }
         });
 
-
-
         /*
          *  功能：侧边栏初始化
          *  Created by nocoolyoyo 2016/9/28.
@@ -71,14 +69,38 @@
                     $container.html(data);
                 }
             });
+
+            //di
+
             initTable1();
             initTimepicker();
+
             function initTable1() {
                 $table = $('#table');
                 var $delete = $('#delete');
                 var $add = $('#add');
                 var $export = $('#export');
+                var $fasterFlier = $('#fast-fliter');
+                $.ajax({
+                    url: basePath+'/admin/member/occupationFindByPage.shtml',
+                    dataType:'json',
+                    success:function(data)
+                    {
+                        $fasterFlier.append('<li><a href="#" data-id="">取消职务查找</a></li>')
+                        for (var i=0; i<data.rows.length; i++){
+                            $fasterFlier.append('<li id="'+ data.rows[i].OID+'"><a href="#" data-id="' + data.rows[i].OID+ '">' + data.rows[i].ONAME + '</a></li>');
+                        }
+                    }
+                });
 
+                var OCCUPATIONID;
+                //点击快速查询赛选
+                $(document).on('click', '#fast-fliter > li > a',function () {
+                    console.log($(this).attr('data-id'));
+                    $("#"+$(this).attr('data-id')).attr("check","true");
+                    OCCUPATIONID = $(this).attr('data-id');
+                    $table.bootstrapTable('refresh',{url:basePath+'/admin/member/serchAllMember.shtml?OCCUPATIONID='+$(this).attr('data-id')});
+                })
                 $table.bootstrapTable({
                     toolbar: "#table-toolbar",
                     showColumns: true,
@@ -99,7 +121,7 @@
                     queryParamsType: "limit",//查询参数组织方式
                     queryParams: function getParams(params) {
                         //params obj
-                        //params.other = "otherInfo";
+                        params.OCCUPATIONID = OCCUPATIONID;
                         return params;
                     },
                     searchOnEnterKey: false,//回车搜索
@@ -156,8 +178,6 @@
                     } else {
                         $delete.hide();
                     }
-
-
                     //selections = getIdSelections();
                     console.log(selections)
                 });
@@ -221,7 +241,19 @@
                         '</a>  '
                     ].join('');
                 }
-
+                window.editEvents = {
+                    'click .edit': function (e, value, row, index) {
+                        //alert('You click like action, row: ' + JSON.stringify(row));
+                        //alert(row.USERNAME);
+                        window.location.href = basePath+"/admin/url/occupationProfile.shtml?USERNAME="+row.USERNAME;
+                    },
+                    'click .remove': function (e, value, row, index) {
+                        $table.bootstrapTable('remove', {
+                            field: 'id',
+                            values: [row.id]
+                        });
+                    }
+                };
 
                 /*
                  *  功能：会员导入
@@ -231,14 +263,14 @@
                 $('#file-import').fileinput({
                     language: 'zh-CN', //设置语言
                     uploadUrl: basePath + "/data/MemberImportfileUp.jsp", //上传的地址
-                    allowedFileExtensions : ['xls'],//接收的文件后缀,
+                    allowedFileExtensions : ['xls','xlsx'],//接收的文件后缀,
                     maxFileCount: 1,
                     accept: 'application/html',
                     enctype: 'multipart/form-data',
                     showUpload: true, //是否显示上传按钮
                     showCaption: false,//是否显示标题
                     browseClass: "btn btn-primary", //按钮样式
-                    msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                    msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
                 });
                 //填写说明下载
                 $("#explain").click(function(){
@@ -268,7 +300,6 @@
             function initTable2() {
                 var selectItem = [],
                     checklistItem = [];
-
                 $.ajax({
                     url: basePath + "/admin/member/memberRegistration.shtml",
                     dataType: 'json',
@@ -975,6 +1006,7 @@
             });
 
             initTable5();
+            var groupId;
             function initTable5() {
                 $table = $('#table');
                 var $QGLDelete = $('#QGL-delete');
@@ -1035,10 +1067,14 @@
 
 
                 function groupFormatter(value, row){
-                    return '<a href="#" class="groupDetail"  data-toggle="modal"  data-target="#QGL-edit-modal" data-id="' + row.AID + '">' + value + '</a>';
+
+                    return '<a href="#" class="groupDetail"  data-toggle="modal"  data-target="#QGL-edit-modal"  data-id="' + row.GROUPID + '">' + value + '</a>';
+
                 }
                 function membersFormatter(value, row){
-                    return '<a href="#" class="membersDetail"  data-id="' + row.AID + '">' + value + '</a>';
+
+                    return '<a href="#" class="membersDetail"  data-id="' + row.GROUPID + '">' + value + '</a>';
+
                 }
                 $table.on('check.bs.table uncheck.bs.table ' +
                     'check-all.bs.table uncheck-all.bs.table', function () {
@@ -1058,7 +1094,29 @@
                 //添加群保存
 
                 $('#QGL-submit').click(function () {
-
+                    console.log($("#QGLName").val());
+                    console.log($("#QGLDescription").val());
+                    if(confirm("确认新增")) {
+                        $.ajax({
+                            url: basePath + '/admin/member/createNewGroup.shtml',
+                            dataType: 'json',
+                            type: 'post',
+                            data:{"GROUPNAME":$("#QGLName").val(),DETAIL:$("#QGLDescription").val()},
+                            traditional: true,
+                            success:function(data){
+                                if(data.status == "0"){
+                                    alert("保存成功!");
+                                    $('#QGL-add-modal').modal('hide')
+                                    $table.bootstrapTable('refresh');
+                                }else{
+                                    alert(data.errMsg);
+                                }
+                            },
+                            error: function(msg){
+                                alert("操作失败，请联系管理人员！");
+                            }
+                        });
+                    }
                 });
 
                 //功能：输入框验证
@@ -1091,40 +1149,85 @@
 
 
                 //修改群
-                $(document).on('click', 'groupDetail',function(){
-                    //console.log($(this).index())
+                $(document).on('click', '.groupDetail',function(){
+                    console.log($(this).attr('data-id'));
+                    $.ajax({
+                        url: basePath + '/admin/member/showGroup.shtml',
+                        dataType: 'json',
+                        type: 'post',
+                        data:{"GROUPID":$(this).attr('data-id')},
+                        traditional: true,
+                        success:function(data){
+                            if(data.status == "0"){
+                                groupId = data.map.GROUPID;
+                                $("#editQGLName").val(data.map.GROUPNAME);
+                                $("#editQGLDescription").val(data.map.DETAIL);
+                                yanzhengXG();
+                            }else{
+                                alert(data.errMsg);
+                            }
+                        },
+                        error: function(msg){
+                            alert("操作失败，请联系管理人员！");
+                        }
+                    });
 
                 });
                 //修改保存
                 $('#editQGL-submit').click(function () {
-
-                });
-                //  功能：输入框验证
-                $('#edit-from').bootstrapValidator({
-                    message: '所有值不能为空',
-                    fields: {
-                        editQGLName: {
-                            validators: {
-                                notEmpty: {
-                                    message: '请输入群名称！'
+                    console.log($("#editQGLName").val());
+                    console.log($("#editQGLDescription").val());
+                    if(confirm("确认修改")) {
+                        $.ajax({
+                            url: basePath + '/admin/member/updateGroup.shtml',
+                            dataType: 'json',
+                            type: 'post',
+                            data:{GROUPID:groupId,"GROUPNAME":$("#editQGLName").val(),DETAIL:$("#editQGLDescription").val()},
+                            traditional: true,
+                            success:function(data){
+                                if(data.status == "0"){
+                                    alert("修改成功!");
+                                    $('#QGL-edit-modal').modal('hide')
+                                    $table.bootstrapTable('refresh');
+                                }else{
+                                    alert(data.errMsg);
                                 }
+                            },
+                            error: function(msg){
+                                alert("操作失败，请联系管理人员！");
                             }
-                        }
+                        });
                     }
                 });
 
-                $('#editQGLName').on('keyup', function(){
-                    var $editSubmit = $("#editQGL-submit");
-                    $('form :input').bind('input propertychange', function () {
-                        var $editQGLName = $("#editQGLName").val();
-                        if($editQGLName !== ""){
-                            $editSubmit.removeAttr('disabled');
-                        }if($editQGLName == ""){
-                            $editSubmit.attr('disabled', 'disabled');
-                        }
-                    });
-                });
 
+                $('#editQGLName').on('keyup', function(){
+                    yanzhengXG();
+                });
+                function yanzhengXG(){
+                    var $editSubmit = $("#editQGL-submit");
+
+                    var $editQGLName = $("#editQGLName").val();
+                    if($editQGLName !== ""){
+                        $editSubmit.removeAttr('disabled');
+                    }if($editQGLName == ""){
+                        $editSubmit.attr('disabled', 'disabled');
+                    }
+
+                    //  功能：输入框验证
+//                        $('#edit-from').bootstrapValidator({
+//                            message: '所有值不能为空',
+//                            fields: {
+//                                editQGLName: {
+//                                    validators: {
+//                                        notEmpty: {
+//                                            message: '请输入群名称！'
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        });
+                }
 
                 //群管理删除
                 $QGLDelete.click(function () {
@@ -1200,6 +1303,8 @@
                 initTableMembers();
                 function initTableMembers() {
 
+
+
                     $tableMembers = $('#tableMembers');
                     var $membersDelete = $('#QGL-members-delete');
                     $tableMembers.bootstrapTable({
@@ -1257,10 +1362,40 @@
                     });
 
                     function getMembersSelections() {
-                        return $.map($table.bootstrapTable('getSelections'), function (row) {
-                            return row.GROUPID
+                        return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
+                            return row.USERNAME;
                         });
                     }
+
+                    //删除会员
+                    $membersDelete.click(function(){
+                        var ids = getMembersSelections();
+                        var memberid = ""+ids;
+                        console.log(ids)
+                        if(confirm("确认删除")){
+                            $.ajax({
+                                url: basePath + '/admin/member/deleteGoupMember.shtml',
+                                dataType: 'json',
+                                type: 'post',
+                                data:{GROUPID:groupId,"MEMBERUSER":memberid,TYPE:2},
+                                traditional: true,
+                                success:function(data){
+                                    if(data.status == "0"){
+                                        alert("删除成功!");
+                                        $membersDelete.hide();
+//                                        $('#select-modal').modal('hide');
+                                        $tableMembers.bootstrapTable('refresh');
+
+                                    }else{
+                                        alert("操作失败，请联系管理人员！");
+                                    }
+                                },
+                                error: function(msg){
+                                    alert("操作失败，请联系管理人员！");
+                                }
+                            });
+                        }
+                    })
 
                     initMembersAdd()
 
@@ -1276,6 +1411,8 @@
                             $tableMembers = $('#table-members'),
                             $tableSelected = $('#members-selected');
                         enableSubmit();
+
+
                         $("#select-sure").click(function () {
                             var mySelect = "";
                             console.log(selected);
@@ -1284,27 +1421,29 @@
                             }
                             mySelect=mySelect.substring(0,mySelect.length-1);
                             console.log(mySelect);
-//                            if(confirm("确认添加")){
-//                                $.ajax({
-//                                    url: basePath + '/admin/member/addMemberOfGroup.shtml',
-//                                    dataType: 'json',
-//                                    type: 'post',
-//                                    data:{GROUPID:groupId,"chkinfo":id},
-//                                    traditional: true,
-//                                    success:function(data){
-//                                        if(data.status == "0"){
-//                                            alert("删除成功!");
+                            if(confirm("确认添加")){
+                                $.ajax({
+                                    url: basePath + '/admin/member/addMemberOfGroup.shtml',
+                                    dataType: 'json',
+                                    type: 'post',
+                                    data:{GROUPID:groupId,"chkinfo":mySelect},
+                                    traditional: true,
+                                    success:function(data){
+                                        if(data.status == "0"){
+                                            alert("添加成功!");
 //                                            $delete.hide();
-//                                            $table.bootstrapTable('refresh');
-//                                        }else{
-//                                            alert("操作失败，请联系管理人员！");
-//                                        }
-//                                    },
-//                                    error: function(msg){
-//                                        alert("操作失败，请联系管理人员！");
-//                                    }
-//                                });
-//                            }
+                                            clear();
+                                            $('#select-modal').modal('hide');
+                                            $('#tableMembers').bootstrapTable('refresh');
+                                        }else{
+                                            alert(data.errMsg);
+                                        }
+                                    },
+                                    error: function(msg){
+                                        alert("操作失败，请联系管理人员！");
+                                    }
+                                });
+                            }
                         });
                         function enableSubmit(){
                             var $selectSubmit = $("#select-sure");
@@ -1347,6 +1486,14 @@
 
                         });
 
+                        function clear(){
+                            unSelected = selected.concat(unSelected);
+                            $tableMembers.bootstrapTable('load', unSelected);
+                            $tableMembers.bootstrapTable( 'uncheckAll');
+                            selected = [];
+                            $tableSelected.bootstrapTable('load', selected);
+                            enableSubmit()
+                        }
 
                         /*模态框表格窗口修正*/
                         $('#select-modal').on('shown.bs.modal', function () {
@@ -1491,8 +1638,6 @@
                     }
 
                 }
-
-
             }
         }
 

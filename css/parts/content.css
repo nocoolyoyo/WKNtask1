@@ -205,9 +205,15 @@
 .grid-item img {
     width: 100%;
 }
+/*
+ *描述：通知通告
+ *页面：notice.html
+ */
 
-
-
+.vote-body{
+    height: 350px;
+    overflow: auto
+}
 
 /***********************************/
 /**

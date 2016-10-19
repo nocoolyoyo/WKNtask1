@@ -1,41 +1,189 @@
 
 <div class="content-area-box">
-    <div id="single-toolbar" class="form-inline">
-        <div class="form-group">
+    <div id="single-toolbar">
 
-            <button id="information-send" type="button" class="btn btn-primary">发送</button>
-            <button id="information-save" type="button" class="btn btn-default">保存草稿</button>
-            <button id="back" type="button" class="btn btn-default">取消</button>
+        <button id="back" type="button" class="btn btn-default">返回</button>
+        <div class="pull-right">
+            <div class="dropdown" style="display: inline-block">
+                <button id="fast-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <button id="exact-add" type="button" class="btn btn-default"  data-toggle="modal" data-target="#select-modal">精确添加</button>
+            <button type="button" class="clear btn btn-default">清空</button>
+
         </div>
     </div>
-    <div class="form-group">
-        <input type="text" class="form-control" id="title" placeholder="请输入标题">
-        <!--<label for="handler" class="col-sm-2 control-label">处理人：</label>-->
-        <!--<div class="col-sm-4">-->
-            <!--<input type="text" class="form-control" id="handler" placeholder="">-->
-        <!--</div>-->
+
+    <div class="select-person form-control">
     </div>
-    <div class="form-group">
-        <input type="text" class="form-control" id="recept" placeholder="通知对象">
+    <div class="form-group top-10">
+        <input type="text" class="form-control" id="title" placeholder="请输入标题">
     </div>
 
     <div id="newNotice">
     </div>
-    <div class="form-group">
-        <label for="sex" class="col-sm-1 control-label">投票：</label>
-        <div class="col-sm-2">
-            <label class="checkbox-inline">
-                <input type="radio" name="POLITICAL" id="POLITICAL" value="0" checked>是
-                <input type="radio" name="POLITICAL" id="POLITICAL" value="1">否
-            </label>
-        </div>
-        <label for="sex" class="col-sm-1 control-label">报名：</label>
-        <div class="col-sm-2">
-            <label class="checkbox-inline">
-                <input type="radio" name="POLITICAL" id="POLITICAL" value="0" checked>是
-                <input type="radio" name="POLITICAL" id="POLITICAL" value="1">否
-            </label>
+    <form class="form-inline" role="form">
+        <button id="vote" type="button" class="btn btn-primary" data-toggle="modal" data-target="#vote-modal">投票</button>
+        <button id="signed" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signed-modal">报名</button>
+        <span class="pull-right">
+        <button id="notice-send" type="button" class="btn btn-primary">发送</button>
+        <button id="notice-draft" type="button" class="btn btn-default">保存草稿</button>
+            </span>
+    </form>
+</div>
+<div id="vote-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-horizontal" role="form">
+            <div class="modal-content">
+                <div class="modal-header center">
+                    <h4 class="modal-title">投票</h4>
+                </div>
+                <div id="vote-body" class="modal-body">
+                    <div class="vote panel panel-default">
+                        <div class="panel-heading center">投票1<button type="button" class="close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="voteName" class="col-sm-3  control-label">投票主题：</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="voteName" name="incomeName" placeholder="请输入名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="voteType" class="col-sm-3  control-label">投票类型：</label>
+                                <div class="col-sm-8" id="voteType">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radio1" value="option1"> 单选
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radio2" value="option2"> 多选
+                                    </label>
+                                </div>
+                            </div>
+                            <ul class="voteSelectionsGroup">
+                                <li class="form-group">
+                                    <label  class="col-sm-3  control-label">选项1：</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">
+                                    </div>
+                                </li>
+                                <li class="form-group">
+                                    <label  class="col-sm-3  control-label">选项2：</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">
+                                    </div>
+                                </li>
+                            </ul>
+                            <button class="voteSelections-add" type="button" class="col-sm-offset-5 btn button-green button-rounded">新增选项</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer form-inline">
+                    <button id="new-vote" type="button" class="btn button-green button-rounded pull-left">新增</button>
+                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                        <span class="input-group-addon">截至日期</span>
+                        <input class="form-control" size="16" type="text" value="" placeholder="日期" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <button id="vote-sure" type="button" class="btn button-primary button-rounded" disabled="disabled">确定</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="signed-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-horizontal" role="form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">报名</h4>
+                </div>
+                <div class="modal-body both-25">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">地点</div>
+                            <input class="form-control" type="text" placeholder="填写标题">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group inline-box">
+                            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                                <span class="input-group-addon">开始时间</span>
+                                <input class="form-control" size="17" type="text" value="" placeholder="日期" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                        <div class="input-group inline-box" >
+                            <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                                <span class="input-group-addon">结束时间</span>
+                                <input class="form-control" size="17" type="text" value="" placeholder="日期" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">联系人</div>
+                            <input class="form-control" type="text" placeholder="联系人">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">联系电话</div>
+                            <input class="form-control" type="text" placeholder="联系电话">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="sign-sure" type="submit" class="btn button button-primary button-rounded" >确定</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="select-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header center">
+                <h4 class="modal-title">人员选择</h4>
+            </div>
+            <div class="modal-body">
+                <div class="select-content">
+                    <div class="select-left">
+                        <div id="left-toolbar" class="form-inline">
+                            <button type="button" class="clear btn btn-default">清空</button>
+                        </div>
+                        <table id="members-selected"></table>
+                    </div>
+                    <div class="select-right">
+                        <div id="table-toolbar" class="form-inline">
+                            <button id="members-add" type="button" class="btn btn-success" style="display: none">添加</button>
+                            <div class="dropdown" style="display: inline-block">
+                                <button id="group-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">阿斯顿</a></li>
+                                    <li><a href="#">说的</a></li>
+                                    <li><a href="#">阿斯顿k</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <table id="table-members"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+            </div>
         </div>
     </div>
-
 </div>

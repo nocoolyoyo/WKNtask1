@@ -110,7 +110,7 @@
                 }, {
                     field: 'REALNAME',
                     title: '姓名',
-                    formatter: noticeDetail,
+                    //formatter: noticeDetail,
                     align: 'center'
                 }, {
                     field: 'MOBILE',
