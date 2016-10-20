@@ -341,7 +341,6 @@
                     },
                     searchOnEnterKey: false,//回车搜索
                     showRefresh: true,//刷新按钮
-                    showColumns: true,//列选择按钮
 
                     columns: [{
                         field: 'ONAME',
