@@ -89,6 +89,13 @@
                 browseClass: "btn btn-primary", //按钮样式
                 msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！"
             });
+            /*
+                图片详细预览
+             */
+            $(document).ready(function(){
+                $("a[rel^='prettyPhoto']").prettyPhoto();
+            });
+
         }
 
     })

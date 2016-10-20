@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="select-person form-control">
+    <div class="notice-select-person form-control">
     </div>
     <div class="form-group top-10">
         <input type="text" class="form-control" id="title" placeholder="请输入标题">
@@ -28,8 +28,8 @@
     <div id="newNotice">
     </div>
     <form class="form-inline" role="form">
-        <button id="vote" type="button" class="btn btn-primary" data-toggle="modal" data-target="#vote-modal">投票</button>
-        <button id="signed" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signed-modal">报名</button>
+        <button id="vote" type="button" class="btn btn-danger" data-toggle="modal" data-target="#vote-modal">投票未选</button>
+        <button id="signed" type="button" class="btn btn-danger" data-toggle="modal" data-target="#signed-modal">报名未选</button>
         <span class="pull-right">
         <button id="notice-send" type="button" class="btn btn-primary">发送</button>
         <button id="notice-draft" type="button" class="btn btn-default">保存草稿</button>
@@ -60,7 +60,7 @@
                                         <input type="radio" name="radio1" value="option1"> 单选
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="radio2" value="option2"> 多选
+                                        <input type="radio" name="radio1" value="option2"> 多选
                                     </label>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <button class="voteSelections-add" type="button" class="col-sm-offset-5 btn button-green button-rounded">新增选项</button>
+                            <button type="button" class="voteSelections-add col-sm-offset-5 btn button-green button-rounded">新增选项</button>
                         </div>
                     </div>
 
@@ -90,14 +90,13 @@
                         <input class="form-control" size="16" type="text" value="" placeholder="日期" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
-                    <button id="vote-sure" type="button" class="btn button-primary button-rounded" disabled="disabled">确定</button>
-                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                    <button id="vote-sure" type="button" class="btn button-primary button-rounded">确定</button>
+                    <button id="vote-cancel" type="button" class="btn button button-rounded" data-dismiss="modal">取消投票</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
-
 
 <div id="signed-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">

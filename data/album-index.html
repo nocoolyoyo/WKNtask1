@@ -3,29 +3,97 @@
         <div id="single-toolbar" class="form-inline">
             <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#album-modal">新增</button>
         </div>
-        <div id="album-box">
-            <div class="col-sm-3">
-                <div class="card hoverable">
-                    <a href="#"  class="album-detail" data-id="1">
-                        <div class="card-image">
-                            <img src="img/image.png">
+        <div id="album-box-area">
+            <div id="album-box">
+                <div class="col-sm-3">
+                    <div class="album-card card hoverable">
+                        <a href="#"  class="album-detail" data-id="1">
+                            <div class="album-card-image card-image">
+                                <img src="img/image.png">
+                            </div>
+                        </a>
+                        <div class="card-content">
+                            <div class="album-card-header card-header">某某某相册</div>
                         </div>
-                    </a>
-                    <div class="card-content">
-                        <div class="card-header">某某某相册</div>
                     </div>
-                    <div class="card-extra card-content">
-                        <span><i class="fa fa-clone"></i>66</span>
-                        <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-5"><i class="fa fa-trash"></i></span></a>
+                    <div class="card-footer">
+                        <span class="both-5 gray"><i class="fa fa-clone"></i>66</span>
+                        <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-10"><i class="fa fa-trash"></i></span></a>
                         <a href="#" data-toggle="modal" class="album-delete" data-target="#album-modal"><span class="pull-right both-5"><i class="fa fa-pencil"></i></span></a>
                         <!--<span class="pull-right">2016-01-01</span>-->
                     </div>
                 </div>
+                <div class="col-sm-3">
+                    <div class="album-card card hoverable">
+                        <a href="#"  class="album-detail" data-id="1">
+                            <div class="album-card-image card-image">
+                                <img src="img/image.png">
+                            </div>
+                        </a>
+                        <div class="card-content">
+                            <div class="album-card-header card-header">某某某相册</div>
+                        </div>
+                        <div class="card-extra card-content">
+                            <span><i class="fa fa-clone"></i>66</span>
+                            <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-5"><i class="fa fa-trash"></i></span></a>
+                            <a href="#" data-toggle="modal" class="album-delete" data-target="#album-modal"><span class="pull-right both-5"><i class="fa fa-pencil"></i></span></a>
+                            <!--<span class="pull-right">2016-01-01</span>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="album-card card hoverable">
+                        <a href="#"  class="album-detail" data-id="1">
+                            <div class="album-card-image card-image">
+                                <img src="img/image.png">
+                            </div>
+                        </a>
+                        <div class="card-content">
+                            <div class="album-card-header card-header">某某某相册</div>
+                        </div>
+                        <div class="card-extra card-content">
+                            <span><i class="fa fa-clone"></i>66</span>
+                            <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-5"><i class="fa fa-trash"></i></span></a>
+                            <a href="#" data-toggle="modal" class="album-delete" data-target="#album-modal"><span class="pull-right both-5"><i class="fa fa-pencil"></i></span></a>
+                            <!--<span class="pull-right">2016-01-01</span>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="album-card card hoverable">
+                        <a href="#"  class="album-detail" data-id="1">
+                            <div class="album-card-image card-image">
+                                <img src="img/image.png">
+                            </div>
+                        </a>
+                        <div class="card-content">
+                            <div class="album-card-header card-header">某某某相册</div>
+                        </div>
+                        <div class="card-extra card-content">
+                            <span><i class="fa fa-clone"></i>66</span>
+                            <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-5"><i class="fa fa-trash"></i></span></a>
+                            <a href="#" data-toggle="modal" class="album-delete" data-target="#album-modal"><span class="pull-right both-5"><i class="fa fa-pencil"></i></span></a>
+                            <!--<span class="pull-right">2016-01-01</span>-->
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+            <div id="album-box-pagination">
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
-<div id="-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="album-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="form" role="form">

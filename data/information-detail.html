@@ -2,14 +2,18 @@
 <div class="content-area-box">
     <div id="single-toolbar" class="form-inline">
         <div class="form-group">
+
+
             <button id="back" type="button" class="btn btn-primary">返回</button>
             <button id="info-pre" type="button" class="btn btn-default">上一页</button>
             <button id="info-next" type="button" class="btn btn-default">下一页</button>
+            <h2 id="msg" style="display:none;color: red;" ></h2>
+            <button id="info-comment" type="button" class="btn btn-info">评论<span class="badge">0</span></button>
         </div>
     </div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading"><h4 class="center">滴滴优步合并后垄断质疑难消 成本转嫁消费者</h4></div>
+    <div class="panel panel-default top-10">
+        <div class="panel-heading"><h4 class="center"></h4></div>
         <div class="panel-body">
             <div class="center bottom-10">
                 <span id="infoAuthor">发布人：</span>
@@ -17,11 +21,65 @@
                 <span id="infoHits">点击数：</span>
             </div>
             <article>
-            从8月1日滴滴优步合并至今，滴滴优步涨价的消息就从未停歇。
-            近日，深圳市消费者委员会致函国家商务部表示，已接到多宗消费者针对滴滴、优步费用上涨的投诉，并建议：“应正式对滴滴出行与优步中国的并购案进行反垄断立案调查；涉及消费者利益的反垄断调查，应当听取消费者组织的意见。”
-            李菲所说的溢价，目前在滴滴优步打车中比较常见。每逢上下班高峰期、天气不佳、节假日打开滴滴打车界面，用户就会收到附近车辆较少，建议加价或者溢价几倍的提醒。“为了更快打到车，我手机里下载了滴滴、优步、神州租车等多个用车软件</p>
             </article>
         </div>
+    </div>
+</div>
+
+
+<div id="comment-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-horizontal" role="form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">评论区</h4>
+                </div>
+                <div class="modal-body both-25">
+                    <ul id="comment-case">
+                        <li class="bottom-10">
+                            <div class="bs-divider">2015-06-11</div>
+                            <span class="label label-danger label-tag">反馈人</span>
+                            反馈问题哪里的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                            的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                        </li>
+                        <li class="bottom-10">
+                            <div class="bs-divider">2015-06-11</div>
+                            <span class="label label-success label-tag">反馈人</span>
+                            反馈问题哪的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                            的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                        </li>
+                        <li class="bottom-10">
+                            <div class="bs-divider">2015-06-11</div>
+                            <span class="label label-danger label-tag">反馈人</span>
+                            反馈问题哪里的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                            的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                        </li>
+                        <li class="bottom-10">
+                            <div class="bs-divider">2015-06-11</div>
+                            <span class="label label-success label-tag">反馈人</span>
+                            反馈问题哪的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                            的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+
+                        </li>
+                        <li class="bottom-10">
+                            <div class="bs-divider">2015-06-11</div>
+                            <span class="label label-danger label-tag">反馈人</span>
+                            反馈问题哪里的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                            的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                        </li>
+                        <li class="bottom-10">
+                            <div class="bs-divider">2015-06-11</div>
+                            <span class="label label-success label-tag">反馈人</span>
+                            反馈问题哪的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                            的那么多问题反馈问题哪里来的那么多问题反馈问题哪
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

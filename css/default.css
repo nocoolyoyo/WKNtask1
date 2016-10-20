@@ -28,6 +28,9 @@ body {
 .hide {
     display: none;
 }
+.gray {
+    color: #aaaaaa;
+}
 .inline-box {
     display: inline-block;
 }
@@ -38,6 +41,11 @@ body {
 }
 .top-10 {
     margin-top: 10px;
+}
+
+.both-pd-50 {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .both-2 {
     margin-left: 2px;

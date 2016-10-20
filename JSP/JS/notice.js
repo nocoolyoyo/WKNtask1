@@ -109,7 +109,7 @@
                         if(isPublic == 1){//公开
                             $("#notice-persons").html(data.allMember);//通知人数
                             allcount = data.allMember;
-                        }else if(isPublic == 2){
+                        }else{
                             $("#notice-persons").html(data.map.ALLCOUNTS);
                             allcount = data.map.ALLCOUNTS;
                         }
@@ -141,6 +141,9 @@
                                 for (var j=0; j<data.delvotelist[i].VOTELIST.length; j++) {
                                     votehtml += '<div>'
                                         +'<span>选项'+(j+1)+'：</span>'+data.delvotelist[i].VOTELIST[j].OPTIONNAME
+                                        +'</div>'
+                                        +'<div>'
+                                        +'<span>已投票：</span><a>'+data.delvotelist[i].VOTELIST[j].VOTECOUNT+'</a>人'
                                         +'</div>';
                                 }
                                 votehtml += '</div>'
@@ -154,111 +157,112 @@
                 }
             });
 
-            initTableDetail();
-
             //调出已报名
             $('#notice-entered').click( function() {
-                $.ajax({
-                    url: basePath + "/admin/notice/memberByMidsByPage.shtml",//获取已报名数据
-                    async: true,
-                    data:{NID:id,ACT:"NOTICEVIEW",ISVIEW:1,ISSIGNUP:1},
-                    dataType: 'json',
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('hideColumn', 'state');
-                    }
-                });
+                ACT = "NOTICEVIEW";ISVIEW=1;ISSIGNUP=1;
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
             //调出未报名
             $('#notice-unknown').click( function() {
-                $.ajax({
-                    url: basePath + "/data/notice-detail.html",//获取已报名数据
-                    async: true,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('hideColumn', 'state');
-                    }
-                });
+                ACT = "NOTICEVIEW";ISVIEW=1;ISSIGNUP=0;
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
 
             //调出不报名
             $('#notice-unenter').click( function() {
-                $.ajax({
-                    url: basePath + "/data/notice-detail.html",//获取已报名数据
-                    async: true,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('hideColumn', 'state');
-                    }
-                });
+                ACT = "NOTICEVIEW";ISVIEW=1;ISSIGNUP=2;
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
+            });
+            //调出已查看
+            $('#notice-isvive').click( function() {
+                ACT = "NOTICEVIEW";ISVIEW=1;ISSIGNUP='';
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
             //调出未查看
             $('#notice-unnotice').click( function() {
-                $.ajax({
-                    url: basePath + "/data/notice-detail.html",//获取已报名数据
-                    async: true,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('showColumn', 'state');
-
-                    }
-                });
+                ACT = "NOTICEVIEW";
+                ISVIEW=0;
+                ISSIGNUP="";
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
             //调出通知人数
             $('#notice-persons').click( function() {
-                $.ajax({
-                    url: basePath + "/data/notice-detail.html",//获取已报名数据
-                    async: true,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('hideColumn', 'state');
-                    }
-                });
+                ACT = "NOTICEVIEW";
+                ISVIEW='';
+                ISSIGNUP="";
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
+            var ACT;var ISVIEW;var ISSIGNUP;
+
+            initTableDetail();
             //人数表格模板
             function initTableDetail(){
                 $tableDetail = $('#notice-table');
                 $send = $('#send');
                 $tableDetail.bootstrapTable({
-                    //url: basePath+'/admin/notice/noticeFindPage.shtml',
+                    url: basePath+'/admin/notice/memberByMidsByPage.shtml',
                     method: "post",
                     datatype: 'json',
-                    height: 400,
+                    idField: "id",
+                    toolbar: "#table-toolbar",
+                    showColumns: true,
+                    showToggle: true,
                     dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
+                    search: false,//是否搜索
                     pagination: true,//是否分页
-                    pageSize: 12,//单页记录数
-                    pageList: [12, 25, 50, 100],//分页步进值
+                    pageSize: 10,//单页记录数
+                    height: 601,
+                    pageList: [5,10, 20, 50],//分页步进值
                     sidePagination: "server",//服务端分页
                     contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+                    queryParamsType: "limit",//查询参数组织方式
+                    queryParams: function getParams(params) {
+                        //params obj
+                        params.NID = NID;
+                        params.ACT=ACT;
+                        params.ISVIEW=ISVIEW;
+                        params.ISSIGNUP=ISSIGNUP;
+                        return params;
+                    },
+                    searchOnEnterKey: false,//回车搜索
+                    showRefresh: true,//刷新按钮
+
                     columns: [{
-                        field: 'state',
-                        checkbox: true,
-                        visiable: false
-                    }, {
-                        field: 'NID',
-                        title: 'ID',
+                        field: 'REALNAME',
+                        title: '姓名',
                         sortable: true,
                         align: 'center'
-                    }, {
-                        field: 'TITLE',
-                        title: '通知主题',
+                    },{
+                        field: 'MOBILE',
+                        title: '手机号',
                         sortable: true,
                         align: 'center'
-                    }, {
-                        field: 'PUBLISHTIME',
-                        title: '发布时间',
+                    },{
+                        field: 'COMPANY',
+                        title: '所在单位',
                         sortable: true,
                         align: 'center'
-                    }, {
-                        field: 'edit',
-                        title: '操作',
+                    },{
+                        field: 'COMPANYWORK',
+                        title: '单位职务',
                         sortable: true,
                         align: 'center'
+                    },{
+                        field: 'ONAME',
+                        title: '商会职务',
+                        sortable: true,
+                        align: 'center'
+                    },{
+                        field: 'REASON',
+                        title: '不报名理由',
+                        align: 'center',
+                        visible: false
                     }]
                 });
 
@@ -274,7 +278,6 @@
                 });
 
                 $send.click(function () {
-                    console.log('1111')
 
                 });
 
@@ -394,6 +397,9 @@
                                 for (var j=0; j<data.delvotelist[i].VOTELIST.length; j++) {
                                     votehtml += '<div>'
                                         +'<span>选项'+(j+1)+'：</span>'+data.delvotelist[i].VOTELIST[j].OPTIONNAME
+                                        +'</div>'
+                                        +'<div>'
+                                        +'<span>已投票：</span><a>'+data.delvotelist[i].VOTELIST[j].VOTECOUNT+'</a>人'
                                         +'</div>';
                                 }
                                 votehtml += '</div>'
@@ -407,110 +413,113 @@
                 }
             });
 
-            initTableDetail();
-
             //调出已报名
             $('#notice-entered').click( function() {
-                $.ajax({
-                    url: basePath + "/data/occupation.json",//获取已报名数据
-                    async: true,
-                    dataType: 'json',
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('hideColumn', 'state');
-                    }
-                });
+                ACT = "NOTICEVIEW";ISVIEW=1;ISSIGNUP=1;
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
             //调出未报名
             $('#notice-unknown').click( function() {
-                $.ajax({
-                    url: basePath + "/data/notice-detail.html",//获取已报名数据
-                    async: true,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('hideColumn', 'state');
-                    }
-                });
+                ACT = "NOTICEVIEW";ISVIEW=1;ISSIGNUP=0;
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
 
             //调出不报名
             $('#notice-unenter').click( function() {
-                $.ajax({
-                    url: basePath + "/data/notice-detail.html",//获取已报名数据
-                    async: true,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('hideColumn', 'state');
-                    }
-                });
+                ACT = "NOTICEVIEW";ISVIEW=1;ISSIGNUP=2;
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
+            });
+            //调出已查看
+            $('#notice-isvive').click( function() {
+                ACT = "NOTICEVIEW";ISVIEW=1;ISSIGNUP='';
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
             //调出未查看
             $('#notice-unnotice').click( function() {
-                $.ajax({
-                    url: basePath + "/data/notice-detail.html",//获取已报名数据
-                    async: true,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('showColumn', 'state');
-
-                    }
-                });
+                ACT = "NOTICEVIEW";
+                ISVIEW=0;
+                ISSIGNUP="";
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
             //调出通知人数
             $('#notice-persons').click( function() {
-                $.ajax({
-                    url: basePath + "/data/notice-detail.html",//获取已报名数据
-                    async: true,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        $tableDetail.bootstrapTable('load', data);
-                        $tableDetail.bootstrapTable('hideColumn', 'state');
-                    }
-                });
+                ACT = "NOTICEVIEW";
+                ISVIEW='';
+                ISSIGNUP="";
+                $('#notice-table').bootstrapTable('refresh',{url: basePath + "/admin/notice/memberByMidsByPage.shtml"});
+                $("#export").html('<a href="'+basePath + '/admin/notice/exportVsvExcel.shtml?NID='+NID+'&ACT='+ACT+'&ISVIEW='+ISVIEW+'&ISSIGNUP='+ISSIGNUP+'">导出所有</a>');
             });
+
+            var ACT;var ISVIEW;var ISSIGNUP;
+
+            initTableDetail();
             //人数表格模板
             function initTableDetail(){
                 $tableDetail = $('#notice-table');
                 $send = $('#send');
                 $tableDetail.bootstrapTable({
-                    //url: basePath+'/admin/notice/noticeFindPage.shtml',
+                    url: basePath+'/admin/notice/memberByMidsByPage.shtml',
                     method: "post",
                     datatype: 'json',
-                    height: 400,
+                    idField: "id",
+                    toolbar: "#table-toolbar",
+                    showColumns: true,
+                    showToggle: true,
                     dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
+                    search: false,//是否搜索
                     pagination: true,//是否分页
-                    pageSize: 12,//单页记录数
-                    pageList: [12, 25, 50, 100],//分页步进值
+                    pageSize: 10,//单页记录数
+                    height: 601,
+                    pageList: [5,10, 20, 50],//分页步进值
                     sidePagination: "server",//服务端分页
                     contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+                    queryParamsType: "limit",//查询参数组织方式
+                    queryParams: function getParams(params) {
+                        //params obj
+                        params.NID = NID;
+                        params.ACT=ACT;
+                        params.ISVIEW=ISVIEW;
+                        params.ISSIGNUP=ISSIGNUP;
+                        return params;
+                    },
+                    searchOnEnterKey: false,//回车搜索
+                    showRefresh: true,//刷新按钮
+
                     columns: [{
-                        field: 'state',
-                        checkbox: true,
-                        visiable: false
-                    }, {
-                        field: 'NID',
-                        title: 'ID',
+                        field: 'REALNAME',
+                        title: '姓名',
                         sortable: true,
                         align: 'center'
-                    }, {
-                        field: 'TITLE',
-                        title: '通知主题',
+                    },{
+                        field: 'MOBILE',
+                        title: '手机号',
                         sortable: true,
                         align: 'center'
-                    }, {
-                        field: 'PUBLISHTIME',
-                        title: '发布时间',
+                    },{
+                        field: 'COMPANY',
+                        title: '所在单位',
                         sortable: true,
                         align: 'center'
-                    }, {
-                        field: 'edit',
-                        title: '操作',
+                    },{
+                        field: 'COMPANYWORK',
+                        title: '单位职务',
                         sortable: true,
                         align: 'center'
+                    },{
+                        field: 'ONAME',
+                        title: '商会职务',
+                        sortable: true,
+                        align: 'center'
+                    },{
+                        field: 'REASON',
+                        title: '不报名理由',
+                        align: 'center',
+                        visible: false
                     }]
                 });
 
@@ -572,7 +581,7 @@
                     datatype: 'json',
                     toolbar: "#table-toolbar",
                     showColumns: true,
-                    height: 600,
+                    height: 601,
                     showToggle: true,
                     detailView: false,
                     dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
@@ -729,50 +738,48 @@
             });
 
 
+            //定义当前页全局变量
+            var voteValue = [];
+
+
             //发送操作
             $('#notice-save').click(function () {
                 {
                     var content = $('#newNotice').summernote('code');
-                    console.log(content);
-                    console.log(selected)
                 }
             });
-
-
             //保存草稿
             $('#sure').click(function() {
-                console.log(selected)
-                //console.log(personCount)
-                console.log($('#SMS-content').val())//短信内容
+
                 if($('#timer').hasClass('active')){
-                    console.log($('#timer-time').val())
+
                 }
             });
 
             //投票添加删除操作
             voteOprate();
             function voteOprate(){
-                $('#voteSelections-add').click( function(){
-                    var voteNum = $('#voteSelectionsGroup li').length +1;
-                    console.log(voteNum)
+                //增加投票
+                $('#new-vote').click( function(){
+                    var voteNum = $('.vote').length+1;
                     $('#vote-body').append(
                         '<div class="vote panel panel-default">'+
-                        '<div class="panel-heading center">'+'投票'+1+'<button type="button" class="close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>'+
+                        '<div class="panel-heading center">'+'投票'+voteNum+'<button type="button" class="vote-delete close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>'+
                         '<div class="panel-body">'+
                         '<div class="form-group">'+
                         '<label for="voteName" class="col-sm-3  control-label">投票主题：</label>'+
                         '<div class="col-sm-8">'+
-                        '<input type="text" class="form-control" id="voteName" name="incomeName" placeholder="请输入名称">'+
+                        '<input type="text" class="form-control" name="voteName" placeholder="请输入名称">'+
                         '</div>'+
                         '</div>'+
                         '<div class="form-group">'+
                         '<label for="voteType" class="col-sm-3 control-label">投票类型：</label>'+
                         '<div class="col-sm-8" id="voteType">'+
                         '<label class="radio-inline">'+
-                        '<input type="radio" name="radio'+ 1+'" value="option1"> 单选'+
+                        '<input type="radio" name="radio'+ voteNum + '" value="1" checked="checked"> 单选'+
                         '</label>'+
                         '<label class="radio-inline">'+
-                        '<input type="radio" name="radio1'+1+'" value="option2"> 多选'+
+                        '<input type="radio" name="radio'+ voteNum + '" value="2"> 多选'+
                         '</label>'+
                         '</div>'+
                         '</div>'+
@@ -790,37 +797,138 @@
                         '</div>'+
                         '</li>'+
                         '</ul>'+
-                        '<button class="voteSelections-add" type="button" class="col-sm-offset-5 btn button-green button-rounded">新增选项</button>'+
+                        '<button type="button" class="voteSelections-add col-sm-offset-5 btn button-green button-rounded">新增选项</button>'+
                         '</div>'+
                         '</div>'
-                    )
+                    );
                 });
+                //删除投票
+                $(document).on('click', '.vote-delete', function () {
+                    $(this).closest('.vote').remove();
+
+                })
             }
 
             //投票选项添加删除操作
             voteSelectionOprate();
             function voteSelectionOprate(){
+                //投票选项增加
                 $(document).on('click','.voteSelections-add', function () {
-                    var listNum = $('.voteSelectionsGroup li').length +1;
-                    console.log(listNum)
-                    $('.voteSelectionsGroup').append('<li class="form-group">' +
+                    var listNum = $(this).siblings('ul').children().length +1;
+                    $(this).siblings('ul').append(
+                        '<li class="form-group">' +
                         '<label  class="col-sm-3 control-label">选项'+ listNum +'：</label>' +
                         '<div class="col-sm-8">' +
                         '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">' +
                         '</div>' +
                         '<button type="button" class="li-delete col-sm-1 close" style="margin-top: 5px;"><span aria-hidden="true" style="margin-right: 4px;">&times;</span><span class="sr-only" style="margin-right: 4px;">Close</span></button>'+
-                        '</li>')
+                        '</li>');
                 });
                 $(document).on('click','.li-delete', function () {
-                    $(this).closest('li').remove()
+                    $(this).closest('li').remove();
                 })
+
             }
 
+            //投票输入验证
 
+            /*
+             *  功能：投票输入验证，不为空启用确定
+             */
+            // $('#login-reset').click(function () {
+            //     $submit.attr('disabled', 'disabled');
+            // });
+            //
+            //
+            //
+            // initVoteValidator();
+            //
+            // function initVoteValidator(){
+            //
+            //     $('#vote-body').bootstrapValidator({
+            //         message: '选项不能有空值',
+            //         excluded: [':disabled'],
+            //         fields: {
+            //             voteName: {
+            //                 validators: {
+            //                     notEmpty: {
+            //                         message: '投票名不能为空！'
+            //                     }
+            //                 }
+            //             },
+            //             voteSelections: {
+            //                 validators: {
+            //                     notEmpty: {
+            //                         message: '选项值不能为空！'
+            //                     }
+            //                 }
+            //             }
+            //
+            //         }
+            //     });
+            // }
+
+            function initVoteSwitch(){
+                voteValue = [];
+                for(var j=0; j < $('.vote').length; j++) {
+                    var $vateName = $('.vote:eq(' +j +')').find('input[name="voteName"]');
+                    var $voteSelections = $('.vote:eq(' +j +')').find('input[name="voteSelections"]');
+                    var $vateType = $('.vote:eq(' +j +')').find('input[name="radio'+(j+1)+'"]:checked');
+                    var voteTemplate ={"vote":"","options":[],"type":""}
+                    voteTemplate.vote = $vateName.val() ;
+                    voteTemplate.type = $vateType.val() ;
+                    for(var i=0; i < $voteSelections.length; i++){
+                        voteTemplate.options.push($voteSelections[i].value)
+                    }
+                    voteValue.push(voteTemplate);
+                }
+            }
+            //投票操作
+
+            // $('#vote-modal').on('hidden.bs.modal', function () {
+            //     initVoteSwitch();
+            //     if(voteValue[0].vote == ""){
+            //         $('#vote').text('投票')
+            //     }else{
+            //         $('#vote').text('投票已添加')
+            //     }
+            // });
+            //确认投票
+            $('#vote-sure').click( function(){
+                initVoteSwitch();
+                $('#vote').removeClass('btn-danger').addClass('btn-success').text('投票已选')
+            });
+            //取消投票
+            $('#vote-cancel').click(function(){
+                $('#vote').removeClass('btn-success').addClass('btn-danger').text('投票未选')
+            });
+
+            // $('#vote').click( function(){
+            //});
             //报名操作
             $('#signed').click( function(){
                 //报名
             });
+            //通知通告发送操作
+            $('#notice-send').click( function(){
+                var voteValue = [];
+                for(var j=0; j < $('.vote').length; j++) {
+                    var $vateName = $('.vote:eq(' +j +')').find('input[name="voteName"]');
+                    var $voteSelections = $('.vote:eq(' +j +')').find('input[name="voteSelections"]');
+                    var $vateType = $('.vote:eq(' +j +')').find('input[name="radio'+(j+1)+'"]:checked');
+                    var voteTemplate ={"vote":"","options":[],"type":""}
+                    voteTemplate.vote = $vateName.val() ;
+                    voteTemplate.type = $vateType.val() ;
+                    for(var i=0; i < $voteSelections.length; i++){
+                        voteTemplate.options.push($voteSelections[i].value)
+                    }
+                    voteValue.push(voteTemplate);
+                }
+                console.log(voteValue)
+            });
+
+
+
             //时间选择初始化
             initClockpicker();
             function initClockpicker(){
@@ -948,7 +1056,6 @@
                     var removeSelect = [];
                     var tempID=  parseInt($(this).attr('data-id'));
                     removeSelect.push(tempID)
-                    // selected = selected.concat(getRowSelections());
                     for(var i=0; i < selected.length; i++){
                         if( removeSelect.join() == selected[i].USID) {
 
@@ -1073,9 +1180,7 @@
                     }
                 }
             }
-
         }
-
         function initNoticeDrafts(){
             $container = $("#main-box");
             $.ajax({
@@ -1206,8 +1311,6 @@
                 }
             }
         }
-
-
     });
 }());
 
