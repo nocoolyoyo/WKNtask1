@@ -60,13 +60,18 @@
                     $container.html(data);
                 }
             });
-
-            $('#album-wall').wookmark({ //这里是要实现瀑布流布局的对象
-                autoResize: true, //设置成true表示当window窗口大小改变的时候，重新布局
-                container: $('#album-wall'),//这个是容器名称
-                offset: 10, //2个相邻元素之间的间距
-                // itemWidth: 222, //指定对象的宽度
-                resizeDelay: 50 //这是延时效果 默认是50
+            wookMark();
+            function wookMark(){
+                $('#album-wall').wookmark({ //这里是要实现瀑布流布局的对象
+                    autoResize: true, //设置成true表示当window窗口大小改变的时候，重新布局
+                    container: $('#album-wall'),//这个是容器名称
+                    offset: 10, //2个相邻元素之间的间距
+                    // itemWidth: 222, //指定对象的宽度
+                    resizeDelay: 50 //这是延时效果 默认是50
+                });
+            }
+            $('#album-wall').imagesLoaded(function() {
+                wookMark();
             });
             /*
              *  功能：文件上传
