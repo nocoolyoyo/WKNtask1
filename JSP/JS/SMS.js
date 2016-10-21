@@ -85,8 +85,6 @@
                     for(var j=0; j < fastGroup.length; j++){
                         $fasterFlier.append('<li><a href="#">' + fastGroup[j] + '</a></li>');
                     }
-
-
                     // $('#fast-fliter')
                     // $(document).on('click', '#fast-fliter > li',function () {
                     //     console.log($(this).attr('data-id'))
@@ -369,6 +367,24 @@
                     console.log(selections)
                     console.log(unSelected);
                     console.log(selected);
+                    Array.prototype.minus = function(a)
+                    {
+                        var result =[];
+                        var clone = this;
+                        for(var i=0; i < clone.length; i++)
+                        {
+                            var flag = true;
+                            for(var j=0; j < a.length; j++)
+                            {
+                                if(clone[i] == a[j])
+                                    flag = false;
+                            }
+                            if(flag)
+                                result.push(clone[i]);
+                        }
+                        return result.unique();
+                    }
+                    console.log(unSelected.minus(selected));
                     $tableSelected.bootstrapTable('load', selected);
                     $tableMembers.bootstrapTable('remove', {
                         field: 'USID',

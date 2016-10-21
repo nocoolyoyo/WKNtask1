@@ -1,7 +1,7 @@
 <div id="sidebar-left" class="sidebar-container sidebar-push">
     <div class="sidebar">
         <div class="sidebar-wrap">
-            <ul id="menu">
+            <ul id="side-menu">
                 <li><a href="#">会员信息</a></li>
                 <li><a href="#">职务管理</a></li>
                 <li><a href="#">群聊管理</a></li>
@@ -12,28 +12,23 @@
     </div>
     <div class="sidebar-overlay"></div>
     <div id="content-area"  class="sidebar-dim"><div class="content-area-box">
-    <div id="table-toolbar" class="form-inline">
-        <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
-        <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
-        <button id="add" type="button" class="btn btn-success">新增</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#import-modal">导入</button>
-        <button type="button" class="btn btn-primary">导出</button>
-        <div class="dropdown pull-right" style="display: inline-block">
-            <button id="fast-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速选择<span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
+        <div id="table-toolbar" class="form-inline">
+            <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
+            <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
+            <button id="add" type="button" class="btn btn-success">新增</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#import-modal">导入</button>
+            <button type="button" class="btn btn-primary">导出</button>
+            <div class="dropdown" style="display: inline-block">
+                <button id="fast-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速查找<span class="caret"></span></button>
+                <ul id="fast-fliter" class="dropdown-menu">
+
+                </ul>
+            </div>
         </div>
+        <table id="table"></table>
     </div>
-    <table id="table"></table>
+    </div>
 </div>
-        </div>
-    </div>
-
-
 <div id="import-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -43,13 +38,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="row top-10">
-                        <button type="button" class="btn button button-primary button-rounded">填写说明下载</button>
-                        <button type="button" class="btn button button-primary button-rounded">表格模板下载</button>
+                        <button type="button" id="explain" class="btn button button-primary button-rounded">填写说明下载</button>
+                        <button type="button" id="member" class="btn button button-primary button-rounded">表格模板下载</button>
                     </div>
                     <div class="row top-10">
                         <input id="file-import" type="file">
                     </div>
-                    <div class="row">
+                    <div class="row top-10">
                         <h5>操作规范：</h5>
                         <ul>
                             <li>1、请使用从系统下载的表格，且不要改动表格第一行的内容</li>
@@ -58,10 +53,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="backlog-add-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled" >导入</button>
+                    <!-- <button id="backlog-add-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled" >导入</button> -->
                     <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+

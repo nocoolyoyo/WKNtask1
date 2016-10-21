@@ -9,7 +9,7 @@
 
         var NID;
 
-        initNoticeIndex()
+        initNoticeIndex();
 
         $(document).on("click", "#add", function() {
             initNoticeAdd()
@@ -17,35 +17,17 @@
         $(document).on("click", "#drafts", function() {
             initNoticeDrafts();
         });
-        $(document).on("click", "#back",function () {
-            initNoticeIndex();
-        });
         $(document).on("click", ".noticeDetail", function() {
             initNoticeDetail($(this).attr('data-id'));
         });
         //上一条
-        $(document).on("click", "#info-pre", function() {
-            initInfoPreOrNext(NID,"FRONT");
-        });
-        //下一条
-        $(document).on("click", "#info-next", function() {
-            initInfoPreOrNext(NID,"BEHIND");
-        });
+
 
         function initInfoPreOrNext(id,act){
             $('#notice-modal').on('shown.bs.modal', function () {
                 $tableDetail.bootstrapTable('resetView');
             });
-            console.log(id)
-            $container = $("#main-box");
-            $.ajax({
-                url: basePath + "/data/notice-detail.html",
-                async: false,
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                success: function (data) {
-                    $container.html(data);
-                }
-            });
+
 
             $.ajax({
                 url: basePath + '/admin/notice/findFirstOrNext.shtml',
@@ -290,9 +272,9 @@
         }
 
         function initNoticeDetail(id){
-            $('#notice-modal').on('shown.bs.modal', function () {
-                $tableDetail.bootstrapTable('resetView');
-            });
+            // $('#notice-modal').on('shown.bs.modal', function () {
+            //     $tableDetail.bootstrapTable('resetView');
+            // });
             console.log(id)
             $container = $("#main-box");
             $.ajax({
@@ -302,6 +284,18 @@
                 success: function (data) {
                     $container.html(data);
                 }
+            });
+            $(document).on("click", "#info-pre", function() {
+                initInfoPreOrNext(NID,"FRONT");
+            });
+            //下一条
+            $(document).on("click", "#info-next", function() {
+                initInfoPreOrNext(NID,"BEHIND");
+            });
+
+            //返回
+            $('#back').click(function() {
+                initNoticeIndex();
             });
 
             $.ajax({
@@ -736,99 +730,11 @@
                 ]
 
             });
-
-
-            //定义当前页全局变量
-            var voteValue = [];
-
-
-            //发送操作
-            $('#notice-save').click(function () {
-                {
-                    var content = $('#newNotice').summernote('code');
-                }
-            });
-            //保存草稿
-            $('#sure').click(function() {
-
-                if($('#timer').hasClass('active')){
-
-                }
+            //返回
+            $('#back').click(function() {
+                initNoticeIndex();
             });
 
-            //投票添加删除操作
-            voteOprate();
-            function voteOprate(){
-                //增加投票
-                $('#new-vote').click( function(){
-                    var voteNum = $('.vote').length+1;
-                    $('#vote-body').append(
-                        '<div class="vote panel panel-default">'+
-                        '<div class="panel-heading center">'+'投票'+voteNum+'<button type="button" class="vote-delete close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>'+
-                        '<div class="panel-body">'+
-                        '<div class="form-group">'+
-                        '<label for="voteName" class="col-sm-3  control-label">投票主题：</label>'+
-                        '<div class="col-sm-8">'+
-                        '<input type="text" class="form-control" name="voteName" placeholder="请输入名称">'+
-                        '</div>'+
-                        '</div>'+
-                        '<div class="form-group">'+
-                        '<label for="voteType" class="col-sm-3 control-label">投票类型：</label>'+
-                        '<div class="col-sm-8" id="voteType">'+
-                        '<label class="radio-inline">'+
-                        '<input type="radio" name="radio'+ voteNum + '" value="1" checked="checked"> 单选'+
-                        '</label>'+
-                        '<label class="radio-inline">'+
-                        '<input type="radio" name="radio'+ voteNum + '" value="2"> 多选'+
-                        '</label>'+
-                        '</div>'+
-                        '</div>'+
-                        '<ul class="voteSelectionsGroup">'+
-                        '<li class="form-group">'+
-                        '<label  class="col-sm-3  control-label">选项1：</label>'+
-                        '<div class="col-sm-8">'+
-                        '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">'+
-                        '</div>'+
-                        '</li>'+
-                        '<li class="form-group">'+
-                        '<label  class="col-sm-3  control-label">选项2：</label>'+
-                        '<div class="col-sm-8">'+
-                        '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">'+
-                        '</div>'+
-                        '</li>'+
-                        '</ul>'+
-                        '<button type="button" class="voteSelections-add col-sm-offset-5 btn button-green button-rounded">新增选项</button>'+
-                        '</div>'+
-                        '</div>'
-                    );
-                });
-                //删除投票
-                $(document).on('click', '.vote-delete', function () {
-                    $(this).closest('.vote').remove();
-
-                })
-            }
-
-            //投票选项添加删除操作
-            voteSelectionOprate();
-            function voteSelectionOprate(){
-                //投票选项增加
-                $(document).on('click','.voteSelections-add', function () {
-                    var listNum = $(this).siblings('ul').children().length +1;
-                    $(this).siblings('ul').append(
-                        '<li class="form-group">' +
-                        '<label  class="col-sm-3 control-label">选项'+ listNum +'：</label>' +
-                        '<div class="col-sm-8">' +
-                        '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">' +
-                        '</div>' +
-                        '<button type="button" class="li-delete col-sm-1 close" style="margin-top: 5px;"><span aria-hidden="true" style="margin-right: 4px;">&times;</span><span class="sr-only" style="margin-right: 4px;">Close</span></button>'+
-                        '</li>');
-                });
-                $(document).on('click','.li-delete', function () {
-                    $(this).closest('li').remove();
-                })
-
-            }
 
             //投票输入验证
 
@@ -868,21 +774,15 @@
             //     });
             // }
 
-            function initVoteSwitch(){
-                voteValue = [];
-                for(var j=0; j < $('.vote').length; j++) {
-                    var $vateName = $('.vote:eq(' +j +')').find('input[name="voteName"]');
-                    var $voteSelections = $('.vote:eq(' +j +')').find('input[name="voteSelections"]');
-                    var $vateType = $('.vote:eq(' +j +')').find('input[name="radio'+(j+1)+'"]:checked');
-                    var voteTemplate ={"vote":"","options":[],"type":""}
-                    voteTemplate.vote = $vateName.val() ;
-                    voteTemplate.type = $vateType.val() ;
-                    for(var i=0; i < $voteSelections.length; i++){
-                        voteTemplate.options.push($voteSelections[i].value)
-                    }
-                    voteValue.push(voteTemplate);
-                }
-            }
+
+            //投票添加删除操作
+            voteOprate();
+
+
+            //投票选项添加删除操作
+            voteSelectionOprate();
+
+
             //投票操作
 
             // $('#vote-modal').on('hidden.bs.modal', function () {
@@ -895,8 +795,9 @@
             // });
             //确认投票
             $('#vote-sure').click( function(){
-                initVoteSwitch();
-                $('#vote').removeClass('btn-danger').addClass('btn-success').text('投票已选')
+                //initVoteSwitch();
+                $('#vote').removeClass('btn-danger').addClass('btn-success').text('投票已选');
+                //$('#vote-modal').modal('hide');
             });
             //取消投票
             $('#vote-cancel').click(function(){
@@ -905,15 +806,21 @@
 
             // $('#vote').click( function(){
             //});
-            //报名操作
-            $('#signed').click( function(){
-                //报名
+            //确认报名
+            $('#signed-sure').click( function(){
+                $('#signed').removeClass('btn-danger').addClass('btn-success').text('报名已选');
+            });
+            //取消报名
+            $('#signed-cancel').click(function(){
+                $('#signed').removeClass('btn-success').addClass('btn-danger').text('报名未选');
             });
             //通知通告发送操作
             $('#notice-send').click( function(){
+                //投票数据更新
                 var voteValue = [];
                 for(var j=0; j < $('.vote').length; j++) {
                     var $vateName = $('.vote:eq(' +j +')').find('input[name="voteName"]');
+
                     var $voteSelections = $('.vote:eq(' +j +')').find('input[name="voteSelections"]');
                     var $vateType = $('.vote:eq(' +j +')').find('input[name="radio'+(j+1)+'"]:checked');
                     var voteTemplate ={"vote":"","options":[],"type":""}
@@ -924,9 +831,169 @@
                     }
                     voteValue.push(voteTemplate);
                 }
-                console.log(voteValue)
-            });
+                var volist = JSON.stringify(voteValue);
+                var voteEndTime = $("#voteEndTime").val();
 
+                //报名数据更新
+                //var signedValue = ;
+                //signedValue =
+
+                //标题数据
+                var noticeTitle = $('input[name="noticeTitle"]').val();
+
+                //内容框数据
+                var noticeContent = $('#newNotice').summernote('code');
+
+                //是否投票
+                var vote;
+                if ($('#vote').text() == '投票已选'){
+                    vote = 1;
+                }else{
+                    vote = 0;
+                };
+                //是否报名
+                var signUp;
+                if ($('#signed').text() == '报名已选'){
+                    signUp = 1;
+                }else{
+                    signUp = 0;
+                };
+
+                var ISPUSH = 1;//是否推送 0不推送 1已推送
+                var NOTICESTATUS = 1;//通知状态 0草稿 1已发布
+                var allCounts = 0;//通知对象总人数
+                var memberInfo = "";//通知对象信息
+                var memberids = "";
+                if(selected.length != 0){
+                    allCounts = selected.length;
+                    for(var i=0; i<selected.length; i++){
+                        memberids += selected[i].USID + ",";
+                        memberInfo += selected[i].REALNAME + "," + selected[i].MOBILE +";";
+                    }
+                }else{
+                    allCounts = unSelected.length;
+                    for(var i=0; i<unSelected.length; i++){
+                        memberInfo += unSelected[i].REALNAME + "," + unSelected[i].MOBILE +";";
+                    }
+                }
+                var place = $("#place").val();//活动地点
+                var contactor = $("#contactor").val();//联系人姓名
+                var contactorMobile = $("#contactorMobile").val();//联系人联系电话
+                var signedStartTime = $("#signedStartTime").val();;//活动开始时间
+                var signedEndTime = $("#signedEndTime").val();;//活动结束时间
+
+                if(confirm("确认发送")){
+                    $.ajax({
+                        url: basePath + '/admin/notice/publishNotice.shtml',
+                        dataType: 'json',
+                        type: 'post',
+                        data: {TITLE:noticeTitle,CONTENT:noticeContent,MEMBERIDS:memberids,MEMBERINFO:memberInfo,ALLCOUNTS:allCounts,SIGN_UP:signUp,VOTE:vote,ISPUSH:ISPUSH,NOTICESTATUS:NOTICESTATUS,PLACE:place,CONTACTOR:contactor,CONTACTORMOBILE:contactorMobile,STARTTIME:signedStartTime,ENDTIME:signedEndTime,THEVOLIST:voteValue,THEVOLIST:volist,VOTETIME:voteEndTime},
+                        traditional: true,
+                        success:function(data){
+                            if(data.status == "0"){
+                                alert("发送成功!");
+                                window.location.href = basePath + "/admin/url/notice.shtml";
+                            }else{
+                                alert("发送失败，请联系管理人员！");
+                            }
+                        },
+                        error: function(msg){
+                            alert("操作失败，请联系管理人员！");
+                        }
+                    });
+                }
+
+            });
+            //通知通告存草稿操作
+            $('#notice-draft').click( function(){
+                //投票数据更新
+                var voteValue = [];
+                for(var j=0; j < $('.vote').length; j++) {
+                    var $vateName = $('.vote:eq(' +j +')').find('input[name="voteName"]');
+
+                    var $voteSelections = $('.vote:eq(' +j +')').find('input[name="voteSelections"]');
+                    var $vateType = $('.vote:eq(' +j +')').find('input[name="radio'+(j+1)+'"]:checked');
+                    var voteTemplate ={"vote":"","options":[],"type":""}
+                    voteTemplate.vote = $vateName.val() ;
+                    voteTemplate.type = $vateType.val() ;
+                    for(var i=0; i < $voteSelections.length; i++){
+                        voteTemplate.options.push($voteSelections[i].value)
+                    }
+                    voteValue.push(voteTemplate);
+                }
+                var volist = JSON.stringify(voteValue);
+                var voteEndTime = $("#voteEndTime").val();
+
+                //报名数据更新
+                //var signedValue = ;
+                //signedValue =
+
+                //标题数据
+                var noticeTitle = $('input[name="noticeTitle"]').val();
+
+                //内容框数据
+                var noticeContent = $('#newNotice').summernote('code');
+
+                //是否投票
+                var vote;
+                if ($('#vote').text() == '投票已选'){
+                    vote = 1;
+                }else{
+                    vote = 0;
+                };
+                //是否报名
+                var signUp;
+                if ($('#signed').text() == '报名已选'){
+                    signUp = 1;
+                }else{
+                    signUp = 0;
+                };
+
+                var ISPUSH = 0;//是否推送 0不推送 1已推送
+                var NOTICESTATUS = 0;//通知状态 0草稿 1已发布
+                var allCounts = 0;//通知对象总人数
+                var memberInfo = "";//通知对象信息
+                var memberids = "";
+                if(selected.length != 0){
+                    allCounts = selected.length;
+                    for(var i=0; i<selected.length; i++){
+                        memberids += selected[i].USID + ",";
+                        memberInfo += selected[i].REALNAME + "," + selected[i].MOBILE +";";
+                    }
+                }else{
+                    allCounts = unSelected.length;
+                    for(var i=0; i<unSelected.length; i++){
+                        memberInfo += unSelected[i].REALNAME + "," + unSelected[i].MOBILE +";";
+                    }
+                }
+                var place = $("#place").val();//活动地点
+                var contactor = $("#contactor").val();//联系人姓名
+                var contactorMobile = $("#contactorMobile").val();//联系人联系电话
+                var signedStartTime = $("#signedStartTime").val();;//活动开始时间
+                var signedEndTime = $("#signedEndTime").val();;//活动结束时间
+
+                if(confirm("确认存草稿")){
+                    $.ajax({
+                        url: basePath + '/admin/notice/publishNotice.shtml',
+                        dataType: 'json',
+                        type: 'post',
+                        data: {TITLE:noticeTitle,CONTENT:noticeContent,MEMBERIDS:memberids,MEMBERINFO:memberInfo,ALLCOUNTS:allCounts,SIGN_UP:signUp,VOTE:vote,ISPUSH:ISPUSH,NOTICESTATUS:NOTICESTATUS,PLACE:place,CONTACTOR:contactor,CONTACTORMOBILE:contactorMobile,STARTTIME:signedStartTime,ENDTIME:signedEndTime,THEVOLIST:voteValue,THEVOLIST:volist,VOTETIME:voteEndTime},
+                        traditional: true,
+                        success:function(data){
+                            if(data.status == "0"){
+                                alert("发送成功!");
+                                window.location.href = basePath + "/admin/url/notice.shtml";
+                            }else{
+                                alert("发送失败，请联系管理人员！");
+                            }
+                        },
+                        error: function(msg){
+                            alert("操作失败，请联系管理人员！");
+                        }
+                    });
+                }
+
+            });
 
 
             //时间选择初始化
@@ -943,244 +1010,10 @@
                     forceParse: 0
                 });
             }
-
-
             //人员选择页
             membersAdd();
-            function membersAdd() {
-                //加载所有会员数据
-                var selections = [],//临时选择数组
-                    unSelected = [],//未选中人员数组
-                    selected = [],//已选中人员数组
-                    //personCount = 0,//已选中人员数量
-                    $tableMembers = $('#table-members'),
-                    $tableSelected = $('#members-selected');
-
-                $.ajax({
-                    url: basePath + "/admin/member/serchAllMember.shtml",
-                    async: false,
-                    dataType:"json",
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        unSelected = data.rows;
-                        $('.dropdown-menu').append()
-                        // initTableMembers();
-                        // $tableMembers.bootstrapTable('load', data)
-                    }
-                }).done(function (data) {
-                    // unSelected = data;
-                });
-                initTableMembers();
-                initMembersSelected();
-                //人数统计
-                // function refreshPersonCount(){
-                //   personCount = selected.length;
-                // $('#person-count').text(selected.length)
-                //}
-                //定时操作
-                // $('#timer').click(function () {
-                //     if($(this).hasClass('active')){
-                //         $(this).removeClass('active');
-                //         $('.date').fadeOut()
-                //     }else {
-                //         $(this).addClass('active');
-                //         $('.date').fadeIn()
-                //         initDate()
-                //     }
-                // });
-
-                //确认操作
-
-
-                /*
-                 *  功能：获取当前时间并对选择器赋值
-                 *  Created by nocoolyoyo 2016/10/10.
-                 */
-                // initClockpicker()
-                // function initDate(){
-                //     var mydate = new Date();
-                //     var todayDate = "" + mydate.getFullYear() + "-";
-                //     todayDate += (mydate.getMonth()+1) + "-";
-                //     todayDate += mydate.getDate()+ " ";
-                //     todayDate += mydate.getHours()+ ":";
-                //     todayDate += mydate.getMinutes();
-                //     $('#timer-time').val(todayDate);
-                // }
-
-                //清空操作
-                $(document).on("click", ".clear", function() {
-                    unSelected = selected.concat(unSelected);
-                    $tableMembers.bootstrapTable('load', unSelected);
-                    $tableMembers.bootstrapTable( 'uncheckAll');
-                    selected = [];
-                    labelCreate();
-                    $tableSelected.bootstrapTable('load', selected);
-                    //refreshPersonCount()
-                });
-
-                /*模态框表格窗口修正*/
-                $('#select-modal').on('shown.bs.modal', function () {
-                    $tableMembers.bootstrapTable('resetView');
-                    $tableSelected.bootstrapTable('resetView');
-                });
-
-                function labelCreate(){
-                    function RndClassName(){
-                        var rnd = parseInt(6*Math.random());
-                        switch (rnd) {
-                            case 0:
-                                return 'label-default';
-                            case 1:
-                                return 'label-primary';
-                            case 2:
-                                return 'label-success';
-                            case 3:
-                                return 'label-warning';
-                            case 4:
-                                return 'label-danger';
-                            case 5:
-                                return 'label-info';
-                        }
-                    }
-                    var html='';
-                    for (var j = 0; j < selected.length; j++) {
-                        html += '<span class="label both-2 '+RndClassName()+'">'
-                            + selected[j].REALNAME + '<a class="selectedRemove label-icon fa fa-times" data-id="'
-                            + selected[j].USID +'"></a></span>';
-                    }
-                    $('.select-person').html(html);
-                    //refreshPersonCount();
-                }
-                //移除已选数据对象组里的数据，同时返回原表格数据
-                $(document).on("click", ".selectedRemove", function() {
-                    var removeSelect = [];
-                    var tempID=  parseInt($(this).attr('data-id'));
-                    removeSelect.push(tempID)
-                    for(var i=0; i < selected.length; i++){
-                        if( removeSelect.join() == selected[i].USID) {
-
-                            $tableMembers.bootstrapTable('insertRow', {
-                                index: 0,
-                                row: selected[i]
-                            });
-                            selected.splice(selected.indexOf(selected[i]),1) ;
-                            $tableSelected.bootstrapTable('load', selected);
-                            //refreshPersonCount();
-                            if($(this).hasClass('label-icon')){
-                                $(this).closest('span').remove();
-                            }else{
-                                labelCreate(); // console.log($('.select-person').find('a').attr('data-id',tempID))
-                                // $('.label-icon').attr('data-id',$(this).attr('data-id')).closest('span')
-                                // $('.select-person').find('a').attr('data-id',$(this).attr('data-id')).closest('span').remove();
-                            }
-                            $tableMembers.bootstrapTable( 'uncheckAll');
-                        }
-                    }
-                });
-                function initTableMembers(){
-                    var $add = $('#members-add');
-                    $tableMembers.bootstrapTable({
-                        data: unSelected,
-                        pageSize: 9,
-                        pageList: [12, 25, 50, 100],
-                        sidePagination: 'client',
-                        pagination: true,
-                        toolbar: "#table-toolbar",
-                        search: true,
-                        showColumns: true,
-                        height: 490,
-                        columns: [{
-                            field: 'state',
-                            checkbox: true
-
-                        },{
-                            field: 'REALNAME',
-                            title: '姓名',
-                            sortable: true,
-                            align: 'center'
-                        }, {
-                            field: 'MOBILE',
-                            title: '手机号',
-                            sortable: true,
-                            align: 'center'
-                        }, {
-                            field: 'COMPANY',
-                            title: '所在单位',
-                            sortable: true,
-                            align: 'center'
-                        }]
-                    });
-                    /*
-                     *  功能：获取选择框信息
-                     *  Created by nocoolyoyo 2016/9/28.
-                     */
-                    $tableMembers.on('check.bs.table uncheck.bs.table ' +
-                        'check-all.bs.table uncheck-all.bs.table', function () {
-                        if ($tableMembers.bootstrapTable('getSelections').length) {
-                            $add.show();
-                        } else {
-                            $add.hide();
-                        }
-                        selections  = getIdSelections();
-                    });
-                    /*人员选择*/
-                    //往已选数据对象组里填充添加的数据，同时移除表格数据
-                    $add.click(function () {
-                        selected = selected.concat(getRowSelections());
-                        $tableSelected.bootstrapTable('load', selected);
-                        $tableMembers.bootstrapTable('remove', {
-                            field: 'USID',
-                            values: selections
-                        });
-                        $add.hide();
-                        labelCreate();
-                    });
-
-                    function getRowSelections() {
-                        return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
-                            return row
-                        });
-                    }
-                    function getIdSelections() {
-                        return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
-                            return row.USID
-                        });
-                    }
-                }
-
-                function initMembersSelected(){
-                    $tableSelected.bootstrapTable({
-                        data: selected,
-                        height: 475,
-                        search: true,
-                        showHeader:false,
-                        toolbar: "#left-toolbar",
-                        columns: [{
-                            field: 'SELECTED',
-                            title: '已选人员',
-                            sortable: true,
-                            formatter: selectedFormatter,
-                            align: 'center'
-                        }]
-                    });
-                    function selectedFormatter(value, row) {
-                        return [
-                            '<div class="pull-left">',
-                            '<span>' + row.REALNAME +'   '+ '</span>',
-                            '</div>',
-                            '<div class="pull-left">',
-                            '<span>' + row.MOBILE + '</span>',
-                            '</div>',
-                            '<div class="pull-right">',
-                            '<a class="selectedRemove close" href="javascript:void(0)"  data-id="' + row.USID +'" title="移除">',
-                            '<i class="glyphicon glyphicon-remove"></i>',
-                            '</a> ',
-                            '</div>'
-                        ].join('');
-                    }
-                }
-            }
         }
+
         function initNoticeDrafts(){
             $container = $("#main-box");
             $.ajax({
@@ -1191,6 +1024,11 @@
                     $container.html(data);
                 }
             });
+            $('#back').click(function() {
+                initNoticeIndex();
+            });
+
+
             initTable2();
             function initTable2() {
                 $table = $('#table');
@@ -1233,15 +1071,13 @@
                         field: 'TITLE',
                         title: '通知主题',
                         sortable: true,
+                        formatter: function(value,row){
+                            return '<a href="#" class="draftEdit" data-id="' + row.NID + '">' + value + '</a>';
+                        },
                         align: 'center'
                     }, {
                         field: 'PUBLISHTIME',
                         title: '发布时间',
-                        sortable: true,
-                        align: 'center'
-                    }, {
-                        field: 'edit',
-                        title: '操作',
                         sortable: true,
                         align: 'center'
                     }]
@@ -1264,6 +1100,12 @@
                         alert("操作失败，请联系管理人员！");
                     }
                 });
+                $table.on('click','.draftEdit', function () {
+                    console.log($(this).attr('data-id'))
+                    initNoticeEdit($(this).attr('data-id'));
+                });
+
+
                 //删除
                 $table.on('check.bs.table uncheck.bs.table ' +
                     'check-all.bs.table uncheck-all.bs.table', function () {
@@ -1310,6 +1152,608 @@
                     });
                 }
             }
+        }
+
+        function initNoticeEdit(id){
+            $container = $("#main-box");
+            $.ajax({
+                url: basePath + "/data/notice-create.html",
+                async: false,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (data) {
+                    $container.html(data);
+                }
+            });
+            $('#newNotice').summernote({
+                lang: 'zh-CN',
+                height: 250,
+                minHeight: 250,
+                maxHeight: 250,
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'color', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript','fontsize','height','fontname']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['picture', ['picture']],
+                    ['undo', ['undo']],
+                    ['redo', ['redo']]
+                ]
+            });
+
+            //投票输入验证
+
+
+            //投票添加删除操作
+            voteOprate();
+
+
+            //投票选项添加删除操作
+            voteSelectionOprate();
+
+            //投票操作
+
+            // $('#vote-modal').on('hidden.bs.modal', function () {
+            //     initVoteSwitch();
+            //     if(voteValue[0].vote == ""){
+            //         $('#vote').text('投票')
+            //     }else{
+            //         $('#vote').text('投票已添加')
+            //     }
+            // });
+
+
+            //返回
+            $('#back').click(function() {
+                initNoticeDrafts()
+            });
+            //确认投票
+            $('#vote-sure').click( function(){
+                //initVoteSwitch();
+                $('#vote').removeClass('btn-danger').addClass('btn-success').text('投票已选');
+                //$('#vote-modal').modal('hide');
+            });
+            //取消投票
+            $('#vote-cancel').click(function(){
+                $('#vote').removeClass('btn-success').addClass('btn-danger').text('投票未选')
+            });
+
+            // $('#vote').click( function(){
+            //});
+            //确认报名
+            $('#signed-sure').click( function(){
+                $('#signed').removeClass('btn-danger').addClass('btn-success').text('报名已选');
+            });
+            //取消报名
+            $('#signed-cancel').click(function(){
+                $('#signed').removeClass('btn-success').addClass('btn-danger').text('报名未选');
+            });
+            //通知通告发送操作
+            $('#notice-send').click( function(){
+                //投票数据更新
+                var voteValue = [];
+                for(var j=0; j < $('.vote').length; j++) {
+                    var $vateName = $('.vote:eq(' +j +')').find('input[name="voteName"]');
+                    console.log($vateName)
+                    var $voteSelections = $('.vote:eq(' +j +')').find('input[name="voteSelections"]');
+                    var $vateType = $('.vote:eq(' +j +')').find('input[name="radio'+(j+1)+'"]:checked');
+                    var voteTemplate ={"vote":"","options":[],"type":""}
+                    voteTemplate.vote = $vateName.val() ;
+                    voteTemplate.type = $vateType.val() ;
+                    for(var i=0; i < $voteSelections.length; i++){
+                        voteTemplate.options.push($voteSelections[i].value)
+                    }
+                    voteValue.push(voteTemplate);
+                }
+                var volist = JSON.stringify(voteValue);
+                var voteEndTime = $("#voteEndTime").val();
+                console.log(JSON.stringify(voteValue))//这个就是投票的所有数据
+                console.log(JSON.stringify(voteEndTime))//这个就是投票的结束时间
+                //报名数据更新
+                //var signedValue = ;
+                //signedValue =
+                console.log(selected);
+                //标题数据
+                var noticeTitle = $('input[name="noticeTitle"]').val();
+                console.log(noticeTitle);
+                //内容框数据
+                var noticeContent = $('#newNotice').summernote('code');
+                console.log(noticeContent);
+                //是否投票
+                var vote;
+                if ($('#vote').text() == '投票已选'){
+                    vote = 1;
+                }else{
+                    vote = 0;
+                };
+                //是否报名
+                var signUp;
+                if ($('#signed').text() == '报名已选'){
+                    signUp = 1;
+                }else{
+                    signUp = 0;
+                };
+                console.log(vote);console.log(signUp);
+                var ISPUSH = 1;//是否推送 0不推送 1已推送
+                var NOTICESTATUS = 1;//通知状态 0草稿 1已发布
+                var allCounts = 0;//通知对象总人数
+                var memberInfo = "";//通知对象信息
+                var memberids = "";
+                if(selected.length != 0){
+                    allCounts = selected.length;
+                    for(var i=0; i<selected.length; i++){
+                        memberids += selected[i].USID + ",";
+                        memberInfo += selected[i].REALNAME + "," + selected[i].MOBILE +";";
+                    }
+                }else{
+                    allCounts = unSelected.length;
+                    for(var i=0; i<unSelected.length; i++){
+                        memberInfo += unSelected[i].REALNAME + "," + unSelected[i].MOBILE +";";
+                    }
+                }
+                var place = $("#place").val();//活动地点
+                var contactor = $("#contactor").val();//联系人姓名
+                var contactorMobile = $("#contactorMobile").val();//联系人联系电话
+                var signedStartTime = $("#signedStartTime").val();;//活动开始时间
+                var signedEndTime = $("#signedEndTime").val();;//活动结束时间
+                console.log(place);console.log(contactor);console.log(contactorMobile);console.log(signedStartTime);console.log(signedEndTime);
+                if(confirm("确认发送")){
+                    $.ajax({
+                        url: basePath + '/admin/notice/publishNotice.shtml',
+                        dataType: 'json',
+                        type: 'post',
+                        data: {TITLE:noticeTitle,CONTENT:noticeContent,MEMBERIDS:memberids,MEMBERINFO:memberInfo,ALLCOUNTS:allCounts,SIGN_UP:signUp,VOTE:vote,ISPUSH:ISPUSH,NOTICESTATUS:NOTICESTATUS,PLACE:place,CONTACTOR:contactor,CONTACTORMOBILE:contactorMobile,STARTTIME:signedStartTime,ENDTIME:signedEndTime,THEVOLIST:voteValue,THEVOLIST:volist,VOTETIME:voteEndTime},
+                        traditional: true,
+                        success:function(data){
+                            if(data.status == "0"){
+                                alert("发送成功!");
+                                window.location.href = basePath + "/admin/url/notice.shtml";
+                            }else{
+                                alert("发送失败，请联系管理人员！");
+                            }
+                        },
+                        error: function(msg){
+                            alert("操作失败，请联系管理人员！");
+                        }
+                    });
+                }
+
+            });
+            //通知通告存草稿操作
+            $('#notice-draft').click( function(){
+                //投票数据更新
+                var voteValue = [];
+                for(var j=0; j < $('.vote').length; j++) {
+                    var $vateName = $('.vote:eq(' +j +')').find('input[name="voteName"]');
+                    console.log($vateName)
+                    var $voteSelections = $('.vote:eq(' +j +')').find('input[name="voteSelections"]');
+                    var $vateType = $('.vote:eq(' +j +')').find('input[name="radio'+(j+1)+'"]:checked');
+                    var voteTemplate ={"vote":"","options":[],"type":""}
+                    voteTemplate.vote = $vateName.val() ;
+                    voteTemplate.type = $vateType.val() ;
+                    for(var i=0; i < $voteSelections.length; i++){
+                        voteTemplate.options.push($voteSelections[i].value)
+                    }
+                    voteValue.push(voteTemplate);
+                }
+                var volist = JSON.stringify(voteValue);
+                var voteEndTime = $("#voteEndTime").val();
+                console.log(JSON.stringify(voteValue))//这个就是投票的所有数据
+                console.log(JSON.stringify(voteEndTime))//这个就是投票的结束时间
+                //报名数据更新
+                //var signedValue = ;
+                //signedValue =
+                console.log(selected);
+                //标题数据
+                var noticeTitle = $('input[name="noticeTitle"]').val();
+                console.log(noticeTitle);
+                //内容框数据
+                var noticeContent = $('#newNotice').summernote('code');
+                console.log(noticeContent);
+                //是否投票
+                var vote;
+                if ($('#vote').text() == '投票已选'){
+                    vote = 1;
+                }else{
+                    vote = 0;
+                };
+                //是否报名
+                var signUp;
+                if ($('#signed').text() == '报名已选'){
+                    signUp = 1;
+                }else{
+                    signUp = 0;
+                };
+                console.log(vote);console.log(signUp);
+                var ISPUSH = 0;//是否推送 0不推送 1已推送
+                var NOTICESTATUS = 0;//通知状态 0草稿 1已发布
+                var allCounts = 0;//通知对象总人数
+                var memberInfo = "";//通知对象信息
+                var memberids = "";
+                if(selected.length != 0){
+                    allCounts = selected.length;
+                    for(var i=0; i<selected.length; i++){
+                        memberids += selected[i].USID + ",";
+                        memberInfo += selected[i].REALNAME + "," + selected[i].MOBILE +";";
+                    }
+                }else{
+                    allCounts = unSelected.length;
+                    for(var i=0; i<unSelected.length; i++){
+                        memberInfo += unSelected[i].REALNAME + "," + unSelected[i].MOBILE +";";
+                    }
+                }
+                var place = $("#place").val();//活动地点
+                var contactor = $("#contactor").val();//联系人姓名
+                var contactorMobile = $("#contactorMobile").val();//联系人联系电话
+                var signedStartTime = $("#signedStartTime").val();;//活动开始时间
+                var signedEndTime = $("#signedEndTime").val();;//活动结束时间
+                console.log(place);console.log(contactor);console.log(contactorMobile);console.log(signedStartTime);console.log(signedEndTime);
+                if(confirm("确认存草稿")){
+                    $.ajax({
+                        url: basePath + '/admin/notice/publishNotice.shtml',
+                        dataType: 'json',
+                        type: 'post',
+                        data: {TITLE:noticeTitle,CONTENT:noticeContent,MEMBERIDS:memberids,MEMBERINFO:memberInfo,ALLCOUNTS:allCounts,SIGN_UP:signUp,VOTE:vote,ISPUSH:ISPUSH,NOTICESTATUS:NOTICESTATUS,PLACE:place,CONTACTOR:contactor,CONTACTORMOBILE:contactorMobile,STARTTIME:signedStartTime,ENDTIME:signedEndTime,THEVOLIST:voteValue,THEVOLIST:volist,VOTETIME:voteEndTime},
+                        traditional: true,
+                        success:function(data){
+                            if(data.status == "0"){
+                                alert("发送成功!");
+                                window.location.href = basePath + "/admin/url/notice.shtml";
+                            }else{
+                                alert("发送失败，请联系管理人员！");
+                            }
+                        },
+                        error: function(msg){
+                            alert("操作失败，请联系管理人员！");
+                        }
+                    });
+                }
+
+            });
+
+
+            //时间选择初始化
+            initClockpicker();
+            function initClockpicker(){
+                $('.form_date').datetimepicker({
+                    pickerPosition: 'top-right',
+                    weekStart: 1,
+                    todayBtn:  1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    minView: 0,
+                    forceParse: 0
+                });
+            }
+            //人员选择页
+            membersAdd();
+        }
+
+        function membersAdd() {
+            //加载所有会员数据
+            var  unSelected = [],//未选中人员数组
+                selected = [];//已选中人员数组
+            // var selections = [],//临时选择数组
+            //personCount = 0,//已选中人员数量
+            var  fastGroup = [],
+                $tableMembers = $('#table-members'),
+                $tableSelected = $('#members-selected'),
+                $fasterFlier = $('#fast-fliter');
+
+            $.ajax({
+                url: basePath + "/admin/member/serchAllMember.shtml",
+                async: false,
+                dataType:"json",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                success: function (data) {
+                    unSelected = data.rows;
+                    for(var i=0; i < unSelected.length; i++){
+                        if(unSelected[i].ONAME != ''){
+                            fastGroup[i] = unSelected[i].ONAME;
+                        }else {
+                            fastGroup[i] = '职务为空';
+                        }
+                    }
+
+                    fastGroup = fastGroup.duplicate();
+
+                    for(var j=0; j < fastGroup.length; j++){
+                        $fasterFlier.append('<li><a href="#">' + fastGroup[j] + '</a></li>');
+                    }
+                    // initTableMembers();
+                    // $tableMembers.bootstrapTable('load', data)
+                }
+            }).done(function (data) {
+                // unSelected = data;
+            });
+            initTableMembers();
+            initMembersSelected();
+            //人数统计
+            // function refreshPersonCount(){
+            //   personCount = selected.length;
+            // $('#person-count').text(selected.length)
+            //}
+            //定时操作
+            // $('#timer').click(function () {
+            //     if($(this).hasClass('active')){
+            //         $(this).removeClass('active');
+            //         $('.date').fadeOut()
+            //     }else {
+            //         $(this).addClass('active');
+            //         $('.date').fadeIn()
+            //         initDate()
+            //     }
+            // });
+
+
+
+            //清空操作
+            $(document).on("click", ".clear", function() {
+                unSelected = selected.concat(unSelected);
+                $tableMembers.bootstrapTable('load', unSelected);
+                $tableMembers.bootstrapTable( 'uncheckAll');
+                selected = [];
+                labelCreate();
+                $tableSelected.bootstrapTable('load', selected);
+                //refreshPersonCount()
+            });
+
+
+            /*模态框表格窗口修正*/
+            $('#select-modal').on('shown.bs.modal', function () {
+                $tableMembers.bootstrapTable('resetView');
+                $tableSelected.bootstrapTable('resetView');
+            });
+
+            function labelCreate(){
+                function RndClassName(){
+                    var rnd = parseInt(6*Math.random());
+                    switch (rnd) {
+                        case 0:
+                            return 'label-default';
+                        case 1:
+                            return 'label-primary';
+                        case 2:
+                            return 'label-success';
+                        case 3:
+                            return 'label-warning';
+                        case 4:
+                            return 'label-danger';
+                        case 5:
+                            return 'label-info';
+                    }
+                }
+                var html='';
+                for (var j = 0; j < selected.length; j++) {
+                    html += '<span class="label both-2 '+RndClassName()+'">'
+                        + selected[j].REALNAME + '<a class="selectedRemove label-icon fa fa-times" data-id="'
+                        + selected[j].USID +'"></a></span>';
+                }
+                $('.notice-select-person').html(html);
+                //refreshPersonCount();
+            }
+            //移除已选数据对象组里的数据，同时返回原表格数据
+            $(document).on("click", ".selectedRemove", function() {
+                var removeSelect = [];
+                var tempID=  parseInt($(this).attr('data-id'));
+                removeSelect.push(tempID)
+                for(var i=0; i < selected.length; i++){
+                    if( removeSelect.join() == selected[i].USID) {
+
+                        $tableMembers.bootstrapTable('insertRow', {
+                            index: 0,
+                            row: selected[i]
+                        });
+                        selected.splice(selected.indexOf(selected[i]),1) ;
+                        $tableSelected.bootstrapTable('load', selected);
+                        //refreshPersonCount();
+                        if($(this).hasClass('label-icon')){
+                            $(this).closest('span').remove();
+                        }else{
+                            labelCreate(); // console.log($('.select-person').find('a').attr('data-id',tempID))
+                            // $('.label-icon').attr('data-id',$(this).attr('data-id')).closest('span')
+                            // $('.select-person').find('a').attr('data-id',$(this).attr('data-id')).closest('span').remove();
+                        }
+                        $tableMembers.bootstrapTable( 'uncheckAll');
+                    }
+                }
+            });
+            function initTableMembers(){
+                var $add = $('#members-add');
+                $tableMembers.bootstrapTable({
+                    data: unSelected,
+                    pageSize: 9,
+                    pageList: [12, 25, 50, 100],
+                    sidePagination: 'client',
+                    pagination: true,
+                    toolbar: "#table-toolbar",
+                    search: true,
+                    showColumns: true,
+                    height: 490,
+                    columns: [{
+                        field: 'state',
+                        checkbox: true
+
+                    },{
+                        field: 'REALNAME',
+                        title: '姓名',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'MOBILE',
+                        title: '手机号',
+                        sortable: true,
+                        align: 'center'
+                    }, {
+                        field: 'COMPANY',
+                        title: '所在单位',
+                        sortable: true,
+                        align: 'center'
+                    }]
+                });
+                /*
+                 *  功能：获取选择框信息
+                 *  Created by nocoolyoyo 2016/9/28.
+                 */
+                $tableMembers.on('check.bs.table uncheck.bs.table ' +
+                    'check-all.bs.table uncheck-all.bs.table', function () {
+                    if ($tableMembers.bootstrapTable('getSelections').length) {
+                        $add.show();
+                    } else {
+                        $add.hide();
+                    }
+                    selections  = getIdSelections();
+                });
+                /*人员选择*/
+                //往已选数据对象组里填充添加的数据，同时移除表格数据
+                $add.click(function () {
+                    selected = selected.concat(getRowSelections());
+                    $tableSelected.bootstrapTable('load', selected);
+                    $tableMembers.bootstrapTable('remove', {
+                        field: 'USID',
+                        values: selections
+                    });
+                    $add.hide();
+                    labelCreate();
+                });
+
+                /*快速添加中的人员选择添加*/
+                $(document).on('click', '#fast-fliter > li a', function(){
+                    var tempONAME = $(this).text();
+
+                    for(var n=0; n < unSelected.length; n++){
+                        if(unSelected[n].ONAME == tempONAME){
+                            selected = selected.concat(unSelected[n]);
+                        }
+                    }
+                    for(var l=0; l < selected.length; l++){
+                        for(var s=0; s < unSelected.length; s++){
+                            if(unSelected[s].USID == selected[l].USID){
+                                unSelected.splice(unSelected.indexOf(unSelected[s]),1)
+                            }
+                        }
+                    }
+
+                    $tableSelected.bootstrapTable('load', selected);
+                    $tableMembers.bootstrapTable('load', unSelected);
+                    labelCreate();
+                });
+
+
+
+                function getRowSelections() {
+                    return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
+                        return row
+                    });
+                }
+                function getIdSelections() {
+                    return $.map($tableMembers.bootstrapTable('getSelections'), function (row) {
+                        return row.USID
+                    });
+                }
+            }
+
+            function initMembersSelected(){
+                $tableSelected.bootstrapTable({
+                    data: selected,
+                    height: 475,
+                    search: true,
+                    showHeader:false,
+                    toolbar: "#left-toolbar",
+                    columns: [{
+                        field: 'SELECTED',
+                        title: '已选人员',
+                        sortable: true,
+                        formatter: selectedFormatter,
+                        align: 'center'
+                    }]
+                });
+                function selectedFormatter(value, row) {
+                    return [
+                        '<div class="pull-left">',
+                        '<span>' + row.REALNAME +'   '+ '</span>',
+                        '</div>',
+                        '<div class="pull-left">',
+                        '<span>' + row.MOBILE + '</span>',
+                        '</div>',
+                        '<div class="pull-right">',
+                        '<a class="selectedRemove close" href="javascript:void(0)"  data-id="' + row.USID +'" title="移除">',
+                        '<i class="glyphicon glyphicon-remove"></i>',
+                        '</a> ',
+                        '</div>'
+                    ].join('');
+                }
+            }
+        }
+
+        function voteSelectionOprate(){
+            //投票选项增加
+            $(document).on('click','.voteSelections-add', function () {
+                var listNum = $(this).siblings('ul').children().length +1;
+                $(this).siblings('ul').append(
+                    '<li class="form-group">' +
+                    '<label  class="col-sm-3 control-label">选项'+ listNum +'：</label>' +
+                    '<div class="col-sm-8">' +
+                    '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">' +
+                    '</div>' +
+                    '<button type="button" class="li-delete col-sm-1 close" style="margin-top: 5px;"><span aria-hidden="true" style="margin-right: 4px;">&times;</span><span class="sr-only" style="margin-right: 4px;">Close</span></button>'+
+                    '</li>');
+            });
+            $(document).on('click','.li-delete', function () {
+                $(this).closest('li').remove();
+            })
+
+        }
+
+        function voteOprate(){
+            //增加投票
+            $('#new-vote').click( function(){
+                var voteNum = $('.vote').length+1;
+                $('#vote-body').append(
+                    '<div class="vote panel panel-default">'+
+                    '<div class="panel-heading center">'+'投票'+voteNum+'<button type="button" class="vote-delete close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>'+
+                    '<div class="panel-body">'+
+                    '<div class="form-group">'+
+                    '<label for="voteName" class="col-sm-3  control-label">投票主题：</label>'+
+                    '<div class="col-sm-8">'+
+                    '<input type="text" class="form-control" name="voteName" placeholder="请输入名称">'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="form-group">'+
+                    '<label for="voteType" class="col-sm-3 control-label">投票类型：</label>'+
+                    '<div class="col-sm-8" id="voteType">'+
+                    '<label class="radio-inline">'+
+                    '<input type="radio" name="radio'+ voteNum + '" value="1" checked="checked"> 单选'+
+                    '</label>'+
+                    '<label class="radio-inline">'+
+                    '<input type="radio" name="radio'+ voteNum + '" value="2"> 多选'+
+                    '</label>'+
+                    '</div>'+
+                    '</div>'+
+                    '<ul class="voteSelectionsGroup">'+
+                    '<li class="form-group">'+
+                    '<label  class="col-sm-3  control-label">选项1：</label>'+
+                    '<div class="col-sm-8">'+
+                    '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">'+
+                    '</div>'+
+                    '</li>'+
+                    '<li class="form-group">'+
+                    '<label  class="col-sm-3  control-label">选项2：</label>'+
+                    '<div class="col-sm-8">'+
+                    '<input type="text" class="voteSelections form-control" name="voteSelections" placeholder="请输入名称">'+
+                    '</div>'+
+                    '</li>'+
+                    '</ul>'+
+                    '<button type="button" class="voteSelections-add col-sm-offset-5 btn button-green button-rounded">新增选项</button>'+
+                    '</div>'+
+                    '</div>'
+                );
+            });
+            //删除投票
+            $(document).on('click', '.vote-delete', function () {
+                $(this).closest('.vote').remove();
+            })
         }
     });
 }());

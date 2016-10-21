@@ -6,7 +6,6 @@
          *  页面：*
          *  Created by nocoolyoyo 2016/9/25.
          */
-
         var menu_daily_urls = [];
         var menu_manage_urls = [];
         var current_url = window.location.pathname;
@@ -67,7 +66,6 @@
         loadMenu();
         renderMenu();
 
-
         /**数组去重1，赋值对象去重*/
         // Array.prototype.distinct = function(){
         //     var res = [];
@@ -104,6 +102,9 @@
         Array.prototype.insertArr = function (index, item) {
             this.splice(index, 0, item);
         };
+        /*
+         *  求数组下表
+         */
         Array.prototype.indexOf = function(val) {
             for (var i = 0; i < this.length; i++) {
                 if (this[i] == val) return i;

@@ -2,12 +2,14 @@
     $(function() {
         var $table = $('#table'),
             $delete = $('#delete');
-        $tableWinner = $("#tableWinner");
-        $tablePartic = $("#tablePartic");
+            $tableWinner = $("#tableWinner");
+            $tablePartic = $("#tablePartic");
         selections = [];
         var local = window.location;
         var contextPath = local.pathname.split("/")[1];
         var basePath = local.protocol+"//"+local.host+"/"+contextPath;
+        var tempId="";
+        var tempUrl="";
         /*模态框表格窗口修正*/
 //        $('#queryWinner-modal').on('shown.bs.modal', function () {
 //            $tableWinner.bootstrapTable('resetView');
@@ -28,7 +30,7 @@
             console.log($(this).attr('data-url'));
             tempUrl = $(this).attr('data-url');
             $("#aurl").attr('src',$(this).attr('data-url'));
-        })
+        });
         //下载二维码
         $("#ORCodeUpload").click(function(){
             var src = tempUrl;
@@ -37,6 +39,7 @@
         //点击获取获奖名单
         $(document).on("click",".queryWinner",function(){
             tempId = $(this).attr('data-id');
+            var mmm= [];
             $.ajax({
                 url: basePath + '/admin/signdraw/querywinning.shtml',
                 dataType: 'json',
@@ -47,19 +50,23 @@
                 },
                 success:function(data){
                     if(data.status == "0"){
+                        console.log('1111')
                         console.log(data)
+                        mmm= data;
                         //initTableWinner(tempId,data)
-                        $tableWinner.bootstrapTable('load',data);
+                        //$tableWinner.bootstrapTable('load',data);
+                        // $tableWinner.bootstrapTable('load',data);
                     }
                 },
                 error: function(msg){
                 }
             });
-        });
-        $('#queryWinner-modal').on('shown.bs.modal', function () {
-            $tableWinner.bootstrapTable('resetView');
 
+            initTableWinner(tempId,mmm)
         });
+        // $('#queryWinner-modal').on('shown.bs.modal', function () {
+        //     $tableWinner.bootstrapTable('resetView');
+        // });
 
         //点击获取参与名单
         $(document).on("click",".queryPartic",function(){
@@ -125,8 +132,9 @@
                 url: basePath+'/admin/signdraw/queryActivityList.shtml',
                 dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
                 pagination: true,//是否分页
-                pageSize: 10,//单页记录数
-                pageList: [10, 25, 50, 100],
+                pageSize: 12,//单页记录数
+                height: 601,
+                pageList: [12, 25, 50, 100],
                 sidePagination: "server",//服务端分页
                 contentType: "application/x-www-form-urlencoded",//请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
                 dataType: "json",//期待返回数据类型
@@ -142,7 +150,7 @@
                 // sidePagination: "server",
                 toolbar: "#table-toolbar",
                 //showRefresh: true,//刷新按钮
-                //showColumns: true,
+                showColumns: true,
 
                 // detailFormatter: detailFormatter,
                 columns: [
@@ -271,8 +279,8 @@
                 ].join('')
             }
             //二维码显示
-            var tempUrl="";
-            var tempId="";
+
+
 
 
             //新增活动保存
@@ -303,11 +311,11 @@
         }
 
         //获奖名单
-        function initTableWinner(id) {
+        function initTableWinner(id,Wdata) {
             $tableWinner = $("#tableWinner");
             $tableWinner.bootstrapTable({
                 data: Wdata,
-                url: basePath + '/admin/signdraw/querywinning.shtml',
+//                url: basePath + '/admin/signdraw/querywinning.shtml',
                 dataField: "rows",//服务端返回数据键值 就是说记录放的键值是rows，分页时使用总记录数的键值为total
                 pagination: true,//是否分页
                 height: 450,
@@ -377,6 +385,7 @@
 
         }
 
+
         //参与名单
         function initTablePartic(id) {
             $tablePartic = $("#tablePartic");
@@ -441,10 +450,6 @@
             $('#queryPartic-export').click(function (){
                 window.location.href = basePath+"/admin/signdraw/queryParticExport.shtml?AID="+tempId;
             });
-
-
-
         }
-
     });
 }());
