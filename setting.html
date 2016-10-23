@@ -2,18 +2,13 @@
 <html lang="zh_cn">
 <head>
     <meta charset="UTF-8">
-    <title>设置-商会云</title>
+    <title>会员-商会云</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="css/main.css" type="text/css" rel="stylesheet">
-    <!–[if IE]>
-    <script src="js/html5.min.js"></script>
-    <![endif]–>
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link href="img/Logo_25x25.png" rel="shortcut icon">
+
+    <link href="css/setting.css" type="text/css" rel="stylesheet">
 
 </head>
 <body>
@@ -32,155 +27,187 @@
 </header>
 
 <main class="container">
-    <div id="setting">
-        <ul id="content-navbar" class="row">
-            <li id="content-navbar-home"><a href="index.html"><i class="fa fa-desktop"></i>桌面</a></li>
-            <li id="content-navbar-menu">
-                <ul>
-                </ul>
-            </li>
-            <li id="content-navbar-switch" ><a href="#"><i class="fa fa-columns"></i>切换</a></li>
-        </ul>
-        <div id="content-area">
-            <div class="content-area-box">
-                <form class="content-area-actionList form-inline" role="form">
-                    <div class="form-group left">
-                        <button type="button" class="btn button button-primary button-rounded">发资讯</button>
-                        <button type="button" class="btn button button-primary button-rounded">草稿箱</button>
+    <div id="content">
+        <!--<ul id="content-navbar" class="row">-->
+            <!--<li id="content-navbar-home"><a href="index.html"><i class="fa fa-desktop"></i>桌面</a></li>-->
+            <!--<li id="content-navbar-menu">-->
+                <!--<ul>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <!--<li id="content-navbar-switch" ><a href="#"><i class="fa fa-columns"></i>切换</a></li>-->
+        <!--</ul>-->
+        <div id="main-box" class="both-10">
+            <div class="panel panel-default top-10">
+                <div class="panel-heading"><h4 class="center">设置</h4></div>
+                <div class="panel-body">
+                    <div class="col-sm-8 col-sm-offset-2">
+                       <ul class="nav nav-tabs tabs-material">
+                           <li class="active"><a href="#tab1" data-toggle="tab" aria-expanded="true">个人设置</a></li>
+                           <li class=""><a href="#tab2" data-toggle="tab" aria-expanded="false">商会设置</a></li>
+                           <li class=""><a href="#tab3" data-toggle="tab" aria-expanded="false">问题反馈</a></li>
+                       </ul>
+                       <div id="setting-body" class="tab-content">
+                           <div class="tab-pane fade active in" id="tab1">
+                               <form id="form1" class="form-horizontal both-25" role="form">
+                               <div class="bs-divider"><h5 class="center">基本信息</h5></div>
+                               <div class="form-group">
+                                   <label for="account" class="col-sm-2 control-label">账号：</label>
+                                   <div class="col-sm-10">
+                                       <input type="text" class="form-control" name="account" placeholder="账号">
+                                   </div>
+                               </div>
+                               <div class="form-group">
+                                   <label for="name" class="col-sm-2 control-label">姓名：</label>
+                                   <div class="col-sm-10">
+                                       <input type="text" class="form-control" name="name" placeholder="姓名">
+                                   </div>
+                               </div>
+                               <div class="form-group">
+                                   <label for="sex" class="col-sm-2 control-label">性别：</label>
+                                   <div class="col-sm-10">
+                                       <label class="radio-inline">
+                                           <input type="radio" name="sexOptions" value="1" checked="checked"> 男
+                                       </label>
+                                       <label class="radio-inline">
+                                           <input type="radio" name="sexOptions" value="2"> 女
+                                       </label>
+                                   </div>
+                               </div>
+                               <div class="bs-divider"><h5 class="center">修改密码</h5></div>
+                               <div class="form-group">
+                                   <label for="orinPassword" class="col-sm-2 control-label">原始密码：</label>
+                                   <div class="col-sm-10">
+                                       <input type="password" class="form-control" name="orinPassword" placeholder="">
+                                   </div>
+                               </div>
+                               <div class="form-group">
+                                   <label for="newPassword" class="col-sm-2 control-label">修改密码：</label>
+                                   <div class="col-sm-10">
+                                       <input type="password" class="form-control" name="newPassword" placeholder="">
+                                   </div>
+                               </div>
+                               <div class="form-group">
+                                   <label for="cnewPassword" class="col-sm-2 control-label">确认密码：</label>
+                                   <div class="col-sm-10">
+                                       <input type="password" class="form-control" name="cnewPassword" placeholder="">
+                                   </div>
+                               </div>
+                               <div class="bs-divider"></div>
+                               <div class="form-group center">
+                                   <button id="submit" type="submit" class="btn btn-primary">确定</button>
+                                   <button id="reset" type="reset" class="btn btn-default">返回</button>
+                               </div>
+                               </form>
+                           </div>
+                           <div class="tab-pane fade" id="tab2">
+                               <form id="form2" class="form-horizontal both-25" role="form">
+                                   <div class="bs-divider"><h5 class="center">基本信息</h5></div>
+                                   <div class="form-group">
+                                   <div id="uploadImg-box" class="reveal-dim center">
+                                       <img class="reveal-show" src="img/imgHolder1-1.png">
+                                           <div class="reveal-hide reveal-content">
+                                           <div class="reveal-center">
+                                                <span>
+                                                    <label id="upLoadImgBtn" class="btn btn-inverted btn-bold btn-success" for="upLoadImg">上传图片</label>
+                                                    <input id="upLoadImg" name="upLoadImg" type="file" style="position:absolute;clip:rect(0 0 0 0);" value="">
+                                                </span>
+                                           </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="form-group">
+                                       <label class="col-sm-2 control-label">商会名称：</label>
+                                       <div class="col-sm-10">
+                                           <input type="text" class="form-control" name="RENAME" placeholder="商会名称">
+                                       </div>
+                                   </div>
+                                   <div class="form-group">
+                                       <label class="col-sm-2 control-label">现任主席：</label>
+                                       <div class="col-sm-10">
+                                           <input type="text" class="form-control" name="chairman" placeholder="现任主席">
+                                       </div>
+                                   </div>
+                                   <div class="form-group">
+                                       <label class="col-sm-2 control-label">商会网址：</label>
+                                       <div class="col-sm-10">
+                                           <input type="text" class="form-control" name="URL" placeholder="商会网址">
+                                       </div>
+                                   </div>
+                                   <div class="form-group">
+                                       <label class="col-sm-2 control-label">商会简介：</label>
+                                       <div class="col-sm-10">
+                                           <textarea class="form-control" rows="3" id="brief"></textarea>
+                                           <span class="help-block">字数限制在500字以内</span>
+                                       </div>
+                                   </div>
+                                   <div class="bs-divider"><h5 class="center">短信模板</h5></div>
+                                   <!--<div class="form-group">-->
+                                       <!--<label class="col-sm-2 control-label">生日祝福：</label>-->
+                                       <!--<div class="col-sm-10">-->
+                                           <!--<textarea class="form-control" rows="3" id="birthday"></textarea>-->
+                                           <!--<span class="checkbox"> <label><input type="checkbox"> 自动发送</label>-->
+                                           <!--</span>-->
+                                       <!--</div>-->
+                                   <!--</div>-->
+                                   <div class="form-group margin-center">
+                                       <span><label class="control-label">生日祝福：</label><label class="control-label pull-right"><input type="checkbox"> 自动发送</label>
+                                           </span>
+                                           <textarea class="form-control" rows="3"  id="birthday"></textarea>
+                                   </div>
+                                   <div class="form-group margin-center">
+                                       <span><label class="control-label">未激活会员通知：</label><label class="control-label pull-right"><input type="checkbox"> 自动发送</label>
+                                           </span>
+                                       <textarea class="form-control" rows="3"  id="birthday"></textarea>
+                                   </div>
+                                   <div class="form-group margin-center">
+                                       <span><label class="control-label">未查看通知通告：</label><label class="control-label pull-right"><input type="checkbox"> 自动发送</label>
+                                           </span>
+                                       <textarea class="form-control" rows="3"  id="birthday"></textarea>
+                                   </div>
+                                   <div class="form-group margin-center">
+                                       <span><label class="control-label">已查看已报名通知通告：</label><label class="control-label pull-right"><input type="checkbox"> 自动发送</label>
+                                           </span>
+                                       <textarea class="form-control" rows="3"  id="birthday"></textarea>
+                                   </div>
+                                   <div class="form-group margin-center">
+                                       <span><label class="control-label">已查看未报名通知通告：</label><label class="control-label pull-right"><input type="checkbox"> 自动发送</label>
+                                           </span>
+                                       <textarea class="form-control" rows="3"  id="birthday"></textarea>
+                                   </div>
+                                   <div class="bs-divider"></div>
+                                   <div class="form-group center">
+                                       <button id="submit" type="submit" class="btn btn-primary">确定</button>
+                                       <button id="reset" type="reset" class="btn btn-default">返回</button>
+                                   </div>
+                               </form>
+                           </div>
+                           <div class="tab-pane fade" id="tab3">
+
+                               <form id="form3" class="form-horizontal both-25" role="form">
+                                   <div class="bs-divider"><h5 class="center">基本信息</h5></div>
+
+
+                                   <div class="form-group margin-center">
+                                       <textarea class="form-control" rows="6"  id="birthday"></textarea>
+                                       <span class="help-block">客服电话：0591-62751898</span>
+                                   </div>
+
+                                   <div class="bs-divider"></div>
+                                   <div class="form-group center">
+                                       <button id="submit" type="submit" class="btn btn-primary">提交问题</button>
+                                    <button id="reset" type="reset" class="btn btn-default">返回</button>
+                                   </div>
+                               </form>
+                           </div>
+                       </div>
+
                     </div>
-                    <div class="form-group right">
-                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                            <input class="form-control" size="9" type="text" value="" placeholder="开始日期" readonly>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                        </div>
-                        <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                            <input class="form-control" size="9" type="text" value="" placeholder="结束日期" readonly>
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                        </div>
-                        <input  class="form-control" type="search"  name="search"  placeholder="标签/发布人">
-                        <select class="form-control">
-                            <option>筛选</option>
-                        </select>
-                        <button type="button" class="btn button button-primary button-rounded"><i class="fa fa-search button-text-icon"></i>查找</button>
-                    </div>
-                </form>
-                <table class="content-area-tableList table table-bordered table-hover table-condensed">
-                    <thead>
-                    <tr class="active">
-                        <th>ID</th>
-                        <th>标题</th>
-                        <th>发布时间</th>
-                        <th>发布人</th>
-                        <th>查看次数</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    <tr>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                        <th>待办事项1</th>
-                    </tr>
-                    </tbody>
-                </table>
+                </div>
             </div>
-            <ul class="content-area-pagination pagination">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">上一页</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">下一页</a></li>
-                <li><a href="#">尾页</a></li>
-            </ul>
         </div>
     </div>
 </main>
+
 <footer class="container">
     <!--<div class="bottom">-->
     <span>永杰科技 光越传媒 新浪闽商</span>
@@ -189,5 +216,19 @@
     <div>(c) 2015-2020 商会+ . All Right Reserved.   永杰科技 版权所有</div>
     <!--</div>-->
 </footer>
+<!–[if IE]>
+<script src="js/public/html5.min.js"></script>
+<![endif]–>
+
+<script src="js/public/jquery-1.12.4.min.js"></script>
+<script src="js/public/bootstrap.js"></script>
+<script src="js/public/menuData.js"></script>
+<!--<script src="js/public/fileinput.min.js"></script>-->
+<!--<script src="js/public/fileinput-zh-CN.js"></script>-->
+<script src="js/public/datetimepicker.min.js"></script>
+
+
+<script src="js/main.js"></script>
+<script src="js/setting.js"></script>
 </body>
 </html>
