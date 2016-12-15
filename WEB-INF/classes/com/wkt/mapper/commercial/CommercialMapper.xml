@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.commercial.ICommercialDao">
+<!-- 获取接收消息 -->
+	<select id="findReceiveMsg" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+				IFNULL(i.INSID, '') AS INSID,
+				IFNULL(i.TITLE, '') AS TITLE,
+				IFNULL(i.CONTENT, '') AS CONTENT,
+				IFNULL(i.SENDTIME, '') AS SENDTIME,
+				IFNULL(i.TYPE, '') AS TYPE,
+				IFNULL(i.CAID, '') AS CAID,
+				IFNULL(i.AUTHOR, '') AS AUTHOR,
+				IFNULL(i.SHID, '') AS SHID,
+				IFNULL(i.CANAME, '') AS CANAME,
+				IFNULL(
+					(
+						SELECT
+							c. STATUS
+						FROM
+							PRE_OAM_INFORMATION_CSID c
+						WHERE
+							c.CSID = #{SHID}
+						AND c.INID = i.insid
+						AND c.TYPE = 2
+					),
+					''
+				) AS ISRED
+			FROM
+				PRE_OAM_INFORMATION i
+			WHERE
+				INSID IN (
+					SELECT
+						INID
+					FROM
+						PRE_OAM_INFORMATION_CSID c
+					WHERE
+						c.CSID =  #{SHID}
+					AND c.TYPE = 2
+				)
+		AND STATUS = 0
+		<if test="search!='' and search!=null ">
+			AND TITLE like '%${search}%'
+		</if>
+		ORDER BY ISRED ASC ,INSID DESC
+		<if test="x!=null and y!=null and x!='' and y!='' ">
+				limit ${x},${y}		
+		</if>
+	</select>
+	<!-- 接收消息数量 -->
+	<select id="findReceiveMsgPageCount" parameterType="java.util.HashMap" resultType="Integer">
+			SELECT
+				COUNT(*)
+		FROM
+			PRE_OAM_INFORMATION
+		WHERE
+			INSID IN (
+				SELECT
+					INID
+				FROM
+					PRE_OAM_INFORMATION_CSID
+				WHERE
+					CSID = #{SHID} AND TYPE = 2
+			)
+		AND STATUS = 0
+		<if test="search!='' and search!=null ">
+			AND TITLE like '%${search}%'
+		</if>
+	</select>
+	<!-- 获取发送消息 -->
+	<select id="findSendMsg" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			IFNULL(INSID, '') AS INSID,
+			IFNULL(TITLE, '') AS TITLE,
+			IFNULL(CONTENT, '') AS CONTENT,
+			IFNULL(SENDTIME, '') AS SENDTIME,
+			IFNULL(TYPE, '') AS TYPE,
+			IFNULL(CAID, '') AS CAID,
+			IFNULL(AUTHOR, '') AS AUTHOR,
+			IFNULL(SHID, '') AS SHID,
+			IFNULL(CANAME, '') AS CANAME,
+			IFNULL(STATUS, '') AS STATUS
+		FROM
+			PRE_OAM_INFORMATION
+		WHERE
+			SHID = #{SHID}
+		<if test="search!='' and search!=null ">
+			AND TITLE like '%${search}%'
+		</if>
+		ORDER BY SENDTIME DESC
+		<if test="x!=null and y!=null and x!='' and y!='' ">
+			limit ${x},${y}		
+		</if>
+	</select>
+	<!-- 查询发送消息总数 -->
+	<select id="findSendMsgPageCount" parameterType="java.util.HashMap" resultType="Integer">
+			SELECT
+			COUNT(*)
+		FROM
+			PRE_OAM_INFORMATION
+		WHERE
+			SHID = #{SHID}
+		<if test="search!='' and search!=null ">
+			AND TITLE like '%${search}%'
+		</if>
+	</select>
+	<!-- 根据商会ID查询所属工商联CAID -->
+	<select id="findCaidByShanghuiId" parameterType="java.util.HashMap" resultType="String">
+		SELECT
+			GROUP_CONCAT(CAID)
+		FROM
+			PRE_OAM_CATEGORY_COMMERCIAL
+		WHERE
+			GOID IN (
+				SELECT
+					CATEGORYID
+				FROM
+					PRE_OAM_CATEGORYORSHANGHUI
+				WHERE
+					SHANGHUIID = #{SHANGHUIID}
+			)
+	</select>
+	<!-- 发送消息  新增上报信息 -->
+	<insert id="insertinfomation" parameterType="java.util.HashMap">
+		INSERT INTO PRE_OAM_INFORMATION (
+			TITLE,
+			CONTENT,
+			SENDTIME,
+			TYPE,
+			CAID,
+			AUTHOR,
+			SHID,
+			CANAME
+		)
+		VALUES (#{TITLE},#{CONTENT},#{SENDTIME},#{TYPE},#{CAID},#{AUTHOR},#{SHANGHUIID},#{SHNAME})
+	</insert>
+	<!-- 查询新增的数据 -->
+	<select id="findInfomation" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT 
+			IFNULL(INSID, '') AS INSID,
+			IFNULL(TITLE, '') AS TITLE,
+			IFNULL(CONTENT, '') AS CONTENT,
+			IFNULL(SENDTIME, '') AS SENDTIME,
+			IFNULL(TYPE, '') AS TYPE,
+			IFNULL(CAID, '') AS CAID,
+			IFNULL(AUTHOR, '') AS AUTHOR,
+			IFNULL(SHID, '') AS SHID,
+			IFNULL(CANAME, '') AS CANAME,
+			IFNULL(STATUS, '') AS STATUS
+		FROM 
+			PRE_OAM_INFORMATION 
+		WHERE 
+			SENDTIME = #{TIME}
+	</select>
+	<!-- 新增上报记录  中间表 -->
+	<insert id="insertinformationcsid" parameterType="java.util.HashMap">
+		INSERT INTO PRE_OAM_INFORMATION_CSID (INID,CSID,TYPE,STATUS) VALUES (#{INSID},#{CID},1,0)
+	</insert>
+	
+	<!-- 根据主键ID查询对象 -->
+	<select id="findInfomationById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			IFNULL(INSID, '') AS INSID,
+			IFNULL(TITLE, '') AS TITLE,
+			IFNULL(CONTENT, '') AS CONTENT,
+			IFNULL(SENDTIME, '') AS SENDTIME,
+			IFNULL(TYPE, '') AS TYPE,
+			IFNULL(CAID, '') AS CAID,
+			IFNULL(AUTHOR, '') AS AUTHOR,
+			IFNULL(SHID, '') AS SHID,
+			IFNULL(CANAME, '') AS CANAME,
+			IFNULL(STATUS, '') AS STATUS
+		FROM
+			PRE_OAM_INFORMATION
+		WHERE
+			INSID = #{INSID}
+	</select>
+	
+	<!-- 获取接受者 -->
+	<select id="queryReciveuser" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			GROUP_CONCAT(CANAME) AS CANAME
+		FROM
+			PRE_OAM_COMMERCIAL_ASSOCIATION
+		WHERE
+			CAID IN (
+				SELECT
+					CSID
+				FROM
+					PRE_OAM_INFORMATION_CSID
+				WHERE
+					INID = #{INID}
+				AND TYPE = 1
+			)
+		UNION
+			SELECT
+				GROUP_CONCAT(SHNAME) AS SHNAME
+			FROM
+				PRE_COMMON_SHANGHUI
+			WHERE
+				SHID IN (
+					SELECT
+						CSID
+					FROM
+						PRE_OAM_INFORMATION_CSID
+					WHERE
+						INID =  #{INID}
+					AND TYPE = 2
+				)
+	</select>
+	
+	<!-- 获取发送人name -->
+	<select id="queryCanameByCaid"	parameterType="java.util.HashMap" resultType="String">
+		SELECT
+			CANAME
+		FROM
+			PRE_OAM_COMMERCIAL_ASSOCIATION
+		WHERE
+			CAID = #{CAID}
+	</select>
+	
+	<!-- 修改接收信息为已查看 -->
+	<update id="updateInfoStateById" parameterType="java.util.HashMap">
+		UPDATE 
+			PRE_OAM_INFORMATION_CSID
+		SET 
+			STATUS = 1
+		WHERE
+			TYPE = 2
+		AND 
+			INID = #{INID}
+		AND 
+			CSID = #{CSID}
+	</update>
+	
+	<!-- 获取工商联name -->
+	<select id="queryReciveName" parameterType="java.util.HashMap" resultType="String">
+		SELECT
+			GROUP_CONCAT(CANAME)
+		FROM
+			PRE_OAM_COMMERCIAL_ASSOCIATION
+		WHERE
+			CAID IN (
+				SELECT
+					CSID
+				FROM
+					PRE_OAM_INFORMATION_CSID
+				WHERE
+					INID = #{INSID}
+			) 
+	</select>
+</mapper>

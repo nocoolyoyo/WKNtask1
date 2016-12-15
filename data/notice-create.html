@@ -1,16 +1,16 @@
-
+<div id="content-area-box">
 <div class="content-area-box">
     <div id="single-toolbar">
-
         <button id="back" type="button" class="btn btn-default">返回</button>
+        <button id="notice-send" type="button" class="btn btn-primary">发送</button>
+        <button id="notice-draft" type="button" class="btn btn-default">保存草稿</button>
+        <button id="vote" type="button" class="btn btn-danger" data-toggle="modal" data-target="#vote-modal">投票未选</button>
+        <button id="signed" type="button" class="btn btn-danger" data-toggle="modal" data-target="#signed-modal">报名未选</button>
+     
         <div class="pull-right">
             <div class="dropdown" style="display: inline-block">
                 <button id="fast-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
+                <ul id="fast-fliter" class="dropdown-menu">
                 </ul>
             </div>
             <button id="exact-add" type="button" class="btn btn-default"  data-toggle="modal" data-target="#select-modal">精确添加</button>
@@ -27,14 +27,16 @@
 
     <div id="newNotice">
     </div>
-    <form class="form-inline" role="form">
+    <!-- <div id="footer-toolbar">
+   
         <button id="vote" type="button" class="btn btn-danger" data-toggle="modal" data-target="#vote-modal">投票未选</button>
         <button id="signed" type="button" class="btn btn-danger" data-toggle="modal" data-target="#signed-modal">报名未选</button>
         <span class="pull-right">
         <button id="notice-send" type="button" class="btn btn-primary">发送</button>
         <button id="notice-draft" type="button" class="btn btn-default">保存草稿</button>
-            </span>
-    </form>
+        </span>
+  
+    </div> -->
 </div>
 <div id="vote-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -50,17 +52,17 @@
                             <div class="form-group">
                                 <label for="voteName" class="col-sm-3  control-label">投票主题：</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="voteName" name="voteName" placeholder="请输入名称">
+                                    <input type="text" class="form-control" name="voteName" placeholder="请输入名称">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="voteType" class="col-sm-3  control-label">投票类型：</label>
                                 <div class="col-sm-8" id="voteType">
                                     <label class="radio-inline">
-                                        <input type="radio" name="radio1" value="option1"> 单选
+                                        <input type="radio" name="radio1" value="1" checked="checked"> 单选
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="radio1" value="option2"> 多选
+                                        <input type="radio" name="radio1" value="2"> 多选
                                     </label>
                                 </div>
                             </div>
@@ -87,11 +89,11 @@
                     <button id="new-vote" type="button" class="btn button-green button-rounded pull-left">新增</button>
                     <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-format="yyyy-mm-dd hh:ii">
                         <span class="input-group-addon">截至日期</span>
-                        <input class="form-control" size="16" type="text" value="" name="voteEndTime" placeholder="日期" readonly>
+                        <input class="form-control" size="16" type="text" value="" id="voteEndTime" name="voteEndTime" placeholder="日期" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
-                    <button id="vote-sure" type="button" class="btn button-primary button-rounded" disabled="disabled">确定</button>
-                    <input id="vote-cancel" type="reset" class="btn button button-rounded">取消投票</input>
+                    <button id="vote-sure" type="button" class="btn button-primary button-rounded">确定</button>
+                    <button id="vote-cancel" type="button" class="btn button button-rounded" data-dismiss="modal">取消投票</button>
                 </div>
             </div>
         </form>
@@ -100,30 +102,30 @@
 
 <div id="signed-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="form-horizontal" role="form">
+        <form id="signed-form" class="form-horizontal" role="form">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header center">
                     <h4 class="modal-title">报名</h4>
                 </div>
                 <div class="modal-body both-25">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon">地点</div>
-                            <input class="form-control" type="text" placeholder="填写标题">
+                            <input id="place" class="form-control" type="text" name="place" placeholder="填写标题">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group inline-box">
                             <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-format="yyyy-mm-dd hh:ii">
                                 <span class="input-group-addon">开始时间</span>
-                                <input class="form-control" size="17" type="text" name="signedStartTime" value="" placeholder="日期" readonly>
+                                <input class="form-control" size="17" type="text" id="signedStartTime" name="signedStartTime" value="" placeholder="日期" readonly>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
                         </div>
                         <div class="input-group inline-box" >
                             <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-format="yyyy-mm-dd hh:ii">
                                 <span class="input-group-addon">结束时间</span>
-                                <input class="form-control" size="17" type="text" name="signedEndTime" value="" placeholder="日期" readonly>
+                                <input class="form-control" size="17" type="text" id="signedEndTime" name="signedEndTime" value="" placeholder="日期" readonly>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
                         </div>
@@ -131,18 +133,18 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon">联系人</div>
-                            <input class="form-control" type="text" placeholder="联系人">
+                            <input id="contactor" name="contactor" class="form-control" type="text" placeholder="联系人">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon">联系电话</div>
-                            <input class="form-control" type="text" placeholder="联系电话">
+                            <input id="contactorMobile" name="contactorMobile" class="form-control" type="text" placeholder="联系电话">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="signed-sure" type="button" class="btn button button-primary button-rounded" data-dismiss="modal">确定</button>
+                    <button id="signed-sure" type="button" class="btn button button-primary button-rounded">确定</button>
                     <button id="signed-cancel" type="button" class="btn button button-rounded" data-dismiss="modal">取消报名</button>
                 </div>
             </div>
@@ -155,7 +157,7 @@
             <div class="modal-header center">
                 <h4 class="modal-title">人员选择</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body table-modal-body">
                 <div class="select-content">
                     <div class="select-left">
                         <div id="left-toolbar" class="form-inline">
@@ -166,15 +168,7 @@
                     <div class="select-right">
                         <div id="table-toolbar" class="form-inline">
                             <button id="members-add" type="button" class="btn btn-success" style="display: none">添加</button>
-                            <div class="dropdown" style="display: inline-block">
-                                <button id="group-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">阿斯顿</a></li>
-                                    <li><a href="#">说的</a></li>
-                                    <li><a href="#">阿斯顿k</a></li>
-                                </ul>
-                            </div>
+                          
                         </div>
                         <table id="table-members"></table>
                     </div>
@@ -185,4 +179,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

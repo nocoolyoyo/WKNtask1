@@ -1,129 +1,83 @@
 <div id="content-area">
     <div class="content-area-box">
         <div id="single-toolbar" class="form-inline">
-            <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#album-modal">新增</button>
+            <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#album-add-modal">新增</button>
         </div>
         <div id="album-box-area">
             <div id="album-box">
-                <div class="col-sm-3">
-                    <div class="album-card card hoverable">
-                        <a href="#"  class="album-detail" data-id="1">
-                            <div class="album-card-image card-image">
-                                <img src="img/image.png">
-                            </div>
-                        </a>
-                        <div class="card-content">
-                            <div class="album-card-header card-header">某某某相册</div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <span class="both-5 gray"><i class="fa fa-clone"></i>66</span>
-                        <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-10"><i class="fa fa-trash"></i></span></a>
-                        <a href="#" data-toggle="modal" class="album-delete" data-target="#album-modal"><span class="pull-right both-5"><i class="fa fa-pencil"></i></span></a>
-                        <!--<span class="pull-right">2016-01-01</span>-->
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="album-card card hoverable">
-                        <a href="#"  class="album-detail" data-id="1">
-                            <div class="album-card-image card-image">
-                                <img src="img/image.png">
-                            </div>
-                        </a>
-                        <div class="card-content">
-                            <div class="album-card-header card-header">某某某相册</div>
-                        </div>
-                        <div class="card-extra card-content">
-                            <span><i class="fa fa-clone"></i>66</span>
-                            <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-5"><i class="fa fa-trash"></i></span></a>
-                            <a href="#" data-toggle="modal" class="album-delete" data-target="#album-modal"><span class="pull-right both-5"><i class="fa fa-pencil"></i></span></a>
-                            <!--<span class="pull-right">2016-01-01</span>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="album-card card hoverable">
-                        <a href="#"  class="album-detail" data-id="1">
-                            <div class="album-card-image card-image">
-                                <img src="img/image.png">
-                            </div>
-                        </a>
-                        <div class="card-content">
-                            <div class="album-card-header card-header">某某某相册</div>
-                        </div>
-                        <div class="card-extra card-content">
-                            <span><i class="fa fa-clone"></i>66</span>
-                            <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-5"><i class="fa fa-trash"></i></span></a>
-                            <a href="#" data-toggle="modal" class="album-delete" data-target="#album-modal"><span class="pull-right both-5"><i class="fa fa-pencil"></i></span></a>
-                            <!--<span class="pull-right">2016-01-01</span>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="album-card card hoverable">
-                        <a href="#"  class="album-detail" data-id="1">
-                            <div class="album-card-image card-image">
-                                <img src="img/image.png">
-                            </div>
-                        </a>
-                        <div class="card-content">
-                            <div class="album-card-header card-header">某某某相册</div>
-                        </div>
-                        <div class="card-extra card-content">
-                            <span><i class="fa fa-clone"></i>66</span>
-                            <a href="#" data-toggle="modal" class="album-edit" data-target="#album-delete-modal"><span class="pull-right both-5"><i class="fa fa-trash"></i></span></a>
-                            <a href="#" data-toggle="modal" class="album-delete" data-target="#album-modal"><span class="pull-right both-5"><i class="fa fa-pencil"></i></span></a>
-                            <!--<span class="pull-right">2016-01-01</span>-->
-                        </div>
-                    </div>
-                </div>
-
-        </div>
+        	</div>
             <div id="album-box-pagination">
                 <ul class="pagination">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
-<div id="album-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="album-add-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="form" role="form">
+        
                 <div class="modal-header center">
-                    <h4 class="modal-title"></h4>
+                    <h4 class="modal-title">新增相册</h4>
                 </div>
                 <div class="modal-body both-25">
 
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon">文件名</span>
-                            <input id="folderName" name="folderName" type="text" class="form-control" placeholder="相册名称">
+                            <span class="input-group-addon">画册名称：</span>
+                            <input id="addName" name="addName" type="text" class="form-control" placeholder="相册名称">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon">文件夹</span>
-                            <select id="folderBelong" name="folderBelong" class="form-control">
-                                <option value="1">文件夹1</option>
-                                <option value="2">文件夹2</option>
+                            <span class="input-group-addon">可见范围：</span>
+                            <select id="addBelong" name="addBelong" class="form-control">
+                                <option value="1">所有人可见</option>
+                                <option value="2">秘书处可见</option>
                             </select>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button id="submit" type="submit" class="btn button button-primary button-rounded"  disabled="disabled" data-dismiss="modal">保存</button>
+                    <button id="addSubmit" type="button" class="btn button button-primary button-rounded" >保存</button>
                     <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
                 </div>
-            </form>
+      
+        </div>
+    </div>
+</div>
+<div id="album-edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+         
+                <div class="modal-header center">
+                    <h4 class="modal-title">修改相册</h4>
+                </div>
+                <div class="modal-body both-25">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">画册名称：</span>
+                            <input id="editName" name="editName" type="text" class="form-control" placeholder="相册名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">可见范围：</span>
+                            <select id="editBelong" name="editBelong" class="form-control">
+                                <option value="1">所有人可见</option>
+                                <option value="2">秘书处可见</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="editSubmit" type="button" class="btn button button-primary button-rounded"  >保存</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                </div>
+        
         </div>
     </div>
 </div>
@@ -135,11 +89,11 @@
             </div>
             <div class="modal-body both-25">
                 <div class="form-group center">
-                    你确定删除改画册？
+                    你确定删除该画册？
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn button button-primary button-rounded">确定</button>
+                <button id="delete" type="submit" class="btn button button-primary button-rounded">确定</button>
                 <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
             </div>
 

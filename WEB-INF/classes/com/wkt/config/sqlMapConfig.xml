@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+<configuration> 
+	<mappers>
+		<mapper resource="com/wkt/mapper/user/UserMapper.xml"/>
+		<mapper resource="com/wkt/mapper/login/LoginMapper.xml"/><!-- 登录 -->
+		<mapper resource="com/wkt/mapper/menu/MenuMapper.xml"/><!-- 菜单 -->
+		<mapper resource="com/wkt/mapper/commercial/CommercialMapper.xml"/><!-- 工商联 -->
+		<mapper resource="com/wkt/mapper/member/MemberMapper.xml"/><!-- 会员 -->
+		<mapper resource="com/wkt/mapper/question/QuestionFeedbackMapper.xml"/><!-- 问题反馈 -->
+		<mapper resource="com/wkt/mapper/incomeExpenses/IncomeExpensesMapper.xml"/><!-- 收支 -->
+		<mapper resource="com/wkt/mapper/filemanage/FileManageMapper.xml"/><!-- 文件管理 -->
+		<mapper resource="com/wkt/mapper/log/LogMapper.xml"/><!-- 会员日志 -->
+		<mapper resource="com/wkt/mapper/sms/SmsMapper.xml"/><!-- 短信 -->
+		<mapper resource="com/wkt/mapper/inform/InformationMapper.xml"/><!-- 资讯 -->
+		<mapper resource="com/wkt/mapper/todo/TodoMapper.xml"/><!-- 待办事项 -->
+		<mapper resource="com/wkt/mapper/notice/NoticeMapper.xml"/><!-- 通知通告 -->
+		<mapper resource="com/wkt/mapper/supply/SupplyMapper.xml"/><!-- 供需 -->
+		<mapper resource="com/wkt/mapper/signdraw/SigndrawActivityMapper.xml"/><!-- 签到抽奖 -->
+		<mapper resource="com/wkt/mapper/focus/FocusMapper.xml"/><!-- 焦点位 -->
+		<mapper resource="com/wkt/mapper/photos/PhotosMapper.xml"/><!-- 画册 -->
+	</mappers>    
+</configuration>
+    

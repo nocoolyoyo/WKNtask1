@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.signdraw.ISigndrawActivityDao">
+
+		<!-- 分页查询活动列表 -->
+		<select id="queryActivityList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(AID, '') AS AID,
+					IFNULL(ATITLE, '') AS ATITLE,
+					IFNULL(ACREATETIME, '') AS ACREATETIME,
+					IFNULL(ACONTENT, '') AS ACONTENT,
+					IFNULL(SHID, '') AS SHID,
+					IFNULL(ASTARTTIME, '') AS ASTARTTIME,
+					IFNULL(AURL, '') AS AURL,
+					IFNULL(AOPTINTCONTENT, '') AS AOPTINTCONTENT
+				FROM
+					PRE_AL_COMMON_ACTIVITY
+				WHERE
+					SHID = #{SHID}
+				<if test="search!=null and search!='' ">
+					AND ATITLE like '%${search}%'
+				</if>
+				ORDER BY ACREATETIME DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 获取总数 -->
+		<select id="queryActivityPageCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_AL_COMMON_ACTIVITY
+				WHERE
+					SHID = #{SHID}
+				<if test="search!=null and search!='' ">
+					AND ATITLE like '%${search}%'
+				</if>
+		</select>
+		<!-- 新增活动 -->
+		<insert id="insertActivity" parameterType="java.util.HashMap">
+				INSERT INTO PRE_AL_COMMON_ACTIVITY (ATITLE,ACREATETIME,ACONTENT,SHID,ASTARTTIME,AOPTINTCONTENT)
+				VALUES(#{ATITLE},SYSDATE(),#{ACONTENT},#{SHID},#{ASTARTTIME},#{AOPTINTCONTENT})
+		</insert>
+		<!-- 查询新增的那个主键ID -->
+		<select id="findActivityId" resultType="Integer">
+				SELECT AID FROM PRE_AL_COMMON_ACTIVITY ORDER BY AID DESC LIMIT 1
+		</select>
+		<!-- 根据主键ID修改url -->
+		<update id="updateUrlById" parameterType="java.util.HashMap">
+				UPDATE PRE_AL_COMMON_ACTIVITY SET AURL = #{URL} WHERE AID = #{AID}
+		</update>
+		<!-- 删除活动 -->
+		<delete id="deleteActivity" parameterType="java.util.HashMap">
+				DELETE FROM PRE_AL_COMMON_ACTIVITY WHERE AID = #{AID}
+		</delete>
+			<!-- 删除活动参与人员 -->
+		<delete id="deleteActivityUser" parameterType="java.util.HashMap">
+				DELETE FROM PRE_AL_COMMON_ACTIVITY_USER WHERE AID = #{AID}
+		</delete>
+			<!-- 删除活动奖项 -->
+		<delete id="deleteAward" parameterType="java.util.HashMap">
+				DELETE FROM PRE_AL_COMMON_AWARD WHERE AID = #{AID}
+		</delete>
+		<!-- 获奖名单 -->
+		<select id="querywinning" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					USID,
+					REALNAME,
+					MOBILE,
+					POSITION,
+					COMPANY,
+					AWNAME,
+					JOINTIME,
+					ISTEMP
+				FROM
+					(
+						SELECT
+							pam.usid,
+							pam.realname,
+							pam.mobile,
+							pam.POSITION,
+							pam.COMPANY,
+							paca.AWNAME,
+							pacau.JOINTIME,
+							pacau.ISTEMP
+						FROM
+							PRE_AL_MEMBER pam
+						JOIN PRE_AL_COMMON_ACTIVITY_USER pacau,
+						PRE_AL_COMMON_AWARD paca
+					WHERE
+						pacau.AID = #{AID}
+					AND pacau.ISTEMP = 0
+					AND pam.USID = pacau.USID
+					AND paca.AWID = pacau.AWID
+					<if test="search!=null and search!='' ">
+						AND pam.REALNAME like '%${search}%'
+					</if>
+					AND pacau. STATUS = 1
+					UNION ALL
+						SELECT
+							pact.USID,
+							pact.USERNAME,
+							'',
+							'',
+							'',
+							paca.AWNAME,
+							pacau.JOINTIME,
+							pacau.ISTEMP
+						FROM
+							PRE_AL_COMMON_TEMPUSER pact
+						JOIN PRE_AL_COMMON_ACTIVITY_USER pacau,
+						PRE_AL_COMMON_AWARD paca
+					WHERE
+						pacau.AID =  #{AID}
+					AND pacau.ISTEMP = 1
+					AND pact.USID = pacau.USID
+					AND paca.AWID = pacau.AWID
+					AND pacau. STATUS = 1
+					) temp
+				ORDER BY
+					JOINTIME DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 获奖名单总数 -->
+		<select id="querywinningPageCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					(
+						SELECT
+							pam.usid,
+							pam.realname,
+							pam.mobile,
+							pam.POSITION,
+							pam.COMPANY,
+							paca.AWNAME,
+							pacau.JOINTIME,
+							pacau.ISTEMP
+						FROM
+							PRE_AL_MEMBER pam
+						JOIN PRE_AL_COMMON_ACTIVITY_USER pacau,
+						PRE_AL_COMMON_AWARD paca
+					WHERE
+						pacau.AID = #{AID}
+					AND pacau.ISTEMP = 0
+					AND pam.USID = pacau.USID
+					AND paca.AWID = pacau.AWID
+					<if test="search!=null and search!='' ">
+						AND pam.REALNAME like '%${search}%'
+					</if>
+					AND pacau. STATUS = 1
+					UNION ALL
+						SELECT
+							pact.USID,
+							pact.USERNAME,
+							'',
+							'',
+							'',
+							paca.AWNAME,
+							pacau.JOINTIME,
+							pacau.ISTEMP
+						FROM
+							PRE_AL_COMMON_TEMPUSER pact
+						JOIN PRE_AL_COMMON_ACTIVITY_USER pacau,
+						PRE_AL_COMMON_AWARD paca
+					WHERE
+						pacau.AID =  #{AID}
+					AND pacau.ISTEMP = 1
+					AND pact.USID = pacau.USID
+					AND paca.AWID = pacau.AWID
+					AND pacau. STATUS = 1
+					) temp
+				ORDER BY
+					JOINTIME DESC
+		</select>
+		<!-- 参与名单 -->
+		<select id="queryparticipate" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					USID,
+					REALNAME,
+					MOBILE,
+					POSITION,
+					COMPANY,
+					JOINTIME,
+					ISTEMP,
+					CASE TYPE
+					WHEN 1 THEN
+						'扫码签到'
+					WHEN 2 THEN
+						'EXCEL导入'
+					WHEN 3 THEN
+						'人工录入'
+					ELSE
+						'人工签到'
+					END TYPE
+				FROM
+					(
+						SELECT
+							pam.usid,
+							pam.realname,
+							pam.mobile,
+							pam.POSITION,
+							pam.COMPANY,
+							pacau.JOINTIME,
+							pacau.ISTEMP,
+							pacau.TYPE
+						FROM
+							PRE_AL_MEMBER pam
+						JOIN PRE_AL_COMMON_ACTIVITY_USER pacau
+						WHERE
+							pacau.AID = #{AID}
+						AND pacau.ISTEMP = 0
+						AND pam.USID = pacau.USID
+						<if test="search!=null and search!='' ">
+							AND pam.REALNAME like '%${search}%'
+						</if>
+						UNION ALL
+							SELECT
+								pact.USID,
+								pact.USERNAME,
+								pact.MOBILE,
+								pact.POSITION,
+								pact.COMPANY,
+								pacau.JOINTIME,
+								pacau.ISTEMP,
+								pacau.TYPE
+							FROM
+								PRE_AL_COMMON_TEMPUSER pact
+							JOIN PRE_AL_COMMON_ACTIVITY_USER pacau
+							WHERE
+								pacau.AID = #{AID}
+							<if test="search!=null and search!='' ">
+								AND pact.USERNAME like '%${search}%'
+							</if>
+							AND pacau.ISTEMP = 1
+							AND pact.USID = pacau.USID
+					) temp
+				ORDER BY
+					JOINTIME DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 参与名单总数 -->
+		<select id="queryparticipatePageCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					(
+						SELECT
+							pam.usid,
+							pam.realname,
+							pam.mobile,
+							pam.POSITION,
+							pam.COMPANY,
+							pacau.JOINTIME,
+							pacau.ISTEMP
+						FROM
+							PRE_AL_MEMBER pam
+						JOIN PRE_AL_COMMON_ACTIVITY_USER pacau
+						WHERE
+							pacau.AID = #{AID}
+						AND pacau.ISTEMP = 0
+						AND pam.USID = pacau.USID
+						<if test="search!=null and search!='' ">
+							AND pam.REALNAME like '%${search}%'
+						</if>
+						UNION ALL
+							SELECT
+								pact.USID,
+								pact.USERNAME,
+								'',
+								'',
+								'',
+								pacau.JOINTIME,
+								pacau.ISTEMP
+							FROM
+								PRE_AL_COMMON_TEMPUSER pact
+							JOIN PRE_AL_COMMON_ACTIVITY_USER pacau
+							WHERE
+								pacau.AID = #{AID}
+							AND pacau.ISTEMP = 1
+							AND pact.USID = pacau.USID
+					) temp
+				ORDER BY
+					JOINTIME DESC
+		</select>
+		<!-- 添加临时用户 -->
+		<insert id="insertTempUser" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="id"> 
+				INSERT INTO PRE_AL_COMMON_TEMPUSER(USERNAME,MOBILE,POSITION,COMPANY,AID) VALUES(#{USERNAME},#{MOBILE},#{POSITION},#{COMPANY},${AID})
+				
+				<selectKey resultType="int" order="AFTER" keyProperty="id">
+					 SELECT MAX(USID) AS id from PRE_AL_COMMON_TEMPUSER
+				</selectKey>
+		</insert>
+		<!-- 添加记录到活动用户表中 -->
+		<insert id="insertActivityUser" parameterType="java.util.HashMap">
+				INSERT INTO PRE_AL_COMMON_ACTIVITY_USER (
+						AID,
+						USID,
+						STATUS,
+						ISTEMP,
+						JOINTIME,
+						TYPE)
+					VALUES
+						(#{AID},#{USID},0,1,SYSDATE(),${TYPE})
+		</insert>
+		<!-- 删除临时用户 -->
+		<delete id="deleteTempUser" parameterType="java.util.HashMap">
+				DELETE FROM PRE_AL_COMMON_TEMPUSER WHERE USID = #{USID}
+		</delete>
+		<!-- 删除活动用户 -->
+		<delete id="deleteActivityUserByUserId" parameterType="java.util.HashMap">
+				DELETE FROM PRE_AL_COMMON_ACTIVITY_USER WHERE ISTEMP = 1 AND USID = #{USID}
+		</delete>
+		<!-- 删除活动用户 -->
+		<delete id="deleteActivityUserTByUserId" parameterType="java.util.HashMap">
+				DELETE FROM PRE_AL_COMMON_ACTIVITY_USER WHERE ISTEMP = 0 AND USID = #{USID} AND TYPE = 4
+		</delete>
+		<!-- 获取活动详情 -->
+		<select id="findactivitytitleByaid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(AID, '') AS AID,
+					IFNULL(ATITLE, '') AS ATITLE,
+					IFNULL(ACREATETIME, '') AS ACREATETIME,
+					IFNULL(ACONTENT, '') AS ACONTENT,
+					IFNULL(SHID, '') AS SHID,
+					IFNULL(ASTARTTIME, '') AS ASTARTTIME,
+					IFNULL(AURL, '') AS AURL,
+					IFNULL(AOPTINTCONTENT, '') AS AOPTINTCONTENT
+				FROM
+					PRE_AL_COMMON_ACTIVITY
+				WHERE
+					AID = #{AID}
+		</select>
+		<!-- 查询获奖用户 -->
+		<select id="findUserByAid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					pam.usid,
+					pam.realname,
+					pam.YUANTU_IMAGE,
+					pacau.ISTEMP,
+					paca.AWNAME
+				FROM
+					PRE_AL_MEMBER pam
+				JOIN PRE_AL_COMMON_AWARD paca,
+				 PRE_AL_COMMON_ACTIVITY_USER pacau 
+				WHERE
+					pam.USID = pacau.USID
+				AND paca.AWID = pacau.AWID
+				AND pacau.AID = #{AID}
+				AND pacau.ISTEMP = 0
+				AND pacau. STATUS = #{TYPE}
+				UNION ALL
+					SELECT
+						pam.usid,
+						pam.username,
+						'',
+						pacau.ISTEMP,
+						paca.AWNAME
+					FROM
+						PRE_AL_COMMON_TEMPUSER pam
+					JOIN PRE_AL_COMMON_AWARD paca,
+					PRE_AL_COMMON_ACTIVITY_USER pacau 
+				WHERE
+					pam.USID = pacau.USID
+				AND paca.AWID = pacau.AWID
+				AND pacau.AID = #{AID}
+				AND pacau.ISTEMP = 1
+				AND pacau. STATUS = #{TYPE}
+		</select>
+		<!-- 查询没获奖用户 -->
+		<select id="findUserWinningByAid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					pam.usid,
+					pam.realname,
+					pam.YUANTU_IMAGE,
+					pacau.ISTEMP
+				FROM
+					PRE_AL_MEMBER pam
+				JOIN PRE_AL_COMMON_ACTIVITY_USER pacau 
+				WHERE
+					pam.USID = pacau.USID
+				AND pacau.AID = #{AID}
+				AND pacau.ISTEMP = 0
+				AND pacau. STATUS = #{TYPE}
+				UNION ALL
+					 SELECT
+						pam.usid,
+						pam.username,
+						'',
+						pacau.ISTEMP
+					FROM
+						PRE_AL_COMMON_TEMPUSER pam
+					JOIN PRE_AL_COMMON_ACTIVITY_USER pacau 
+					WHERE
+						pam.USID = pacau.USID
+					AND pacau.AID = #{AID}
+					AND pacau.ISTEMP = 1
+					AND pacau. STATUS =  #{TYPE}
+		</select>
+		
+		<!-- 获取活动二维码 -->
+		<select id="findQrCode" parameterType="java.util.HashMap" resultType="String">
+				SELECT
+					AURL
+				FROM
+					PRE_AL_COMMON_ACTIVITY
+				WHERE
+					AID = #{AID}
+		</select>
+		<!-- 获取活动用户 -->
+		<select id="findactivityuserByaid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					USID,
+					REALNAME,
+					YUANTU_IMAGE
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					USID IN (
+						SELECT
+							USID
+						FROM
+							PRE_AL_COMMON_ACTIVITY_USER
+						WHERE
+							AID = #{AID}
+						AND ISTEMP = 0
+					)
+				UNION ALL
+					SELECT
+						USID,
+						USERNAME,
+						'' AS YUANTU_IMAGE
+					FROM
+						PRE_AL_COMMON_TEMPUSER
+					WHERE
+						USID IN (
+							SELECT
+								USID
+							FROM
+								PRE_AL_COMMON_ACTIVITY_USER
+							WHERE
+								AID = #{AID}
+							AND ISTEMP = 1
+						)
+		</select>
+		<!-- 点击抽奖，新增活动奖项 -->
+		<insert id="insertAward" parameterType="java.util.HashMap">
+				INSERT INTO PRE_AL_COMMON_AWARD(AWNAME,AWNUMBER,AID) VALUES(#{AWNAME},#{AWNUMBER},#{AID})
+		</insert>
+		<!-- 获取活动奖项ID -->
+		<select id="queryAwardId" resultType="Integer">
+				SELECT AWID FROM PRE_AL_COMMON_AWARD ORDER BY AWID DESC LIMIT 1
+		</select>
+		<!-- 点击抽奖，新增获奖用户 -->
+		<update id="insertWinningUser" parameterType="java.util.HashMap">
+				UPDATE 
+					PRE_AL_COMMON_ACTIVITY_USER
+				SET AWID = #{AWID},
+					 	STATUS = 1
+				WHERE
+						USID = #{USID}
+				AND AID = #{AID}
+		</update>
+		<!-- 获取获奖用户信息 -->
+		<select id="findUserById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					TELTYPE,
+					REGISTRATIONID
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					USID = #{USID}
+		</select>
+		<!-- 获取奖项信息 -->
+		<select id="queryAwardByAwid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					AWID,
+					AWNAME,
+					AWNUMBER,
+					AID
+				FROM
+					PRE_AL_COMMON_AWARD
+				WHERE
+					AWID =#{AWID}
+		</select>
+		<!-- 新增推送消息 -->
+		<select id="insertPush" parameterType="java.util.HashMap">
+				INSERT INTO PRE_YY_TUISONG (
+					TSTILE,
+					TSCONTENT,
+					TSTIME,
+					TSAUTHER,
+					TSSTATUS
+				)
+				VALUES (#{TSTILE},#{TSCONTENT},SYSDATE(),#{SHID},1)
+		</select>
+		<!-- 获取推送ID -->
+		<select id="findPush" resultType="Integer">
+				SELECT TSID FROM PRE_YY_TUISONG ORDER BY TSID DESC LIMIT 1
+		</select>
+		<!-- 查询用户是否已参加 -->
+		<select id="findTempUser" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					*
+				FROM
+					(
+						SELECT
+							MOBILE
+						FROM
+							PRE_AL_MEMBER
+						WHERE
+							USID IN (
+								SELECT
+									USID
+								FROM
+									PRE_AL_COMMON_ACTIVITY_USER
+								WHERE
+									AID = ${AID}
+								AND ISTEMP = 0
+							)
+						UNION ALL
+							SELECT
+								MOBILE
+							FROM
+								PRE_AL_COMMON_TEMPUSER
+							WHERE
+								USID IN (
+									SELECT
+										USID
+									FROM
+										PRE_AL_COMMON_ACTIVITY_USER
+									WHERE
+										AID = ${AID}
+									AND ISTEMP = 1
+								)
+					) TAB
+				WHERE
+					TAB.MOBILE = #{MOBILE}
+				limit 1
+		</select>
+		<!-- 查询是否商会人员-->
+		<select id="findMobileIsShanghui" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					*
+				FROM
+					PRE_AL_MEMBER T,
+					PRE_AL_SHMEMBER P
+				WHERE
+					T.USERNAME = P.USERNAME
+				AND T.MOBILE = #{MOBILE}
+				AND P.SHANGHUIID = ${SHANGHUIID}
+		</select>
+		<!-- 查询会员是否已扫描-->
+		<select id="findActivityUserByUsid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					*
+				FROM
+					PRE_AL_COMMON_ACTIVITY_USER
+				WHERE
+					USID = ${USID}
+				AND ISTEMP = 0 
+				AND AID = ${AID}
+		</select>
+		<!-- 会员签到 -->
+		<insert id="insertActivityTuser" parameterType="java.util.HashMap">
+				INSERT INTO PRE_AL_COMMON_ACTIVITY_USER (
+						AID,
+						USID,
+						STATUS,
+						ISTEMP,
+						JOINTIME,
+						TYPE)
+					VALUES
+						(#{AID},#{USID},0,0,SYSDATE(),${TYPE})
+		</insert>
+		<!-- 查询会员是否已扫描-->
+		<select id="findMember" parameterType="String" resultType="java.util.HashMap">
+				SELECT
+					USID,
+					REALNAME USERNAME,
+					MOBILE,
+					COMPANY,
+					POSITION
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					USID IN (${_parameter})
+		</select>
+</mapper>

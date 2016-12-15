@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.log.ILogDao">
+	
+	<!-- 增加操作数据 -->
+	<insert id="add" parameterType="java.util.HashMap">
+			INSERT INTO PRE_COMMON_OPERATION_LOG (METHOD,DESCRIBECONTENT,OPERATOR,IP,OPERATORTIME,SHID,SID,SESSIONID)VALUES(#{METHOD},#{DESCRIBECONTENT},#{OPERATOR},#{IP},SYSDATE(),#{SHID},#{SID},#{SESSIONID})
+	</insert>
+	<!-- 分页查询 -->
+	<select id="findPagerLog" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+			SELECT
+				IFNULL(ID, '')  ID,
+				IFNULL(METHOD, '')  METHOD,
+				IFNULL(DESCRIBECONTENT,'')  DESCRIBECONTENT,
+				IFNULL(OPERATOR, '')  OPERATOR,
+				IFNULL(IP, '')  IP,
+				IFNULL(OPERATORTIME, '')  OPERATORTIME
+			FROM
+				PRE_COMMON_OPERATION_LOG
+			WHERE 
+				STATE = 0
+				AND SHID = #{SHID}
+			<if test="NAME!=NULL and NAME!=''">
+					AND DESCRIBECONTENT like '%${NAME}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(OPERATORTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(OPERATORTIME, '%Y-%m-%d') 
+				</if>
+				ORDER BY OPERATORTIME DESC
+			<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+			</if>
+	</select>
+	<!-- 查询日志数量 -->
+	<select id="findLogByPageCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT 
+			COUNT(*)
+		FROM 
+			PRE_COMMON_OPERATION_LOG
+			WHERE 
+				STATE = 0
+				AND SHID = #{SHID}
+				<if test="NAME!=NULL and NAME!=''">
+					AND DESCRIBECONTENT like '%${NAME}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(OPERATORTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(OPERATORTIME, '%Y-%m-%d') 
+				</if>
+	</select>
+	<!-- 删除单条或多条日志 -->
+	<update id="deleteOrAllLog" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_OPERATION_LOG SET STATE = 1 WHERE ID = #{LOGID}
+	</update>
+	
+	<!-- 查询会员修改信息总数 -->
+	<select id="findPagerUserLogCount" parameterType="java.util.HashMap" resultType="Integer">
+			SELECT
+				COUNT(*)
+			FROM
+				PRE_COMMON_LOG L
+			WHERE
+				L.SHID = #{SHID}
+				<if test="NAME!=NULL and NAME!=''">
+					AND L.USERNAME IN (SELECT USERNAME from PRE_AL_MEMBER where REALNAME LIKE  '%${NAME}%')
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(L.UPDATETIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(L.UPDATETIME, '%Y-%m-%d') 
+				</if>
+	</select>
+	<!-- 查询会员修改信息列表 -->
+	<select id="findPagerUserLog" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+			SELECT
+				IFNULL(L.LOGID, '') AS LOGID,
+				IFNULL(L.UPDATETIME, '') AS UPDATETIME,
+				IFNULL(L.NOTE, '') AS NOTE,
+				IFNULL((SELECT REALNAME FROM PRE_AL_MEMBER WHERE L.USERNAME = USERNAME), '') AS USERNAME,
+				IFNULL(L.SHID, '') AS SHID,
+				IFNULL(L.ISREAD, '') AS ISREAD
+			FROM
+				PRE_COMMON_LOG L
+			WHERE
+				L.SHID = #{SHID}
+			<if test="NAME!=NULL and NAME!=''">
+					AND L.USERNAME IN (SELECT USERNAME from PRE_AL_MEMBER where REALNAME LIKE  '%${NAME}%')
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(L.UPDATETIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(L.UPDATETIME, '%Y-%m-%d') 
+				</if>
+				ORDER BY L.LOGID DESC
+			<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+			</if>	
+	</select>
+	<!-- 删除单条或多条日志 -->
+	<update id="deleteUserLog" parameterType="java.util.HashMap">
+		DELETE FROM PRE_COMMON_LOG  WHERE LOGID = #{LOGID}
+	</update>
+</mapper>

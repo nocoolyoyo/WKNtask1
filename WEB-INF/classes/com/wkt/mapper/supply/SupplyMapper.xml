@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.supply.ISupplyDao">
+	
+	<select id="findByPropertyPageCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			(SELECT
+				T.SUPPLYID,
+				T.EXAMINESTATUS,
+				CASE T.EXAMINESTATUS
+				WHEN 0 THEN
+					'待审核'
+				WHEN 1 THEN
+					'审核通过'
+				ELSE
+					'审核不通过'
+				END EXAMINESTATUSNAME,
+				T.TITLE,
+				(
+					SELECT
+						REALNAME
+					FROM
+						PRE_AL_MEMBER
+					WHERE
+						USERNAME = T.USERNAME
+				) REALNAME,
+				DATE_FORMAT(T.RELEASETIME, '%Y-%m-%d %H:%i:%s') RELEASETIME,
+	 			DATE_FORMAT(T.VALIDENDTIME, '%Y-%m-%d') VALIDENDTIME,
+				T.SUPPLYTYPE,
+				T.VALIDSTATUS,
+				CASE T.SUPPLYTYPE
+				WHEN 0 THEN
+					'供应'
+				WHEN 1 THEN
+					'需求'
+				END SUPPLYTYPENAME,
+				 CASE T.VALIDSTATUS
+				WHEN 0 THEN
+					'未过期'
+				WHEN 1 THEN
+					'已过期'
+				END VALIDSTATUSNAME
+			FROM
+				PRE_COMMON_SUPPLY T
+			WHERE
+				BELONGCOMMERCEID = ${SHANGHUIID}
+			<if test="VALIDSTARTTIME != null and VALIDSTARTTIME != ''">
+				AND DATE_FORMAT(
+					T.RELEASETIME,
+					'%Y-%m-%d'
+				) >= #{VALIDSTARTTIME}
+			</if>
+			<if test="VALIDENDTIME != null and VALIDENDTIME != ''">
+				<![CDATA[AND DATE_FORMAT(T.RELEASETIME, '%Y-%m-%d') <= #{VALIDENDTIME}]]>
+			</if>
+			<if test="TITLE != null and TITLE != ''">
+				AND TITLE LIKE '%${TITLE}%'
+			</if>
+			<if test="EXAMINESTATUS != null and EXAMINESTATUS != ''">
+				AND EXAMINESTATUS = ${EXAMINESTATUS}
+			</if>
+			<if test="SUPPLYTYPE != null and SUPPLYTYPE != ''">
+				AND SUPPLYTYPE = ${SUPPLYTYPE}
+			</if>
+			<if test="VALIDSTATUS != null and VALIDSTATUS != ''">
+				AND VALIDSTATUS = ${VALIDSTATUS}
+			</if>
+		) TAB
+		WHERE 1=1
+		<if test="search != null and search != ''">
+			AND (TAB.TITLE LIKE '%${search}%'
+				OR TAB.REALNAME LIKE '%${search}%'
+				OR TAB.EXAMINESTATUSNAME = #{search}
+				OR TAB.SUPPLYTYPENAME = #{search}
+				OR TAB.VALIDSTATUSNAME = #{search})
+		</if>
+		
+	</select>
+	<select id="findByPropertyPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT TAB.* FROM(
+			SELECT
+				T.SUPPLYID,
+				T.EXAMINESTATUS,
+				CASE T.EXAMINESTATUS
+				WHEN 0 THEN
+					'待审核'
+				WHEN 1 THEN
+					'审核通过'
+				ELSE
+					'审核不通过'
+				END EXAMINESTATUSNAME,
+				T.TITLE,
+				(
+					SELECT
+						REALNAME
+					FROM
+						PRE_AL_MEMBER
+					WHERE
+						USERNAME = T.USERNAME
+				) REALNAME,
+				DATE_FORMAT(T.RELEASETIME, '%Y-%m-%d %H:%i:%s') RELEASETIME,
+	 			DATE_FORMAT(T.VALIDENDTIME, '%Y-%m-%d') VALIDENDTIME,
+				T.SUPPLYTYPE,
+				T.VALIDSTATUS,
+				CASE T.SUPPLYTYPE
+				WHEN 0 THEN
+					'供应'
+				WHEN 1 THEN
+					'需求'
+				END SUPPLYTYPENAME,
+				 CASE T.VALIDSTATUS
+				WHEN 0 THEN
+					'未过期'
+				WHEN 1 THEN
+					'已过期'
+				END VALIDSTATUSNAME
+			FROM
+				PRE_COMMON_SUPPLY T
+			WHERE
+				BELONGCOMMERCEID = ${SHANGHUIID}
+			<if test="VALIDSTARTTIME != null and VALIDSTARTTIME != ''">
+				AND DATE_FORMAT(
+					T.RELEASETIME,
+					'%Y-%m-%d'
+				) >= #{VALIDSTARTTIME}
+			</if>
+			<if test="VALIDENDTIME != null and VALIDENDTIME != ''">
+				<![CDATA[AND DATE_FORMAT(T.RELEASETIME, '%Y-%m-%d') <= #{VALIDENDTIME}]]>
+			</if>
+			<if test="TITLE != null and TITLE != ''">
+				AND TITLE LIKE '%${TITLE}%'
+			</if>
+			<if test="EXAMINESTATUS != null and EXAMINESTATUS != ''">
+				AND EXAMINESTATUS = ${EXAMINESTATUS}
+			</if>
+			<if test="SUPPLYTYPE != null and SUPPLYTYPE != ''">
+				AND SUPPLYTYPE = ${SUPPLYTYPE}
+			</if>
+			<if test="VALIDSTATUS != null and VALIDSTATUS != ''">
+				AND VALIDSTATUS = ${VALIDSTATUS}
+			</if>
+		) TAB
+		WHERE 1=1
+		<if test="search != null and search != ''">
+			AND (TAB.TITLE LIKE '%${search}%'
+				OR TAB.REALNAME LIKE '%${search}%'
+				OR TAB.EXAMINESTATUSNAME = #{search}
+				OR TAB.SUPPLYTYPENAME = #{search}
+				OR TAB.VALIDSTATUSNAME = #{search})
+		</if>
+		ORDER BY
+			RELEASETIME DESC
+		<if test="x != null and x != '' and y!= null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<delete id="deleteSupply" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_SUPPLY
+		WHERE
+			SUPPLYID IN (${SUPPLYID})
+	</delete>
+	<select id="getSupplyBySId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.SUPPLYID,
+			T.EXAMINESTATUS,
+			T.TITLE,
+			T.SUPPLYNOTE,
+			(
+				SELECT
+					REALNAME
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					USERNAME = T.USERNAME
+			) REALNAME,
+			DATE_FORMAT(T.RELEASETIME, '%Y-%m-%d %H:%i') RELEASETIME,
+			DATE_FORMAT(T.VALIDENDTIME, '%Y-%m-%d') VALIDENDTIME,
+			T.SUPPLYTYPE,
+			T.VALIDSTATUS,
+			T.IMAGEURL,
+			T.THUMBNAIL,
+			CASE T.SUPPLYTYPE
+			WHEN 0 THEN
+				'供应'
+			WHEN 1 THEN
+				'需求'
+			END SUPPLYTYPENAME,
+			 CASE T.VALIDSTATUS
+			WHEN 0 THEN
+				'未过期'
+			WHEN 1 THEN
+				'已过期'
+			END VALIDSTATUSNAME
+		FROM
+			PRE_COMMON_SUPPLY T
+		WHERE
+			SUPPLYID = ${SUPPLYID}
+	</select>
+	<select id="findFirstOrLast" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_SUPPLY
+		WHERE
+			BELONGCOMMERCEID = ${SHANGHUIID}
+		<if test="ACT == 'FRONT'">
+			AND SUPPLYID > ${SUPPLYID}
+			ORDER BY
+				RELEASETIME
+		</if>
+		<if test="ACT == 'BEHIND'">
+			<![CDATA[AND SUPPLYID < ${SUPPLYID}]]>
+			ORDER BY
+				RELEASETIME DESC
+		</if>
+		LIMIT 1
+	</select>
+	<update id="supplyUpdate" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_SUPPLY
+		SET EXAMINESTATUS = ${EXAMINESTATUS},
+			SCHEDULESTATUS = 1
+		WHERE
+			SUPPLYID = ${SUPPLYID}
+	</update>
+	<select id="supplyComment" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			SCID,
+			CONTENT,
+			DATE_FORMAT(COMMENTTIME, '%Y-%m-%d %H:%i:%s') COMMENTTIME,
+			CMEMBERNAME
+		FROM
+			PRE_COMMON_SUPPLYCOMMENT
+		WHERE
+			SUPPLYID = ${SUPPLYID}
+		AND STATE = 1
+		<if test="x != null and x != '' and y!= null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<update id="deleteSupplyComment" parameterType="java.util.HashMap">
+		UPDATE
+			PRE_COMMON_SUPPLYCOMMENT
+		SET STATE = 2
+		WHERE
+			SCID = ${SCID}
+	</update>
+</mapper>

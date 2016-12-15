@@ -1,0 +1,285 @@
+@CHARSET "UTF-8";
+
+a{
+	color: #337ab7;
+}
+
+a:*{
+	text-decoration: none;
+}
+
+.fullscreen{
+	position: fixed;
+	right: 1px;
+	height: 45px;
+    width: 45px;
+	background:url('../admin/image/1.png') no-repeat center top;
+	text-align: center;
+	margin: 10px;
+	font-family: '微软雅黑';
+	font-weight: bold;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.fullscreen.cancelfull{
+	background:url('../admin/image/2.png') no-repeat center top;
+}
+
+.htitle{
+	text-align: center;
+	margin-top: 2%;
+	padding-bottom: 10px;
+	font-family: '微软雅黑';
+	color: #000;
+}
+
+.lottery_setting_box{
+	width: 20%;
+	position: absolute;
+	bottom: 0px;
+}
+
+.lottery_lv{
+	position: absolute;
+    top: 15.3%;
+    left: 53%;
+    width: 31%;
+}
+
+.lottery_count{
+	position: absolute;
+    top: 44.5%;
+    left: 53%;
+    width: 31%;
+    height: 11%;
+}
+
+.lottery_timeout{
+	position: absolute;
+    top: 74.5%;
+    left: 53%;
+    width: 31%;
+    height: 11%;
+}
+
+.btn-up{
+	position: absolute;
+	border-left: 0.45rem solid transparent;
+	border-right: 0.45rem solid transparent;
+	border-bottom: 0.9rem solid #fff;
+    left: 76.5%;
+    cursor: pointer;
+}
+
+.btn-down{
+	position: absolute;
+	border-left: 0.45rem solid transparent;
+	border-right: 0.45rem solid transparent;
+	border-top: 0.9rem solid #fff;
+	left: 76.5%;
+	cursor: pointer;
+}
+
+.special_input{
+	
+	width: 100%;
+	height: 100%;
+	background: none;
+	border: 0;
+	padding-left: 10px;
+	font-family: '微软雅黑';
+	font-weight: bold;
+	font-size: 1.7rem;
+	color: #e98f00;
+}
+
+.unity{
+	position: absolute;
+	font-family: '微软雅黑';
+	font-weight: bold;
+	font-size: 1.7rem;
+	color: #e98f00;
+	left: 76%;
+	cursor: default;
+}
+
+.lottery_title{
+	position: absolute;
+	top: 16%;
+	left: 28%;
+	height: 10%;
+	width: 36.5%;
+	font-size: 2.5rem;
+	font-family: '微软雅黑';
+	text-align: center;
+	cursor: default;
+}
+
+.lottert_title_name{
+	padding: 0 1rem;
+	color: #E0382D;
+	min-width: 2rem;
+}
+
+.lottert_title_lv{
+	padding: 0 1rem;
+	color: #E0382D;
+	min-width: 3rem;
+}
+
+.lottery_members{
+	position: absolute;
+	top: 32%;
+	left: 32%;
+	width: 20%;
+	font-size: 1rem;
+	font-family: '微软雅黑';
+	color: #FFF;
+	text-align: center;
+	cursor: default;
+}
+
+.lottery_btn{
+	position: absolute;
+	width: 2.3%;
+	height: 29%;
+	bottom: 27%;
+	left: 60%;
+	border-radius: 5px;
+	font-size: 2.3rem;
+	font-family: '微软雅黑';
+	color: #FFF;
+	text-align: center;
+	cursor: pointer;
+}
+
+.lottery_btn:hover{
+	background: rgba(255, 255, 255, 0.13);
+}
+
+.lottery_member_box{
+	position: absolute;
+	width: 23%;
+	height: 90%;
+	top: 1%;
+	right: 3%;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.winner_menu_title{
+	position: absolute;
+	width: 100%;
+	height: 10%;
+	padding: 2.5% 0;
+	text-align: center;
+	font-size: 2rem;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.7);
+	border-bottom: 1px solid rgba(171, 46, 46, 0.5);
+}
+
+.winner_menu_body{
+	position: absolute;
+	top: 10%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	width: 100%;
+	height: 90%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.winner{
+	padding: 6px;
+	height: 20%;
+}
+
+.winner>img{
+	width:25%;
+	height: 100%;
+}
+
+.winner>span{
+	padding-left: 5%;
+	font-family: '微软雅黑';
+	font-size: 2.2rem;
+	color: rgba(0, 0, 0, 0.7);
+}
+
+.prizeImg{
+	height: 523px;
+	background: rgba(255,255,255,0.5);
+	padding: 15px;
+}
+
+.prizeImg>img{
+	height: 100%;
+	width: 100%;
+}
+
+.lottery-box{
+	background: rgba(255,255,255,0.5);
+	padding: 15px;
+}
+
+.lottery{
+	font-family: '微软雅黑';
+	border: 1px solid #C0C0C0;
+}
+
+.lottery-header{
+	padding-top: 65px;
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+}
+.lottert-header-additional{
+	text-align: center;
+}
+
+.lottery-body{
+	padding: 100px 0;
+	padding-bottom: 40px;
+}
+
+.roll-body{
+	height: 100%;
+    overflow: hidden;
+}
+
+.lottery-list{
+    list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.lottery-list-item>img{
+	width: 100%;
+	height: 100%;
+}
+
+.lottery-footer{
+	padding-bottom: 70px;
+	text-align: center;
+}
+
+.lottery-btn{
+	display: inline-block;
+	cursor: pointer;
+	line-height: 80px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	font-size: 30px;
+	border-style: solid;
+	border-width: 10px;
+	border-color: #F92323;
+	background-color: #F57F7F;
+}
+
+#foot{
+	margin-bottom: 0 !important;
+	height: initial !important;
+}

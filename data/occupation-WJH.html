@@ -1,27 +1,24 @@
-
-    <div id="sidebar-left" class="sidebar-container sidebar-push">
-        <div class="sidebar">
-            <div class="sidebar-wrap">
-                <ul id="occupation-menu">
-                    <li><a href="#">会员信息</a></li>
-                    <li><a href="#">职务管理</a></li>
-                    <li><a href="#">群聊管理</a></li>
-                    <li><a href="#">未激活</a></li>
-                    <li><a href="#">群管理</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="sidebar-overlay"></div>
-        <div id="content-area"  class="sidebar-dim">
-            <div class="content-area-box">
-                <div id="table-toolbar" class="form-inline">
-                    <div class="form-group">
-                        <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
-                        <button id="send" type="button" class="btn btn-success" style="display: none">通知选中</button>
-                        <button id="send-all" type="button" class="btn btn-success">通知全部</button>
-                    </div>
-                </div>
-                <table id="table"></table>
-            </div>
+<div id="sidebar-left" class="sidebar-container sidebar-push occupation-siderbar-push active">
+    <div class="sidebar occupation-siderbar">
+        <div class="sidebar-wrap">
+            <ul id="side-menu">
+                <li><a href="#">会员信息</a></li>
+                <li><a href="#">职务管理</a></li>
+                <li><a href="#">群聊管理</a></li>
+                <li><a href="#">未激活</a></li>
+                <li><a href="#">群管理</a></li>
+            </ul>
         </div>
     </div>
+     <!-- <div class="sidebar-overlay"></div>-->
+    <div id="content-area" class="sidebar-dim inner">
+    	<div class="content-area-box inner">
+             <div id="table-toolbar" class="form-inline">
+                 <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
+                 <button id="send" type="button" class="btn btn-success" style="display: none">通知选中</button>
+                 <button id="send-all" type="button" class="btn btn-success">通知全部</button>
+             </div>
+             <table id="table"></table>
+        </div>
+    </div>
+</div>

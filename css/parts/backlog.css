@@ -13,7 +13,7 @@
 }
 #backlog {
     margin: auto;
-    overflow: auto;
+    overflow-y: auto;
 }
 #backlog-modal textarea {
     resize: none;
@@ -35,6 +35,44 @@ button.list-group-item-transparent.active:focus {
     border-color: #313131;
 }
 
+
+#add-textarea,
+#edit-textarea{
+	height:300px;
+}
+.backlog-content-short a{	
+	width:200PX; !important;
+    overflow-x:hidden;   !important;
+    white-space:nowrap;   !important;
+    text-overflow:ellipsis; !important;
+    -o-text-overflow:ellipsis;   !important;
+    -icab-text-overflow: ellipsis;   !important;
+    -khtml-text-overflow: ellipsis;   !important;
+    -moz-text-overflow: ellipsis;   !important;
+    -webkit-text-overflow: ellipsis;   !important;
+    
+}
+
+  #backlog  table{  
+        
+        table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */  
+    }  
+  #backlog th{      
+        word-break:keep-all;/* 不换行 */  
+        white-space:nowrap;/* 不换行 */  
+        overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */  
+        text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/  
+    }  
+.backlog-th-button{
+	width:20%;  
+}
+.backlog-th-content{
+	width:80%;  
+	
+}
+.backlog-th-content a{
+	color: black; 	
+}
 
 @media only screen and (max-width: 768px) {
     #backlog-box {

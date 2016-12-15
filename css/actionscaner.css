@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+a{
+	color: #337ab7;
+}
+
+a:*{
+	text-decoration: none;
+}
+
+#foot{
+	width: inherit !important;
+	margin-bottom: 0 !important;
+	position: static !important;
+	height: inherit;
+}
+
+.scaner_body{
+	position: relative;
+	padding: 0;
+}
+
+.erweima{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 23%;
+	margin-top: -5%;
+	margin-left: -11%;
+	border: 3px solid #fff;
+	border-radius: 4px;
+}

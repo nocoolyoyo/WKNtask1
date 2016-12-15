@@ -1,10 +1,23 @@
 <div id="content-area">
     <div class="content-area-box">
-        <div id="table-toolbar" class="form-inline">
+    	<div id="table-toolbar" class="form-inline">
             <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
             <button id="add" type="button" class="btn btn-success">新增</button>
-            <button id="drafts" type="button" class="btn btn-danger">草稿箱<span class="badge">0</span></button>
-        </div>
-        <table id="table"></table>
+            <button id="drafts" type="button" class="btn btn-danger">草稿箱<span class="badge"></span></button>
+        	<div class="input-group date form_date " data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+	            <input id="startTime" class="form-control" size="10" type="text" value="" placeholder="日期" readonly>     
+	            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        	</div>  
+        	<div class="input-group date form_date " data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+	            <input id="endTime" class="form-control" size="10" type="text" value="" placeholder="日期" readonly>       
+	            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        	</div>  
+        
+        	<input id="title" type="search" class="form-control " name="title" placeholder="标题">
+        	<input id="author" type="search" class="form-control" name="author" placeholder="发布人">
+        	<button id="search" type="search" class="btn btn-primary">查询</button>
+        	<button id="reset" type="button" class="btn btn-default">重置</button>  	
+       </div>  
+    	<table id="table"></table>
     </div>
 </div>

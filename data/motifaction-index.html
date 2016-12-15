@@ -4,14 +4,56 @@
             <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
             <button id="add" type="button" class="btn btn-success">增加</button>
             <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                <input class="form-control" size="9" type="text" value="" placeholder="开始日期" readonly>
+                <input id="startTime" class="form-control" size="9" type="text" value="" placeholder="开始日期" readonly>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
             <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                <input class="form-control" size="9" type="text" value="" placeholder="结束日期" readonly>
+                <input id="endTime" class="form-control" size="9" type="text" value="" placeholder="结束日期" readonly>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
+            <input id="title" type="search" class="form-control" name="title" placeholder="标题">      	
+			<input id="author" type="search" class="form-control" name="author" placeholder="发布人">
+			<button id="search" type="button" class="btn btn-primary">查询</button>
+			<button id="reset" type="button" class="btn btn-default">重置</button>
         </div>
         <table id="table"></table>
     </div>
 </div>
+<div id="sure-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            
+                <div class="modal-body top-10 bottom-10">
+                 	<h4></h4>
+                </div>
+                <div class="modal-footer center">
+                    <button id="sure" type="button" class="btn button button-primary button-rounded" data-dismiss="modal">确定</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
+                </div>
+           
+        </div>
+    </div>
+</div>
+<div id="order-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">    
+         		<div class="modal-header">
+                 	<h4>请选择该信息所处焦点位位置</h4>
+                </div>   
+                <div class="modal-body top-10 bottom-10">
+                 	<select class="form-control" id="select">
+					  <option>1</option>
+					  <option>2</option>
+					  <option>3</option>
+					  <option>4</option>
+					  <option>5</option>
+					</select>
+                </div>
+                <div class="modal-footer center">
+                    <button id="order-sure" type="button" class="btn button button-primary button-rounded" data-dismiss="modal">确定</button>
+                    <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
+                </div>        
+        </div>
+    </div>
+</div>
+

@@ -1,7 +1,117 @@
-@import "public/bootstrap.min.css";
-@import "public/font-awesome.min.css";
+@import "../vendor/bootstrap/css/bootstrap.min.css";
+@import "../vendor/font-awesome/css/font-awesome.min.css";
 @import "default.css";
 
+/***�������������ʽ***/
+
+/*�������ֲ�css*/
+/*
+#browser-help-overlay
+{
+position: fixed;
+z-index: 1000;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+filter: alpha(opacity=80);
+opacity: 0.8;
+overflow: hidden;
+background-color: #000;
+}
+*html
+{
+background: url(*) fixed;
+}
+*html body
+{
+margin: 0;
+height: 100%;
+}
+/*IE6*/
+/*
+*html #browser-help-overlay
+{
+position: absolute;
+left: expression(documentElement.scrollLeft + documentElement.clientWidth - this.offsetWidth);
+top: expression(documentElement.scrollTop + documentElement.clientHeight - this.offsetHeight);
+}*/
+#help-left-arrow{
+	cursor:pointer;
+	left: 10%;
+	top: 40%;
+	float:left;
+	position:absolute;
+	display: inline-block;
+}
+#help-right-arrow{
+	cursor:pointer;
+	right: 10%;
+	top: 40%;
+	float:right;
+	position:absolute;
+	display: inline-block;
+}
+#browser-help-content img{
+	display: inline-block;
+	width:100%
+}
+
+#browserFail-box {
+	background-size: 100% 100%;
+    width: 900px;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -350px;
+    margin-left: -450px;
+    color: brown;
+   background-image: url("../img/browserFailBG.png");
+   background-repeat:no-repeat;
+}
+
+
+#message-box {
+	text-align: center;
+	font-size:16px;
+	color:black;
+	margin:100px auto;
+}
+#browser-select {
+	margin:0 auto;
+}
+#browser-google{
+	display:block;
+	margin:0 auto;
+}
+#browserFail-footer {
+	text-align: center;
+	font-size:16px;
+	color:black;
+	margin:40px auto;
+}
+#help-nav {
+	margin-left: -140px;
+	left: 50%;
+	bottom: 8%;
+	float:left;
+	position:absolute;
+}
+#help-nav li{
+	cursor: pointer;
+	display: inline-block;	
+}
+#help-nav img{
+	width: 60px;
+	height: 60px;
+}	
+#help-right-arrow img,
+#help-left-arrow img{
+	width: 100px;
+	height: 100px;
+}
+/***�����������ʽ***/
 #login {
     width: 400px;
     height: 400px;

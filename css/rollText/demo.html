@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>滚动文字</title>
+<link rel="stylesheet" href="rollText.css">
+</head>
+<body>
+	<div id="rollText" class="roll-panel roll-panel-default">
+		<div class="roll-header">滚动文字标题</div>
+		<div class="roll-body">
+			<ul class="roll-list-group main_list">
+				<li class="roll-list-group-item">第一列</li>
+				<li class="roll-list-group-item">第二列</li>
+				<li class="roll-list-group-item">第三列第三列第三列第三列第三列第三列第三列第三列第三列第三列第三列第三列第三列第三列第三列第三列第三列</li>
+				<li class="roll-list-group-item">4444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444</li>
+				<li class="roll-list-group-item">5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
+				<li class="roll-list-group-item">哈哈哈哈</li>
+				<li class="roll-list-group-item">嘿嘿</li>
+			</ul>
+		</div>
+		<div class="roll-footer">
+			<button type="button" class="" onclick="javascript:addRow(this);">添加一行</button>
+			<button type="button" class="" onclick="javascript:removeRow(this);">删除一行</button>
+		</div>
+	</div>
+	<div id="rollText2" class="roll-panel roll-panel-default">
+		<div class="roll-header">滚动文字标题</div>
+		<div class="roll-body">
+			<ul class="roll-list-group main_list">
+				<li class="roll-list-group-item">第一列11</li>
+				<li class="roll-list-group-item">第二列2222</li>
+				<li class="roll-list-group-item">3333</li>
+				<li class="roll-list-group-item">4444444</li>
+				<li class="roll-list-group-item">5aaaaaaaaaaaaaaaaaa</li>
+				<li class="roll-list-group-item">哈哈哈哈</li>
+			</ul>
+		</div>
+		<div class="roll-footer">
+			<button type="button" class="" onclick="javascript:addRow(this);">添加一行</button>
+			<button type="button" class="" onclick="javascript:removeRow(this);">删除一行</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="rollText.js"></script>
+	<script type="text/javascript">
+	var i=0;
+	$(function(){
+		$("#rollText").rollText({
+			'speed': 20
+		});
+		$("#rollText2").rollText();
+	});
+	
+	function addRow(dom){
+		var content = '新增的一行'+i;
+		var rollText = $(dom).parents(".roll-panel").rollText();
+		rollText.addRow(content);
+		i++;
+	}
+
+	function removeRow(dom){
+		var rollText = $(dom).parents(".roll-panel").rollText();
+		rollText.delRow();
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.filemanage.IFileManageDao">
+		<!-- 获取文件夹 -->
+		<select id="findFolderAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(FOLDERID, '') AS FOLDERID,
+					IFNULL(FOLDERNAME, '') AS FOLDERNAME,
+					IFNULL(STATUS, '') AS STATUS,
+					IFNULL(SHID, '') AS SHID
+				FROM
+					PRE_COMMON_FOLDER
+				WHERE
+					STATUS = 2
+				AND SHID = #{SHID}
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 获取文件夹总数 -->
+		<select id="findFolderAllCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_FOLDER
+				WHERE
+					STATUS = 2
+				AND SHID = #{SHID}
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 新增文件夹 -->
+		<insert id="insertFolder" parameterType="java.util.HashMap">
+				INSERT INTO PRE_COMMON_FOLDER(FOLDERNAME,STATUS,SHID)VALUES(#{FOLDERNAME},2,#{SHID})
+		</insert>
+		<!-- 修改文件夹 -->
+		<update id="updateFolder" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_FOLDER SET FOLDERNAME = #{FOLDERNAME} WHERE FOLDERID = #{FOLDERID}
+		</update>
+		<!-- 删除文件夹，修改状态为1 -->
+		<update id="deletedFolder" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_FOLDER SET STATUS = 1 WHERE FOLDERID = #{FOLDERID}
+		</update>
+		
+		
+		<!-- 查询文件夹对应内的文件列表 -->
+		<select id="findFolderOnFilePager" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(F.FILEID, '') AS FILEID,
+					IFNULL(F.FILENAME, '') AS FILENAME,
+					IFNULL(F.UPLOADTIME, '') AS UPLOADTIME,
+					IFNULL(F.DOWNLOADNUM, '') AS DOWNLOADNUM,
+					IFNULL(F.ATTACHMENT, '') AS ATTACHMENT,
+					IFNULL(F.FOLDERID, '') AS FOLDERID,
+					IFNULL(F.STICK, '') AS STICK,
+					IFNULL(F.STICKTIME, '') AS STICKTIME,
+					IFNULL(S.REALNAME, '') AS REALNAME
+				FROM
+					PRE_COMMON_FILE F,
+					PRE_COMMON_SECRETARY S
+				WHERE
+					F.AUTHORID = S.SID
+				AND F.SHID = #{SHID}
+				<if test="FOLDERID!=null and FOLDERID!=''">
+					AND F.FOLDERID = #{FOLDERID}
+				</if>
+				<if test="FILENAME!=null and FILENAME!=''">
+					AND F.FILENAME like '%${FILENAME}'
+				</if>
+				<if test="AUTHOR!=null and AUTHOR!=''">
+					AND S.REALNAME like '%${AUTHOR}%'
+				</if>
+				ORDER BY
+					F.STICK DESC,
+					F.STICKTIME DESC,
+					F.UPLOADTIME DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 查询总数 -->
+		<select id="findFolderOnFilePagerCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_FILE F,
+					PRE_COMMON_SECRETARY S
+				WHERE
+					F.AUTHORID = S.SID
+					AND F.SHID = #{SHID}
+				<if test="FOLDERID!=null and FOLDERID!=''">
+					AND F.FOLDERID = #{FOLDERID}
+				</if>
+				<if test="FILENAME!=null and FILENAME!=''">
+					AND F.FILENAME like '%${FILENAME}'
+				</if>
+				<if test="AUTHOR!=null and AUTHOR!=''">
+					AND S.REALNAME like '%${AUTHOR}%'
+				</if>
+				ORDER BY
+					F.STICK DESC,
+					F.STICKTIME DESC,
+					F.UPLOADTIME DESC
+		</select>
+		<!-- 置顶文件 -->
+		<update id="stickFile" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_FILE SET STICK = 1 , STICKTIME = SYSDATE() WHERE FILEID = #{FILEID}
+		</update>
+		<!-- 取消置顶文件 -->
+		<update id="cancelStickFile" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_FILE SET STICK=0 ,STICKTIME=NULL WHERE FILEID = #{FILEID}
+		</update>
+		<!-- 上传文件 -->
+		<insert id="insertFile" parameterType="java.util.HashMap">
+				INSERT INTO PRE_COMMON_FILE (
+					FILEID,
+					FILENAME,
+					AUTHORID,
+					UPLOADTIME,
+					FILESIZE,
+					ATTACHMENT,
+					DOWNLOADNUM,
+					FOLDERID,
+					SHID
+				)
+				VALUES
+					(
+						#{FILEID},#{FILENAME},#{AUTHORID},SYSDATE(),#{FILESIZE},#{ATTACHMENT},0,#{FOLDERID},#{SHID}
+					)
+		</insert>
+		<!-- 查询file对象 -->
+		<select id="findFileById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(F.FILEID, '') AS FILEID,
+					IFNULL(F.FILENAME, '') AS FILENAME,
+					IFNULL(F.UPLOADTIME, '') AS UPLOADTIME,
+					IFNULL(F.DOWNLOADNUM, '') AS DOWNLOADNUM,
+					IFNULL(F.ATTACHMENT, '') AS ATTACHMENT,
+					IFNULL(F.FOLDERID, '') AS FOLDERID,
+					IFNULL(F.STICK, '') AS STICK,
+					IFNULL(F.STICKTIME, '') AS STICKTIME
+				FROM
+					PRE_COMMON_FILE F
+				WHERE
+					FILEID = #{FILEID}
+		</select>
+		<!-- 根据主键ID删除文件对象 -->
+		<delete id="deleteFileById" parameterType="java.util.HashMap">
+				DELETE FROM PRE_COMMON_FILE WHERE FILEID = #{FILEID}
+		</delete>
+		<!-- 移动文件 -->
+		<update id="updateMoveFile" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_FILE SET FOLDERID = #{FOLDERID} WHERE FILEID = #{FILEID}
+		</update>
+		<!-- 删除文件夹下所有文件 -->
+		<delete id="deleteFiles" parameterType="java.util.HashMap">
+				DELETE FROM PRE_COMMON_FILE WHERE FOLDERID IN #{FOLDERID}
+		</delete>
+		<!-- 根据文件夹ID获取所有文件ID -->
+		<select id="queryByFolderId" parameterType="java.util.HashMap" resultType="String">
+			SELECT FILEID from PRE_COMMON_FILE WHERE FOLDERID = #{FOLDERID}
+		</select>
+		<!-- 修改下载数量 -->
+		<update id="updateFileCount" parameterType="java.util.HashMap">
+					UPDATE PRE_COMMON_FILE SET DOWNLOADNUM = DOWNLOADNUM+1 WHERE FILEID = #{FILEID}
+		</update>
+</mapper>

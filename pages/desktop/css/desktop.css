@@ -1,0 +1,20 @@
+.modal,
+.modal-dialog,
+.modal-content {
+    overflow: hidden;
+}
+.modal-header {
+    font-size: 20px;
+    overflow: hidden;
+}
+
+.desktop-badge {
+	position:absolute;
+	height: 25px;
+	width: 25px;
+	right:30px;
+	top:30px;
+	background-color: red;
+	font-size:16px;
+	border-radius: 100px;
+}

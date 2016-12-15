@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.login.ILoginDao">
+	
+	<select id="isExistByUsername" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.SID,
+			T.USERNAME,
+			T.REALNAME,
+			T.PASSWORD,
+			T.SEX,
+			T.DEPARTMENTID,
+			T.POSITIONID,
+			T.STATUS,
+			T.SHANGHUIID,
+			T.ROLE,
+			T.HEADURL,
+			T.POSITIONNAME,
+			T.CAID,
+			T.LOGINTYPE
+		FROM
+			PRE_COMMON_SECRETARY T
+		WHERE
+			binary T.USERNAME = #{USERNAME}
+	</select>
+	<select id="queryBySHid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.SHID,
+			T.SHNAME,
+			T.CHAIRMANNAME,
+			T.WEBSITE,
+			T.ADDRESS,
+			T.INTRODUCTION,
+			T.STATUS,
+			T.LOGOURL,
+			T.GROUPID,
+			T.CREATEDATE,
+			SHMOBILE
+		FROM
+			PRE_COMMON_SHANGHUI T
+		WHERE
+			T.SHID = ${SHANGHUIID}
+	</select>
+</mapper>

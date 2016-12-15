@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.focus.IFocusDao">
+
+		<!-- 分页查询 -->
+		<select id="findPageFocus" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(m.MID, '') AS MID,
+					IFNULL(m.TITLE, '') AS TITLE,
+					IFNULL(m.CONTENT, '') AS CONTENT,
+					IFNULL(m.PICTURE, '') AS PICTURE,
+					IFNULL(m.STARTTIME, '') AS STARTTIME,
+					IFNULL(m.MTYPE, '') AS MTYPE,
+					IFNULL(m.STATUR, '') AS STATUR,
+					IFNULL(s.REALNAME, '') AS REALNAME,
+					IFNULL(m.MPLCACID, '') AS MPLCACID
+				FROM
+					PRE_COMMON_MOTIF m,
+					PRE_COMMON_SECRETARY s
+				WHERE
+					m.seid = s.sid
+				AND m.shid = #{SHID}
+				<if test="TITLE!=null and TITLE!=''">
+					AND m.title like '%${TITLE}%'
+				</if>
+				<if test="AUTHOR!=null and AUTHOR!=''">
+					AND s.realname like '%${AUTHOR}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(m.STARTTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME != NULL and  ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(m.STARTTIME, '%Y-%m-%d') 
+				</if>
+				ORDER BY m.STATUR DESC,m.STARTTIME DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 查询总数 -->
+		<select id="findPageFocusCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_MOTIF m,
+					PRE_COMMON_SECRETARY s
+				WHERE
+					m.seid = s.sid
+				AND m.shid = #{SHID}
+				<if test="TITLE!=null and TITLE!=''">
+					AND m.title like '%${TITLE}%'
+				</if>
+				<if test="AUTHOR!=null and AUTHOR!=''">
+					AND s.realname like '%${AUTHOR}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+					AND DATE_FORMAT(m.STARTTIME, '%Y-%m-%d') = #{STARTTIME}  
+				</if>
+				ORDER BY m.STATUR DESC,m.STARTTIME DESC
+		</select>
+		<!-- 新增 -->
+		<insert id="addFocus" parameterType="java.util.HashMap">
+				INSERT INTO PRE_COMMON_MOTIF (
+					TITLE,
+					PICTURE,
+					STARTTIME,
+					PURL,
+					MTYPE,
+					SHID,
+					STATUR,
+					SEID,
+					SREALNAME,
+					NID,
+					PURL_S,
+					TYPE
+				)
+				VALUES
+					(#{TITLE},#{ORIGINAL},SYSDATE(),#{URL},#{MTYPE},#{SHID},0,#{SID},#{REALNAME},#{NID},#{PURL_S},1)
+		</insert>
+		<!-- 删除 -->
+		<delete id="deleteFocus" parameterType="java.util.HashMap">
+				DELETE FROM PRE_COMMON_MOTIF WHERE MID IN (#{MID})
+		</delete>
+		<!-- 详情 -->
+		<select id="showEdit" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(MID, '') AS MID,
+					IFNULL(TITLE, '') AS TITLE,
+					IFNULL(MTYPE, '') AS MTYPE,
+					IFNULL(NID, '') AS NID,
+					IFNULL(PURL_S, '') AS PURL_S,
+					IFNULL(PURL, '') AS PURL,
+					IFNULL(PICTURE, '') AS PICTURE
+				FROM
+					PRE_COMMON_MOTIF
+				WHERE
+					MID = #{MID}
+		</select>
+		<!-- 修改 -->
+		<update id="updateFocus" parameterType="java.util.HashMap">
+				UPDATE 
+					PRE_COMMON_MOTIF
+				SET 
+					TITLE = #{TITLE},
+					MTYPE = #{MTYPE},
+					NID = #{NID},
+					STATUR = #{STATUR},
+					STARTTIME = SYSDATE(),
+					PURL = #{PURL},
+					PURL_S = #{PURL_S},
+					PICTURE = #{PICTURE}
+				WHERE
+						MID = #{MID}
+		</update>
+		
+		<!-- 取消激活 -->
+		<update id="activateFocus" parameterType="java.util.HashMap">
+				UPDATE 
+					PRE_COMMON_MOTIF
+				SET 
+					STATUR = #{STATUR}
+				WHERE
+						MID = #{MID}
+		</update>
+		<!-- 激活 -->
+		<update id="activateFocusyes">
+				UPDATE 
+					PRE_COMMON_MOTIF
+				SET 
+					STATUR = #{STATUR},
+					MPlcacID = #{INDEX}
+				WHERE
+						MID = #{MID}
+		</update>
+		<!-- 验证是否存在商会对应的激活 -->
+		<select id="searchpalceFocus" parameterType="java.util.HashMap" resultType="String">
+				SELECT
+					MPlcacID
+				FROM
+					PRE_COMMON_MOTIF
+				WHERE
+					MPlcacID = #{INDEX}
+				AND STATUR = 1
+				AND SHID = #{SHID}
+		</select>
+</mapper>

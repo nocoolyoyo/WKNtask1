@@ -803,10 +803,6 @@ a em{
 #birthday-modal .modal-header {
     color: white;
     background-color: #FF7680;
-
-}
-#birthday-modal .modal-content{
-    overflow: hidden;
 }
 .birthday-bless i{
    padding-left: 20px;

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.menu.IMenuDao">
+	
+	<select id="commonList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.MANU_ID,
+			T.MANU_NAME,
+			T.MANU_PATH,
+			T.MANU_MODULE,
+			T.IMAGE_SRC,
+			T.IS_ACTION,
+			T.IMAGE_CLASS
+		FROM
+			PRE_COMMON_NEWMENU T
+		WHERE
+			T.MANU_MODULE = ${MANU_MODULE}
+	</select>
+	<select id="birthdayMember" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			USID,
+			USERNAME,
+			REALNAME
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			DATE_FORMAT(BIRTHDAY, '%m-%d') = DATE_FORMAT(#{BIRTHDAY}, '%m-%d')
+		AND USERNAME IN (
+			SELECT
+				USERNAME
+			FROM
+				PRE_AL_SHMEMBER
+			WHERE
+				SHANGHUIID = ${SHANGHUIID}
+		)
+	</select>
+	<update id="updateSecretaryPwd" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_SECRETARY
+		SET SID = ${SID}
+		<if test="PASSWORD != null and PASSWORD != ''">
+		 ,PASSWORD = #{PASSWORD}
+		</if>
+		<if test="REALNAME != null and REALNAME != ''">
+		 ,REALNAME = #{REALNAME}
+		</if>
+		<if test="SEX != null and SEX != ''">
+		 ,SEX = ${SEX}
+		</if>
+		<if test="POSITIONNAME != null and POSITIONNAME != ''">
+		 ,POSITIONNAME = #{POSITIONNAME}
+		</if>
+		WHERE
+			SID = ${SID}
+	</update>
+	<insert id="addFeedback" parameterType="java.util.HashMap">
+		INSERT INTO PRE_SYS_FEEDBACK (
+			CONTENT,
+			SUBMITTIME,
+			SUBMITORID,
+			SHANGHUIID,
+			STATUS,
+			TYPE
+		)
+		VALUES
+			(
+				#{CONTENT},
+				now(),
+				${SUBMITORID},
+				${SHANGHUIID},
+				0,
+				2
+			)
+	</insert>
+	<update id="updateShanghui" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_SHANGHUI
+		SET STATUS = 1
+		<if test="SHNAME != null and SHNAME != ''">
+			,SHNAME = #{SHNAME}
+		</if>
+		<if test="CHAIRMANNAME != null and CHAIRMANNAME != ''">
+		 ,CHAIRMANNAME = #{CHAIRMANNAME}
+		</if>
+		<if test="WEBSITE != null and WEBSITE != ''">
+		 ,WEBSITE = #{WEBSITE}
+		</if>
+		<if test="ADDRESS != null and ADDRESS != ''">
+		 ,ADDRESS = #{ADDRESS}
+		</if>
+		<if test="INTRODUCTION != null and INTRODUCTION != ''">
+		 ,INTRODUCTION = #{INTRODUCTION}
+		</if>
+		<if test="LOGOURL != null and LOGOURL != ''">
+		 ,LOGOURL = #{LOGOURL}
+		</if>
+		WHERE
+			SHID = ${SHID}
+	</update>
+	<update id="updateGroupImage" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_GROUP
+			SET IMAGEURL = #{LOGOURL}
+			WHERE
+				SHANGHUIID = ${SHID}
+			AND GROUPTYPE = 3
+	</update>
+	<select id="shanghuiList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_SHANGHUI
+		WHERE
+			SHNAME = #{SHNAME}
+	</select>
+	<select id="findSMSModel" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_SMS_MODEL
+		WHERE
+			SHID = ${SHID}
+		<if test="MODELNAME != null and MODELNAME != ''">
+			AND MODELNAME = #{MODELNAME}
+		</if>
+	</select>
+	<update id="updateSMSModel" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_SMS_MODEL
+		SET MODELCONTENT = #{MODELCONTENT},
+		 SENTSTATUS = ${SENTSTATUS}
+		WHERE
+			SHID = ${SHID}
+		<if test="MODELNAME != null and MODELNAME != ''">
+			AND MODELNAME = #{MODELNAME}
+		</if>
+	</update>
+	<insert id="insertSMSModel" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_SMS_MODEL (
+			MODELCONTENT,
+			SENTSTATUS,
+			SHID,
+			MODELNAME
+		)
+		VALUES
+			(
+				#{MODELCONTENT},
+				${SENTSTATUS},
+				${SHID},
+				#{MODELNAME}
+			)
+	</insert>
+	<select id="findSupplyCount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_SUPPLY T
+		WHERE
+			BELONGCOMMERCEID = ${SHID}
+		AND EXAMINESTATUS = 0
+		AND VALIDSTATUS = 0
+		AND SCHEDULESTATUS = 0
+	</select>
+	<select id="querySendUser" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			USID IN (#{USID})
+	</select>
+</mapper>

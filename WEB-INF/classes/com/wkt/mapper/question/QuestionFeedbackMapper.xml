@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.question.IQuestionFeedbackDao">
+
+		<!-- 获取问题反馈小红点数量 -->
+		<select id="questionCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(ISREAD)
+				FROM
+					PRE_COMMON_QUESTION
+				WHERE
+					SHID = #{SHID}
+				AND ISREAD = 0
+		</select>
+		<!-- 根据主键Id删除对象 -->
+		<delete id="deleteQyestionById" parameterType="java.util.HashMap">
+				DELETE FROM PRE_COMMON_QUESTION WHERE QUESTIONID = #{QUESTIONID} 
+		</delete>
+		<!-- 分页显示列表 -->
+		<select id="findQuestionListPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+						IFNULL(q.QUESTIONID, '') AS QUESTIONID,
+						IFNULL(q.TITLE, '') AS TITLE,
+						IFNULL(q.DETAIL, '') AS DETAIL,
+						IFNULL(q.SUBMITTIME, '') AS SUBMITTIME,
+						IFNULL(q.ANSWER, '') AS ANSWER,
+						IFNULL(q.SHID, '') AS SHID,
+						IFNULL(q.ISREAD, '') AS ISREAD,
+						IFNULL((SELECT REALNAME FROM PRE_AL_MEMBER M WHERE q.USERNAME = M.USERNAME),'') AS REALNAME
+					FROM
+						PRE_COMMON_QUESTION q 
+					WHERE
+						q.SHID = #{SHID}
+					<if test="TITLE != NULL and TITLE != ''">
+						AND q.TITLE like '%${TITLE}%'
+					</if>
+					<if test="STARTTIME != NULL and  STARTTIME != ''">
+					AND DATE_FORMAT(q.SUBMITTIME, '%Y-%m-%d') >= #{STARTTIME}  
+					</if>
+					<if test="ENDTIME !=null and ENDTIME != ''">
+					AND  #{ENDTIME} >= DATE_FORMAT(q.SUBMITTIME, '%Y-%m-%d') 
+					</if>
+				ORDER BY q.ISREAD, q.QUESTIONID DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 查询总数 -->
+		<select id="findQuestionPageCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM 
+					PRE_COMMON_QUESTION 
+				WHERE
+					SHID = #{SHID}
+				<if test="TITLE != NULL and TITLE != ''">
+						AND TITLE like '%${TITLE}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(SUBMITTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(SUBMITTIME, '%Y-%m-%d') 
+				</if>
+		</select>
+		<!-- 根据主键ID修改未读状态 -->
+		<update id="updateStatusById" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_QUESTION SET ISREAD = 1 WHERE QUESTIONID = #{QUESTIONID}
+		</update>
+		<!-- 根据主键查询对象 -->
+		<select id="findQuestionById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(QUESTIONID, '') AS QUESTIONID,
+					IFNULL(TITLE, '') AS TITLE,
+					IFNULL(DETAIL, '') AS DETAIL,
+					IFNULL(SUBMITTIME, '') AS SUBMITTIME,
+					IFNULL(ANSWER, '') AS ANSWER,
+					IFNULL(SHID, '') AS SHID,
+					IFNULL(ISREAD, '') AS ISREAD,
+					IFNULL(USERNAME, '') AS USERNAME
+				FROM
+					PRE_COMMON_QUESTION
+				WHERE
+					QUESTIONID = #{QUESTIONID}
+		</select>
+		
+		<!-- 查询会员表会员真实名称 -->
+		<select id="findMemberByUsername"  parameterType="java.util.HashMap"  resultType="java.util.HashMap">
+				SELECT REALNAME FROM PRE_AL_MEMBER WHERE USERNAME = #{USERNAME}
+		</select>
+		<!-- 根据问题主键ID查询回复 -->
+		<select id="findQuestionReplyListById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(REPLYCONTENT, '') AS REPLYCONTENT,
+					IFNULL(REPLYNAME, '') AS REPLYNAME,
+					IFNULL(REPLYTIME, '') AS REPLYTIME,
+					IFNULL(REPLYROLE,'') AS REPLYROLE
+				FROM
+					PRE_COMMON_QUESTION_REPLY
+				WHERE
+					QUESTIONID = #{QUESTIONID}
+		</select>
+		<!-- 根据时间段导出数据 -->
+		<select id="findQuestionByTimeExpense" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(QUESTIONID, '') AS QUESTIONID,
+					IFNULL(TITLE, '') AS TITLE,
+					IFNULL(DETAIL, '') AS DETAIL,
+					IFNULL(SUBMITTIME, '') AS SUBMITTIME,
+					IFNULL(ANSWER, '') AS ANSWER,
+					IFNULL(SHID, '') AS SHID,
+					IFNULL(ISREAD, '') AS ISREAD,
+					IFNULL(USERNAME, '') AS USERNAME
+				FROM
+					PRE_COMMON_QUESTION
+				WHERE
+					SHID = #{SHID}
+				<if test="TITLE != NULL and TITLE != ''">
+					AND TITLE like '%${TITLE}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+					AND DATE_FORMAT(SUBMITTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+					AND  #{ENDTIME} >= DATE_FORMAT(SUBMITTIME, '%Y-%m-%d') 
+				</if>
+				ORDER BY SUBMITTIME ASC
+		</select>
+		<!-- 新增评论 -->
+		<insert id="insertQuestionReply" parameterType="java.util.HashMap">
+			INSERT INTO PRE_COMMON_QUESTION_REPLY (
+				REPLYCONTENT,
+				REPLYID,
+				QUESTIONID,
+				REPLYTIME,
+				REPLYMANID,
+				REPLYROLE,
+				REPLYNAME,
+				ISVIEW
+			)
+			VALUES
+				(#{REPLYCONTENT},0,#{QUESTIONID},SYSDATE(),#{SID},2,#{REPLYNAME},0)
+		</insert>
+</mapper>

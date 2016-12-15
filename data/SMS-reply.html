@@ -4,14 +4,15 @@
             <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
             <button id="back" type="button" class="btn btn-default">返回</button>
             <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                <input class="form-control" size="9" type="text" value="" placeholder="开始日期" readonly>
+                <input class="form-control" size="9" type="text" id="checkSendStartTime" value="" placeholder="开始日期" readonly>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
             <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
-                <input class="form-control" size="9" type="text" value="" placeholder="结束日期" readonly>
+                <input class="form-control" size="9" type="text" id="checkSendEndTime" value="" placeholder="结束日期" readonly>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
-            <button id="search" type="button" class="btn btn-primary">查找</button>
+            <button id="searchReply" type="button" class="btn btn-primary">查找</button>
+            <button id="reset" type="submit" class="btn btn-default">重置</button> 
         </div>
         <table id="table"></table>
     </div>

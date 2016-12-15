@@ -1,0 +1,1571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.member.IMemberDao">
+	
+	<select id="queryByOcpStatus" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.OID,
+			T.ONAME,
+			T.STATUS,
+			T.GRADE,
+			date_format(
+				T.CREATETIME,
+				'%Y-%m-%d %H:%i'
+			) CREATETIME,
+			T.SHANGHUIID,
+			T.OCCUPATIONID,
+			(SELECT
+				COUNT(*)
+			FROM
+				PRE_AL_MEMBERRELATION
+			WHERE
+				SHANGHUIID = ${SHANGHUIID}
+			AND OCCUPATIONID = T.OID) COUNTOCCUPATION
+		FROM
+			PRE_COMMON_OCCUPATION T
+		WHERE
+			T.SHANGHUIID = ${SHANGHUIID}
+		AND T.`STATUS` = ${STATUS}
+		ORDER BY
+			T.GRADE
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<select id="findMemberByPageCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			PRE_AL_MEMBER T,
+			PRE_AL_SHMEMBER S
+		WHERE
+			T.USERNAME = S.USERNAME
+		AND S.SHANGHUIID = ${SHANGHUIID}
+		<if test="search != null and search != ''">
+			AND (T.REALNAME LIKE '%${search}%'
+				OR T.MOBILE LIKE '%${search}%'
+				OR T.COMPANY LIKE '%${search}%')
+		</if>
+		<if test="REALNAME != null and REALNAME != ''">
+			AND T.REALNAME LIKE '%${REALNAME}%'
+		</if>
+		<if test="MOBILE != null and MOBILE != ''">
+			AND T.MOBILE = ${MOBILE}
+		</if>
+		<if test="COMPANY != null and COMPANY != ''">
+			AND T.COMPANY LIKE '%${COMPANY}%'
+		</if>
+		<if test="OCCUPATIONID != null and OCCUPATIONID != ''">
+			AND T.USERNAME IN (SELECT USERNAME FROM PRE_AL_MEMBERRELATION WHERE SHANGHUIID = ${SHANGHUIID} AND OCCUPATIONID IN (${OCCUPATIONID}))
+		</if>
+	</select>
+	<select id="findMemberByPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.USID,
+			T.USERNAME,
+			T.REALNAME,
+			T.MOBILE,
+			T.COMPANY,
+			T.GENDER,
+			CASE T.GENDER
+			WHEN 1 THEN
+				'男'
+			WHEN 2 THEN
+				'女'
+			ELSE
+				'保密'
+			END GENDERNAME,
+			T.BIRTHDAY,
+			T.NATIVEINFO,
+			T.RESIDE,
+			T.COMPANYADDRESS,
+			T.QQ,
+			T.EMAIL,
+			T.RESERVEMOBILE,
+			T.FAX,
+			T.COMPANYWORK,
+			A.ONAME,
+			A.GRADE,
+ 			A.OIDS,
+			 IFNULL((
+				SELECT
+					GROUP_CONCAT(P.INDUSTRY)
+				FROM
+					PRE_COMMON_USER_INDUSTRY P
+				WHERE
+					P.USID = T.USID
+				AND P.STATE = 1
+			),'') POSITION,
+			IFNULL(A.BOOKSORT,'') BOOKSORT
+			FROM
+				PRE_AL_SHMEMBER S,
+				PRE_AL_MEMBER T
+			LEFT JOIN (
+				SELECT
+					P.USERNAME,
+					GROUP_CONCAT(O.ONAME) ONAME,
+					GROUP_CONCAT(O.OID) OIDS,
+					MIN(O.GRADE) GRADE,
+					P.BOOKSORT,
+					1 - P.BOOKSORT DESCBOOKSORT
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND P.SHANGHUIID = ${SHANGHUIID}
+				GROUP BY
+					P.USERNAME
+			) A ON A.USERNAME = T.USERNAME
+		WHERE
+			T.USERNAME = S.USERNAME
+		AND S.SHANGHUIID = ${SHANGHUIID}
+		<if test="search != null and search != ''">
+			AND (T.REALNAME LIKE '%${search}%'
+				OR T.MOBILE LIKE '%${search}%'
+				OR T.COMPANY LIKE '%${search}%')
+		</if>
+		<if test="REALNAME != null and REALNAME != ''">
+			AND T.REALNAME LIKE '%${REALNAME}%'
+		</if>
+		<if test="MOBILE != null and MOBILE != ''">
+			AND T.MOBILE = ${MOBILE}
+		</if>
+		<if test="COMPANY != null and COMPANY != ''">
+			AND T.COMPANY LIKE '%${COMPANY}%'
+		</if>
+		<if test="OCCUPATIONID != null and OCCUPATIONID != ''">
+			AND T.USERNAME IN (SELECT USERNAME FROM PRE_AL_MEMBERRELATION WHERE SHANGHUIID = ${SHANGHUIID} AND OCCUPATIONID IN (${OCCUPATIONID}))
+		</if>
+		ORDER BY
+			GRADE,
+			DESCBOOKSORT DESC
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	
+	<insert id="addOccupation" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_OCCUPATION (
+			ONAME,
+			STATUS,
+			CREATETIME,
+			SHANGHUIID
+		)
+		VALUES
+			(
+				#{ONAME},1,now(),${SHANGHUIID})
+	</insert>
+	<update id="updateOccupation" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_OCCUPATION
+			SET OID = ${OID}
+			<if test="ONAME != null and ONAME != ''">
+				,ONAME = #{ONAME}
+			</if>
+			<if test="OCCUPATIONID != null and OCCUPATIONID != ''">
+				,OCCUPATIONID = #{OCCUPATIONID}
+			</if>
+			<if test="GRADE != null and GRADE != ''">
+				,GRADE = ${GRADE}
+			</if>
+			WHERE
+				OID = ${OID} 
+	</update>
+	<delete id="deleteOccupation" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_OCCUPATION
+		WHERE
+			OID IN (${OID})
+	</delete>
+	<select id="querymemberdetail" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*) COUNT
+		FROM
+			PRE_SHAPP_MEMBER_DETAIL
+		WHERE
+			USID = (
+				SELECT
+					USID
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					USERNAME = ${USERNAME}
+			)
+		<if test="OIDS != null and OIDS != ''">
+			AND OID IN (${OIDS})
+		</if>
+		<if test="OIDS == null or OIDS == ''">
+			AND OID = 0
+		</if>
+	</select>
+	<update id="updatememberdetail" parameterType="java.util.HashMap">
+		UPDATE PRE_SHAPP_MEMBER_DETAIL
+		SET SHID = ${SHANGHUIID},
+		 OID = ${OCCUPATIONID}
+		WHERE
+			USID = (
+				SELECT
+					USID
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					USERNAME = ${USERNAME}
+			)
+	</update>
+	<select id="getByshanghuiIdAndoccupaationId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			USERNAME,
+			SHANGHUIID,
+			OCCUPATIONID
+		FROM
+			PRE_AL_MEMBERRELATION T
+		WHERE
+			T.SHANGHUIID = ${SHANGHUIID}
+		AND T.OCCUPATIONID = ${OCCUPATIONID}
+		AND T.USERNAME = ${USERNAME}
+	</select>
+	<insert id="saveMemberRelation" parameterType="java.util.HashMap">
+		INSERT INTO PRE_AL_MEMBERRELATION (
+			USERNAME,
+			SHANGHUIID,
+			OCCUPATIONID
+		)
+		VALUES
+			(${USERNAME},
+			${SHANGHUIID},
+			${OCCUPATIONID})
+	</insert>
+	<delete id="deleteGroupMember" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_GROUP_MEMBERS
+		WHERE
+			MEMBERUSER IN (#{CHECKBOXIDSTRING})
+		AND GROUPID = (
+			SELECT
+				GROUPID
+			FROM
+				PRE_COMMON_GROUP
+			WHERE
+				SHANGHUIID = ${SHANGHUIID}
+			AND HOSTNAME = 0
+			AND GROUPTYPE = 3
+		)
+	</delete>
+	<select id="querygroupidbyshanghuid" parameterType="java.util.HashMap" resultType="String">
+		SELECT
+			GROUP_CONCAT(GROUPID) GROUPID
+		FROM
+			PRE_COMMON_GROUP
+		WHERE
+			SHANGHUIID = ${SHANGHUIID}
+		AND HOSTNAME = 0
+		AND GROUPTYPE IN (2,3)
+	</select>
+	<delete id="deleteShMember" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_AL_SHMEMBER
+		WHERE
+			USERNAME = ${USERNAME}
+		AND SHANGHUIID = ${SHANGHUIID}
+	</delete>
+	<delete id="deleteMemberrelation" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_AL_MEMBERRELATION
+		WHERE
+			USERNAME = ${USERNAME}
+		AND SHANGHUIID = ${SHANGHUIID}
+	</delete>
+	<delete id="deletememberdetail" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_SHAPP_MEMBER_DETAIL
+		WHERE
+			USID = (
+				SELECT
+					USID
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					USERNAME = ${USERNAME}
+			)
+		AND SHID = ${SHANGHUIID}
+	</delete>
+	<delete id="deleteGroupChat" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_GROUP_CHAT
+		WHERE
+			USERNAME = ${USERNAME}
+		AND SHANGHUIID = ${SHANGHUIID}
+	</delete>
+	
+	<select id="findByUserName" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			IFNULL((
+				SELECT
+					GROUP_CONCAT(P.INDUSTRY)
+				FROM
+					PRE_COMMON_USER_INDUSTRY P
+				WHERE
+					P.USID = T.USID
+				AND P.STATE = 1
+			),'') POSITION,T.*
+		FROM
+			PRE_AL_MEMBER T
+		WHERE
+			T.USERNAME = #{USERNAME}
+	</select>
+	<select id="findMemberForActivite" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			MOBILE = #{MOBILE}
+		AND AVAILABLE = 0
+	</select>
+	<select id="queryById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			USID = #{USID}
+	</select>
+	<select id="getAlshmember" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			ID,
+			USERNAME,
+			SHANGHUIID,
+			ISACTIVATION,
+			CREATEDATE,
+			UPDATEDATE
+		FROM
+			PRE_AL_SHMEMBER
+		WHERE
+			USERNAME = #{USERNAME}
+		AND SHANGHUIID = ${SHANGHUIID}
+	</select>
+	<update id="updateMember" parameterType="java.util.HashMap">
+		UPDATE PRE_AL_MEMBER
+		SET LOGINTYPE = ${LOGINTYPE}
+		<if test="REALNAME != null and REALNAME != ''">
+			,REALNAME = #{REALNAME}
+		</if>
+		<if test="GENDER != null and GENDER != ''">
+			,GENDER = ${GENDER}
+		</if>
+		<if test="BIRTHDAY != null and BIRTHDAY != ''">
+			,BIRTHDAY = #{BIRTHDAY}
+		</if>
+		<if test="NATIVEINFO != null and NATIVEINFO != ''">
+			,NATIVEINFO = #{NATIVEINFO}
+		</if>
+		<if test="RESERVEMOBILE != null and RESERVEMOBILE != ''">
+			,RESERVEMOBILE = #{RESERVEMOBILE}
+		</if>
+		<if test="MOBILE != null and MOBILE != ''">
+			,MOBILE = #{MOBILE}
+		</if>
+		<if test="FIXEDTELEPHONE != null and FIXEDTELEPHONE != ''">
+			,FIXEDTELEPHONE = #{FIXEDTELEPHONE}
+		</if>
+		<if test="COMPANY != null and COMPANY != ''">
+			,COMPANY = #{COMPANY}
+		</if>
+		<if test="COMPANYADDRESS != null and COMPANYADDRESS != ''">
+			,COMPANYADDRESS = #{COMPANYADDRESS}
+		</if>
+		<if test="RESIDE != null and RESIDE != ''">
+			,RESIDE = #{RESIDE}
+		</if>
+		<if test="EMAIL != null and EMAIL != ''">
+			,EMAIL = #{EMAIL}
+		</if>
+		<if test="QQ != null and QQ != ''">
+			,QQ = #{QQ}
+		</if>
+		<if test="WEIXIN != null and WEIXIN != ''">
+			,WEIXIN = #{WEIXIN}
+		</if>
+		<if test="BLOG != null and BLOG != ''">
+			,BLOG = #{BLOG}
+		</if>
+		<if test="FAX != null and FAX != ''">
+			,FAX = #{FAX}
+		</if>
+		<if test="POLITICAL != null and POLITICAL != ''">
+			,POLITICAL = ${POLITICAL}
+		</if>
+		<if test="IDCARD != null and IDCARD != ''">
+			,IDCARD = #{IDCARD}
+		</if>
+		<if test="JOINDATE != null and JOINDATE != ''">
+			,JOINDATE = #{JOINDATE}
+		</if>
+		<if test="FEEAMOUNT != null and FEEAMOUNT != ''">
+			,FEEAMOUNT = #{FEEAMOUNT}
+		</if>
+		<if test="FEEDATE != null and FEEDATE != ''">
+			,FEEDATE = #{FEEDATE}
+		</if>
+		<if test="FEEDATEEND != null and FEEDATEEND != ''">
+			,FEEDATEEND = #{FEEDATEEND}
+		</if>
+		<if test="COMPANYWORK != null and COMPANYWORK != ''">
+			,COMPANYWORK = #{COMPANYWORK}
+		</if>
+		<if test="COMPANYMONEY != null and COMPANYMONEY != ''">
+			,COMPANYMONEY = ${COMPANYMONEY}
+		</if>
+		<if test="COMPANYWEB != null and COMPANYWEB != ''">
+			,COMPANYWEB = #{COMPANYWEB}
+		</if>
+		<if test="COMPANYINTRODUCTION != null and COMPANYINTRODUCTION != ''">
+			,COMPANYINTRODUCTION = #{COMPANYINTRODUCTION}
+		</if>
+		<if test="SETUPDATE != null and SETUPDATE != ''">
+			,SETUPDATE = #{SETUPDATE}
+		</if>
+		<if test="HOBBIES != null and HOBBIES != ''">
+			,HOBBIES = #{HOBBIES}
+		</if>
+		<if test="EDUCATION != null and EDUCATION != ''">
+			,EDUCATION = #{EDUCATION}
+		</if>
+		<if test="EXPERIENCE != null and EXPERIENCE != ''">
+			,EXPERIENCE = #{EXPERIENCE}
+		</if>
+		<if test="MSTATUS != null and MSTATUS != ''">
+			,MSTATUS = ${MSTATUS}
+		</if>
+		<if test="BELONGCOMMERCE != null and BELONGCOMMERCE != ''">
+			,BELONGCOMMERCE = ${BELONGCOMMERCE}
+		</if>
+		<if test="AGE != null and AGE != ''">
+			,AGE = ${AGE}
+		</if>
+		<if test="SHSTATUS != null and SHSTATUS != ''">
+			,SHSTATUS = ${SHSTATUS}
+		</if>
+		<if test="JHSTATUS != null and JHSTATUS != ''">
+			,JHSTATUS = ${JHSTATUS}
+		</if>
+		<if test="INOUTSTATUS != null and INOUTSTATUS != ''">
+			,INOUTSTATUS = ${INOUTSTATUS}
+		</if>
+		<if test="OUTTIME != null and OUTTIME != ''">
+			,OUTTIME = #{OUTTIME}
+		</if>
+		<if test="ORDERSTATUS != null and ORDERSTATUS != ''">
+			,ORDERSTATUS = ${ORDERSTATUS}
+		</if>
+		<if test="ISAPPFIRST != null and ISAPPFIRST != ''">
+			,ISAPPFIRST = ${ISAPPFIRST}
+		</if>
+		<if test="CODE != null and CODE != ''">
+			,CODE = ${CODE}
+		</if>
+		<if test="OCCUPATIONID != null and OCCUPATIONID != ''">
+			,OCCUPATIONID = ${OCCUPATIONID}
+		</if>
+		<if test="AVAILABLE != null and AVAILABLE != ''">
+			,AVAILABLE = ${AVAILABLE}
+		</if>
+		<if test="IMAGE != null and IMAGE != ''">
+			,IMAGE = #{IMAGE}
+		</if>
+		WHERE
+			USID = ${USID}
+	</update>
+	<update id="updateAllMember" parameterType="java.util.HashMap">
+		UPDATE PRE_AL_MEMBER
+		SET LOGINTYPE = ${LOGINTYPE}
+			,REALNAME = #{REALNAME}
+			,GENDER = ${GENDER}
+			,BIRTHDAY = #{BIRTHDAY}
+		<if test="NATIVEINFO != null and NATIVEINFO != ''">
+			,NATIVEINFO = #{NATIVEINFO}
+		</if>
+		<if test="RESERVEMOBILE != null and RESERVEMOBILE != ''">
+			,RESERVEMOBILE = #{RESERVEMOBILE}
+		</if>
+		<if test="MOBILE != null and MOBILE != ''">
+			,MOBILE = #{MOBILE}
+		</if>
+			,FIXEDTELEPHONE = #{FIXEDTELEPHONE}
+			,COMPANY = #{COMPANY}
+			,COMPANYADDRESS = #{COMPANYADDRESS}
+			,RESIDE = #{RESIDE}
+			,EMAIL = #{EMAIL}
+			,QQ = #{QQ}
+		<if test="WEIXIN != null and WEIXIN != ''">
+			,WEIXIN = #{WEIXIN}
+		</if>
+		<if test="BLOG != null and BLOG != ''">
+			,BLOG = #{BLOG}
+		</if>
+			,FAX = #{FAX}
+			,POLITICAL = ${POLITICAL}
+			,IDCARD = #{IDCARD}
+			,JOINDATE = #{JOINDATE}
+			,FEEAMOUNT = #{FEEAMOUNT}
+			,FEEDATE = #{FEEDATE}
+			,FEEDATEEND = #{FEEDATEEND}
+			,COMPANYWORK = #{COMPANYWORK}
+			,COMPANYMONEY = #{COMPANYMONEY}
+			,COMPANYWEB = #{COMPANYWEB}
+			,COMPANYINTRODUCTION = #{COMPANYINTRODUCTION}
+			,SETUPDATE = #{SETUPDATE}
+			,HOBBIES = #{HOBBIES}
+			,EDUCATION = #{EDUCATION}
+			,EXPERIENCE = #{EXPERIENCE}
+		<if test="MSTATUS != null and MSTATUS != ''">
+			,MSTATUS = ${MSTATUS}
+		</if>
+		<if test="BELONGCOMMERCE != null and BELONGCOMMERCE != ''">
+			,BELONGCOMMERCE = ${BELONGCOMMERCE}
+		</if>
+		<if test="AGE != null and AGE != ''">
+			,AGE = ${AGE}
+		</if>
+		<if test="SHSTATUS != null and SHSTATUS != ''">
+			,SHSTATUS = ${SHSTATUS}
+		</if>
+		<if test="JHSTATUS != null and JHSTATUS != ''">
+			,JHSTATUS = ${JHSTATUS}
+		</if>
+		<if test="INOUTSTATUS != null and INOUTSTATUS != ''">
+			,INOUTSTATUS = ${INOUTSTATUS}
+		</if>
+		<if test="OUTTIME != null and OUTTIME != ''">
+			,OUTTIME = #{OUTTIME}
+		</if>
+		<if test="ORDERSTATUS != null and ORDERSTATUS != ''">
+			,ORDERSTATUS = ${ORDERSTATUS}
+		</if>
+		<if test="ISAPPFIRST != null and ISAPPFIRST != ''">
+			,ISAPPFIRST = ${ISAPPFIRST}
+		</if>
+		<if test="CODE != null and CODE != ''">
+			,CODE = ${CODE}
+		</if>
+		<if test="OCCUPATIONID != null and OCCUPATIONID != ''">
+			,OCCUPATIONID = ${OCCUPATIONID}
+		</if>
+		<if test="AVAILABLE != null and AVAILABLE != ''">
+			,AVAILABLE = ${AVAILABLE}
+		</if>
+		<if test="IMAGE != null and IMAGE != ''">
+			,IMAGE = #{IMAGE}
+		</if>
+		WHERE
+			USID = ${USID}
+	</update>
+	<select id="queryShmember" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			ISACTIVATION
+		FROM
+			PRE_AL_SHMEMBER
+		WHERE
+			ISACTIVATION = 2
+		AND USERNAME = #{USERNAME}
+		limit 1
+	</select>
+	<select id="ifky" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			count(*)
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			AVAILABLE = 0
+		AND ISAPPFIRST = 2
+		AND USERNAME = #{USERNAME}
+	</select>
+	<insert id="insertAlshmember" parameterType="java.util.HashMap">
+		INSERT INTO PRE_AL_SHMEMBER (
+			USERNAME,
+			SHANGHUIID,
+			ISACTIVATION
+		)
+		VALUES
+			(
+				#{USERNAME},
+				${SHANGHUIID},
+				${ISACTIVATION}
+			)
+	</insert>
+	<insert id="insertGroupChatByMe" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_GROUP_CHAT (
+				USERNAME,
+				OPERATORID,
+				COPERATOR,
+				ACTION,
+				DATELINE,
+				SHANGHUIID
+			)
+			VALUES
+				(#{USERNAME},
+				${OPERATORID},
+				#{COPERATOR},
+				${ACTION},
+				now(),
+				${SHANGHUIID}
+				)
+	</insert>
+	<select id="findGroupIdByShId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			GROUPID,
+			GROUPNAME,
+			DETAIL,
+			IMAGEURL,
+			CREATEDATE,
+			GROUPTYPE,
+			STATE,
+			SHANGHUIID,
+			HOSTNAME
+		FROM
+			PRE_COMMON_GROUP
+		WHERE
+			GROUPTYPE = 3
+		AND HOSTNAME = 0
+		AND SHANGHUIID = ${SHANGHUIID}
+	</select>
+	<insert id="insertGroupMembers" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_GROUP_MEMBERS (MEMBERUSER, GROUPID)
+		VALUES
+			(
+				#{MEMBERUSER},
+				${GROUPID}
+			)
+	</insert>
+	<select id="findMemberDetail" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			USID NOT IN (
+				SELECT
+					USID
+				FROM
+					PRE_SHAPP_MEMBER_DETAIL
+				WHERE SHID != 0
+			)
+		AND USERNAME IN (SELECT USERNAME FROM PRE_AL_SHMEMBER WHERE SHANGHUIID = ${SHANGHUIID})
+	</select>
+	<insert id="insertmemberdetai" parameterType="java.util.HashMap">
+		INSERT INTO PRE_SHAPP_MEMBER_DETAIL (USID, SHID, OID, ISMOBILE)
+		VALUES
+			(
+				${USID},
+				${SHID},
+				0,
+				0
+			)
+	</insert>
+	<insert id="insertMember" parameterType="java.util.HashMap">
+		INSERT INTO PRE_AL_MEMBER (USERNAME, UPASSWORD,
+			LOGINTYPE
+			<if test="REALNAME != null and REALNAME != ''">
+				,REALNAME
+			</if>
+			<if test="GENDER != null and GENDER != ''">
+				,GENDER
+			</if>
+			<if test="BIRTHDAY != null and BIRTHDAY != ''">
+				,BIRTHDAY
+			</if>
+			<if test="NATIVEINFO != null and NATIVEINFO != ''">
+				,NATIVEINFO
+			</if>
+			<if test="RESERVEMOBILE != null and RESERVEMOBILE != ''">
+				,RESERVEMOBILE
+			</if>
+			<if test="MOBILE != null and MOBILE != ''">
+				,MOBILE
+			</if>
+			<if test="FIXEDTELEPHONE != null and FIXEDTELEPHONE != ''">
+				,FIXEDTELEPHONE
+			</if>
+			<if test="COMPANY != null and COMPANY != ''">
+				,COMPANY
+			</if>
+			<if test="COMPANYADDRESS != null and COMPANYADDRESS != ''">
+				,COMPANYADDRESS
+			</if>
+			<if test="RESIDE != null and RESIDE != ''">
+				,RESIDE
+			</if>
+			<if test="EMAIL != null and EMAIL != ''">
+				,EMAIL
+			</if>
+			<if test="QQ != null and QQ != ''">
+				,QQ
+			</if>
+			<if test="WEIXIN != null and WEIXIN != ''">
+				,WEIXIN
+			</if>
+			<if test="BLOG != null and BLOG != ''">
+				,BLOG
+			</if>
+			<if test="FAX != null and FAX != ''">
+				,FAX
+			</if>
+			<if test="POLITICAL != null and POLITICAL != ''">
+				,POLITICAL
+			</if>
+			<if test="IDCARD != null and IDCARD != ''">
+				,IDCARD
+			</if>
+			<if test="JOINDATE != null and JOINDATE != ''">
+				,JOINDATE
+			</if>
+			<if test="FEEAMOUNT != null and FEEAMOUNT != ''">
+				,FEEAMOUNT
+			</if>
+			<if test="FEEDATE != null and FEEDATE != ''">
+				,FEEDATE
+			</if>
+			<if test="FEEDATEEND != null and FEEDATEEND != ''">
+				,FEEDATEEND
+			</if>
+			<if test="COMPANYWORK != null and COMPANYWORK != ''">
+				,COMPANYWORK
+			</if>
+			<if test="COMPANYMONEY != null and COMPANYMONEY != ''">
+				,COMPANYMONEY
+			</if>
+			<if test="COMPANYWEB != null and COMPANYWEB != ''">
+				,COMPANYWEB
+			</if>
+			<if test="COMPANYINTRODUCTION != null and COMPANYINTRODUCTION != ''">
+				,COMPANYINTRODUCTION
+			</if>
+			<if test="SETUPDATE != null and SETUPDATE != ''">
+				,SETUPDATE
+			</if>
+			<if test="HOBBIES != null and HOBBIES != ''">
+				,HOBBIES
+			</if>
+			<if test="EDUCATION != null and EDUCATION != ''">
+				,EDUCATION
+			</if>
+			<if test="EXPERIENCE != null and EXPERIENCE != ''">
+				,EXPERIENCE
+			</if>
+			<if test="MSTATUS != null and MSTATUS != ''">
+				,MSTATUS
+			</if>
+			<if test="BELONGCOMMERCE != null and BELONGCOMMERCE != ''">
+				,BELONGCOMMERCE
+			</if>
+			<if test="AGE != null and AGE != ''">
+				,AGE
+			</if>
+			<if test="SHSTATUS != null and SHSTATUS != ''">
+				,SHSTATUS
+			</if>
+			<if test="JHSTATUS != null and JHSTATUS != ''">
+				,JHSTATUS
+			</if>
+			<if test="INOUTSTATUS != null and INOUTSTATUS != ''">
+				,INOUTSTATUS
+			</if>
+			<if test="OUTTIME != null and OUTTIME != ''">
+				,OUTTIME
+			</if>
+			<if test="ORDERSTATUS != null and ORDERSTATUS != ''">
+				,ORDERSTATUS
+			</if>
+			<if test="ISAPPFIRST != null and ISAPPFIRST != ''">
+				,ISAPPFIRST
+			</if>
+			<if test="CODE != null and CODE != ''">
+				,CODE
+			</if>
+			<if test="OCCUPATIONID != null and OCCUPATIONID != ''">
+				,OCCUPATIONID
+			</if>
+			<if test="AVAILABLE != null and AVAILABLE != ''">
+				,AVAILABLE
+			</if>
+			<if test="IMAGE != null and IMAGE != ''">
+				,IMAGE
+			</if>)
+			VALUES
+				(#{USERNAME},
+				#{UPASSWORD},
+				${LOGINTYPE}
+				<if test="REALNAME != null and REALNAME != ''">
+					,#{REALNAME}
+				</if>
+				<if test="GENDER != null and GENDER != ''">
+					,${GENDER}
+				</if>
+				<if test="BIRTHDAY != null and BIRTHDAY != ''">
+					,#{BIRTHDAY}
+				</if>
+				<if test="NATIVEINFO != null and NATIVEINFO != ''">
+					,#{NATIVEINFO}
+				</if>
+				<if test="RESERVEMOBILE != null and RESERVEMOBILE != ''">
+					,#{RESERVEMOBILE}
+				</if>
+				<if test="MOBILE != null and MOBILE != ''">
+					,#{MOBILE}
+				</if>
+				<if test="FIXEDTELEPHONE != null and FIXEDTELEPHONE != ''">
+					,#{FIXEDTELEPHONE}
+				</if>
+				<if test="COMPANY != null and COMPANY != ''">
+					,#{COMPANY}
+				</if>
+				<if test="COMPANYADDRESS != null and COMPANYADDRESS != ''">
+					,#{COMPANYADDRESS}
+				</if>
+				<if test="RESIDE != null and RESIDE != ''">
+					,#{RESIDE}
+				</if>
+				<if test="EMAIL != null and EMAIL != ''">
+					,#{EMAIL}
+				</if>
+				<if test="QQ != null and QQ != ''">
+					,#{QQ}
+				</if>
+				<if test="WEIXIN != null and WEIXIN != ''">
+					,#{WEIXIN}
+				</if>
+				<if test="BLOG != null and BLOG != ''">
+					,#{BLOG}
+				</if>
+				<if test="FAX != null and FAX != ''">
+					,#{FAX}
+				</if>
+				<if test="POLITICAL != null and POLITICAL != ''">
+					,${POLITICAL}
+				</if>
+				<if test="IDCARD != null and IDCARD != ''">
+					,#{IDCARD}
+				</if>
+				<if test="JOINDATE != null and JOINDATE != ''">
+					,#{JOINDATE}
+				</if>
+				<if test="FEEAMOUNT != null and FEEAMOUNT != ''">
+					,#{FEEAMOUNT}
+				</if>
+				<if test="FEEDATE != null and FEEDATE != ''">
+					,#{FEEDATE}
+				</if>
+				<if test="FEEDATEEND != null and FEEDATEEND != ''">
+					,#{FEEDATEEND}
+				</if>
+				<if test="COMPANYWORK != null and COMPANYWORK != ''">
+					,#{COMPANYWORK}
+				</if>
+				<if test="COMPANYMONEY != null and COMPANYMONEY != ''">
+					,${COMPANYMONEY}
+				</if>
+				<if test="COMPANYWEB != null and COMPANYWEB != ''">
+					,#{COMPANYWEB}
+				</if>
+				<if test="COMPANYINTRODUCTION != null and COMPANYINTRODUCTION != ''">
+					,#{COMPANYINTRODUCTION}
+				</if>
+				<if test="SETUPDATE != null and SETUPDATE != ''">
+					,#{SETUPDATE}
+				</if>
+				<if test="HOBBIES != null and HOBBIES != ''">
+					,#{HOBBIES}
+				</if>
+				<if test="EDUCATION != null and EDUCATION != ''">
+					,#{EDUCATION}
+				</if>
+				<if test="EXPERIENCE != null and EXPERIENCE != ''">
+					,#{EXPERIENCE}
+				</if>
+				<if test="MSTATUS != null and MSTATUS != ''">
+					,${MSTATUS}
+				</if>
+				<if test="BELONGCOMMERCE != null and BELONGCOMMERCE != ''">
+					,${BELONGCOMMERCE}
+				</if>
+				<if test="AGE != null and AGE != ''">
+					,${AGE}
+				</if>
+				<if test="SHSTATUS != null and SHSTATUS != ''">
+					,${SHSTATUS}
+				</if>
+				<if test="JHSTATUS != null and JHSTATUS != ''">
+					,${JHSTATUS}
+				</if>
+				<if test="INOUTSTATUS != null and INOUTSTATUS != ''">
+					,${INOUTSTATUS}
+				</if>
+				<if test="OUTTIME != null and OUTTIME != ''">
+					,#{OUTTIME}
+				</if>
+				<if test="ORDERSTATUS != null and ORDERSTATUS != ''">
+					,${ORDERSTATUS}
+				</if>
+				<if test="ISAPPFIRST != null and ISAPPFIRST != ''">
+					,${ISAPPFIRST}
+				</if>
+				<if test="CODE != null and CODE != ''">
+					,${CODE}
+				</if>
+				<if test="OCCUPATIONID != null and OCCUPATIONID != ''">
+					,${OCCUPATIONID}
+				</if>
+				<if test="AVAILABLE != null and AVAILABLE != ''">
+					,${AVAILABLE}
+				</if>
+				<if test="IMAGE != null and IMAGE != ''">
+					,#{IMAGE}
+				</if>)
+	</insert>
+	<select id="findGroupChat" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			pgrm.*
+		FROM
+			PRE_COMMON_GROUP_CHAT pgrm
+		WHERE
+			USERNAME IN (
+				SELECT
+					USERNAME
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					MOBILE = #{MOBILE}
+			)
+		AND pgrm.SHANGHUIID = ${SHANGHUIID}
+	</select>
+	<delete id="deleteMember" parameterType="java.util.HashMap">
+		DELETE PRE_AL_MEMBER WHERE MOBILE = #{MOBILE}
+	</delete>
+	<select id="findGroupMembers" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			pgrm.*
+		FROM
+			PRE_COMMON_GROUP_MEMBERS pgrm
+		WHERE
+			pgrm.MEMBERUSER IN (
+				SELECT
+					USERNAME
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					MOBILE = #{MOBILE}
+			)
+		AND pgrm.GROUPID IN (
+			SELECT
+				GROUPID
+			FROM
+				PRE_COMMON_GROUP
+			WHERE
+				HOSTNAME = 0
+			AND GROUPTYPE = 3
+			AND SHANGHUIID = ${SHANGHUIID}
+		)
+	</select>
+	<insert id="insertGroupMessage" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_GROUP_MEMBERS (MEMBERUSER, GROUPID)
+			VALUES
+				(
+					#{MEMBERUSER},
+					(
+						SELECT
+							GROUPID
+						FROM
+							PRE_COMMON_GROUP
+						WHERE
+							HOSTNAME = 0
+						AND GROUPTYPE = 3
+						AND SHANGHUIID = ${SHANGHUIID}
+					)
+				)
+	</insert>
+	<select id="queryIsappfirst" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			ISAPPFIRST
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			<!-- ISAPPFIRST = 2
+		AND --> USERNAME = #{USERNAME}
+	</select>
+	
+	<select id="queryByOcpId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.OID,
+			T.ONAME,
+			T.STATUS,
+			T.GRADE,
+			T.CREATETIME,
+			T.SHANGHUIID,
+			T.OCCUPATIONID
+		FROM
+			PRE_COMMON_OCCUPATION T
+		WHERE
+			T.OID = ${OID}
+		ORDER BY
+			GRADE
+	</select>
+	
+	<select id="gourpChatList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			USID,
+			USERNAME,
+			REALNAME,
+			GENDER,
+			MOBILE,
+			COMPANY,
+			COMPANYWORK,
+			(
+				SELECT
+					GROUP_CONCAT(O.ONAME)
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) ONAME,
+			(
+				SELECT
+					ACTION
+				FROM
+					PRE_COMMON_GROUP_CHAT P
+				WHERE
+					T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) ACTION
+		FROM
+			PRE_AL_MEMBER T
+		WHERE
+			USERNAME IN (
+				SELECT
+					MEMBERUSER
+				FROM
+					PRE_COMMON_GROUP_MEMBERS
+				WHERE
+					GROUPID = ${GROUPID}
+			)
+		<if test="search != null and search != ''">
+			AND REALNAME LIKE '%${search}%'
+		</if>
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<update id="gourpChatUpdate" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_GROUP_CHAT
+		SET ACTION = ${ACTION}
+		WHERE
+			USERNAME = #{USERNAME}
+		AND SHANGHUIID = ${SHANGHUIID}
+	</update>
+	
+	<select id="findMemberbyActivation" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			USID,
+			USERNAME,
+			REALNAME,
+			GENDER,
+			MOBILE,
+			COMPANY,
+			COMPANYWORK,
+			(
+				SELECT
+					GROUP_CONCAT(O.ONAME)
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) ONAME,
+			(
+				SELECT
+					ACTION
+				FROM
+					PRE_COMMON_GROUP_CHAT P
+				WHERE
+					T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) ACTION,
+			(
+				SELECT
+					ISACTIVATION
+				FROM
+					PRE_AL_SHMEMBER A
+				WHERE
+					T.USERNAME = A.USERNAME
+				AND A.SHANGHUIID = ${SHANGHUIID}
+			) ISACTIVATION
+		FROM
+			PRE_AL_MEMBER T
+		WHERE
+			USERNAME IN (
+				SELECT
+					pas.USERNAME
+				FROM
+					PRE_AL_SHMEMBER pas
+				WHERE
+					<![CDATA[pas.ISACTIVATION <> 2]]>
+				AND SHANGHUIID = ${SHANGHUIID}
+			)
+		<if test="search != null and search != ''">
+			AND REALNAME LIKE '%${search}%'
+		</if>
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<select id="queryByShid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_SMSCONFIG T
+		WHERE
+			T.SHID = ${SHANGHUIID}
+	</select>
+	<select id="findSmsmodel" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_SMS_MODEL T
+		WHERE
+			T.SHID = ${SHANGHUIID}
+	</select>
+	<update id="updateSHmember" parameterType="java.util.HashMap">
+		UPDATE PRE_AL_SHMEMBER
+		SET ISACTIVATION = ${ISACTIVATION}
+		WHERE
+			ID = ${ID}
+	</update>
+	<insert id="insertSmssdi" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO PRE_COMMON_SMS (
+			SENDERID,
+			SMSMSG,
+			SENDTIME,
+			STAT,
+			ADDRESSEECOUNT,
+			SHANGHUIID,
+			SENDSMSCOUNT
+		)
+		VALUES
+			(${SENDERID},
+			#{SMSMSG},
+			now(),
+			${STAT},
+			${ADDRESSEECOUNT},
+			${SHANGHUIID},
+			${SENDSMSCOUNT})
+			
+		<selectKey resultType="int" order="AFTER" keyProperty="id">
+			 SELECT MAX(SMSID) AS id from PRE_COMMON_SMS
+		 </selectKey>
+	</insert>
+	<update id="updateSmscfg" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_SMSCONFIG
+		SET SMSUSEDCOUNTS = ${SMSUSEDCOUNTS},
+		 SMSREMAINCOUNTS = ${SMSREMAINCOUNTS}
+		WHERE
+			CFID = ${CFID}
+	</update>
+	<select id="queryMessage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_SMSREPORTSTATUS
+		WHERE
+			MSGID = #{MSGID}
+	</select>
+	<update id="updateSmsReport" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_SMSREPORTSTATUS
+		SET SMSID = ${SMSID}
+		WHERE
+			SRID = ${SRID}
+	</update>
+	<insert id="insertSmsReport" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_SMSREPORTSTATUS (
+			MSGID,
+			DESTMOBILE,
+			REPORTSTATUS,
+			REPORTRECVTIME,
+			SMSID
+		)
+		VALUES
+			(#{MSGID},
+			#{DESTMOBILE},
+			#{REPORTSTATUS},
+			now(),
+			${SMSID})
+	</insert>
+	
+	<select id="findGroupByShidCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			PRE_COMMON_GROUP
+		WHERE
+			HOSTNAME = 0
+		AND GROUPTYPE = 2
+		AND SHANGHUIID = ${SHANGHUIID}
+		<if test="GROUPNAME != null and GROUPNAME != ''">
+			AND GROUPNAME LIKE '%${GROUPNAME}%'
+		</if>
+	</select>
+	<select id="findGroupByShid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.GROUPID,
+			T.GROUPNAME,
+			T.DETAIL,
+			T.IMAGEURL,
+			date_format(T.CREATEDATE, '%Y-%m-%d') CREATEDATE,
+			T.GROUPTYPE,
+			T.STATE,
+			T.SHANGHUIID,
+			T.HOSTNAME,
+			(
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_GROUP_MEMBERS P
+				WHERE
+					T.GROUPID = P.GROUPID
+			) COUNT
+		FROM
+			PRE_COMMON_GROUP T
+		WHERE
+			HOSTNAME = 0
+		AND GROUPTYPE = 2
+		AND SHANGHUIID = ${SHANGHUIID}
+		<if test="search != null and search != ''">
+			AND GROUPNAME LIKE '%${search}%'
+		</if>
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<insert id="insertGroup" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_GROUP (
+			GROUPNAME,
+			<if test="DETAIL != null and DETAIL != ''">
+				DETAIL,
+			</if>
+			CREATEDATE,
+			GROUPTYPE,
+			STATE,
+			SHANGHUIID,
+			HOSTNAME
+		)
+		VALUES
+			(#{GROUPNAME},
+			<if test="DETAIL != null and DETAIL != ''">
+				#{DETAIL},
+			</if>
+			now(),
+			2,
+			1,
+			${SHANGHUIID},
+			0)
+	</insert>
+	<select id="findGroupByGroupId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_GROUP
+		WHERE
+			GROUPID = ${GROUPID}
+	</select>
+	<update id="updateGroup" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_GROUP
+		SET GROUPNAME = #{GROUPNAME}
+		<if test="DETAIL != null and DETAIL != ''">
+		 	,DETAIL = #{DETAIL}
+		 </if>
+		WHERE
+			GROUPID = ${GROUPID}
+	</update>
+	<delete id="deleteGroup" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_GROUP
+		WHERE
+			GROUPID = ${GROUPID}
+	</delete>
+	<delete id="deleteGroupMembers" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_GROUP_MEMBERS
+		WHERE
+			GROUPID = ${GROUPID}
+		<if test="MEMBERUSER != null and MEMBERUSER != ''">
+			AND MEMBERUSER IN (${MEMBERUSER})
+		</if>
+	</delete>
+	<delete id="deleteAllGroupMembers" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_GROUP_MEMBERS
+		WHERE
+			 MEMBERUSER IN (${MEMBERUSER})
+			AND GROUPID IN (
+				SELECT
+					GROUPID
+				FROM
+					PRE_COMMON_GROUP
+				WHERE
+					SHANGHUIID = ${SHANGHUIID}
+				AND GROUPTYPE IN (2, 3)
+			)
+	</delete>
+	<select id="findGroupByGroupidCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			USERNAME IN (
+				SELECT
+					MEMBERUSER
+				FROM
+					PRE_COMMON_GROUP_MEMBERS
+				WHERE
+					GROUPID = ${GROUPID}
+			)
+		<if test="search != null and search != ''">
+			AND REALNAME LIKE '%${search}%'
+		</if>
+		<if test="REALNAME != null and REALNAME != ''">
+			AND REALNAME LIKE '%${REALNAME}%'
+		</if>
+	</select>
+	<select id="findGroupByGroupid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			USID,
+			USERNAME,
+			REALNAME,
+			DATE_FORMAT(BIRTHDAY, '%Y-%m-%d') BIRTHDAY,
+			MOBILE
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			USERNAME IN (
+				SELECT
+					MEMBERUSER
+				FROM
+					PRE_COMMON_GROUP_MEMBERS
+				WHERE
+					GROUPID = ${GROUPID}
+			)
+		<if test="search != null and search != ''">
+			AND REALNAME LIKE '%${search}%'
+		</if>
+		<if test="REALNAME != null and REALNAME != ''">
+			AND REALNAME LIKE '%${REALNAME}%'
+		</if>
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<select id="queryMember" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_GROUP_MEMBERS
+		WHERE
+			MEMBERUSER = (
+				SELECT
+					USERNAME
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					USID = ${USID}
+				AND GROUPID = ${GROUPID}
+			)
+	</select>
+	<select id="queryMemberUsername" parameterType="java.util.HashMap" resultType="String">
+		SELECT
+			USERNAME
+		FROM
+			PRE_AL_MEMBER
+		WHERE
+			USID = ${USID}
+	</select>
+	
+	
+	<select id="excelMember" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_AL_EXCELMEMBER
+		WHERE
+			MOBILE = #{MOBILE}
+	</select>
+	<insert id="insertExcelMember" parameterType="java.util.HashMap">
+		INSERT INTO PRE_AL_EXCELMEMBER (
+			REALNAME,
+			GENDER,
+			NATIVEINFO,
+			MOBILE,
+			POSITION,
+			COMPANY
+			<if test="COMPANYWORK != null and COMPANYWORK != ''">
+				,COMPANYWORK
+			</if>
+			<if test="RESIDE != null and RESIDE != ''">
+				,RESIDE
+			</if>
+			<if test="COMPANYADDRESS != null and COMPANYADDRESS != ''">
+				,COMPANYADDRESS
+			</if>
+			<if test="QQ != null and QQ != ''">
+				,QQ
+			</if>
+			<if test="EMAIL != null and EMAIL != ''">
+				,EMAIL
+			</if>
+			<if test="RESERVEMOBILE != null and RESERVEMOBILE != ''">
+				,RESERVEMOBILE
+			</if>
+			<if test="FAX != null and FAX != ''">
+				,FAX
+			</if>
+		)
+		VALUES
+			(#{REALNAME},
+			#{GENDER},
+			#{NATIVEINFO},
+			#{MOBILE},
+			#{POSITION},
+			#{COMPANY}
+			<if test="COMPANYWORK != null and COMPANYWORK != ''">
+				,#{COMPANYWORK}
+			</if>
+			<if test="RESIDE != null and RESIDE != ''">
+				,#{RESIDE}
+			</if>
+			<if test="COMPANYADDRESS != null and COMPANYADDRESS != ''">
+				,#{COMPANYADDRESS}
+			</if>
+			<if test="QQ != null and QQ != ''">
+				,#{QQ}
+			</if>
+			<if test="EMAIL != null and EMAIL != ''">
+				,#{EMAIL}
+			</if>
+			<if test="RESERVEMOBILE != null and RESERVEMOBILE != ''">
+				,#{RESERVEMOBILE}
+			</if>
+			<if test="FAX != null and FAX != ''">
+				,#{FAX}
+			</if>
+			)
+	</insert>
+	<update id="updateExcelMember" parameterType="java.util.HashMap">
+		UPDATE PRE_AL_EXCELMEMBER
+		SET REALNAME = #{REALNAME},
+			GENDER = #{GENDER},
+			NATIVEINFO = #{NATIVEINFO},
+			POSITION = #{POSITION},
+			COMPANY = #{COMPANY}
+			<if test="COMPANYWORK != null and COMPANYWORK != ''">
+				,COMPANYWORK = #{COMPANYWORK}
+			</if>
+			<if test="RESIDE != null and RESIDE != ''">
+				,RESIDE = #{RESIDE}
+			</if>
+			<if test="COMPANYADDRESS != null and COMPANYADDRESS != ''">
+				,COMPANYADDRESS = #{COMPANYADDRESS}
+			</if>
+			<if test="QQ != null and QQ != ''">
+				,QQ = #{QQ}
+			</if>
+			<if test="EMAIL != null and EMAIL != ''">
+				,EMAIL = #{EMAIL}
+			</if>
+			<if test="RESERVEMOBILE != null and RESERVEMOBILE != ''">
+				,RESERVEMOBILE = #{RESERVEMOBILE}
+			</if>
+			<if test="FAX != null and FAX != ''">
+				,FAX = #{FAX}
+			</if>
+		WHERE
+			MOBILE = #{MOBILE}
+	</update>
+	
+	<select id="findIndustry" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_INDUSTRY
+		ORDER BY
+			SORT
+	</select>
+	<update id="deleteUserIndustry" parameterType="java.util.HashMap">
+		UPDATE
+			PRE_COMMON_USER_INDUSTRY
+		SET STATE = 2,
+			UPDATE_DATE = NOW()		
+		WHERE
+		<if test="USID != null and USID != ''">
+			USID = ${USID}
+		</if>
+		<if test="USID == null or USID == ''">
+			USID IN (SELECT USID FROM PRE_AL_MEMBER WHERE USERNAME = #{USERNAME})
+		</if>
+	</update>
+	<insert id="insertUserIndustry" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_USER_INDUSTRY (
+			USID,
+			INDUSTRY,
+			STATE,
+			CREATE_DATE
+		)
+		VALUES
+			(
+				<if test="USID != null and USID != ''">
+					${USID},
+				</if>
+				<if test="USID == null or USID == ''">
+					(SELECT USID FROM PRE_AL_MEMBER WHERE USERNAME = #{USERNAME}),
+				</if>
+				#{INDUSTRY},
+				1,
+				NOW()
+			)
+	</insert>
+	<delete id="deleteMemberRelation" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_AL_MEMBERRELATION
+		WHERE
+			SHANGHUIID = ${SHANGHUIID}
+		<if test="USERNAME != null and USERNAME != ''">
+			AND USERNAME in (${USERNAME})
+		</if>
+		AND OCCUPATIONID in (${OCCUPATIONID})
+	</delete>
+	
+	<update id="updateBookSort" parameterType="java.util.HashMap">
+		UPDATE PRE_AL_MEMBERRELATION
+			<if test="BOOKSORT != null and BOOKSORT != ''">
+				SET BOOKSORT = ${BOOKSORT}
+			</if>
+			<if test="BOOKSORT == null or BOOKSORT == ''">
+				SET BOOKSORT = null
+			</if>
+			WHERE
+				SHANGHUIID = ${SHANGHUIID}
+			AND USERNAME = #{USERNAME}
+	</update>
+</mapper>

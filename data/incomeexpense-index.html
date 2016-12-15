@@ -1,0 +1,24 @@
+<div id="content-area">
+                <div class="content-area-box">
+                    <div id="table-toolbar" class="form-inline">
+                        <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
+                        <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#incomeExpense-modal">新增</button>
+                      
+                        <div class="input-group date form_date " data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+			            	<input id="startTime" class="form-control" size="10" type="text" value="" placeholder="日期" readonly>     
+			            	<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+			        	</div>  
+			        	<div class="input-group date form_date " data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+				            <input id="endTime" class="form-control" size="10" type="text" value="" placeholder="日期" readonly>       
+				            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+			        	</div>  
+			        
+			        	<input id="title" type="search" class="form-control" name="title" placeholder="标题">
+			        	<input id="author" type="search" class="form-control" name="author" placeholder="发布人">
+			        	<button id="search" type="submit" class="btn btn-primary">查询</button>
+			        	<button id="export" type="button" class="btn btn-primary">导出</button>
+			        	<button id="reset" type="submit" class="btn btn-default">重置</button>
+                    </div>
+                    <table id="table"></table>
+                </div>
+            </div>

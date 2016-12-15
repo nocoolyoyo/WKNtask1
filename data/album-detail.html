@@ -5,6 +5,7 @@
             <button id="add" type="button" class="btn btn-success" data-toggle="modal" data-target="#upload-modal">上传图片</button>
         </div>
         <div id="album-box-area">
+        <div id="album-box">
             <!--<div class="grid-item">-->
                 <!--<div class="card hoverable">-->
                     <!--<a href="#">-->
@@ -19,18 +20,8 @@
             <!--</div>-->
             <ul class="tiles-wrap animated" id="album-wall">
                 <!-- These are our grid blocks -->
-                <li class="hoverable"><a href="img/testImg/image_1.jpg"  rel="prettyPhoto"><img src="img/testImg/image_1.jpg"><p>1</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_2.jpg"  rel="prettyPhoto"><img src="img/testImg/image_2.jpg"><p>2</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_3.jpg"  rel="prettyPhoto"><img src="img/testImg/image_3.jpg"><p>3</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_4.jpg"  rel="prettyPhoto"><img src="img/testImg/image_4.jpg"><p>4</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_5.jpg"  rel="prettyPhoto"><img src="img/testImg/image_5.jpg"><p>5</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_6.jpg"  rel="prettyPhoto"><img src="img/testImg/image_6.jpg"><p>6</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_7.jpg"  rel="prettyPhoto"><img src="img/testImg/image_7.jpg"><p>7</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_8.jpg"  rel="prettyPhoto"><img src="img/testImg/image_8.jpg"><p>8</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_9.jpg"  rel="prettyPhoto"><img src="img/testImg/image_9.jpg"><p>9</p></a></li>
-                <li class="hoverable"><a href="img/testImg/image_9.jpg"  rel="prettyPhoto"><img src="img/testImg/image_9.jpg"><p>9</p></a></li>
             </ul>
-
+</div>
         </div>
     </div>
 </div>
@@ -38,22 +29,22 @@
 <div id="upload-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="form" class="form-horizontal" role="form">
+          
                 <div class="modal-header">
-                    <h4 class="modal-title">上传文件</h4>
+                    <h4 class="modal-title">上传图片</h4>
                 </div>
                 <div class="modal-body both-25">
 
                     <div class="form-group">
-                        <input id="file-upload" type="file">
+                        <input id="file-upload" type="file"  multiple="multiple">
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <!--<button id="backlog-add-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled" >导入</button>-->
+                    <button id="insert" type="button" class="btn button button-primary button-rounded" data-dismiss="modal">插入</button>
                     <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
                 </div>
-            </form>
+         
         </div>
     </div>
 </div>

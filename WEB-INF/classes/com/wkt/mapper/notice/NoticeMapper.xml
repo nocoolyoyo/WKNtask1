@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.notice.INoticeDao">
+	
+	<select id="queryNoticePageCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			PRE_COMMON_NOTICE
+		WHERE
+			SHANGHUIID = #{SHANGHUIID}
+		AND NOTICESTATUS = ${NOTICESTATUS}
+		<if test="TITLE != null and TITLE != ''">
+			AND TITLE LIKE '%${TITLE}%'
+		</if>
+		<if test="STARTTIME != null and STARTTIME != ''">
+			AND PUBLISHTIME >= #{STARTTIME}
+		</if>
+		<if test="ENDTIME != null and ENDTIME != ''">
+			<![CDATA[AND PUBLISHTIME <= #{ENDTIME}]]>
+		</if>
+	</select>
+	<select id="queryNoticePage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			NID,
+			TITLE,
+			DATE_FORMAT(
+				PUBLISHTIME,
+				'%Y-%m-%d %H:%i'
+			) PUBLISHTIME
+		FROM
+			PRE_COMMON_NOTICE
+		WHERE
+			SHANGHUIID = #{SHANGHUIID}
+		AND NOTICESTATUS = #{NOTICESTATUS}
+		<if test="search != null and search != ''">
+			AND (TITLE LIKE '%${search}%')
+		</if>
+		<if test="TITLE != null and TITLE != ''">
+			AND TITLE LIKE '%${TITLE}%'
+		</if>
+		<if test="STARTTIME != null and STARTTIME != ''">
+			AND PUBLISHTIME >= #{STARTTIME}
+		</if>
+		<if test="ENDTIME != null and ENDTIME != ''">
+			<![CDATA[AND PUBLISHTIME <= #{ENDTIME}]]>
+		</if>
+		ORDER BY
+			PUBLISHTIME DESC
+		<if test="x != null and x != '' and y!= null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<delete id="deleteNotice" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_NOTICE
+		WHERE
+			NID = ${NID}
+	</delete>
+	<select id="queryByNoticeId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_VOTE 
+		WHERE
+			ACTIVITYID = ${NID}
+	</select>
+	<delete id="deleteVote" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_VOTE 
+		WHERE
+			ACTIVITYID = ${NID}
+	</delete>
+	<delete id="deleteVoteOption" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_VOTE_OPTION 
+		WHERE
+			VOTEID = ${VOTEID}
+	</delete>
+	<delete id="deleteNoticeVsv" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_NOTICE_VSV 
+		WHERE
+			NOTICEID = ${NID}
+	</delete>
+	<delete id="deleteVoteSelect" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_VOTESELECT 
+		WHERE
+			NOTICEID = ${NID}
+	</delete>
+	<select id="queryNoticeFind" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			(
+				SELECT
+					REALNAME
+				FROM
+					PRE_COMMON_SECRETARY
+				WHERE
+					T.PUBLISHMANID = SID
+			) AUTHOR,T.*,date_format(
+				T.PUBLISHTIME,
+				'%Y-%m-%d %H:%i'
+			) PUBLISHDATE,
+			date_format(
+				T.STARTTIME,
+				'%Y-%m-%d %H:%i'
+			) STARTDATE,
+			date_format(
+				T.ENDTIME,
+				'%Y-%m-%d %H:%i'
+			) ENDDATE,
+			CASE T.ACTIVITYSTATUS
+			WHEN 1 THEN
+				'活动中'
+			WHEN 2 THEN
+				'活动已结束'
+			ELSE
+				'未开始'
+			END ACTIVITYSTATUSRNAME
+		FROM
+			PRE_COMMON_NOTICE T
+		WHERE
+			NID = ${NID}
+	</select>
+	<select id="queryByIsSignUpIsView" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_NOTICE_VSV
+		WHERE
+			NOTICEID = ${NID}
+		<if test="ISVIEW != null and ISVIEW != ''">
+			AND ISVIEW = ${ISVIEW}
+		</if>
+		<if test="ISSIGNUP != null and ISSIGNUP != ''">
+			AND ISSIGNUP = ${ISSIGNUP}
+		</if>
+		<if test="ISVOTE != null and ISVOTE != ''">
+			AND ISVOTE = ${ISVOTE}
+		</if>
+		<if test="x != null and x != '' and y!= null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<select id="queryByVoteId" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_VOTE_OPTION
+		WHERE
+			VOTEID = ${VOTEID}
+	</select>
+	<select id="findFront" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM
+			PRE_COMMON_NOTICE
+		WHERE
+			SHANGHUIID = ${SHANGHUIID}
+			AND NOTICESTATUS = 1
+		<if test="ACT == 'FRONT'">
+			AND NID > ${NID}
+			ORDER BY
+				PUBLISHTIME ASC
+		</if>
+		<if test="ACT == 'BEHIND'">
+			<![CDATA[AND NID < ${NID}]]>
+			ORDER BY
+				PUBLISHTIME DESC
+		</if>
+		LIMIT 1
+	</select>
+	<select id="getNotView" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.USID,
+			T.USERNAME,
+			T.REALNAME,
+			T.MOBILE,
+			T.COMPANY,
+			T.POSITION,
+			T.GENDER,
+			T.BIRTHDAY,
+			T.NATIVEINFO,
+			T.RESIDE,
+			T.COMPANYADDRESS,
+			T.QQ,
+			T.EMAIL,
+			T.RESERVEMOBILE,
+			T.FAX,
+			(
+				SELECT
+					GROUP_CONCAT(O.ONAME)
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) ONAME,
+			(
+				SELECT
+					MIN(O.GRADE)
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) GRADE
+		FROM
+			PRE_AL_MEMBER AS T
+		WHERE
+			1 = 1
+		AND USERNAME IN (
+			SELECT
+				USERNAME
+			FROM
+				PRE_AL_SHMEMBER
+			WHERE
+				SHANGHUIID = ${SHANGHUIID}
+		)
+		AND USID NOT IN (
+			SELECT
+				MEMBERID
+			FROM
+				PRE_COMMON_NOTICE_VSV
+			WHERE
+				NOTICEID = ${NID}
+			AND ISVIEW = 1
+		)
+		ORDER BY
+			T.USID DESC
+	</select>
+	<select id="getMemberVsv" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.USID,
+			T.USERNAME,
+			T.REALNAME,
+			T.MOBILE,
+			T.COMPANY,
+			T.POSITION,
+			T.GENDER,
+			T.BIRTHDAY,
+			T.NATIVEINFO,
+			T.RESIDE,
+			T.COMPANYADDRESS,
+			T.QQ,
+			T.EMAIL,
+			T.RESERVEMOBILE,
+			T.FAX,
+			(
+				SELECT
+					GROUP_CONCAT(O.ONAME)
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) ONAME,
+			(
+				SELECT
+					MIN(O.GRADE)
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) GRADE,
+			(SELECT
+				REASON
+			FROM PRE_COMMON_NOTICE_VSV P
+			WHERE P.MEMBERID = T.USID
+				AND NOTICEID = ${NID}) REASON
+		FROM
+			PRE_AL_MEMBER AS T
+		WHERE
+			USID IN (${USID})
+		ORDER BY
+			T.USID DESC
+	</select>
+	<insert id="insertNotice" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO PRE_COMMON_NOTICE (
+			PUBLISHMANID,
+			TITLE,
+			MEMBERIDS,
+			PUBLISHTIME,
+			CONTENT,
+			SIGN_UP,
+			VOTE,
+			ISPUSH,
+			ACTIVITYSTATUS,
+			NOTICESTATUS,
+			ALLCOUNTS,
+			REGISTERCOUNTS,
+			NOTREGISTERCOUNTS,
+			SHANGHUIID,
+			ISPUBLIC
+			<if test="MEMBERINFO != null and MEMBERINFO != ''">
+				,MEMBERINFO
+			</if>
+			<if test="AUTHOR != null and AUTHOR != ''">
+				,AUTHOR
+			</if>
+			<if test="PLACE != null and PLACE != ''">
+				,PLACE
+			</if>
+			<if test="CONTACTOR != null and CONTACTOR != ''">
+				,CONTACTOR
+			</if>
+			<if test="CONTACTORMOBILE != null and CONTACTORMOBILE != ''">
+				,CONTACTORMOBILE
+			</if>
+			<if test="STARTTIME != null and STARTTIME != ''">
+				,STARTTIME
+			</if>
+			<if test="ENDTIME != null and ENDTIME != ''">
+				,ENDTIME
+			</if>
+		)
+		VALUES
+			(
+				${PUBLISHMANID},
+				#{TITLE},
+				#{MEMBERIDS},
+				NOW(),
+				#{CONTENT},
+				${SIGN_UP},
+				${VOTE},
+				${ISPUSH},
+				0,
+				${NOTICESTATUS},
+				${ALLCOUNTS},
+				0,
+				${ALLCOUNTS},
+				${SHANGHUIID},
+				${ISPUBLIC}
+				<if test="MEMBERINFO != null and MEMBERINFO != ''">
+					,#{MEMBERINFO}
+				</if>
+				<if test="AUTHOR != null and AUTHOR!= ''">
+					,#{AUTHOR}
+				</if>
+				<if test="PLACE != null and PLACE != ''">
+					,#{PLACE}
+				</if>
+				<if test="CONTACTOR != null and CONTACTOR != ''">
+					,#{CONTACTOR}
+				</if>
+				<if test="CONTACTORMOBILE != null and CONTACTORMOBILE != ''">
+					,#{CONTACTORMOBILE}
+				</if>
+				<if test="STARTTIME != null and STARTTIME != ''">
+					,#{STARTTIME}
+				</if>
+				<if test="ENDTIME != null and ENDTIME != ''">
+					,#{ENDTIME}
+				</if>
+			)
+			
+			<selectKey resultType="int" order="AFTER" keyProperty="id">
+				 SELECT MAX(NID) AS id from PRE_COMMON_NOTICE
+			 </selectKey>
+	</insert>
+	<insert id="insertNoticeVsv" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_NOTICE_VSV (
+			NOTICEID,
+			MEMBERID,
+			ISVIEW,
+			ISSIGNUP,
+			ISVOTE,
+			SHANGHUIID,
+			CREATEDATE
+		)
+		VALUES
+			(
+				${NOTICEID},
+				${MEMBERID},
+				0,
+				0,
+				0,
+				${SHANGHUIID},
+				now()
+			)
+	</insert>
+	<insert id="insertVote" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO PRE_COMMON_VOTE (
+				ACTIVITYID,
+				SUBJECT,
+				TYPE,
+				ENDTIME,
+				ISPUBLIC,
+				STATUS
+			)
+			VALUES
+				(
+					${ACTIVITYID},
+					#{SUBJECT},
+					${TYPE},
+					#{ENDTIME},
+					0,
+					0
+				)
+			
+			<selectKey resultType="int" order="AFTER" keyProperty="id">
+				 SELECT MAX(VOTEID) AS id from PRE_COMMON_VOTE
+			 </selectKey>
+	</insert>
+	<insert id="insertVoteOption" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO PRE_COMMON_VOTE_OPTION (
+			VOTEID,
+			OPTIONNAME,
+			VOTECOUNT,
+			NOTVOTECOUNT,
+			ALLCOUNT
+		)
+		VALUES
+			(
+				${VOTEID},
+				#{OPTIONNAME},
+				0,
+				${NOTVOTECOUNT},
+				${ALLCOUNT}
+			)
+			
+			<selectKey resultType="int" order="AFTER" keyProperty="id">
+				 SELECT MAX(OPTIONID) AS id from PRE_COMMON_VOTE_OPTION
+			 </selectKey>
+	</insert>
+	<insert id="insertVoteSelect" parameterType="java.util.HashMap">
+		INSERT INTO PRE_COMMON_VOTESELECT (
+			VOTEOPTIONID,
+			MEMBERID,
+			ISSELECT,
+			NOTICEID
+		)
+		VALUES
+			(
+				${VOTEOPTIONID},
+				${MEMBERID},
+				0,
+				${NOTICEID}
+			)
+	</insert>
+	<update id="updateNotice" parameterType="java.util.HashMap">
+		UPDATE PRE_COMMON_NOTICE
+		SET TITLE = #{TITLE},
+			MEMBERIDS = #{MEMBERIDS},
+			PUBLISHTIME = now(),
+			CONTENT = #{CONTENT},
+			SIGN_UP = ${SIGN_UP},
+			VOTE = ${VOTE},
+			ISPUSH = ${ISPUSH},
+			NOTICESTATUS = ${NOTICESTATUS},
+			ALLCOUNTS = ${ALLCOUNTS},
+			NOTREGISTERCOUNTS = #{ALLCOUNTS}
+			<if test="MEMBERINFO != null and MEMBERINFO != ''">
+				,MEMBERINFO = #{MEMBERINFO}
+			</if>
+			<if test="PLACE != null and PLACE != ''">
+				,PLACE = #{PLACE}
+			</if>
+			<if test="CONTACTOR != null and CONTACTOR != ''">
+				,CONTACTOR = #{CONTACTOR}
+			</if>
+			<if test="CONTACTORMOBILE != null and CONTACTORMOBILE != ''">
+				,CONTACTORMOBILE = #{CONTACTORMOBILE}
+			</if>
+			<if test="STARTTIME != null and STARTTIME != ''">
+				,STARTTIME = #{STARTTIME}
+			</if>
+			<if test="ENDTIME != null and ENDTIME != ''">
+				,ENDTIME = #{ENDTIME}
+			</if>
+		WHERE
+			NID = ${NID}
+	</update>
+	<delete id="deleteByVoteid" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_VOTE_OPTION
+		WHERE
+			VOTEID IN (
+				SELECT
+					VOTEID
+				FROM
+					PRE_COMMON_VOTE
+				WHERE
+					ACTIVITYID = ${NID}
+			)
+	</delete>
+	<select id="voteSelect" parameterType="java.util.HashMap" resultType="int">
+		SELECT COUNT(*) FROM PRE_COMMON_VOTESELECT WHERE VOTEOPTIONID = ${VOTEID}
+			AND ISSELECT = 1 
+	</select>
+	<select id="voteSelectList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT * FROM PRE_COMMON_VOTESELECT WHERE VOTEOPTIONID = ${VOTEID}
+			AND ISSELECT = 1 
+		<if test="x != null and x != '' and y!= null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+</mapper>

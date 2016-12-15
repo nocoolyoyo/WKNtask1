@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+
+a{
+	color: #337ab7;
+}
+
+a:*{
+	text-decoration: none;
+}
+
+.content_panel{
+	padding: 0;
+}
+
+.erweima{
+	position: fixed;
+	text-align: center;
+	margin: 10px;
+	font-family: '微软雅黑';
+	font-weight: bold;
+	z-index: 1;
+	cursor: pointer;
+	width: 100px;
+}
+
+.fullscreen{
+	position: fixed;
+	right: 1px;
+	height: 45px;
+    width: 45px;
+	background:url('../admin/image/1.png') no-repeat center top;
+	text-align: center;
+	margin: 10px;
+	font-family: '微软雅黑';
+	font-weight: bold;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.fullscreen.cancelfull{
+	background:url('../admin/image/2.png') no-repeat center top;
+}
+
+.htitle{
+	text-align: center;
+	font-family: '微软雅黑';
+	font-weight: bold;
+    width: 80%;
+    height: 20%;
+	margin: 0;
+	margin-left: auto;
+    position: relative;
+}
+
+.htitle>span{
+	position: absolute;
+    bottom: 50%;
+	right: 1px;
+    margin-bottom: -17.5px;
+    width: 100%;
+    cursor: default;
+}
+
+.roll_panel_box{
+	height: 90%;
+	position: relative;
+	min-height: 580px;
+}
+
+.roll-panel{
+	position: absolute;
+	right: 1px;
+	bottom: 1px;
+	width: 80%;
+	height: 80%;
+	display: inline-block;
+	margin: 0;
+}
+
+.roll-body{
+	border: 0;
+	background: rgba(154, 154, 154, 0.5);
+	box-shadow: 0px 0px 10px #4B4B4B;
+	border-radius: 2px;
+}
+
+.roll-list-group-item{
+	display: inline-block;
+	width: 100%;
+}
+
+.sign_ma{
+	height: 90%;
+	position: relative;
+	min-height: 580px;
+}
+.sign_ma>img{
+	width: 60%;
+    position: absolute;
+    bottom: 1px;
+    cursor: pointer;
+    margin-left: 15%;
+}
+
+.col-xs-2.rol{
+	text-align: center;
+	font-size: 18px;
+	font-family: '微软雅黑';
+    font-weight: bold;
+	padding: 0 5px;
+}
+
+.col-xs-2.rol>img{
+	width: 100%;
+}
+
+#foot{
+	width: inherit !important;
+	margin-bottom: 0 !important;
+	margin-top: 10 !important;
+	position: static !important;
+	height: inherit;
+}

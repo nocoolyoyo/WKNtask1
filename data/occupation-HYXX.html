@@ -1,5 +1,5 @@
-<div id="sidebar-left" class="sidebar-container sidebar-push">
-    <div class="sidebar">
+<div id="sidebar-left" class="sidebar-container sidebar-push occupation-siderbar-push active">
+    <div class="sidebar occupation-siderbar">
         <div class="sidebar-wrap">
             <ul id="side-menu">
                 <li><a href="#">会员信息</a></li>
@@ -10,14 +10,15 @@
             </ul>
         </div>
     </div>
-    <div class="sidebar-overlay"></div>
-    <div id="content-area"  class="sidebar-dim"><div class="content-area-box">
-        <div id="table-toolbar" class="form-inline">
+     <!-- <div class="sidebar-overlay"></div>-->
+    <div id="content-area" class="sidebar-dim inner">
+    	<div class="content-area-box inner">
+        <div id="table-toolbar"  class="form-inline">
             <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
             <button id="delete" type="button" class="btn btn-danger" style="display: none">删除</button>
             <button id="add" type="button" class="btn btn-success">新增</button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#import-modal">导入</button>
-            <button type="button" class="btn btn-primary">导出</button>
+            <button id="export" type="button" class="btn btn-primary">导出</button>
             <div class="dropdown" style="display: inline-block">
                 <button id="fast-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速查找<span class="caret"></span></button>
                 <ul id="fast-fliter" class="dropdown-menu">
@@ -32,11 +33,11 @@
 <div id="import-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="form" class="form-horizontal" role="form">
+        
                 <div class="modal-header">
                     <h4 class="modal-title">导入会员</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body both-25">
                     <div class="row top-10">
                         <button type="button" id="explain" class="btn button button-primary button-rounded">填写说明下载</button>
                         <button type="button" id="member" class="btn button button-primary button-rounded">表格模板下载</button>
@@ -56,7 +57,7 @@
                     <!-- <button id="backlog-add-submit" type="submit" class="btn button button-primary button-rounded" disabled="disabled" >导入</button> -->
                     <button type="button" class="btn button button-rounded" data-dismiss="modal">取消</button>
                 </div>
-            </form>
+           
         </div>
     </div>
 </div>

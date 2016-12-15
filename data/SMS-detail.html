@@ -8,46 +8,47 @@
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <div class="panel panel-default top-9">
         <div class="panel-heading center">
-            <span id="SMS-quantity">发送数量：</span>
+			<span id="SMS-quantity">发送数量：</span>
             <span>接收人：<a id="SMS-receive"  href="#" data-toggle="modal" data-target="#SMS-modal">0</a></span>
             <span id="SMS-send">发送人：</span>
             <span id="SMS-time">发布时间：</span>
             <span>发送成功人数：<a id="SMS-success" href="#" data-toggle="modal" data-target="#SMS-modal">0</a></span>
             <span>发送失败人数：<a id="SMS-fail"  href="#" data-toggle="modal" data-target="#SMS-modal">0</a></span>
         </div>
-        <div class="panel-body">
+        <div class="panel-content panel-body">
             <div class="center bottom-10">
-
+                
             </div>
             <div  id="SMSdetail" class="well">
                 <span class="label label-primary label-attached-top-left">短信内容</span>
-                <p class="text-indent-40">各位领导：南平在榕商会交流会——暨“商会云”平台使用情况月底评选颁奖将于今天（8月5日）下午15:30分在福州晋安区茶园路46号丹桂小院举行，届时请大家准时参会，我们恭候您的光临！</p>
+                <p class="text-indent-40"></p>
             </div>
         </div>
     </div>
-    <div id="SMS-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form class="form-horizontal" role="form">
-                    <div class="modal-header">
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-
-                        <table id="SMS-table"></table>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="reSend" type="button" class="btn btn-success" style="display: none">重新发送</button>
-                        <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
+	<div id="SMS-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+             <div class="modal-content">
+            
+                     <div class="modal-header">
+                         <h4 class="modal-title"></h4>
+                     </div>
+                      <div class="modal-body table-modal-body">
+                      
+                         <table id="SMS-table"></table>
+                     </div>
+                     <div class="modal-footer">
+  
+                         <button id="reSend" type="button" class="btn btn-success" style="display: none">重新发送</button>
+                         <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                     </div>
+                 
+             </div>
+         </div>
+     </div>
+	            
+    
 </div>
 
 

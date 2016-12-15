@@ -11,17 +11,6 @@ main img {
     width: 100%;
     height: auto;
 }
-#content{
-    background-color: #f9f9f9;
-    width: auto;
-    border:1px solid #a1a1a1;
-    overflow: hidden;
-    /*text-align: center;*/
-    border-radius: 15px;
-    box-shadow: 0 12px 12px 6px rgba(34, 25, 25, 0.4);
-    -moz-box-shadow: 0 12px 12px 6px rgba(34, 25, 25, 0.4);
-    -webkit-box-shadow: 0 12px 12px 6px rgba(34, 25, 25, 0.4);
-}
 
 
 

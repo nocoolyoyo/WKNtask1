@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.incomeExpenses.IincomeExpensesDao">
+		
+		<!-- 分页查询 -->
+		<select id="findPagerIncomeExpenses" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(A.INCOMEID, '') AS INCOMEID,
+					IFNULL(A.INCOMENAME, '') AS INCOMENAME,
+					IFNULL(A.INCOMEMONEY, '') AS INCOMEMONEY,
+					IFNULL(A.INCOMEDESC, '') AS INCOMEDESC,
+					IFNULL(A.INCOMETYPE, '') AS INCOMETYPE,
+					IFNULL(A.DEALPERSON, '') AS DEALPERSON,
+					IFNULL(A.DEALTIME, '') AS DEALTIME,
+					IFNULL(A.SHANGHUIID, '') AS SHANGHUIID,
+					IFNULL(A.INCOMTIME, '') AS INCOMTIME,
+					IFNULL(B.REALNAME, '') AS REALNAME
+				FROM
+					PRE_COMMON_INCOME_EXPENSE A,
+					PRE_COMMON_SECRETARY B
+				WHERE
+					A.DEALPERSON = B.SID
+				AND B.SID = #{SID}
+				<if test="INCOMENAME != NULL and INCOMENAME != ''">
+						AND A.INCOMENAME like '%${INCOMENAME}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(A.INCOMTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(A.INCOMTIME, '%Y-%m-%d') 
+				</if>
+				<if test="AUTHOR != null and AUTHOR !=''">
+						AND B.REALNAME  like '%${AUTHOR}%'
+				</if>
+				ORDER BY A.DEALTIME DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 查询总数 -->
+		<select id="findIncomeExpensesPageCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_INCOME_EXPENSE A,
+					PRE_COMMON_SECRETARY B
+				WHERE
+					A.DEALPERSON = B.SID
+				AND B.SID = #{SID}
+				<if test="INCOMENAME != NULL and INCOMENAME != ''">
+						AND INCOMENAME like '%${INCOMENAME}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(INCOMTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(INCOMTIME, '%Y-%m-%d') 
+				</if>
+				<if test="INCOMETYPE != null and INCOMETYPE !=''">
+						AND INCOMETYPE = #{INCOMETYPE}
+				</if>
+				ORDER BY A.INCOMTIME DESC
+		</select>
+		<!-- 新增收支 -->
+		<insert id="insertIncomeExpenses" parameterType="java.util.HashMap">
+				INSERT INTO PRE_COMMON_INCOME_EXPENSE (
+					INCOMENAME,
+					INCOMEMONEY,
+					INCOMEDESC,
+					INCOMETYPE,
+					DEALPERSON,
+					DEALTIME,
+					SHANGHUIID,
+					INCOMTIME)
+				VALUES
+					(#{INCOMENAME},#{INCOMEMONEY},#{INCOMEDESC},#{INCOMETYPE},#{DEALPERSON},SYSDATE(),#{SHANGHUIID},#{INCOMTIME}) 
+		</insert>
+		<!-- 修改收支 -->
+		<update id="updateIncomeExpenses" parameterType="java.util.HashMap" >
+				UPDATE PRE_COMMON_INCOME_EXPENSE SET 
+					INCOMENAME = #{INCOMENAME} ,
+					INCOMEMONEY = #{INCOMEMONEY},
+					INCOMEDESC = #{INCOMEDESC},
+					INCOMETYPE = #{INCOMETYPE},
+					DEALPERSON = #{DEALPERSON},
+					SHANGHUIID = #{SHANGHUIID} ,
+					INCOMTIME = DATE_FORMAT(#{INCOMTIME},'%Y-%m-%d')
+				WHERE 
+				  INCOMEID = #{INCOMEID}
+		</update>
+		
+		<!-- 查询收支详情 -->
+		<select id="findIncomeExpensesDetail" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(INCOMEID, '') AS INCOMEID,
+					IFNULL(INCOMENAME, '') AS INCOMENAME,
+					IFNULL(INCOMEMONEY, '') AS INCOMEMONEY,
+					IFNULL(INCOMEDESC, '') AS INCOMEDESC,
+					IFNULL(INCOMETYPE, '') AS INCOMETYPE,
+					IFNULL(DEALPERSON, '') AS DEALPERSON,
+					IFNULL(DEALTIME, '') AS DEALTIME,
+					IFNULL(SHANGHUIID, '') AS SHANGHUIID,
+					IFNULL(INCOMTIME, '') AS INCOMTIME
+				FROM
+					PRE_COMMON_INCOME_EXPENSE 
+				WHERE 
+					INCOMEID = #{INCOMEID}
+		</select>
+		<!-- 根据主键ID删除收支 -->
+		<delete id="deleteIncomeExpenses" parameterType="java.util.HashMap">
+				DELETE FROM PRE_COMMON_INCOME_EXPENSE WHERE INCOMEID = #{INCOMEID} 
+		</delete>
+		<!-- 导出收支 -->
+		<select id="exportIncomeExpenses" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(A.INCOMEID, '') AS INCOMEID,
+					IFNULL(A.INCOMENAME, '') AS INCOMENAME,
+					IFNULL(A.INCOMEMONEY, '') AS INCOMEMONEY,
+					IFNULL(A.INCOMEDESC, '') AS INCOMEDESC,
+					CASE A.INCOMETYPE
+					WHEN 1 THEN
+						'收入'
+					WHEN 2 THEN
+						'支出'
+					END INCOMETYPE,
+					IFNULL(A.DEALPERSON, '') AS DEALPERSON,
+					IFNULL(A.DEALTIME, '') AS DEALTIME,
+					IFNULL(A.SHANGHUIID, '') AS SHANGHUIID,
+					IFNULL(A.INCOMTIME, '') AS INCOMTIME,
+					IFNULL(B.REALNAME, '') AS REALNAME
+				FROM
+					PRE_COMMON_INCOME_EXPENSE A,
+					PRE_COMMON_SECRETARY B
+				WHERE
+					A.DEALPERSON = B.SID
+				AND B.SID = #{SID}
+				<if test="INCOMENAME != NULL and INCOMENAME != ''">
+						AND A.INCOMENAME like '%${INCOMENAME}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(A.INCOMTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(A.INCOMTIME, '%Y-%m-%d') 
+				</if>
+				<if test="REALNAME != null and REALNAME !=''">
+						AND B.REALNAME  like '%${REALNAME}%'
+				</if>
+		</select>
+		
+		<!-- 查询总收支对比 -->
+		<select id="findIncomeExpensesMoney" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(SUM(INCOMEMONEY),0 ) AS MONEY
+				FROM
+					PRE_COMMON_INCOME_EXPENSE A
+				WHERE
+					DEALPERSON = #{SID}
+				AND INCOMETYPE = #{TYPE}
+				<if test="INCOMENAME != NULL and INCOMENAME != ''">
+						AND A.INCOMENAME like '%${INCOMENAME}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(A.INCOMTIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(A.INCOMTIME, '%Y-%m-%d') 
+				</if>
+				<if test="REALNAME != null and REALNAME !=''">
+						AND B.REALNAME  like '%${REALNAME}%'
+				</if>
+		</select>
+</mapper>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.photos.IPhotosDao">
+		
+		
+		<!-- 分页总数 -->
+		<select id="findPagePhotosCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_PHOTOS
+				WHERE
+					SHANGHUIID = #{SHANGHUIID}
+		</select>
+		<!-- 分页 -->
+		<select id="findPagePhotos" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(PHOTOSID, '') AS PHOTOSID,
+					IFNULL(PHOTONAME, '') AS PHOTONAME,
+					IFNULL(PHOTODESC, '') AS PHOTODESC,
+					IFNULL(VIEWRANGE, '') AS VIEWRANGE,
+					IFNULL(SHANGHUIID, '') AS SHANGHUIID,
+					IFNULL(IMAGEURL, '') AS IMAGEURL,
+					IFNULL(IMAGECOUNT, '') AS IMAGECOUNT,
+					IFNULL(SETTIME, '') AS SETTIME
+				FROM
+					PRE_COMMON_PHOTOS
+				WHERE 
+					SHANGHUIID = #{SHANGHUIID}
+				ORDER BY SETTIME DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		
+		<!-- 新建画册 -->
+		<insert id="insertPhotos" parameterType="java.util.HashMap">
+				INSERT INTO PRE_COMMON_PHOTOS (
+					PHOTONAME,
+					VIEWRANGE,
+					SHANGHUIID,
+					IMAGECOUNT,
+					SETTIME
+				)
+				VALUES
+					(#{PHOTONAME},#{VIEWRANGE},#{SHANGHUIID},0,SYSDATE())
+		</insert>
+		
+		<!-- 删除画册内相片 -->
+		<delete id="deletePhotosxp" parameterType="java.util.HashMap">
+				DELETE FROM PRE_COMMON_PHOTO WHERE BELONGALBUM = #{PHOTOSID} 
+		</delete>
+		<!--  删除画册 -->
+		<delete id="deletePhotos" parameterType="java.util.HashMap">
+				DELETE FROM PRE_COMMON_PHOTOS WHERE PHOTOSID = #{PHOTOSID} 
+		</delete>
+		
+		<!-- 修改画册 -->
+		<update id="updatePhotos" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_PHOTOS SET PHOTONAME = #{PHOTONAME} , VIEWRANGE = #{VIEWRANGE} WHERE PHOTOSID = #{PHOTOSID}
+		</update>
+		
+		<!-- 获取相片总数 -->
+		<select id="photoFindByPropertyPageCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_PHOTO
+				WHERE
+					BELONGALBUM = #{BELONGALBUM}
+		</select>
+		
+		<!-- 获取相片分页 -->
+		<select id="photoFindByPropertyPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(PHOTOID, '') AS PHOTOID,
+					IFNULL(PHOTONAME, '') AS PHOTONAME,
+					IFNULL(IMAGEURL, '') AS IMAGEURL,
+					IFNULL(SETUPTIME, '') AS SETUPTIME,
+					IFNULL(BELONGALBUM, '') AS BELONGALBUM,
+					IFNULL(TITLENAME, '') AS TITLENAME,
+					IFNULL(IMAGEURL_S, '') AS IMAGEURL_S
+				FROM
+					PRE_COMMON_PHOTO
+				WHERE
+					BELONGALBUM = #{BELONGALBUM}
+				ORDER BY SETUPTIME DESC
+		</select>
+		
+		<!-- 获取相片 -->
+		<select id="findPhoto" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(PHOTOID, '') AS PHOTOID,
+					IFNULL(PHOTONAME, '') AS PHOTONAME,
+					IFNULL(IMAGEURL, '') AS IMAGEURL,
+					IFNULL(SETUPTIME, '') AS SETUPTIME,
+					IFNULL(BELONGALBUM, '') AS BELONGALBUM,
+					IFNULL(TITLENAME, '') AS TITLENAME,
+					IFNULL(IMAGEURL_S, '') AS IMAGEURL_S
+				FROM
+					PRE_COMMON_PHOTO
+				WHERE
+					PHOTOID = #{PHOTOID}
+		</select>
+		<!-- 根据ID获取画册 -->
+		<select id="findPhotos" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(PHOTOSID, '') AS PHOTOSID,
+					IFNULL(PHOTONAME, '') AS PHOTONAME,
+					IFNULL(PHOTODESC, '') AS PHOTODESC,
+					IFNULL(VIEWRANGE, '') AS VIEWRANGE,
+					IFNULL(SHANGHUIID, '') AS SHANGHUIID,
+					IFNULL(IMAGEURL, '') AS IMAGEURL,
+					IFNULL(IMAGECOUNT, '') AS IMAGECOUNT,
+					IFNULL(SETTIME, '') AS SETTIME
+				FROM
+					PRE_COMMON_PHOTOS
+				WHERE
+					PHOTOSID = #{PHOTOSID}
+		</select>
+		<!-- 修改画册图片 -->
+		<update id="updatePhotosImgUrl" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_PHOTOS SET IMAGEURL = NULL WHERE PHOTOSID = #{PHOTOSID}
+		</update>
+		<!-- 删除相片 -->
+		<delete id="deletePhoto" parameterType="java.util.HashMap">
+				DELETE FROM PRE_COMMON_PHOTO WHERE PHOTOID = #{PHOTOID} 
+		</delete>
+		<!-- 删除相片修改画册外显示的数量 -->
+		<update id="updatePhotosCount" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_PHOTOS SET IMAGECOUNT = IMAGECOUNT-1  WHERE PHOTOSID = #{PHOTOSID}
+		</update>
+		<!-- 设置画册封面 -->
+		<update id="updatePhotosImg" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_PHOTOS SET IMAGEURL = (SELECT IMAGEURL FROM PRE_COMMON_PHOTO WHERE PHOTOID = #{PHOTOID}) WHERE PHOTOSID = (SELECT BELONGALBUM FROM PRE_COMMON_PHOTO WHERE PHOTOID = #{PHOTOID} )
+		</update>
+		<!-- 新增照片 -->
+		<select id="addPhotos" parameterType="java.util.HashMap">
+				INSERT INTO PRE_COMMON_PHOTO (
+					PHOTONAME,
+					IMAGEURL,
+					SETUPTIME,
+					BELONGALBUM
+				)
+				VALUES
+					(#{name},#{url},SYSDATE(),#{PHOTOID})
+		</select>
+		<!-- 新增照片后修改画册数量 -->
+		<update id="updatePhotosImgCount" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_PHOTOS SET IMAGECOUNT = IMAGECOUNT+#{IMAGECOUNT}  WHERE PHOTOSID = #{PHOTOID}
+		</update>
+		<!-- 根据ID获取画册信息 -->
+		<select id="updatePhotosDetail" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT PHOTONAME,VIEWRANGE FROM PRE_COMMON_PHOTOS WHERE PHOTOSID = #{PHOTOSID}
+		</select>
+</mapper>

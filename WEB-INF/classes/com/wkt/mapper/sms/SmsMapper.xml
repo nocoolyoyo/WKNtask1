@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.sms.ISmsDao">
+	
+	<select id="smsFindByPropertyPageCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			PRE_COMMON_SMS a,
+			PRE_COMMON_SECRETARY b
+		WHERE
+			a.SENDERID = b.SID
+		AND a.SHANGHUIID = ${SHANGHUIID}
+		<if test="search != null and search != ''">
+			AND (b.REALNAME LIKE '%${search}%'
+				OR a.SMSMSG LIKE '%${search}%')
+		</if>
+		<if test="checkSendStartTime != null and checkSendStartTime != ''">
+			AND date_format(a.SENDTIME, '%Y-%m-%d') >= #{checkSendStartTime}
+		</if>
+		<if test="checkSendEndTime != null and checkSendEndTime != ''">
+			<![CDATA[AND date_format(a.SENDTIME, '%Y-%m-%d') <= #{checkSendEndTime}]]>
+		</if>
+		<if test="REALNAME != null and REALNAME != ''">
+			AND b.REALNAME LIKE '%${REALNAME}%'
+		</if>
+		<if test="SMSMSG != null and SMSMSG != ''">
+			AND a.SMSMSG LIKE '%${SMSMSG}%'
+		</if>
+	</select>
+	<select id="smsFindByPropertyPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			a.SMSID,
+			a.SMSMSG,
+			a.ADDRESSEECOUNT,
+			DATE_FORMAT(a.SENDTIME,'%Y-%m-%d %H:%i:%s') SENDTIME,
+			b.REALNAME
+		FROM
+			PRE_COMMON_SMS a,
+			PRE_COMMON_SECRETARY b
+		WHERE
+			a.SENDERID = b.SID
+		AND a.SHANGHUIID = ${SHANGHUIID}
+		<if test="search != null and search != ''">
+			AND (b.REALNAME LIKE '%${search}%'
+				OR a.SMSMSG LIKE '%${search}%')
+		</if>
+		<if test="checkSendStartTime != null and checkSendStartTime != ''">
+			AND date_format(a.SENDTIME, '%Y-%m-%d') >= #{checkSendStartTime}
+		</if>
+		<if test="checkSendEndTime != null and checkSendEndTime != ''">
+			<![CDATA[AND date_format(a.SENDTIME, '%Y-%m-%d') <= #{checkSendEndTime}]]>
+		</if>
+		<if test="REALNAME != null and REALNAME != ''">
+			AND b.REALNAME LIKE '%${REALNAME}%'
+		</if>
+		<if test="SMSMSG != null and SMSMSG != ''">
+			AND a.SMSMSG LIKE '%${SMSMSG}%'
+		</if>
+		ORDER BY a.SENDTIME DESC
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<delete id="deleteSms" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_SMS
+		WHERE
+			SMSID = ${SMSID}
+	</delete>
+	
+	<select id="findreplySmsCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			PRE_COMMON_REPLYSMS
+		WHERE
+			SPCODE IN (
+				(
+					SELECT
+						concat(YDACCESS, '39')
+					FROM
+						PRE_COMMON_SMSCONFIG
+					WHERE
+						SHID = ${SHANGHUIID}
+				),
+				(
+					SELECT
+						concat(LTACCESS, '39')
+					FROM
+						PRE_COMMON_SMSCONFIG
+					WHERE
+						SHID = ${SHANGHUIID}
+				),
+				(
+					SELECT
+						concat(DCACCESS, '39')
+					FROM
+						PRE_COMMON_SMSCONFIG
+					WHERE
+						SHID = ${SHANGHUIID}
+				)
+			)
+		<if test="search != null and search != ''">
+			AND (SRCMOBILE = #{search}
+				OR MSGCONTENT LIKE '%${search}%')
+		</if>
+		<if test="checkSendStartTime != null and checkSendStartTime != ''">
+			AND RECVTIOME >= #{checkSendStartTime}
+		</if>
+		<if test="checkSendEndTime != null and checkSendEndTime != ''">
+			<![CDATA[AND RECVTIOME <= #{checkSendEndTime}]]>
+		</if>
+		<if test="SRCMOBILE != null and SRCMOBILE != ''">
+			AND SRCMOBILE = #{SRCMOBILE}
+		</if>
+		<if test="MSGCONTENT != null and MSGCONTENT != ''">
+			AND MSGCONTENT LIKE '%${MSGCONTENT}%'
+		</if>
+		ORDER BY
+			RECVTIOME DESC
+	</select>
+	<select id="findreplySms" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			RID,
+			MSGID,
+			SPCODE,
+			SRCMOBILE,
+			(
+				SELECT
+					REALNAME
+				FROM
+					PRE_AL_MEMBER
+				WHERE
+					MOBILE = SRCMOBILE
+			) SRCMOBILENAME,
+			MSGCONTENT,
+			DATE_FORMAT(
+				RECVTIOME,
+				'%Y-%m-%d %H:%i:%s'
+			) RECVTIOME
+		FROM
+			PRE_COMMON_REPLYSMS
+		WHERE
+			SPCODE IN (
+				(
+					SELECT
+						concat(YDACCESS, '39')
+					FROM
+						PRE_COMMON_SMSCONFIG
+					WHERE
+						SHID = ${SHANGHUIID}
+				),
+				(
+					SELECT
+						concat(LTACCESS, '39')
+					FROM
+						PRE_COMMON_SMSCONFIG
+					WHERE
+						SHID = ${SHANGHUIID}
+				),
+				(
+					SELECT
+						concat(DCACCESS, '39')
+					FROM
+						PRE_COMMON_SMSCONFIG
+					WHERE
+						SHID = ${SHANGHUIID}
+				)
+			)
+		<if test="search != null and search != ''">
+			AND (SRCMOBILE = #{search}
+				OR MSGCONTENT LIKE '%${search}%')
+		</if>
+		<if test="checkSendStartTime != null and checkSendStartTime != ''">
+			AND RECVTIOME >= #{checkSendStartTime}
+		</if>
+		<if test="checkSendEndTime != null and checkSendEndTime != ''">
+			<![CDATA[AND RECVTIOME <= #{checkSendEndTime}]]>
+		</if>
+		<if test="SRCMOBILE != null and SRCMOBILE != ''">
+			AND SRCMOBILE = #{SRCMOBILE}
+		</if>
+		<if test="MSGCONTENT != null and MSGCONTENT != ''">
+			AND MSGCONTENT LIKE '%${MSGCONTENT}%'
+		</if>
+		ORDER BY
+			RECVTIOME DESC
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+	<delete id="deleteSmsReport" parameterType="java.util.HashMap">
+		DELETE
+		FROM
+			PRE_COMMON_REPLYSMS
+		WHERE
+			RID IN (${RID})
+	</delete>
+	<select id="getSmsDetailById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			SMSID,
+			(
+				SELECT
+					REALNAME
+				FROM
+					PRE_COMMON_SECRETARY c
+				WHERE
+					c.SID = SENDERID
+			) REALNAME,
+			SMSMSG,
+			DATE_FORMAT(
+				SENDTIME,
+				'%Y-%m-%d %H:%i:%s'
+			) SENDTIME,
+			STAT,
+			ADDRESSEECOUNT,
+			SHANGHUIID,
+			SENDSMSCOUNT,
+			(
+				SELECT
+					COUNT(DESTMOBILE)
+				FROM
+					PRE_COMMON_SMSREPORTSTATUS P
+				WHERE
+					P.SMSID = T.SMSID
+				AND REPORTSTATUS = 'DELIVRD'
+			) SUCCESSCOUNT,
+			(
+				SELECT
+					COUNT(DESTMOBILE)
+				FROM
+					PRE_COMMON_SMSREPORTSTATUS P
+				WHERE
+					P.SMSID = T.SMSID
+				<![CDATA[AND REPORTSTATUS <> 'DELIVRD']]>
+			) FALSECOUNT
+		FROM
+			PRE_COMMON_SMS T
+		WHERE
+			T.SMSID = ${SMSID}
+	</select>
+	<select id="findFront" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			SMSID,
+			(
+				SELECT
+					REALNAME
+				FROM
+					PRE_COMMON_SECRETARY c
+				WHERE
+					c.SID = SENDERID
+			) REALNAME,
+			SMSMSG,
+			DATE_FORMAT(
+				SENDTIME,
+				'%Y-%m-%d %H:%i:%s'
+			) SENDTIME,
+			STAT,
+			ADDRESSEECOUNT,
+			SHANGHUIID,
+			SENDSMSCOUNT,
+			(
+				SELECT
+					COUNT(DESTMOBILE)
+				FROM
+					PRE_COMMON_SMSREPORTSTATUS P
+				WHERE
+					P.SMSID = T.SMSID
+				AND REPORTSTATUS = 'DELIVRD'
+			) SUCCESSCOUNT,
+			(
+				SELECT
+					COUNT(DESTMOBILE)
+				FROM
+					PRE_COMMON_SMSREPORTSTATUS P
+				WHERE
+					P.SMSID = T.SMSID
+				<![CDATA[AND REPORTSTATUS <> 'DELIVRD']]>
+			) FALSECOUNT
+		FROM
+			PRE_COMMON_SMS T
+		WHERE
+		<if test="ACT == 'front'">
+			SMSID > ${SMSID}
+		</if>
+		<if test="ACT == 'behind'">
+			<![CDATA[SMSID < ${SMSID}]]>
+		</if>
+		AND SHANGHUIID = ${SHANGHUIID}
+		ORDER BY
+		<if test="ACT == 'front'">
+			SMSID ASC
+		</if>
+		<if test="ACT == 'behind'">
+			SMSID DESC
+		</if>
+		LIMIT 1
+	</select>
+	<select id="smsFindBySmsidCount" parameterType="java.util.HashMap" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM
+			PRE_AL_MEMBER T
+		WHERE
+			T.MOBILE IN (
+				SELECT
+					DESTMOBILE
+				FROM
+					PRE_COMMON_SMSREPORTSTATUS
+				WHERE
+					SMSID = ${SMSID}
+				<if test="ACT == 'DELIVRD'">
+					AND REPORTSTATUS = 'DELIVRD'
+				</if>
+				<if test="ACT != 'DELIVRD' and ACT != null and ACT != ''">
+					<![CDATA[AND REPORTSTATUS <> 'DELIVRD']]>
+				</if>
+			)
+	</select>
+	<select id="smsFindBySmsid" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			T.USID,
+			T.USERNAME,
+			T.REALNAME,
+			T.MOBILE,
+			T.COMPANY,
+			T.POSITION,
+			T.GENDER,
+			date_format(T.BIRTHDAY, '%Y-%m-%d') BIRTHDAY,
+			T.NATIVEINFO,
+			T.RESIDE,
+			T.COMPANYADDRESS,
+			T.QQ,
+			T.EMAIL,
+			T.RESERVEMOBILE,
+			T.FAX,
+			T.COMPANYWORK,
+			(
+				SELECT
+					GROUP_CONCAT(O.ONAME)
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) ONAME,
+			(
+				SELECT
+					MIN(O.GRADE)
+				FROM
+					PRE_COMMON_OCCUPATION O,
+					PRE_AL_MEMBERRELATION P
+				WHERE
+					O.OID = P.OCCUPATIONID
+				AND T.USERNAME = P.USERNAME
+				AND P.SHANGHUIID = ${SHANGHUIID}
+			) GRADE
+		FROM
+			PRE_AL_MEMBER T
+		WHERE
+			T.MOBILE IN (
+				SELECT
+					DESTMOBILE
+				FROM
+					PRE_COMMON_SMSREPORTSTATUS
+				WHERE
+					SMSID = ${SMSID}
+				<if test="ACT == 'DELIVRD'">
+					AND REPORTSTATUS = 'DELIVRD'
+				</if>
+				<if test="ACT != 'DELIVRD' and ACT != null and ACT != ''">
+					<![CDATA[AND REPORTSTATUS <> 'DELIVRD']]>
+				</if>
+			)
+		<if test="x != null and x != '' and y != null and y != ''">
+			LIMIT ${x},${y}
+		</if>
+	</select>
+</mapper>

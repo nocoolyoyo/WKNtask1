@@ -5,6 +5,14 @@
 @import "parts/header.css";
 @import "parts/body.css";
 @import "parts/footer.css";
+@import "../pages/setting/css/setting.css";
+@import "../pages/help/css/help.css";
+@import "parts/loaders.css";
+@import "parts/board.css";
+@import "parts/calendar.css";
+@import "parts/backlog.css";
+@import "../pages/desktop/css/desktop.css";
+@import "parts/content.css";
 html,
 body {
     margin: 0;
@@ -15,6 +23,26 @@ body {
     font-family: 微软雅黑，华文细黑, sans-serif;
     font-size: 14px;!important;
     background-image: url("../img/background.jpg");
+}
+
+.popover .editable-container .editable-popup {
+	z-index:2000; !important;
+	position: absolute;
+	top:0;
+}
+.badge{
+	margin-left:5px;
+	font-size: 11px;
+	font-family: sans-serif;
+	padding-left:5px;
+}
+#table {
+	word-break:break-all; 
+	word-wrap:break-all;
+}
+.photo-text {
+	word-break:break-all; 
+	word-wrap:break-all;
 }
 .left {
     float: left;
@@ -46,11 +74,19 @@ body {
     width: 200px;
     height: 200px;
 }
-
+.right-pd-15 {
+    padding-right: 15px;
+}
+.top-9 {
+    margin-top: 9px;
+}
 .top-10 {
     margin-top: 10px;
 }
 
+.left-mg-10{
+	margin-left:10px;
+}
 .both-pd-50 {
     padding-left: 50px;
     padding-right: 50px;
@@ -90,6 +126,10 @@ body {
 .text-indent-40 {
     text-indent: 40px
 }
+/*字体大小*/
+.font-14{
+	font-size:14px
+}
 
 .kaiti {
     font-family: Kaiti, STKaiti, sans-serif;
@@ -127,14 +167,25 @@ a:active{
 /*}*/
 .button,
 a,
+.btn,
 button{
-    outline:none;
+    outline:none;!important;
 }
+
+.btn:focus,
+.button:focus,
+button:focus,
+ a:focus{
+          outline:none;!important;
+           box-shadow:none;!important;
+      }
+
+
+
 input[type=checkbox]{position:relative;cursor:pointer}
 
-
 textarea {
-    resize:none;
+    resize:vertical;
     overflow-y: auto;
 }
 ::-webkit-scrollbar-track-piece {
@@ -157,9 +208,9 @@ textarea {
 }
 
 
-table {
+/*table {
     overflow-y: auto;
-}
+}*/
 
 /*table th{*/
     /*word-wrap:break-word;*/

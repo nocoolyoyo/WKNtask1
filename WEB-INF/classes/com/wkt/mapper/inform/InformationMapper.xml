@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wkt.dao.information.IinformationDao">
+
+		<!-- 取消置顶 -->
+		<update id="cancelStick" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_INFORMATION SET ISSTICK = 0 WHERE INID = #{INID}
+		</update>
+				<!-- 置顶 -->
+		<update id="stick" parameterType="java.util.HashMap">
+				UPDATE PRE_COMMON_INFORMATION SET ISSTICK = 1 WHERE INID = #{INID}
+		</update>
+		<!-- 分页查询 -->
+		<select id="findPagerInformation" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+				SELECT
+					IFNULL(model.inid, '') AS INID,
+					IFNULL(model.title, '') AS TITLE,
+					IFNULL(model.infotype, '') AS INFOTYPE,
+					IFNULL(model.releasetime, '') AS RELEASETIME,
+					IFNULL(b.realname, '') AS REALNAME,
+					IFNULL(model.NOTE, '') AS NOTE,
+					IFNULL(model.viewcount, '') AS VIEWCOUNT,
+					IFNULL(model.isstick, '') AS ISSTICK
+				FROM
+					PRE_COMMON_INFORMATION model,
+					PRE_COMMON_SECRETARY b
+				WHERE
+					model.AUTHORID = b.SID
+				<if test="SAVETYPE != NULL and SAVETYPE != ''">
+					AND  model.SAVETYPE = #{SAVETYPE}
+				</if>
+				<if test="SHANGHUIID!=NULL and SHANGHUIID !=''">
+					AND model.BELONGCOMMERCEID = #{SHANGHUIID}
+				</if>
+				<if test="TITLE!=NULL and TITLE!=''">
+					AND model.TITLE like '%${TITLE}%'
+				</if>
+				<if test="AUTHOR!=NULL and AUTHOR!=''">
+					AND model.AUTHOR like '%${AUTHOR}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(RELEASETIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(RELEASETIME, '%Y-%m-%d') 
+				</if>
+				ORDER BY ISSTICK DESC, RELEASETIME DESC
+				<if test="x!=null and y!=null and x!='' and y!='' ">
+					limit ${x},${y}		
+				</if>
+		</select>
+		<!-- 资讯总数 -->
+		<select id="findInformationPageCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_INFORMATION model,
+					PRE_COMMON_SECRETARY b
+				WHERE
+					model.AUTHORID = b.SID
+				<if test="SAVETYPE != NULL and SAVETYPE != ''">
+					AND  model.SAVETYPE = #{SAVETYPE}
+				</if>
+				<if test="SHANGHUIID!=NULL and SHANGHUIID !=''">
+					AND model.BELONGCOMMERCEID = #{SHANGHUIID}
+				</if>
+				<if test="TITLE!=NULL and TITLE!=''">
+					AND model.TITLE like '%${TITLE}%'
+				</if>
+				<if test="AUTHOR!=NULL and AUTHOR!=''">
+					AND model.AUTHOR like '%${AUTHOR}%'
+				</if>
+				<if test="STARTTIME != NULL and  STARTTIME != ''">
+						AND DATE_FORMAT(RELEASETIME, '%Y-%m-%d') >= #{STARTTIME}  
+				</if>
+				<if test="ENDTIME !=null and ENDTIME != ''">
+						AND  #{ENDTIME} >= DATE_FORMAT(RELEASETIME, '%Y-%m-%d') 
+				</if>
+		</select>
+		<!-- 查询草稿箱总数 -->
+		<select id="findInformationcgxCount" parameterType="java.util.HashMap" resultType="Integer">
+				SELECT
+					COUNT(*)
+				FROM
+					PRE_COMMON_INFORMATION model,
+					PRE_COMMON_SECRETARY b
+				WHERE
+					model.AUTHORID = b.SID
+				<if test="SAVETYPE != NULL and SAVETYPE != ''">
+					AND  model.SAVETYPE = #{SAVETYPE}
+				</if>
+				<if test="SHANGHUIID!=NULL and SHANGHUIID !=''">
+					AND model.BELONGCOMMERCEID = #{SHANGHUIID}
+				</if>
+		</select>
+	<!-- 资讯详情 -->
+	<select id="showReleaseInformation" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+			SELECT
+				IFNULL(INID, '') AS INID,
+				IFNULL(AUTHORID, '') AS AUTHORID,
+				IFNULL(AUTHOR, '') AS AUTHOR,
+				IFNULL(RELEASETIME, '') AS RELEASETIME,
+				IFNULL(TITLE, '') AS TITLE,
+				IFNULL(VIEWCOUNT, '') AS VIEWCOUNT,
+				IFNULL(NOTE, '') AS NOTE,
+				IFNULL(SAVETYPE, '') AS SAVETYPE,
+				IFNULL(USERINFO, '') AS USERINFO,
+				IFNULL(BELONGCOMMERCEID, '') AS BELONGCOMMERCEID,
+				IFNULL(INFOTYPE, '') AS INFOTYPE
+			FROM
+				PRE_COMMON_INFORMATION
+			WHERE
+				INID = #{INID}
+	</select>
+	<!-- 资讯评论数量 -->
+	<select id="findReleaseInformationPlCount" parameterType="java.util.HashMap" resultType="Integer">
+			SELECT
+				COUNT(*)
+			FROM
+				PRE_COMMON_INFOCOMMENT
+			WHERE
+				INFOID = #{INID}
+			AND STATE = 1
+	</select>
+	<!-- 发布新资讯 -->
+	<insert id="releaseInformation" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="id">
+			INSERT INTO PRE_COMMON_INFORMATION (
+				AUTHORID,
+				AUTHOR,
+				RELEASETIME,
+				TITLE,
+				VIEWCOUNT,
+				NOTE,
+				SAVETYPE,
+				BELONGCOMMERCEID,
+				INFOTYPE
+			)
+			VALUES
+				(#{AUTHORID},#{AUTHOR},SYSDATE(),#{TITLE},0,#{NOTE},#{SAVETYPE},#{SHANGHUIID},0)
+			<selectKey resultType="int" order="AFTER" keyProperty="id">
+					 SELECT MAX(INID) AS id from PRE_COMMON_INFORMATION
+				</selectKey>
+	</insert>
+	<!-- 修改后发布资讯 -->
+	<update id="changeInformation" parameterType="java.util.HashMap">
+			UPDATE PRE_COMMON_INFORMATION SET
+				AUTHORID = #{AUTHORID},
+				AUTHOR = #{AUTHOR},
+				RELEASETIME = SYSDATE(),
+				TITLE = #{TITLE},
+				NOTE = #{NOTE},
+				SAVETYPE = #{SAVETYPE},
+				BELONGCOMMERCEID = #{SHANGHUIID}
+			WHERE 
+				INID = #{INID}
+	</update>
+	<!-- 查询上一条 -->
+	<select id="findFront" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+			SELECT
+				IFNULL(INID, '') AS INID,
+				IFNULL(AUTHORID, '') AS AUTHORID,
+				IFNULL(AUTHOR, '') AS AUTHOR,
+				IFNULL(RELEASETIME, '') AS RELEASETIME,
+				IFNULL(TITLE, '') AS TITLE,
+				IFNULL(VIEWCOUNT, '') AS VIEWCOUNT,
+				IFNULL(NOTE, '') AS NOTE,
+				IFNULL(SAVETYPE, '') AS SAVETYPE,
+				IFNULL(USERINFO, '') AS USERINFO,
+				IFNULL(BELONGCOMMERCEID, '') AS BELONGCOMMERCEID,
+				IFNULL(INFOTYPE, '') AS INFOTYPE
+			FROM
+				PRE_COMMON_INFORMATION
+			WHERE 1=1
+			AND
+				 #{INID} > INID
+			AND 
+				BELONGCOMMERCEID = #{SHANGHUIID} 
+		    AND 
+		    	SAVETYPE = 0 
+		    ORDER BY 
+		    	INID DESC 
+		    LIMIT 1
+	</select>
+	<!-- 查询下一条 -->
+	<select id="findBehind" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+			SELECT
+				IFNULL(INID, '') AS INID,
+				IFNULL(AUTHORID, '') AS AUTHORID,
+				IFNULL(AUTHOR, '') AS AUTHOR,
+				IFNULL(RELEASETIME, '') AS RELEASETIME,
+				IFNULL(TITLE, '') AS TITLE,
+				IFNULL(VIEWCOUNT, '') AS VIEWCOUNT,
+				IFNULL(NOTE, '') AS NOTE,
+				IFNULL(SAVETYPE, '') AS SAVETYPE,
+				IFNULL(USERINFO, '') AS USERINFO,
+				IFNULL(BELONGCOMMERCEID, '') AS BELONGCOMMERCEID,
+				IFNULL(INFOTYPE, '') AS INFOTYPE
+			FROM
+				PRE_COMMON_INFORMATION
+			WHERE
+				INID > #{INID} AND BELONGCOMMERCEID = #{SHANGHUIID} AND SAVETYPE = 0 ORDER BY INID ASC LIMIT 1
+	</select>
+	<!-- 最早一条 -->
+	<select id="findFirstId" parameterType="java.util.HashMap" resultType="Integer">
+			SELECT
+				IFNULL(INID, '') AS INID
+			FROM
+				PRE_COMMON_INFORMATION
+			WHERE
+				 BELONGCOMMERCEID = #{SHANGHUIID} and SAVETYPE = 0 ORDER BY INID ASC LIMIT 1			
+	</select>
+	<!-- 最晚一条 -->
+	<select id="findLastId" parameterType="java.util.HashMap" resultType="Integer">
+			SELECT
+				IFNULL(INID, '') AS INID
+			FROM
+				PRE_COMMON_INFORMATION
+			WHERE
+				 BELONGCOMMERCEID = #{SHANGHUIID} and SAVETYPE = 0 ORDER BY INID DESC LIMIT 1			
+	</select>
+	<!-- 根据主键ID查询对象 -->
+	<select id="findInformationById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+			SELECT
+				IFNULL(INID, '') AS INID,
+				IFNULL(AUTHORID, '') AS AUTHORID,
+				IFNULL(AUTHOR, '') AS AUTHOR,
+				IFNULL(RELEASETIME, '') AS RELEASETIME,
+				IFNULL(TITLE, '') AS TITLE,
+				IFNULL(VIEWCOUNT, '') AS VIEWCOUNT,
+				IFNULL(NOTE, '') AS NOTE,
+				IFNULL(SAVETYPE, '') AS SAVETYPE,
+				IFNULL(USERINFO, '') AS USERINFO,
+				IFNULL(BELONGCOMMERCEID, '') AS BELONGCOMMERCEID,
+				IFNULL(INFOTYPE, '') AS INFOTYPE
+			FROM
+				PRE_COMMON_INFORMATION
+			WHERE
+				INID = #{INID}
+	</select>
+	
+	<!-- 根据主键ID删除资讯 -->
+	<delete id="deleteInformation" parameterType="java.util.HashMap">
+			DELETE FROM PRE_COMMON_INFORMATION WHERE INID = #{INID}
+	</delete>
+	<!-- 根据资讯ID分页查询评论 -->
+	<select id="findInfocommentById" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+			SELECT
+					IFNULL(ICID, '') AS ICID,
+					IFNULL(CONTENT, '') AS CONTENT,
+					IFNULL(COMMENTTIME, '') AS COMMENTTIME,
+					IFNULL(CMEMBERID, '') AS CMEMBERID,
+					IFNULL(CMEMBERNAME, '') AS CMEMBERNAME,
+					IFNULL(INFOID, '') AS INFOID,
+					IFNULL(STATE, '') AS STATE
+				FROM
+					PRE_COMMON_INFOCOMMENT
+				WHERE
+					INFOID = #{INID}
+	</select>
+</mapper>

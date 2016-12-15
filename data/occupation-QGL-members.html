@@ -1,52 +1,61 @@
-
-    <div id="content-area">
-        <div class="content-area-box">
+<div id="sidebar-left" class="sidebar-container sidebar-push occupation-siderbar-push active">
+    <div class="sidebar occupation-siderbar">
+        <div class="sidebar-wrap">
+            <ul id="side-menu">
+                <li><a href="#">会员信息</a></li>
+                <li><a href="#">职务管理</a></li>
+                <li><a href="#">群聊管理</a></li>
+                <li><a href="#">未激活</a></li>
+                <li><a href="#">群管理</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="sidebar-overlay"></div>-->
+    <div id="content-area" class="sidebar-dim inner">
+        <div class="content-area-box inner">
             <div id="table-toolbar" class="form-inline">
-                <div class="form-group">
+                    <button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
                     <button id="back" type="button" class="btn btn-primary">返回</button>
                     <button id="QGL-members-delete" type="button" class="btn btn-danger" style="display: none">删除</button>
                     <button id="QGL-members-add" type="button" class="btn btn-success"  data-toggle="modal" data-target="#select-modal">添加成员</button>
-
-                </div>
             </div>
             <table id="tableMembers"></table>
         </div>
     </div>
-    <div id="select-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header center">
-                    <h4 class="modal-title">人员选择</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="select-content">
-                        <div class="select-left">
-                            <div id="left-toolbar" class="form-inline">
-                                <button type="button" class="clear btn btn-default">清空</button>
-                            </div>
-                            <table id="members-selected"></table>
+</div>
+
+<div id="select-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header center">
+                <h4 class="modal-title">人员选择</h4>
+            </div>
+            <div class="modal-body  table-modal-body">
+                <div class="select-content">
+                    <div class="select-left">
+                        <div id="left-toolbar" class="form-inline">
+                            <button type="button" class="clear btn btn-default">清空</button>
                         </div>
-                        <div class="select-right">
-                            <div id="select-toolbar" class="form-inline">
-                                <button id="members-add" type="button" class="btn btn-success" style="display: none">添加</button>
-                                <div class="dropdown" style="display: inline-block">
-                                    <button id="group-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">阿斯顿</a></li>
-                                        <li><a href="#">说的</a></li>
-                                        <li><a href="#">阿斯顿k</a></li>
-                                    </ul>
-                                </div>
+                        <table id="members-selected"></table>
+                    </div>
+                    <div class="select-right">
+                        <div id="select-toolbar" class="form-inline">
+                            <button id="members-add" type="button" class="btn btn-success" style="display: none">添加</button>
+                            <div class="dropdown" style="display: inline-block">
+                                <button id="group-add" type="button" class="btn btn-default dropdown-toggle"  data-toggle="dropdown" aria-expanded="true">快速添加<span class="caret"></span></button>
+                                <ul id="fast-fliter" class="dropdown-menu">
+
+                                </ul>
                             </div>
-                            <table id="table-members"></table>
                         </div>
+                        <table id="table-members"></table>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button id="select-sure" type="button" class="btn button-primary button-rounded" disabled="disabled">确定</button>
-                    <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="select-sure" type="button" class="btn button-primary button-rounded" disabled="disabled">确定</button>
+                <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
             </div>
         </div>
     </div>
+</div>

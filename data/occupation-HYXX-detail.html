@@ -1,0 +1,264 @@
+<div id="sidebar-left" class="sidebar-container sidebar-push occupation-siderbar-push active">
+    <div class="sidebar occupation-siderbar">
+        <div class="sidebar-wrap">
+            <ul id="side-menu">
+                <li><a href="#">会员信息</a></li>
+                <li><a href="#">职务管理</a></li>
+                <li><a href="#">群聊管理</a></li>
+                <li><a href="#">未激活</a></li>
+                <li><a href="#">群管理</a></li>
+            </ul>
+        </div>
+    </div>
+     <!-- <div class="sidebar-overlay"></div>-->
+    <div id="content-area" class="sidebar-dim inner">
+    	<div class="content-area-box inner">
+            <div id="single-toolbar">
+             	<button id="sidebar-switch" class="btn btn-default btn-inverted"><i class="fa fa-bars"></i></button>
+               	 
+               	 <button type="button" id="sa" class="btn button-green button-rounded">保存</button>
+               	<button id="back" type="button" class="btn btn-default">返回</button>
+            </div>
+            <div class="panel panel-default top-9">
+                <div class="panel-heading center">个人资料</div>
+                <div class="panel-body panel-content ">
+                 
+                    <form class="form-horizontal bottom-10" role="form" action="<%=basePath%>admin/member/addMember.shtml" method="post" name="addform" id="addform">
+                        <div class="bs-divider"><h5 class="center">基本信息</h5></div>
+                        <div class="col-sm-3">
+                            <div class="reveal-dim">
+                                <img class="reveal-show" src="<%=basePath%>img/image.png" id="image">
+                                <div class="reveal-hide reveal-content">
+                                    <div class="reveal-center">
+                                                <span>
+                                                	<label id="upLoadImgBtn" class="btn btn-inverted btn-bold btn-success" for="upLoadImg">上传头像</label>
+                                                    <input id="upLoadImg" name="upLoadImg" type="file" style="position:absolute;clip:rect(0 0 0 0);" value="">
+                                                    <!-- <a class="btn btn-inverted btn-bold btn-success">上传头像</a> -->
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <input id="IMAGE" name="IMAGE" type="hidden"/>
+                                <label for="MOBILE" class="col-sm-2 control-label"><span style="color:red">*</span> 账号：</label>
+                                <div class="col-sm-4">
+                               	 	
+                                    <input type="hidden" class="form-control" id="IMAGE" name="IMAGE" placeholder="头像地址">
+                                    <input type="text" class="form-control" id="MOBILE" name="MOBILE" placeholder="手机号码"">
+                                    
+                                </div>
+                                <label for="REALNAME" class="col-sm-2 control-label"><span style="color:red">*</span> 姓名：</label>
+                                <div class="col-sm-4">
+                                	
+                                    <input type="text" class="form-control" id="REALNAME" name="REALNAME" placeholder="">
+                       	 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sex" class="col-sm-2 control-label">性别：</label>
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="GENDER" id="GENDER" value="1" checked="checked"/>男
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="GENDER" id="GENDER" value="2"/>女
+                                    </label>
+                                </div>
+                                <label for="sex" class="col-sm-2 control-label">政治面貌：</label>
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="POLITICAL" id="POLITICAL" value="0" checked>群众
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="POLITICAL" id="POLITICAL" value="1">党员
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">生日：</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                                        <input class="form-control" size="2" id="BIRTHDAY" name="BIRTHDAY" type="text" value="" placeholder="生日日期">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        
+                                    </div>
+                                </div>
+                                <label for="name" class="col-sm-2 control-label">身份证号：</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="IDCARD" name="IDCARD" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">入会时间：</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                                        <input class="form-control" size="2" id="JOINDATE" name="JOINDATE" type="text" value="" placeholder="入会时间">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
+                                <label for="name" class="col-sm-2 control-label">会费数额：</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="FEEAMOUNT" name="FEEAMOUNT" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">缴费时间：</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                                        <input class="form-control" size="2" id="FEEDATE" name="FEEDATE" type="text" value="" placeholder="缴费时间">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
+                                <label for="name" class="col-sm-2 control-label">到期时间：</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                                        <input class="form-control" size="2" id="FEEDATEEND" name="FEEDATEEND" type="text" value="" placeholder="到期时间">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="bs-divider"><h5 class="center">联系方式</h5></div>
+                        <div class="form-group">
+                            <label for="account" class="col-sm-2 control-label">QQ：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="QQ" name="QQ" placeholder="">
+                            </div>
+                            <label for="name" class="col-sm-2 control-label">籍贯：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="NATIVEINFO" name="NATIVEINFO" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">手机：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="PHONE" name="PHONE" placeholder="">
+                            </div>
+                            <label for="account" class="col-sm-2 control-label">传真：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="FAX" name="FAX" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">座机：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="FIXEDTELEPHONE" name="FIXEDTELEPHONE" placeholder="">
+                            </div>
+                            <label for="name" class="col-sm-2 control-label">邮箱：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="EMAIL" name="EMAIL" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            
+                            <label for="account" class="col-sm-2 control-label">所在地：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="RESIDE" name="RESIDE" placeholder="">
+                            </div>
+                        </div>
+                         <div class="bs-divider"><h5 class="center">单位信息</h5></div>
+                        <div class="form-group">
+                            <label for="account" class="col-sm-2 control-label">单位名称：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="COMPANY" name="COMPANY" placeholder="">
+                            </div>
+                            <label for="name" class="col-sm-2 control-label">单位职称：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="COMPANYWORK" name="COMPANYWORK" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="account" class="col-sm-2 control-label">单位资产：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="COMPANYMONEY" name="COMPANYMONEY" placeholder="">
+                            </div>
+                            <label for="name" class="col-sm-2 control-label">成立时间：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd " data-link-format="yyyy-mm-dd">
+                                    <input class="form-control" size="2" id="SETUPDATE" name="SETUPDATE" type="text" value="" placeholder="成立时间">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="account" class="col-sm-2 control-label">单位网址：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="COMPANYWEB" name="COMPANYWEB" placeholder="">
+                            </div>
+                            
+                            <label for="name" class="col-sm-2 control-label">单位地址：</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="COMPANYADDRESS" name="COMPANYADDRESS" placeholder="">
+                            </div>
+                        </div>
+						<div class="form-group">
+    						<label for="name" class="col-sm-2 control-label">所属行业：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="POSITION" name="POSITION" readonly="readonly" data-toggle="modal" data-target="#position-modal">
+                           
+                            </div>
+                        </div>
+                        <!--  <div class="form-group">
+    						<label for="name" class="col-sm-2 control-label">所属行业：</label>
+                            <div class="col-sm-8">
+                                <input type="button" class="form-control" id="POSITION" name="POSITION" data-toggle="modal" data-target="#position-modal">
+                            </div>
+                        </div>-->
+						 <div class="form-group">
+                            <label for="companyBrief" class="col-sm-2 control-label">单位简介：</label>
+                            <div class="col-sm-8">
+                                 <textarea class="form-control" id="COMPANYINTRODUCTION" name="COMPANYINTRODUCTION"></textarea>
+                         	</div>
+                        </div>
+                         <div class="bs-divider"><h5 class="center">其他</h5></div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">爱好：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="HOBBIES" name="HOBBIES" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">教育背景：</label>
+                            <div class="col-sm-8">
+                                 <textarea class="form-control" id="EDUCATION" name="EDUCATION"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">工作经历：</label>
+                            <div class="col-sm-8">
+                                        <textarea class="form-control" id="EXPERIENCE" name="EXPERIENCE">
+
+                                        </textarea>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="position-modal" class="modal fade center" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                 <div class="modal-header">
+                     <h4 class="modal-title">行业选择</h4>
+                 </div>
+                 <div class="modal-body position-modal-body">
+                  		
+                       	
+                    </div>
+                    <div class="modal-footer">
+                    	<!-- <button id="POSITION-sure" type="button" class="btn button button-rounded">确定</button>  -->
+                        <button type="button" class="btn button button-rounded" data-dismiss="modal">关闭</button>
+                    </div>    
+            </div>
+        </div>
+    </div>
