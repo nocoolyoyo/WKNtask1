@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vendor/jQuery/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<script>
+    find();
+    function find(){
+        var url = "http://www.shanghuiadmin.com/Shanghuiyunwei/app/smsreport.shtml";
+        $.ajax({
+            type: "post",
+            url: url,
+//      data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。
+            data: {cust_id:'1744',url:'http://183.250.187.121:8080/Shanghuiyunwei/app/smsreport.shtml',report:'59106108301049672005,15280012900,DELIVRD,2016-12-30 10:50:05^'},
+
+            dataType: "json",
+            success: function (data)
+            {//alert("bbbba");
+                //alert(data.status);
+            },
+            error:function (data) {  //alert(JSON.stringify(data));
+                //alert("aaaa");
+                //alert(data.status);
+                //alert(data.errMsg);
+            }
+        });
+    }
+</script>
+</body>
+</html>

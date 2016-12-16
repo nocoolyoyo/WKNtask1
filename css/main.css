@@ -5,8 +5,8 @@
 @import "../vendor/bootstrap-table/css/bootstrap-editable.css";
 @import "../vendor/fileinput/css/fileinput.min.css";
 @import "../vendor/bootstrap/css/smt-bootstrap.css";
-@import "../vendor/froalaEditor/css/froala_editor.min.css";
-@import "../vendor/froalaEditor/css/froala_style.min.css";
-@import "../vendor/froalaEditor/css/froala_plugins.min.css";
-@import "../vendor/froalaEditor/css/gray.min.css";
+@import "../vendor/froala-editor/css/froala_editor.min.css";
+@import "../vendor/froala-editor/css/froala_style.min.css";
+@import "../vendor/froala-editor/css/froala_plugins.min.css";
+@import "../vendor/froala-editor/css/gray.min.css";
 @import "default.css";

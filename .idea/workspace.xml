@@ -2,181 +2,83 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4285115-6475-4758-893d-36e86dd679ec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/director.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/public/jquery.pjax.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/router.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/desktop/desktop.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/occupation/occupation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/bootstrap/bootstrap.min.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/ASDASD.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/SMS.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/SMS.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/album.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/album.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/desktop.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/folder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/folder.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/footer.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/header.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/incomeExpense.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/incomeExpense.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/information.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/informationjs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/login.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/login.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/memberLog.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/memberLog.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/meta.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/motifaction.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/motifaction.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/notice.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/notice.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/occupation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/occupation.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/occupationProfile.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/queryActivities.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/queryActivities.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/queryMessage.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/queryMessage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/questions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/questions.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/script.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/setting.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/supply.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JSP/JS/supply.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SMS.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/album.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bootstrap-fileinput" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bootstrap-table" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cropper" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/bootstrap-table.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/public/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/public/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/public/cropper.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/public/select2-bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/public/select2.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/folder.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/folder1100.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/folder1117.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/folder1158.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/information-comment.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/motifaction-12.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/occupation-QLGL.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/occupation-ZWGL-permission.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/occupation-profile.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/occupation-zwgl.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/occupation.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/queryActivities.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/question-index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/folder.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/picture-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/incomeExpense.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/information.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/SMSbeifen.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/information.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/blocksit.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/cropper.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/fileinput.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/masonry.pkgd.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/select2.full.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/select2.zh-CN.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/summernote-zh-CN.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/underscore-min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/public/way.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/login.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/memberLog.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/motifaction.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/notice.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/occupation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/queryActivities.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/queryMessage.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/questions.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/setting.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/supply.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/table-template.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/loading.gif" afterPath="$PROJECT_DIR$/img/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/222.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ceshi.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/global.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/desktop/js/calendar-all.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/occupation/js/occupation-HYXX.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/occupation/js/occupation-QGL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/occupation/js/occupation-QLGL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/occupation/js/occupation-WJH.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/occupation/js/occupation-ZWGL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/occupation/js/occupation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/helpData.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/menuData.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/information-drafts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/memberLog.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/notice-drafts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/occupation-checklist.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/occupation-select.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/default.css" afterPath="$PROJECT_DIR$/css/default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/desktop.css" afterPath="$PROJECT_DIR$/css/desktop.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/login.css" afterPath="$PROJECT_DIR$/css/login.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/backlog.css" afterPath="$PROJECT_DIR$/css/parts/backlog.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/board.css" afterPath="$PROJECT_DIR$/css/parts/board.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/body.css" afterPath="$PROJECT_DIR$/css/parts/body.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/calendar.css" afterPath="$PROJECT_DIR$/css/parts/calendar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/content.css" afterPath="$PROJECT_DIR$/css/parts/content.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/parts/footer.css" afterPath="$PROJECT_DIR$/css/parts/footer.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/public/fileinput.min.css" afterPath="$PROJECT_DIR$/css/public/fileinput.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/public/prettyPhoto.css" afterPath="$PROJECT_DIR$/css/public/prettyPhoto.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/setting.css" afterPath="$PROJECT_DIR$/css/setting.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/SMS-add.html" afterPath="$PROJECT_DIR$/data/SMS-add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/SMS-detail.html" afterPath="$PROJECT_DIR$/data/SMS-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/SMS-index.html" afterPath="$PROJECT_DIR$/data/SMS-index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/SMS-reply.html" afterPath="$PROJECT_DIR$/data/SMS-reply.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/album-detail.html" afterPath="$PROJECT_DIR$/data/album-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/album-index.html" afterPath="$PROJECT_DIR$/data/album-index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/information-create.html" afterPath="$PROJECT_DIR$/data/information-create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/information-detail.html" afterPath="$PROJECT_DIR$/data/information-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/information-index.html" afterPath="$PROJECT_DIR$/data/information-index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/motifaction-edit.html" afterPath="$PROJECT_DIR$/data/motifaction-edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/motifaction-index.html" afterPath="$PROJECT_DIR$/data/motifaction-index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/notice-create.html" afterPath="$PROJECT_DIR$/data/notice-create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/notice-detail.html" afterPath="$PROJECT_DIR$/data/notice-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/notice-index.html" afterPath="$PROJECT_DIR$/data/notice-index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation-HYXX.html" afterPath="$PROJECT_DIR$/data/occupation-HYXX.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation-QGL-members.html" afterPath="$PROJECT_DIR$/data/occupation-QGL-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation-QGL.html" afterPath="$PROJECT_DIR$/data/occupation-QGL.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation-QLGL.html" afterPath="$PROJECT_DIR$/data/occupation-QLGL.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation-WJH.html" afterPath="$PROJECT_DIR$/data/occupation-WJH.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/occupation-ZWGL.html" afterPath="$PROJECT_DIR$/data/occupation-ZWGL.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/queryMessage-CREATE.html" afterPath="$PROJECT_DIR$/data/queryMessage-CREATE.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/queryMessage-GET.html" afterPath="$PROJECT_DIR$/data/queryMessage-GET.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/queryMessage-SEND.html" afterPath="$PROJECT_DIR$/data/queryMessage-SEND.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/queryMessage-detail.html" afterPath="$PROJECT_DIR$/data/queryMessage-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/questions-dialog.html" afterPath="$PROJECT_DIR$/data/questions-dialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/supply-comment.html" afterPath="$PROJECT_DIR$/data/supply-comment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/supply-detail.html" afterPath="$PROJECT_DIR$/data/supply-detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/supply-index.html" afterPath="$PROJECT_DIR$/data/supply-index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/SMS.js" afterPath="$PROJECT_DIR$/js/SMS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/album.js" afterPath="$PROJECT_DIR$/js/album.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/desktop.js" afterPath="$PROJECT_DIR$/js/desktop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/desktop/calendar-run.js" afterPath="$PROJECT_DIR$/js/desktop/calendar-run.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/folder.js" afterPath="$PROJECT_DIR$/js/folder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/incomeExpense.js" afterPath="$PROJECT_DIR$/js/incomeExpense.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/login.js" afterPath="$PROJECT_DIR$/js/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/main.js" afterPath="$PROJECT_DIR$/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/memberLog.js" afterPath="$PROJECT_DIR$/js/memberLog.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/motifaction.js" afterPath="$PROJECT_DIR$/js/motifaction.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/notice.js" afterPath="$PROJECT_DIR$/js/notice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/occupation.js" afterPath="$PROJECT_DIR$/js/occupation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/public/ajaxFileUpload.js" afterPath="$PROJECT_DIR$/js/public/ajaxFileUpload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/public/bootstrap.min.js" afterPath="$PROJECT_DIR$/js/public/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/public/bootstrapValidator.min.js" afterPath="$PROJECT_DIR$/js/public/bootstrapValidator.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/public/jquery.prettyPhoto.js" afterPath="$PROJECT_DIR$/js/public/jquery.prettyPhoto.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/public/menuData.js" afterPath="$PROJECT_DIR$/js/public/menuData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/queryActivities.js" afterPath="$PROJECT_DIR$/js/queryActivities.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/queryMessage.js" afterPath="$PROJECT_DIR$/js/queryMessage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/questions.js" afterPath="$PROJECT_DIR$/js/questions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/setting.js" afterPath="$PROJECT_DIR$/js/setting.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/supply.js" afterPath="$PROJECT_DIR$/js/supply.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/FontAwesome.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/fontawesome-webfont.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/fontawesome-webfont.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/fontawesome-webfont.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/fontawesome-webfont.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/fontawesome-webfont.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/summernote.eot" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/summernote.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/summernote.ttf" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/summernote.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/fonts/summernote.woff" afterPath="$PROJECT_DIR$/vendor/bootstrap/fonts/summernote.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/requireConfig.js" afterPath="$PROJECT_DIR$/js/requireConfig.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/router.js" afterPath="$PROJECT_DIR$/js/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/desktop/js/calendar-init.js" afterPath="$PROJECT_DIR$/pages/desktop/js/calendar-init.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/desktop/js/calendar-run.js" afterPath="$PROJECT_DIR$/pages/desktop/js/calendar-run.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/desktop/js/desktop.js" afterPath="$PROJECT_DIR$/pages/desktop/js/desktop.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/occupation/occupation.html" afterPath="$PROJECT_DIR$/pages/occupation/occupation.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/FolderfileUp.jsp" afterPath="$PROJECT_DIR$/service/FolderfileUp.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/ImportfileUp.jsp" afterPath="$PROJECT_DIR$/service/ImportfileUp.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/MemberImportfileUp.jsp" afterPath="$PROJECT_DIR$/service/MemberImportfileUp.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/SMS-add.html" afterPath="$PROJECT_DIR$/service/SMS-add.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/SMS-detail.html" afterPath="$PROJECT_DIR$/service/SMS-detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/SMS-index.html" afterPath="$PROJECT_DIR$/service/SMS-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/SMS-reply.html" afterPath="$PROJECT_DIR$/service/SMS-reply.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/album-detail.html" afterPath="$PROJECT_DIR$/service/album-detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/album-index.html" afterPath="$PROJECT_DIR$/service/album-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/iframe-video.html" afterPath="$PROJECT_DIR$/service/iframe-video.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/incomeexpense-index.html" afterPath="$PROJECT_DIR$/service/incomeexpense-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/information-create.html" afterPath="$PROJECT_DIR$/service/information-create.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/information-detail.html" afterPath="$PROJECT_DIR$/service/information-detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/information-index.html" afterPath="$PROJECT_DIR$/service/information-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/loaders.html" afterPath="$PROJECT_DIR$/service/loaders.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/memberLog-index.html" afterPath="$PROJECT_DIR$/service/memberLog-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/motifaction-create.html" afterPath="$PROJECT_DIR$/service/motifaction-create.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/motifaction-edit.html" afterPath="$PROJECT_DIR$/service/motifaction-edit.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/motifaction-index.html" afterPath="$PROJECT_DIR$/service/motifaction-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/notice-create.html" afterPath="$PROJECT_DIR$/service/notice-create.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/notice-detail.html" afterPath="$PROJECT_DIR$/service/notice-detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/notice-index.html" afterPath="$PROJECT_DIR$/service/notice-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/occupation-HYXX-detail.html" afterPath="$PROJECT_DIR$/service/occupation-HYXX-detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/occupation-HYXX.html" afterPath="$PROJECT_DIR$/service/occupation-HYXX.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/occupation-QGL-members.html" afterPath="$PROJECT_DIR$/service/occupation-QGL-members.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/occupation-QGL.html" afterPath="$PROJECT_DIR$/service/occupation-QGL.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/occupation-QLGL.html" afterPath="$PROJECT_DIR$/service/occupation-QLGL.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/occupation-WJH.html" afterPath="$PROJECT_DIR$/service/occupation-WJH.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/occupation-ZWGL-members.html" afterPath="$PROJECT_DIR$/service/occupation-ZWGL-members.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/occupation-ZWGL.html" afterPath="$PROJECT_DIR$/service/occupation-ZWGL.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/queryMessage-CREATE.html" afterPath="$PROJECT_DIR$/service/queryMessage-CREATE.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/queryMessage-GET.html" afterPath="$PROJECT_DIR$/service/queryMessage-GET.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/queryMessage-SEND.html" afterPath="$PROJECT_DIR$/service/queryMessage-SEND.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/queryMessage-detail.html" afterPath="$PROJECT_DIR$/service/queryMessage-detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/queryMessage-getDetail.html" afterPath="$PROJECT_DIR$/service/queryMessage-getDetail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/queryMessage-sendDetail.html" afterPath="$PROJECT_DIR$/service/queryMessage-sendDetail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/questions-dialog.html" afterPath="$PROJECT_DIR$/service/questions-dialog.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/questions-index.html" afterPath="$PROJECT_DIR$/service/questions-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/supply-comment.html" afterPath="$PROJECT_DIR$/service/supply-comment.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/supply-detail.html" afterPath="$PROJECT_DIR$/service/supply-detail.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/supply-index.html" afterPath="$PROJECT_DIR$/service/supply-index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/supply-main.html" afterPath="$PROJECT_DIR$/service/supply-main.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vendor/froalaEditor/css/froala_editor.min.css" afterPath="$PROJECT_DIR$/vendor/froala-editor/css/froala_editor.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vendor/froalaEditor/css/froala_plugins.min.css" afterPath="$PROJECT_DIR$/vendor/froala-editor/css/froala_plugins.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vendor/froalaEditor/css/froala_style.min.css" afterPath="$PROJECT_DIR$/vendor/froala-editor/css/froala_style.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vendor/froalaEditor/css/gray.min.css" afterPath="$PROJECT_DIR$/vendor/froala-editor/css/gray.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vendor/froalaEditor/js/froala_editor.min.js" afterPath="$PROJECT_DIR$/vendor/froala-editor/js/froala_editor.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vendor/froalaEditor/js/froala_plugins(2.3.5).min.js" afterPath="$PROJECT_DIR$/vendor/froala-editor/js/froala_plugins(2.3.5).min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vendor/froalaEditor/js/froala_plugins.min.js" afterPath="$PROJECT_DIR$/vendor/froala-editor/js/froala_plugins.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/vendor/froalaEditor/js/froala_zh_cn.js" afterPath="$PROJECT_DIR$/vendor/froala-editor/js/froala_zh_cn.js" />
     </list>
     <ignored path="mission1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -197,43 +99,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2184">
-              <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2600">
-              <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+            <state relative-caret-position="734">
+              <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="desktop.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/desktop/js/desktop.js">
+      <file leaf-file-name="global.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/global.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1481786406649" expanded="true" signature="1228:1241" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menuData.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/menuData.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+            <state relative-caret-position="442">
+              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -241,11 +121,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="helpData.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/helpData.js">
+      <file leaf-file-name="occupation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="526">
+              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+              <folding>
+                <element signature="e#379#653#0" expanded="false" />
+                <element signature="n#!!block;n#initSidebar#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+                <element signature="n#!!block;n#initTimepicker#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+                <element signature="n#!!block;n#outputOnameList#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+                <element signature="n#!!block;n#initZWGL#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+                <element signature="n#!!block;n#initQLGL#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+                <element signature="n#!!block;n#initWJH#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+                <element signature="n#!!block;n#initQGL#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="occupation-HYXX.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-HYXX.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -253,36 +152,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="pageRouter.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/pageRouter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="511" column="13" selection-start-line="511" selection-start-column="13" selection-end-line="511" selection-end-column="44" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#svg#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#1;n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="requireConfig.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/requireConfig.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="83" selection-start-line="8" selection-start-column="83" selection-end-line="8" selection-end-column="83" />
+            <state relative-caret-position="-358">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bootstrap-table-zh-CN.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/bootstrap-table/js/bootstrap-table-zh-CN.js">
+      <file leaf-file-name="occupation-ZWGL.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-ZWGL.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -291,21 +172,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="require.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/requireJS/require.min.js">
+      <file leaf-file-name="occupation-QGL.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-QGL.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footer.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/footer.jsp">
+      <file leaf-file-name="occupation-WJH.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-WJH.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="20" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="13" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="occupation-QLGL.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-QLGL.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -329,21 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/incomeExpense.html" />
-        <option value="$PROJECT_DIR$/queryActivities.html" />
-        <option value="$PROJECT_DIR$/js/incomeExpense.js" />
-        <option value="$PROJECT_DIR$/data/album-index.html" />
-        <option value="$PROJECT_DIR$/data/album-detail.html" />
-        <option value="$PROJECT_DIR$/js/SMS.js" />
-        <option value="$PROJECT_DIR$/data/SMS-add.html" />
-        <option value="$PROJECT_DIR$/JSP/JS/occupation.js" />
-        <option value="$PROJECT_DIR$/data/occu[ation-select.json" />
-        <option value="$PROJECT_DIR$/data/occupation.json" />
-        <option value="$PROJECT_DIR$/data/occupation-zhiwuguanli.json" />
-        <option value="$PROJECT_DIR$/data/occupation-zwgl.json" />
-        <option value="$PROJECT_DIR$/data/occupation-checklist.json" />
-        <option value="$PROJECT_DIR$/css/public/bootstrap.css" />
-        <option value="$PROJECT_DIR$/data/occupation-ZWGL-permission.html" />
         <option value="$PROJECT_DIR$/data/occupation-HYXX.html" />
         <option value="$PROJECT_DIR$/js/folder.js" />
         <option value="$PROJECT_DIR$/data/occupation-ZWGL.html" />
@@ -366,20 +242,35 @@
         <option value="$PROJECT_DIR$/SMS.html" />
         <option value="$PROJECT_DIR$/occupation.html" />
         <option value="$PROJECT_DIR$/table-template.html" />
-        <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/index.jsp" />
         <option value="$PROJECT_DIR$/pages/desktop/desktop.html" />
         <option value="$PROJECT_DIR$/css/parts/setting.css" />
         <option value="$PROJECT_DIR$/css/parts/desktop.css" />
-        <option value="$PROJECT_DIR$/css/main.css" />
         <option value="$PROJECT_DIR$/css/default.css" />
         <option value="$PROJECT_DIR$/css/login.css" />
         <option value="$PROJECT_DIR$/js/help.js" />
         <option value="$PROJECT_DIR$/js/public/menuData.js" />
         <option value="$PROJECT_DIR$/footer.jsp" />
         <option value="$PROJECT_DIR$/vendor/requireJS/require.js" />
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/222.js" />
+        <option value="$PROJECT_DIR$/ceshi.html" />
+        <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/pages/desktop/js/calendar-run.js" />
         <option value="$PROJECT_DIR$/js/requireConfig.js" />
+        <option value="$PROJECT_DIR$/pages/desktop/js/calendar-init.js" />
+        <option value="$PROJECT_DIR$/pages/desktop/js/calendar-all.js" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/pages/occupation/occupation.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/pages/desktop/js/desktop.js" />
+        <option value="$PROJECT_DIR$/pages/occupation/js/occupation-ZWGL.js" />
+        <option value="$PROJECT_DIR$/pages/occupation/js/occupation-QGL.js" />
+        <option value="$PROJECT_DIR$/pages/occupation/js/occupation-WJH.js" />
+        <option value="$PROJECT_DIR$/pages/occupation/js/occupation-QLGL.js" />
+        <option value="$PROJECT_DIR$/pages/occupation/js/occupation.js" />
+        <option value="$PROJECT_DIR$/pages/occupation/js/occupation-HYXX.js" />
+        <option value="$PROJECT_DIR$/js/global.js" />
+        <option value="$PROJECT_DIR$/js/router.js" />
       </list>
     </option>
   </component>
@@ -394,9 +285,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="x" value="107" />
+    <option name="y" value="56" />
+    <option name="width" value="1908" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -452,247 +343,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="requireJS" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="froalaEditor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="froalaEditor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-table" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-table" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-datetimepicker" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-datetimepicker" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootbox" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ajaxFileUpload" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="setting" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="setting" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -720,119 +371,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="help" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="help" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="desktop" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="desktop" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -847,24 +386,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WKNtask1" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -885,19 +406,19 @@
     <property name="nodejs_interpreter_path" value="F:/nodejs/node" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project\WKNtask1\pages\occupation\js" />
+      <recent name="E:\project\WKNtask1\service" />
+      <recent name="E:\project\WKNtask1\img" />
+      <recent name="E:\project\WKNtask1\css\parts" />
+      <recent name="D:\Project\WKNtask1\vendor\requireJS" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Project\WKNtask1\js" />
       <recent name="D:\Project\WKNtask1\pages\desktop\js" />
       <recent name="D:\Project\WKNtask1\pages\desktop\css" />
       <recent name="D:\Project\WKNtask1\pages\setting\js" />
       <recent name="D:\Project\WKNtask1\pages\help\js" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Project\WKNtask1\vendor\requireJS" />
-      <recent name="D:\Project\WKNtask1" />
-      <recent name="D:\Project\WKNtask1\pages\desktop" />
-      <recent name="D:\Project\WKNtask1\pages\occupation" />
-      <recent name="D:\Project\WKNtask1\js" />
     </key>
   </component>
   <component name="RunManager">
@@ -1021,21 +542,21 @@
       <workItem from="1477827814310" duration="182000" />
       <workItem from="1481634401632" duration="5200000" />
       <workItem from="1481802217811" duration="12366000" />
+      <workItem from="1481850307221" duration="23945000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="426805000" />
+    <option name="totallyTimeSpent" value="450750000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="107" y="56" width="1908" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1770613" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32804233" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1046,6 +567,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32804233" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1063,150 +585,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/questions.html" />
-    <entry file="file://$PROJECT_DIR$/SMS.html" />
-    <entry file="file://$PROJECT_DIR$/js/occupation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/occupation.html" />
-    <entry file="file://$PROJECT_DIR$/vendor/director/director.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/table-template.html" />
-    <entry file="file://$PROJECT_DIR$/lottery.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-520">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/occupation/occupation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meta.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="9" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/bootstrap/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="265" column="17" selection-start-line="265" selection-start-column="17" selection-end-line="265" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/bootstrap/js/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13945">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/froalaEditor/css/froala_style.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/froalaEditor/css/froala_editor.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/froalaEditor/css/gray.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/public/video.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/rollText/demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/font-awesome/css/font-awesome.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="3" column="1715" selection-start-line="3" selection-start-column="1715" selection-end-line="3" selection-end-column="1715" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/parts/loaders.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/parts/content.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/login.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-175">
           <caret line="70" column="31" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1214,15 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1230,7 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="16" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1262,14 +639,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <marker date="1481806871360" expanded="true" signature="408:439" ph="..." />
-            <marker date="1481806871360" expanded="true" signature="503:517" ph="..." />
-            <marker date="1481806871360" expanded="true" signature="540:556" ph="..." />
-            <marker date="1481806871360" expanded="true" signature="652:683" ph="..." />
-            <marker date="1481806871360" expanded="true" signature="748:762" ph="..." />
-            <marker date="1481806871360" expanded="true" signature="785:801" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1281,43 +651,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar-dateFestival.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar-init.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar-run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/desktop/js/lhl/hl2015.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1325,7 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,7 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1341,7 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1361,49 +695,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/html5.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/menuData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/helpData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/desktop/js/desktop.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1481786406649" expanded="true" signature="1228:1241" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1423,39 +719,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/router.js">
+    <entry file="file://$PROJECT_DIR$/vendor/bootstrap-table/js/bootstrap-table-zh-CN.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2600">
-          <caret line="100" column="5" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+        <state relative-caret-position="-202">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
+    <entry file="file://$PROJECT_DIR$/vendor/bootstrap-table/js/bootstrap-table-export.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2184">
-          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="511" column="13" selection-start-line="511" selection-start-column="13" selection-end-line="511" selection-end-column="44" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#svg#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#span#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/bootstrap-table/js/bootstrap-table-zh-CN.js">
+    <entry file="file://$PROJECT_DIR$/vendor/bootstrap-table/js/bootstrap-table-editable.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/prettyPhoto/js/jquery.prettyPhoto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2964">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1481850120505" expanded="true" signature="2165:3560" ph="..." />
+            <marker date="1481850120505" expanded="false" signature="2192:2198" ph=" " />
+            <marker date="1481850120505" expanded="true" signature="2232:2361" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="2404:3385" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="2435:3370" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="2467:3354" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="2502:3338" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="2580:3321" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="2702:2829" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="2907:3303" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="2941:3134" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="3417:3546" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="3645:3863" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="3722:3794" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="3738:3777" ph="..." />
+            <marker date="1481850120505" expanded="true" signature="5519:5574" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/information.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1463,10 +781,276 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/222.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ceshi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/parts/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="9" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/bootbox/bootbox.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="14" column="605" selection-start-line="14" selection-start-column="596" selection-end-line="14" selection-end-column="605" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="205" column="47" selection-start-line="205" selection-start-column="47" selection-end-line="205" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/requireConfig.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="83" selection-start-line="8" selection-start-column="83" selection-end-line="8" selection-end-column="83" />
+        <state relative-caret-position="364">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/menuData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="676">
+          <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar-run.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar-dateFestival.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="16" column="22" selection-start-line="0" selection-start-column="0" selection-end-line="92" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/occupation/occupation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/menuData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar-init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="6" column="11282" selection-start-line="6" selection-start-column="11282" selection-end-line="6" selection-end-column="11282" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="523" column="0" selection-start-line="523" selection-start-column="0" selection-end-line="523" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#svg#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#span#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#31180#31187#0" expanded="true" />
+            <element signature="e#32603#32610#0" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#4;n#div#1;n#div#0;n#main#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/desktop/js/calendar-all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/desktop/js/desktop.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#index#0;n#!!block;n#desktop#0;n#desktop#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#loadRenderBoard#0;n#!!block;n#desktop#0;n#desktop#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#addBadge#0;n#!!block;n#desktop#0;n#desktop#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#addwtfkcount#0;n#!!block;n#desktop#0;n#desktop#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#todayDate#0;n#!!block;n#desktop#0;n#desktop#0;n#!!top" expanded="false" />
+            <element signature="e#9725#9933#0" expanded="false" />
+            <element signature="n#!!block;n#birthdayMember#0;n#!!block;n#desktop#0;n#desktop#0;n#!!top" expanded="false" />
+            <marker date="1481870151474" expanded="true" signature="821:834" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="e#379#653#0" expanded="false" />
+            <element signature="n#!!block;n#initSidebar#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#initTimepicker#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#outputOnameList#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#initZWGL#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#initQLGL#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#initWJH#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#initQGL#0;n#!!block;n#occupation#0;n#occupation#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-QGL.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-WJH.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-QLGL.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-ZWGL.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/helpData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="9" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="734">
+          <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/occupation/js/occupation-HYXX.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/pageRouter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-358">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
